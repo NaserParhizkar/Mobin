@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mobin.ExpressionJsonSerializer\Mobin.ExpressionJsonSerializer.csproj" />
+    <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
+    <ProjectReference Include="..\Mobin.Repository\Mobin.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DAL\" />
+  </ItemGroup>
+
+</Project>

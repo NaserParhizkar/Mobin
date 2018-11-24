@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Telerik UI for ASP.NET MVC provides server-side helpers for Kendo UI's JavaScript framework. It enables developers comfortable with the ASP.NET MVC framework to easily configure and work with Kendo UI via familiar server-side programming instead of relying solely on hand-coding of HTML and JavaScript.</Description>
+    <AssemblyTitle>Telerik UI for ASP.NET MVC Core 1.0.0</AssemblyTitle>
+    <VersionPrefix>2017.2.504</VersionPrefix>
+    <Authors>Telerik</Authors>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Kendo.Mvc</AssemblyName>
+    <AssemblyOriginatorKeyFile>Kendo.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>Kendo.Mvc</PackageId>
+    <PackageTags>aspnet;mvc;aspnext;vnext;VS2015;Kendo;Kendo UI;JavaScript;UI</PackageTags>
+    <PackageProjectUrl>http://www.telerik.com/aspnet-mvc</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.telerik.com/purchase/license-agreement/aspnet-mvc</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard2.0' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="*.resources" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mobin\UI\**" />
+    <EmbeddedResource Remove="Mobin\UI\**" />
+    <None Remove="Mobin\UI\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Mobin\UI\Grid.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.0.1" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+  </ItemGroup>
+
+  <!--<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>-->
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mobin.ExpressionJsonSerializer\Mobin.ExpressionJsonSerializer.csproj" />
+    <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
+    <ProjectReference Include="..\Mobin.Service\Mobin.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "OrderIndex";
+}
+
+<h2>OrderIndex</h2>
+
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+        @(Html.Kendo().Grid<Northwind.WebUI.Models.OrderDetail>()
+                        .Name("grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(p => p.UnitPrice);
+                            columns.Bound(p => p.Order.OrderDate).Format("{0:MM/dd/yyyy}");
+                            columns.Bound(p => p.Order.Customer.Country);
+                            columns.Bound(p => p.Product.ProductName);
+                            columns.Bound(p => p.Product.Category.CategoryName);
+                        })
+                        .Pageable()
+                        .HtmlAttributes(new { style = "height:100px;" })
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(5)
+                            .Read(read => read.Action("NaserOrders_Read", "Grid"))
+                        )
+        )
+    </div>
+</div>
+
