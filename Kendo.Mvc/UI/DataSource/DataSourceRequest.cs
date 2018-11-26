@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
 {
-    public class DataSourceRequest
+    public partial class DataSourceRequest
     {
         public DataSourceRequest()
         {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI
 {
-    public class DataSource : JsonObject
+    public partial class DataSource : JsonObject
     {
         public DataSource(IModelMetadataProvider modelMetaDataProvider):this()
         {

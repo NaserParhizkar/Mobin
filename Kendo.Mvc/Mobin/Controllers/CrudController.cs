@@ -36,13 +36,10 @@ namespace Kendo.Mvc.Mobin
         /// <returns></returns>
         public virtual object Read(DataSourceRequest request)
         {
-            Guid callerKey;
-            var key = this.HttpContext.Request.Query["callerKey"];
+            if (request.ComponentId.HasValue || request.ComponentId == Guid.Empty)
+                throw new MobinException("ComponentId must be specefied for get data from related json file");
 
-            if (!Guid.TryParse(key, out callerKey))
-                throw new MobinException("callerKey not specefied");
-
-            var lambdaExpression = JsonNetAdapter.ReadDeserializedLambdaExpression<TEntity>(callerKey);
+            var lambdaExpression = JsonNetAdapter.ReadDeserializedLambdaExpression<TEntity>(request.ComponentId.Value);
             var query = crudService.GetAllAsQueryable().Select(lambdaExpression);
 
             return query.ToDataSourceResult(request);

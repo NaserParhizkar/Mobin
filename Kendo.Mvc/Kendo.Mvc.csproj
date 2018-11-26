@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Mobin\UI\DataSource.cs" />
+    <Compile Include="Mobin\UI\DataSourceRequest.cs" />
     <Compile Include="Mobin\UI\Grid.cs" />
   </ItemGroup>
 
