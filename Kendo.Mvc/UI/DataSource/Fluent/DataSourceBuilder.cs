@@ -20,13 +20,6 @@ namespace Kendo.Mvc.UI.Fluent
             this.dataSource = dataSource;
         }
 
-        public DataSourceBuilder<TModel> AutoReadData(bool autoRead = true)
-        {
-            dataSource.AutoReadData = true;
-
-            return this;
-        }
-
         /// <summary>
         /// Use it to configure Ajax binding.
         /// </summary>        

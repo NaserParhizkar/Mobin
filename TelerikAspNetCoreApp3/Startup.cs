@@ -47,6 +47,8 @@ namespace Northwind.WebUI
             //    | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.
             //});
 
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -63,7 +65,7 @@ namespace Northwind.WebUI
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=PersianDate}/{action=Index}/{id?}");
             });
         }
     }

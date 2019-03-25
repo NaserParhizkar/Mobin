@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout-old";
+}
+
+<h2>Index</h2>
+
+@*@Html.Kendo().Calendar().Name("calendar").Min(DateTime.Now).Max(DateTime.Now.AddYears(20))*@
+
+<div class="k-widget k-calendar" id="calendar" name="calendar"></div>
+<script>
+    kendo.syncReady(function () {
+        jQuery("#calendar").kendoCalendar({
+            culture:"fa-IR"
+
+
+        });
+    });</script>

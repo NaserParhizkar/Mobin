@@ -62,8 +62,12 @@ namespace Mobin.ExpressionJsonSerializer
 
         public static LambdaExpression ReadDeserializedLambdaExpression<T>(Guid callerKey)
         {
+
             string path = string.Empty,
                 json = string.Empty;
+#if DEBUG
+            path = @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\Customer\Index/grid.json";
+#endif
 
             using (var stream = File.OpenRead(path))
             using (var reader = new StreamReader(stream))

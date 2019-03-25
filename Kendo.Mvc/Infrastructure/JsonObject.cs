@@ -11,14 +11,14 @@ namespace Kendo.Mvc
             Serialize(json);
 
             // For Mobin
-            SerializeMobin(json);
+            SerializeMobinChanges(json);
 
             return json;
         }
 
         protected abstract void Serialize(IDictionary<string, object> json);
 
-        protected virtual void SerializeMobin(IDictionary<string, object> json) { }
+        protected virtual void SerializeMobinChanges(IDictionary<string, object> json) { }
 
     }
 }

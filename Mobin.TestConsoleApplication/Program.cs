@@ -16,7 +16,13 @@ namespace Mobin.TestConsoleApplication
         {
             try
             {
-                Execute();
+                var first = Execute();
+
+                var second = Execute();
+
+                var third = Execute();
+
+
             }
             catch (Exception exception)
             {
@@ -28,42 +34,50 @@ namespace Mobin.TestConsoleApplication
             }
         }
 
-        private static void Execute()
+        private static List<object> Execute()
         {
+            var lstResult = default(List<object>);
             using (var db = new NorthwindContext())
             {
 
                 Expression<Func<OrderDetail, int>> orderIDExpr = x => x.OrderId;
                 Expression<Func<OrderDetail, int>> productIDExpr = x => x.ProductId;
-                Expression<Func<OrderDetail, decimal>> UnitPriceExpr = x => x.UnitPrice;
-                Expression<Func<OrderDetail, short>> QuantityExpr = x => x.Quantity;
-                Expression<Func<OrderDetail, string>> CityCustomerExpr = x => x.Order.Customer.City;
-                Expression<Func<OrderDetail, string>> CityEmpExpr = x => x.Order.Employee.City;
-                Expression<Func<OrderDetail, DateTime?>> OrderDateExpr = x => x.Order.OrderDate;
-                Expression<Func<OrderDetail, string>> ProductNameExpr = x => x.Product.ProductName;
-                Expression<Func<OrderDetail, string>> CategoryNameExpr = x => x.Product.Category.CategoryName;
-                Expression<Func<OrderDetail, string>> CountryExpr = x => x.Order.Customer.Country;
+                Expression<Func<OrderDetail, decimal>> unitPriceExpr = x => x.UnitPrice;
+                Expression<Func<OrderDetail, short>> quantityExpr = x => x.Quantity;
+                Expression<Func<OrderDetail, string>> cityCustomerExpr = x => x.Order.Customer.City;
+                Expression<Func<OrderDetail, string>> cityEmpExpr = x => x.Order.Employee.City;
+                Expression<Func<OrderDetail, DateTime?>> orderDateExpr = x => x.Order.OrderDate;
+                Expression<Func<OrderDetail, string>> productNameExpr = x => x.Product.ProductName;
+                Expression<Func<OrderDetail, string>> categoryNameExpr = x => x.Product.Category.CategoryName;
+                Expression<Func<OrderDetail, string>> countryExpr = x => x.Order.Customer.Country;
+                Expression<Func<OrderDetail, float>> discountExpr = x => x.Discount;
 
                 var expressions = new List<Expression>
                 {
                     orderIDExpr,
                     productIDExpr,
-                    UnitPriceExpr,
-                    QuantityExpr,
-                    OrderDateExpr,
-                    CityCustomerExpr,
-                    CityEmpExpr,
-                    ProductNameExpr,
-                    CategoryNameExpr,
-                    CountryExpr
+                    unitPriceExpr,
+                    quantityExpr,
+                    orderDateExpr,
+                    cityCustomerExpr,
+                    cityEmpExpr,
+                    productNameExpr,
+                    categoryNameExpr,
+                    countryExpr,
+                    discountExpr
                 };
 
-                var res1 = expressions.GetLambdaExpression<OrderDetail>();
+                var lambdaExpression = expressions.GetLambdaExpression<OrderDetail>();
 
-                var jsonExpression = ExpressionJsonSerializer.JsonNetAdapter.Serialize(res1, typeof(OrderDetail).Assembly);
+                //var jsonExpression = ExpressionJsonSerializer.JsonNetAdapter.Serialize(res1, typeof(OrderDetail).Assembly);
 
-                var jsonExpDes = ExpressionJsonSerializer.JsonNetAdapter.Deserialize<Expression>
-                    (jsonExpression, typeof(OrderDetail).Assembly);
+                ExpressionJsonSerializer.ExpressionSaver.SerialExpressionAsJson<OrderDetail>
+                    ((Expression)lambdaExpression, @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\Customer\Index/grid.json",
+                    typeof(OrderDetail).Assembly);
+
+                var jsonExpression = ExpressionJsonSerializer.JsonNetAdapter.ReadDeserializedLambdaExpression<OrderDetail>(new Guid());
+
+                var jsonExpDes = ExpressionJsonSerializer.JsonNetAdapter.ReadDeserializedLambdaExpression<OrderDetail>(new Guid());
 
 
                 var queryMethod = typeof(Queryable).GetMethods().Where(x => x.Name == "Select")
@@ -88,7 +102,11 @@ namespace Mobin.TestConsoleApplication
                 var queryRes = db.Set<OrderDetail>().AsQueryable().Provider.CreateQuery<object>(selectCallExpression);
 
                 var orderDetails = queryRes.ToList();
+
+                lstResult = orderDetails;
             }
+
+            return lstResult;
         }
 
     }

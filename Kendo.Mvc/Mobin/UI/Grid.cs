@@ -1,4 +1,5 @@
 ﻿using Kendo.Mvc.Mobin;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Mobin.Common;
 using Mobin.Common.Expressions;
 using Mobin.ExpressionJsonSerializer;
@@ -13,15 +14,15 @@ namespace Kendo.Mvc.UI
     /// <summary>
     /// Mobin Kendo UI Grid component extending
     /// </summary>
-    public partial class Grid<T> where T : class 
+    public partial class Grid<T> 
     {
-        protected override void MobinSettings()
+        protected override void MobinProcessSettings()
         {
-            if (this.DataSource.AutoReadData)
-            {
+            //if (this.DataSource.AutoReadData)
+            //{
                 SerialSelectorColumnsAsJson();
-            }
-            base.MobinSettings();
+            //}
+            base.MobinProcessSettings();
         }
 
         private void SerialSelectorColumnsAsJson()
@@ -34,8 +35,8 @@ namespace Kendo.Mvc.UI
 
             var filePath_Name = String.Join('/', expressionComponentDirectory.FullName, expressionComponentFileName);
 
-            if (!System.IO.File.Exists(filePath_Name))
-            {
+            //if (!System.IO.File.Exists(filePath_Name))
+            //{
                 List<Expression> expressionColumns = new List<Expression>();
                 foreach (var col in this.Columns)
                 {
@@ -47,14 +48,14 @@ namespace Kendo.Mvc.UI
                 var lambdaExpression = expressionColumns.GetLambdaExpression<T>();
 
                 ExpressionSaver.SerialExpressionAsJson<T>(lambdaExpression, filePath_Name, typeof(T).Assembly);
-            }
+            //}
 
             // Set component key and value 
             if (!ComponentExpressionPath.ExpressionPath.Values.Contains(filePath_Name))
             {
                 var componentId = Guid.NewGuid();
                 ComponentExpressionPath.ExpressionPath.Add(componentId,filePath_Name);
-                this.DataSource.ComponentId = componentId;
+                //this.DataSource.ComponentId = componentId;
             }
         }
     }

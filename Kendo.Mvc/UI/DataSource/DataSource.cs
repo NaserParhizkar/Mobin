@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI
 {
-    public partial class DataSource : JsonObject
+    public class DataSource : JsonObject
     {
-        public DataSource(IModelMetadataProvider modelMetaDataProvider):this()
+        public DataSource(IModelMetadataProvider modelMetaDataProvider) : this()
         {
             ModelMetaDataProvider = modelMetaDataProvider;
         }
@@ -36,10 +36,6 @@ namespace Kendo.Mvc.UI
         public int Page { get; set; }
 
         public int Total { get; set; }
-
-        public string ExpressionFileName { get; set; }
-
-        public bool AutoReadData { get; set; }
 
         public string OfflineStorageKey { get; set; }
 

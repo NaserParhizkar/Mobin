@@ -245,11 +245,11 @@ namespace Kendo.Mvc.UI
         {
         }
 
-        protected virtual void MobinSettings() { }
+        protected virtual void MobinProcessSettings() { }
 
         protected virtual void RenderHtml(TextWriter writer)
         {
-            MobinSettings();
+            MobinProcessSettings();
             ProcessSettings();
             WriteHtml(writer);
         }

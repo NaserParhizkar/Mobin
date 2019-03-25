@@ -47,7 +47,7 @@ namespace Mobin.ExpressionJsonSerializer
             if (!types.TryGetValue(typeName, out type))
             {
                 var dynamicLinqAssembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(assembly =>
-                    assembly.GetName().Name == "DynamicClasses");
+                    assembly.GetName().Name.Contains("DynamicClasses"));
                 if (dynamicLinqAssembly != null)
                     type = dynamicLinqAssembly.GetType(typeName);
 
@@ -59,13 +59,13 @@ namespace Mobin.ExpressionJsonSerializer
                     var assembly = Assembly.Load(new AssemblyName(assemblyName));
                     type = assembly.GetType(typeName);
                 }
-                if (type == null)
-                {
-                    throw new Exception(
-                        "Type could not be found: "
-                        + assemblyName + "." + typeName
-                    );
-                }
+                //if (type == null)
+                //{
+                //    throw new Exception(
+                //        "Type could not be found: "
+                //        + assemblyName + "." + typeName
+                //    );
+                //}
                 types[typeName] = type;
             }
 
