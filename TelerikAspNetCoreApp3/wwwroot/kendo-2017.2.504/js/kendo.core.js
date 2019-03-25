@@ -23,7 +23,7 @@
 
 */
 (function (f, define) {
-    define('kendo.core', ['jquery','mobin.common'], f);
+    define('kendo.core', ['jquery', 'mobin.common'], f);
 }(function () {
     var __meta__ = {
         id: 'core',
@@ -38,9 +38,9 @@
         }
         Class.extend = function (proto) {
             var base = function () {
-                }, member, that = this, subclass = proto && proto.init ? proto.init : function () {
-                    that.apply(this, arguments);
-                }, fn;
+            }, member, that = this, subclass = proto && proto.init ? proto.init : function () {
+                that.apply(this, arguments);
+            }, fn;
             base.prototype = that.prototype;
             fn = subclass.fn = subclass.prototype = new base();
             for (member in proto) {
@@ -160,12 +160,12 @@
             }
         }
         var argumentNameRegExp = /^\w+/, encodeRegExp = /\$\{([^}]*)\}/g, escapedCurlyRegExp = /\\\}/g, curlyRegExp = /__CURLY__/g, escapedSharpRegExp = /\\#/g, sharpRegExp = /__SHARP__/g, zeros = [
-                '',
-                '0',
-                '00',
-                '000',
-                '0000'
-            ];
+            '',
+            '0',
+            '00',
+            '000',
+            '0000'
+        ];
         Template = {
             paramName: 'data',
             useWithBlock: true,
@@ -210,14 +210,14 @@
         }
         (function () {
             var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, gap, indent, meta = {
-                    '\b': '\\b',
-                    '\t': '\\t',
-                    '\n': '\\n',
-                    '\f': '\\f',
-                    '\r': '\\r',
-                    '"': '\\"',
-                    '\\': '\\\\'
-                }, rep, toString = {}.toString;
+                '\b': '\\b',
+                '\t': '\\t',
+                '\n': '\\n',
+                '\f': '\\f',
+                '\r': '\\r',
+                '"': '\\"',
+                '\\': '\\\\'
+            }, rep, toString = {}.toString;
             if (typeof Date.prototype.toJSON !== FUNCTION) {
                 Date.prototype.toJSON = function () {
                     var that = this;
@@ -808,14 +808,27 @@
                 return value.toFixed(Math.min(precision, 20));
             };
             var toString = function (value, fmt, culture) {
+
+                /////////////////////////////////////////////////////////////////////////////////////////////
+                // ******************************Orginal Code is here ******************************
+                //if (fmt) {
+                //    if (objectToString.call(value) === '[object Date]') {
+                //        return formatDate(value, fmt, culture);
+                //    } else if (typeof value === NUMBER) {
+                //        return formatNumber(value, fmt, culture);
+                //    }
+                //}
+                //return value !== undefined ? value : '';
+                /////////////////////////////////////////////////////////////////////////////////////////////
+
                 if (fmt) {
-                    if (objectToString.call(value) === '[object Date]') {
+                    if (typeof value === "object" && value != null) {
                         return formatDate(value, fmt, culture);
                     } else if (typeof value === NUMBER) {
                         return formatNumber(value, fmt, culture);
                     }
                 }
-                return value !== undefined ? value : '';
+                return value !== undefined ? value : "";
             };
             kendo.format = function (fmt) {
                 var values = arguments;
@@ -848,50 +861,50 @@
         }());
         (function () {
             var nonBreakingSpaceRegExp = /\u00A0/g, exponentRegExp = /[eE][\-+]?[0-9]+/, shortTimeZoneRegExp = /[+|\-]\d{1,2}/, longTimeZoneRegExp = /[+|\-]\d{1,2}:?\d{2}/, dateRegExp = /^\/Date\((.*?)\)\/$/, offsetRegExp = /[+-]\d*/, FORMATS_SEQUENCE = [
-                    [],
-                    [
-                        'G',
-                        'g',
-                        'F'
-                    ],
-                    [
-                        'D',
-                        'd',
-                        'y',
-                        'm',
-                        'T',
-                        't'
-                    ]
-                ], STANDARD_FORMATS = [
-                    [
-                        'yyyy-MM-ddTHH:mm:ss.fffffffzzz',
-                        'yyyy-MM-ddTHH:mm:ss.fffffff',
-                        'yyyy-MM-ddTHH:mm:ss.fffzzz',
-                        'yyyy-MM-ddTHH:mm:ss.fff',
-                        'ddd MMM dd yyyy HH:mm:ss',
-                        'yyyy-MM-ddTHH:mm:sszzz',
-                        'yyyy-MM-ddTHH:mmzzz',
-                        'yyyy-MM-ddTHH:mmzz',
-                        'yyyy-MM-ddTHH:mm:ss',
-                        'yyyy-MM-dd HH:mm:ss',
-                        'yyyy/MM/dd HH:mm:ss'
-                    ],
-                    [
-                        'yyyy-MM-ddTHH:mm',
-                        'yyyy-MM-dd HH:mm',
-                        'yyyy/MM/dd HH:mm'
-                    ],
-                    [
-                        'yyyy/MM/dd',
-                        'yyyy-MM-dd',
-                        'HH:mm:ss',
-                        'HH:mm'
-                    ]
-                ], numberRegExp = {
-                    2: /^\d{1,2}/,
-                    3: /^\d{1,3}/,
-                    4: /^\d{4}/
-                }, objectToString = {}.toString;
+                [],
+                [
+                    'G',
+                    'g',
+                    'F'
+                ],
+                [
+                    'D',
+                    'd',
+                    'y',
+                    'm',
+                    'T',
+                    't'
+                ]
+            ], STANDARD_FORMATS = [
+                [
+                    'yyyy-MM-ddTHH:mm:ss.fffffffzzz',
+                    'yyyy-MM-ddTHH:mm:ss.fffffff',
+                    'yyyy-MM-ddTHH:mm:ss.fffzzz',
+                    'yyyy-MM-ddTHH:mm:ss.fff',
+                    'ddd MMM dd yyyy HH:mm:ss',
+                    'yyyy-MM-ddTHH:mm:sszzz',
+                    'yyyy-MM-ddTHH:mmzzz',
+                    'yyyy-MM-ddTHH:mmzz',
+                    'yyyy-MM-ddTHH:mm:ss',
+                    'yyyy-MM-dd HH:mm:ss',
+                    'yyyy/MM/dd HH:mm:ss'
+                ],
+                [
+                    'yyyy-MM-ddTHH:mm',
+                    'yyyy-MM-dd HH:mm',
+                    'yyyy/MM/dd HH:mm'
+                ],
+                [
+                    'yyyy/MM/dd',
+                    'yyyy-MM-dd',
+                    'HH:mm:ss',
+                    'HH:mm'
+                ]
+            ], numberRegExp = {
+                2: /^\d{1,2}/,
+                3: /^\d{1,3}/,
+                4: /^\d{4}/
+            }, objectToString = {}.toString;
             function outOfRange(value, start, end) {
                 return !(value >= start && value <= end);
             }
@@ -925,50 +938,50 @@
                     return null;
                 }
                 var lookAhead = function (match) {
-                        var i = 0;
-                        while (format[idx] === match) {
-                            i++;
-                            idx++;
+                    var i = 0;
+                    while (format[idx] === match) {
+                        i++;
+                        idx++;
+                    }
+                    if (i > 0) {
+                        idx -= 1;
+                    }
+                    return i;
+                }, getNumber = function (size) {
+                    var rg = numberRegExp[size] || new RegExp('^\\d{1,' + size + '}'), match = value.substr(valueIdx, size).match(rg);
+                    if (match) {
+                        match = match[0];
+                        valueIdx += match.length;
+                        return parseInt(match, 10);
+                    }
+                    return null;
+                }, getIndexByName = function (names, lower) {
+                    var i = 0, length = names.length, name, nameLength, matchLength = 0, matchIdx = 0, subValue;
+                    for (; i < length; i++) {
+                        name = names[i];
+                        nameLength = name.length;
+                        subValue = value.substr(valueIdx, nameLength);
+                        if (lower) {
+                            subValue = subValue.toLowerCase();
                         }
-                        if (i > 0) {
-                            idx -= 1;
+                        if (subValue == name && nameLength > matchLength) {
+                            matchLength = nameLength;
+                            matchIdx = i;
                         }
-                        return i;
-                    }, getNumber = function (size) {
-                        var rg = numberRegExp[size] || new RegExp('^\\d{1,' + size + '}'), match = value.substr(valueIdx, size).match(rg);
-                        if (match) {
-                            match = match[0];
-                            valueIdx += match.length;
-                            return parseInt(match, 10);
-                        }
-                        return null;
-                    }, getIndexByName = function (names, lower) {
-                        var i = 0, length = names.length, name, nameLength, matchLength = 0, matchIdx = 0, subValue;
-                        for (; i < length; i++) {
-                            name = names[i];
-                            nameLength = name.length;
-                            subValue = value.substr(valueIdx, nameLength);
-                            if (lower) {
-                                subValue = subValue.toLowerCase();
-                            }
-                            if (subValue == name && nameLength > matchLength) {
-                                matchLength = nameLength;
-                                matchIdx = i;
-                            }
-                        }
-                        if (matchLength) {
-                            valueIdx += matchLength;
-                            return matchIdx + 1;
-                        }
-                        return null;
-                    }, checkLiteral = function () {
-                        var result = false;
-                        if (value.charAt(valueIdx) === format[idx]) {
-                            valueIdx++;
-                            result = true;
-                        }
-                        return result;
-                    }, calendar = culture.calendars.standard, year = null, month = null, day = null, hours = null, minutes = null, seconds = null, milliseconds = null, idx = 0, valueIdx = 0, literal = false, date = new Date(), twoDigitYearMax = calendar.twoDigitYearMax || 2029, defaultYear = date.getFullYear(), ch, count, length, pattern, pmHour, UTC, matches, amDesignators, pmDesignators, hoursOffset, minutesOffset, hasTime, match;
+                    }
+                    if (matchLength) {
+                        valueIdx += matchLength;
+                        return matchIdx + 1;
+                    }
+                    return null;
+                }, checkLiteral = function () {
+                    var result = false;
+                    if (value.charAt(valueIdx) === format[idx]) {
+                        valueIdx++;
+                        result = true;
+                    }
+                    return result;
+                }, calendar = culture.calendars.standard, year = null, month = null, day = null, hours = null, minutes = null, seconds = null, milliseconds = null, idx = 0, valueIdx = 0, literal = false, date = new Date(), twoDigitYearMax = calendar.twoDigitYearMax || 2029, defaultYear = date.getFullYear(), ch, count, length, pattern, pmHour, UTC, matches, amDesignators, pmDesignators, hoursOffset, minutesOffset, hasTime, match;
                 if (!format) {
                     format = 'd';
                 }
@@ -1172,11 +1185,17 @@
                 if (objectToString.call(value) === '[object Date]') {
                     return value;
                 }
+
+                if (value instanceof pDate) {
+                    return value;
+                }
+
+
                 var idx = 0;
                 var date = null;
                 var length;
                 var tzoffset;
-                if (value && value.indexOf('/D') === 0) {
+                if (value && (value.toString().indexOf("/d") === 0 || value.toString().indexOf("/D") === 0)) {
                     date = dateRegExp.exec(value);
                     if (date) {
                         date = date[1];
@@ -1260,12 +1279,12 @@
         }());
         function getShadows(element) {
             var shadow = element.css(kendo.support.transitions.css + 'box-shadow') || element.css('box-shadow'), radius = shadow ? shadow.match(boxShadowRegExp) || [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                ] : [
+                0,
+                0,
+                0,
+                0,
+                0
+            ] : [
                     0,
                     0,
                     0,
@@ -1497,36 +1516,36 @@
             }
             support.detectOS = function (ua) {
                 var os = false, minorVersion, match = [], notAndroidPhone = !/mobile safari/i.test(ua), agentRxs = {
-                        wp: /(Windows Phone(?: OS)?)\s(\d+)\.(\d+(\.\d+)?)/,
-                        fire: /(Silk)\/(\d+)\.(\d+(\.\d+)?)/,
-                        android: /(Android|Android.*(?:Opera|Firefox).*?\/)\s*(\d+)\.(\d+(\.\d+)?)/,
-                        iphone: /(iPhone|iPod).*OS\s+(\d+)[\._]([\d\._]+)/,
-                        ipad: /(iPad).*OS\s+(\d+)[\._]([\d_]+)/,
-                        meego: /(MeeGo).+NokiaBrowser\/(\d+)\.([\d\._]+)/,
-                        webos: /(webOS)\/(\d+)\.(\d+(\.\d+)?)/,
-                        blackberry: /(BlackBerry|BB10).*?Version\/(\d+)\.(\d+(\.\d+)?)/,
-                        playbook: /(PlayBook).*?Tablet\s*OS\s*(\d+)\.(\d+(\.\d+)?)/,
-                        windows: /(MSIE)\s+(\d+)\.(\d+(\.\d+)?)/,
-                        tizen: /(tizen).*?Version\/(\d+)\.(\d+(\.\d+)?)/i,
-                        sailfish: /(sailfish).*rv:(\d+)\.(\d+(\.\d+)?).*firefox/i,
-                        ffos: /(Mobile).*rv:(\d+)\.(\d+(\.\d+)?).*Firefox/
-                    }, osRxs = {
-                        ios: /^i(phone|pad|pod)$/i,
-                        android: /^android|fire$/i,
-                        blackberry: /^blackberry|playbook/i,
-                        windows: /windows/,
-                        wp: /wp/,
-                        flat: /sailfish|ffos|tizen/i,
-                        meego: /meego/
-                    }, formFactorRxs = { tablet: /playbook|ipad|fire/i }, browserRxs = {
-                        omini: /Opera\sMini/i,
-                        omobile: /Opera\sMobi/i,
-                        firefox: /Firefox|Fennec/i,
-                        mobilesafari: /version\/.*safari/i,
-                        ie: /MSIE|Windows\sPhone/i,
-                        chrome: /chrome|crios/i,
-                        webkit: /webkit/i
-                    };
+                    wp: /(Windows Phone(?: OS)?)\s(\d+)\.(\d+(\.\d+)?)/,
+                    fire: /(Silk)\/(\d+)\.(\d+(\.\d+)?)/,
+                    android: /(Android|Android.*(?:Opera|Firefox).*?\/)\s*(\d+)\.(\d+(\.\d+)?)/,
+                    iphone: /(iPhone|iPod).*OS\s+(\d+)[\._]([\d\._]+)/,
+                    ipad: /(iPad).*OS\s+(\d+)[\._]([\d_]+)/,
+                    meego: /(MeeGo).+NokiaBrowser\/(\d+)\.([\d\._]+)/,
+                    webos: /(webOS)\/(\d+)\.(\d+(\.\d+)?)/,
+                    blackberry: /(BlackBerry|BB10).*?Version\/(\d+)\.(\d+(\.\d+)?)/,
+                    playbook: /(PlayBook).*?Tablet\s*OS\s*(\d+)\.(\d+(\.\d+)?)/,
+                    windows: /(MSIE)\s+(\d+)\.(\d+(\.\d+)?)/,
+                    tizen: /(tizen).*?Version\/(\d+)\.(\d+(\.\d+)?)/i,
+                    sailfish: /(sailfish).*rv:(\d+)\.(\d+(\.\d+)?).*firefox/i,
+                    ffos: /(Mobile).*rv:(\d+)\.(\d+(\.\d+)?).*Firefox/
+                }, osRxs = {
+                    ios: /^i(phone|pad|pod)$/i,
+                    android: /^android|fire$/i,
+                    blackberry: /^blackberry|playbook/i,
+                    windows: /windows/,
+                    wp: /wp/,
+                    flat: /sailfish|ffos|tizen/i,
+                    meego: /meego/
+                }, formFactorRxs = { tablet: /playbook|ipad|fire/i }, browserRxs = {
+                    omini: /Opera\sMini/i,
+                    omobile: /Opera\sMobi/i,
+                    firefox: /Firefox|Fennec/i,
+                    mobilesafari: /version\/.*safari/i,
+                    ie: /MSIE|Windows\sPhone/i,
+                    chrome: /chrome|crios/i,
+                    webkit: /webkit/i
+                };
                 for (var agent in agentRxs) {
                     if (agentRxs.hasOwnProperty(agent)) {
                         match = ua.match(agentRxs[agent]);
@@ -1581,13 +1600,13 @@
             support.mouseAndTouchPresent = support.touch && !(support.mobileOS.ios || support.mobileOS.android);
             support.detectBrowser = function (ua) {
                 var browser = false, match = [], browserRxs = {
-                        edge: /(edge)[ \/]([\w.]+)/i,
-                        webkit: /(chrome)[ \/]([\w.]+)/i,
-                        safari: /(webkit)[ \/]([\w.]+)/i,
-                        opera: /(opera)(?:.*version|)[ \/]([\w.]+)/i,
-                        msie: /(msie\s|trident.*? rv:)([\w.]+)/i,
-                        mozilla: /(mozilla)(?:.*? rv:([\w.]+)|)/i
-                    };
+                    edge: /(edge)[ \/]([\w.]+)/i,
+                    webkit: /(chrome)[ \/]([\w.]+)/i,
+                    safari: /(webkit)[ \/]([\w.]+)/i,
+                    opera: /(opera)(?:.*version|)[ \/]([\w.]+)/i,
+                    msie: /(msie\s|trident.*? rv:)([\w.]+)/i,
+                    mozilla: /(mozilla)(?:.*? rv:([\w.]+)|)/i
+                };
                 for (var agent in browserRxs) {
                     if (browserRxs.hasOwnProperty(agent)) {
                         match = ua.match(browserRxs[agent]);
@@ -1692,9 +1711,9 @@
             support.stableSort = function () {
                 var threshold = 513;
                 var sorted = [{
-                        index: 0,
-                        field: 'b'
-                    }];
+                    index: 0,
+                    field: 'b'
+                }];
                 for (var i = 1; i < threshold; i++) {
                     sorted.push({
                         index: i,
@@ -1832,9 +1851,9 @@
                 teardown: noop,
                 hide: false
             }, options, {
-                completeCallback: options.complete,
-                complete: noop
-            });
+                    completeCallback: options.complete,
+                    complete: noop
+                });
         }
         function animate(element, options, duration, reverse, complete) {
             var idx = 0, length = element.length, instance;
@@ -1939,25 +1958,25 @@
             support.resize = 'resize';
         }
         var wrapExpression = function (members, paramName) {
-                var result = paramName || 'd', index, idx, length, member, count = 1;
-                for (idx = 0, length = members.length; idx < length; idx++) {
-                    member = members[idx];
-                    if (member !== '') {
-                        index = member.indexOf('[');
-                        if (index !== 0) {
-                            if (index == -1) {
-                                member = '.' + member;
-                            } else {
-                                count++;
-                                member = '.' + member.substring(0, index) + ' || {})' + member.substring(index);
-                            }
+            var result = paramName || 'd', index, idx, length, member, count = 1;
+            for (idx = 0, length = members.length; idx < length; idx++) {
+                member = members[idx];
+                if (member !== '') {
+                    index = member.indexOf('[');
+                    if (index !== 0) {
+                        if (index == -1) {
+                            member = '.' + member;
+                        } else {
+                            count++;
+                            member = '.' + member.substring(0, index) + ' || {})' + member.substring(index);
                         }
-                        count++;
-                        result += member + (idx < length - 1 ? ' || {})' : ')');
                     }
+                    count++;
+                    result += member + (idx < length - 1 ? ' || {})' : ')');
                 }
-                return new Array(count).join('(') + result;
-            }, localUrlRe = /^([a-z]+:)?\/\//i;
+            }
+            return new Array(count).join('(') + result;
+        }, localUrlRe = /^([a-z]+:)?\/\//i;
         extend(kendo, {
             widgets: [],
             _widgetRegisteredCallbacks: [],
@@ -2236,11 +2255,9 @@
                 value = parseOption(element, option);
                 if (value !== undefined) {
                     if (templateRegExp.test(option)) {
-                        if (typeof value === 'string') {
-                            value = kendo.template($('#' + value).html());
-                        } else {
+       
                             value = element.getAttribute(option);
-                        }
+                        
                     }
                     result[option] = value;
                 }
@@ -2685,8 +2702,8 @@
             });
         }
         var getEventMap = function (e) {
-                return eventMap[e] || e;
-            }, eventRegEx = /([^ ]+)/g;
+            return eventMap[e] || e;
+        }, eventRegEx = /([^ ]+)/g;
         kendo.applyEventMap = function (events, ns) {
             events = events.replace(eventRegEx, getEventMap);
             if (ns) {

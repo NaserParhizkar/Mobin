@@ -39,7 +39,8 @@
         ]
     };
     (function ($, undefined) {
-        var kendo = window.kendo, ui = kendo.ui, Widget = ui.Widget, parse = kendo.parseDate, keys = kendo.keys, template = kendo.template, activeElement = kendo._activeElement, DIV = '<div />', SPAN = '<span />', ns = '.kendoDatePicker', CLICK = 'click' + ns, OPEN = 'open', CLOSE = 'close', CHANGE = 'change', DISABLED = 'disabled', READONLY = 'readonly', DEFAULT = 'k-state-default', FOCUSED = 'k-state-focused', SELECTED = 'k-state-selected', STATEDISABLED = 'k-state-disabled', HOVER = 'k-state-hover', HOVEREVENTS = 'mouseenter' + ns + ' mouseleave' + ns, MOUSEDOWN = 'mousedown' + ns, ID = 'id', MIN = 'min', MAX = 'max', MONTH = 'month', ARIA_DISABLED = 'aria-disabled', ARIA_EXPANDED = 'aria-expanded', ARIA_HIDDEN = 'aria-hidden', calendar = kendo.calendar, isInRange = calendar.isInRange, restrictValue = calendar.restrictValue, isEqualDatePart = calendar.isEqualDatePart, extend = $.extend, proxy = $.proxy, DATE = Date;
+        var kendo = window.kendo, ui = kendo.ui, Widget = ui.Widget, parse = kendo.parseDate, keys = kendo.keys, template = kendo.template, activeElement = kendo._activeElement, DIV = '<div />', SPAN = '<span />', ns = '.kendoDatePicker', CLICK = 'click' + ns, OPEN = 'open', CLOSE = 'close', CHANGE = 'change', DISABLED = 'disabled', READONLY = 'readonly', DEFAULT = 'k-state-default', FOCUSED = 'k-state-focused', SELECTED = 'k-state-selected', STATEDISABLED = 'k-state-disabled', HOVER = 'k-state-hover', HOVEREVENTS = 'mouseenter' + ns + ' mouseleave' + ns, MOUSEDOWN = 'mousedown' + ns, ID = 'id', MIN = 'min', MAX = 'max', MONTH = 'month', ARIA_DISABLED = 'aria-disabled', ARIA_EXPANDED = 'aria-expanded', ARIA_HIDDEN = 'aria-hidden', calendar = kendo.calendar, isInRange = calendar.isInRange, restrictValue = calendar.restrictValue, isEqualDatePart = calendar.isEqualDatePart, extend = $.extend, proxy = $.proxy,
+            DATE = Date || pDate;
         function normalize(options) {
             var parseFormats = options.parseFormats, format = options.format;
             calendar.normalize(options);
@@ -79,7 +80,13 @@
                 var div;
                 if (!calendar) {
                     div = $(DIV).attr(ID, kendo.guid()).appendTo(that.popup.element).on(MOUSEDOWN, preventDefault).on(CLICK, 'td:has(.k-link)', proxy(that._click, that));
-                    that.calendar = calendar = new ui.Calendar(div);
+                    that.calendar = calendar = new ui.Calendar(div, options);
+                    if (options.min instanceof Date) {
+                        that.calendar.min = options.min;
+                        that.calendar.max = options.max;
+                        calendar.max = options.max;
+                        calendar.min = options.min;
+                    }
                     that._setOptions(options);
                     kendo.calendar.makeUnselectable(calendar.element);
                     calendar.navigate(that._value || that._current, options.start);
@@ -152,7 +159,7 @@
                         handled = true;
                     }
                 } else if (that.popup.visible()) {
-                    if (key == keys.ESC || selectIsClicked && calendar._cell.hasClass(SELECTED)) {
+                    if (key == keys.ESC || (selectIsClicked && calendar._cell.hasClass(SELECTED))) {
                         that.close();
                         e.preventDefault();
                         return true;
@@ -196,6 +203,27 @@
         var DatePicker = Widget.extend({
             init: function (element, options) {
                 var that = this, disabled, div;
+                if (options.culture == "en-US") {
+
+                    DATE = Date;
+                    this.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                    this.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                    options.min = this.options.min;
+                    options.max = this.options.max;
+                    options.culture = "en-US";
+                    this.culture = "en-US";
+                    this.options.culture = "en-US";
+                }
+                else {
+                    DATE = pDate;
+                    this.options.min = options.min ? options.min : new DATE(1300, 0, 1);
+                    this.options.max = options.max ? options.max : new DATE(1499, 11, 29);
+                    options.min = this.options.min;
+                    options.max = this.options.max;
+                    options.culture = "fa-IR";
+                    this.culture = "fa-IR";
+                    this.options.culture = "fa-IR";
+                }
                 Widget.fn.init.call(that, element, options);
                 element = that.element;
                 options = that.options;
@@ -246,7 +274,7 @@
                     role: 'combobox',
                     'aria-expanded': false,
                     'aria-owns': that.dateView._dateViewID
-                });
+                    });
                 that._reset();
                 that._template();
                 disabled = element.is('[disabled]') || $(that.element).parents('fieldset').is(':disabled');
@@ -280,8 +308,8 @@
                 format: '',
                 culture: '',
                 parseFormats: [],
-                min: new Date(1900, 0, 1),
-                max: new Date(2099, 11, 31),
+                min: new DATE(1300, 0, 1),
+                max: new DATE(1499, 11, 29),
                 start: MONTH,
                 depth: MONTH,
                 animation: {},
@@ -289,6 +317,14 @@
                 dates: [],
                 ARIATemplate: 'Current focused date is #=kendo.toString(data.current, "D")#',
                 dateInput: false
+            },
+            maskFormat: function (element, options) {
+                var mask = '----/--/--';
+                if (options.format && options.format == 'yyyy/MM/dd') {
+                    if (!this.value()) {
+                        this.element.val(mask);
+                    }
+                }
             },
             setOptions: function (options) {
                 var that = this;
@@ -318,12 +354,12 @@
                 if (!readonly && !disable) {
                     wrapper.addClass(DEFAULT).removeClass(STATEDISABLED).on(HOVEREVENTS, that._toggleHover);
                     element.removeAttr(DISABLED).removeAttr(READONLY).attr(ARIA_DISABLED, false).on('keydown' + ns, proxy(that._keydown, that)).on('focusout' + ns, proxy(that._blur, that)).on('focus' + ns, function () {
-                        that._inputWrapper.addClass(FOCUSED);
-                    });
+                            that._inputWrapper.addClass(FOCUSED);
+                        });
                     icon.on(CLICK, proxy(that._click, that)).on(MOUSEDOWN, preventDefault);
                 } else {
                     wrapper.addClass(disable ? STATEDISABLED : DEFAULT).removeClass(disable ? DEFAULT : STATEDISABLED);
-                    element.attr(DISABLED, disable).attr(READONLY, readonly).attr(ARIA_DISABLED, disable);
+                    element.attr(DISABLED, disable).attr(READONLY, readonly).attr(ARIA_DISABLED, disable).attr(ARIA_READONLY, readonly);
                 }
             },
             readonly: function (readonly) {
@@ -391,23 +427,124 @@
                 }
             },
             _change: function (value) {
-                var that = this, oldValue = that.element.val(), dateChanged;
+                var that = this;
                 value = that._update(value);
-                dateChanged = !kendo.calendar.isEqualDate(that._old, value);
-                var valueUpdated = dateChanged && !that._typing;
-                var textFormatted = oldValue !== that.element.val();
-                if (valueUpdated || textFormatted) {
-                    that.element.trigger(CHANGE);
-                }
-                if (dateChanged) {
+
+                if (+that._old != +value) {
                     that._old = value;
                     that._oldText = that.element.val();
+
+                    if (!that._typing) {
+                        // trigger the DOM change event so any subscriber gets notified
+                        that.element.trigger(CHANGE);
+                    }
+
                     that.trigger(CHANGE);
                 }
+
                 that._typing = false;
+            },
+            dateSeparatedFormat: function (x) {
+                x = x.replace(/\//g, '');
+                if (x.length < 5) {
+                    return x.replace(/(\w\w\w\w)/, "$1/");
+                }
+                else if (x.length < 6) {
+                    return x.replace(/(\w\w\w\w)(\w)/, "$1/$2");
+                }
+                else if (x.length < 7) {
+                    return x.replace(/(\w\w\w\w)(\w\w)/, "$1/$2/");
+                }
+                else if (x.length < 8) {
+                    return x.replace(/(\w\w\w\w)(\w\w)(\w)/, "$1/$2/$3");
+                }
+                return x.replace(/(\w\w\w\w)(\w\w)(\w\w)/, "$1/$2/$3");
             },
             _keydown: function (e) {
                 var that = this, dateView = that.dateView, value = that.element.val(), handled = false;
+                var element = this.element;
+                var selection = kendo.caret(element);
+                var selectionStart = selection[0];
+                var selectionEnd = selection[1];
+
+                //allow num pad numerical key pressed and show correct format in input
+                if ((e.keyCode >= 96 && e.keyCode <= 105)) {
+                    e.which = e.keyCode - 48;
+                }
+
+                var character = String.fromCharCode(e.which);
+                var replacedCharacter = '-';
+                var decrease = 0;
+
+                if (this._findSlashLocation().length > 1) {
+                    if (e.keyCode == keys.BACKSPACE || e.keyCode == keys.DELETE) {
+                        if (e.keyCode == keys.BACKSPACE)
+                            decrease += 1;
+                        if ((selectionStart == (this._findSlashLocation()[0] + 1) || selectionStart == (this._findSlashLocation()[1] + 1)) &&
+                            (e.keyCode == kendo.keys.BACKSPACE)) {
+                            replacedCharacter = '-/';
+                            decrease += 1;
+                        }
+                        else if ((selectionStart == (this._findSlashLocation()[0]) || selectionStart == (this._findSlashLocation()[1]))
+                            && (e.keyCode == kendo.keys.DELETE)) {
+                            replacedCharacter = '-/';
+                            decrease += 1;
+                        }
+                        value = value.substring(0, selectionStart - decrease) + replacedCharacter + value.substring(selectionEnd);
+                        if (value.length <= this.options.format.length) {
+                            that.element.val(value);
+                            kendo.caret(this.element, selectionStart - decrease + (e.keyCode == kendo.keys.DELETE ?
+                                ((selectionStart == (this._findSlashLocation()[0]) || selectionStart == (this._findSlashLocation()[1])) ? 2 : 1) : 0));
+                            e.preventDefault();
+                        }
+                    }
+
+                    //dont allowed code
+                    //naser edited
+                    var multipleSelectionPattern = '';
+                    if ((e.keyCode == kendo.keys.BACKSPACE || e.keyCode == kendo.keys.DELETE
+                        || (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) && selectionEnd > selectionStart) {
+                        var flag = false;
+                        for (var i = selectionStart; selectionEnd > i; i++) {
+                            if ((i == (this._findSlashLocation()[0]) || i == (this._findSlashLocation()[1])) && ((i + 1) <= selectionEnd)) {
+                                multipleSelectionPattern += '/';
+                            }
+                            else if (((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) && !flag) {
+                                multipleSelectionPattern += character;
+                                flag = true;
+                                decrease++
+                            }
+                            else {
+                                multipleSelectionPattern += '-';
+                            }
+                        }
+                        value = value.substring(0, selectionStart) + multipleSelectionPattern + value.substring(selectionEnd);
+                        //e.preventDefault();
+                        that.element.val(value);
+                        kendo.caret(this.element, selectionStart + decrease);
+                        if (e.keyCode == kendo.keys.DELETE || ((e.keyCode >= 96 && e.keyCode <= 105) || (e.keyCode >= 48 && e.keyCode <= 57))) {
+                            e.preventDefault();
+                        }
+                    }
+                    if (this.element.val().replace(/\//g, '').length >= (this.options.format.length - 2)
+                        && e.keyCode != 8 && e.keyCode != 46 && !(e.keyCode >= 37 && e.keyCode <= 40)
+                        && (e.keyCode != 9) && (e.keyCode != 17 && e.keyCode != 65 && !e.shiftKey && (selectionEnd - selectionStart <= 1))) {
+                        if (value.length <= this.options.format.length && selectionStart < this.options.format.length) {
+                            if (selectionStart == (this._findSlashLocation()[0]) || selectionStart == (this._findSlashLocation()[1])) {
+                                value = value.substring(0, selectionStart) + '/' + character + value.substring(selectionEnd + 2);
+                                that.element.val(value);
+                                kendo.caret(this.element, selectionStart + 2);
+                            }
+                            else {
+                                value = value.substring(0, selectionStart) + character + value.substring(selectionEnd + 1);
+                                that.element.val(value);
+                                kendo.caret(this.element, selectionStart + 1);
+                            }
+                        }
+                        e.preventDefault();
+                    }
+                }
+
                 if (!dateView.popup.visible() && e.keyCode == keys.ENTER && value !== that._oldText) {
                     that._change(value);
                 } else {
@@ -420,11 +557,21 @@
                     }
                 }
             },
+            _findSlashLocation: function () {
+                var that = this,
+                    slashLocation = [];
+                for (var i = 0; i < this.options.format.length; i++) {
+                    if (this.options.format[i] == '/') {
+                        slashLocation.push(i);
+                    }
+                }
+                return slashLocation;
+            },
             _icon: function () {
                 var that = this, element = that.element, icon;
                 icon = element.next('span.k-select');
                 if (!icon[0]) {
-                    icon = $('<span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-calendar"></span></span>').insertAfter(element);
+                    icon = $('<span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-calendar">select</span></span>').insertAfter(element);
                 }
                 that._dateIcon = icon.attr({
                     'role': 'button',
@@ -445,12 +592,12 @@
             },
             _update: function (value) {
                 var that = this, options = that.options, min = options.min, max = options.max, current = that._value, date = parse(value, options.parseFormats, options.culture), isSameType = date === null && current === null || date instanceof Date && current instanceof Date, formattedValue;
-                if (options.disableDates(date)) {
-                    date = null;
-                    if (!that._old && !that.element.val()) {
-                        value = null;
-                    }
-                }
+                //if (options.disableDates(date)) {
+                //    date = null;
+                //    if (!that._old && !that.element.val()) {
+                //        value = null;
+                //    }
+                //}
                 if (+date === +current && isSameType) {
                     formattedValue = kendo.toString(date, options.format, options.culture);
                     if (formattedValue !== value) {
@@ -465,6 +612,8 @@
                 }
                 that._value = date;
                 that.dateView.value(date);
+                that.element.val(date ? (that.options.culture == "fa-IR" ? (new pDate(+date)).persianFormat() : kendo.toString(date, options.format, options.culture))
+                    : value);
                 if (that._dateInput) {
                     that._dateInput.value(date || value);
                 } else {
