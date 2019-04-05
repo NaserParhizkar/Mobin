@@ -1,0 +1,42 @@
+﻿@using Northwind.WebUI.Controllers
+@using Northwind.Repository.EntityModels
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        kendo.culture('fa-IR');
+    });
+</script>
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+
+        @(Html.Kendo().Grid<Order>().Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.Customer.CustomerId).Filterable(t => t.Enabled(false));
+        columns.Bound(x => x.Customer.CompanyName).Filterable(t => t.Enabled(false));
+        columns.Bound(x => x.Customer.Country).Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+        columns.Bound(x => x.Customer.City).Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+        columns.Bound(x => x.OrderDate).Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+    })
+                                                        .DataSource(dataSource =>
+                                                        {
+                                                            dataSource
+                                                            .Ajax()
+                                                            .PageSize(5)
+                                                            .Read(read => read.Action<CustomerApiController>(t => t.GetCustomersOrderInfo(null)));
+
+                                                        }).AutoBind(true)
+                                                        .Pageable()
+                                                        .Sortable()
+                                                         .Filterable(t => t.Mode(GridFilterMode.Menu).Enabled(true))
+        )
+    </div>
+</div>
+
+

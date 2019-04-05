@@ -32,8 +32,14 @@
     <Compile Include="Mobin\UI\DataSource.cs" />
     <Compile Include="Mobin\UI\DataSourceRequest.cs" />
     <Compile Include="Mobin\UI\DataSource\Fluent\DataSourceBuilder.cs" />
-    <Compile Include="Mobin\UI\Fluent\WidgetFactory.cs" />
+    <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchInput.cs" />
+    <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchInputFor.cs" />
     <Compile Include="Mobin\UI\Grid.cs" />
+    <Compile Include="Mobin\UI\GridSearchInput\Fluent\GridSearchInputBuilder.cs" />
+    <Compile Include="Mobin\UI\GridSearchInput\Fluent\GridSearchInputBuilder.Generated.cs" />
+    <Compile Include="Mobin\UI\GridSearchInput\Fluent\GridSearchInputEventBuilder.cs" />
+    <Compile Include="Mobin\UI\GridSearchInput\GridSearchInput.cs" />
+    <Compile Include="Mobin\UI\GridSearchInput\GridSearchInput.Generated.cs" />
   </ItemGroup>
 
   <ItemGroup>

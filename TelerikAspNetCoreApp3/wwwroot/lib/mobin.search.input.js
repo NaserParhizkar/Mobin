@@ -1,15 +1,15 @@
 ﻿
 (function (f, define) {
-    define('kendo.gridsearchtextbox', [
+    define('kendo.gridsearchinput', [
         'kendo.core',
         'kendo.userevents'
     ], f);
 }(function () {
     var __meta__ = {
-        id: 'gridsearchtextbox',
-        name: 'GridSearchTextBox',
+        id: 'gridsearchinput',
+        name: 'GridSearchInput',
         category: 'web',
-        description: 'The GridSearchTextbox widget can bind to a grid for searching contents related to the grid.',
+        description: 'The GridSearchInput widget can bind to a grid for searching contents related to the grid.',
         depends: [
             'core',
             'userevents'
@@ -22,18 +22,14 @@
             ui = kendo.ui,
             Widget = ui.Widget,
             CHANGE = 'change',
-            ns = '.kendoGridSearchTextBox',
+            ns = '.kendoGridSearchInput',
             MOUSELEAVE = 'mouseleave' + ns,
-            HOVEREVENTS = 'mouseenter' + ns + ' ' + MOUSELEAVE,
-            FOCUSED = 'k-state-focused',
-            HOVER = 'k-state-hover',
-            POINT = '.',
             CLASS_ICON = 'k-icon',
             STATE_INVALID = 'k-state-invalid',
             NULL = null,
             proxy = $.proxy,
             extend = $.extend;
-        var GridSearchTextBox = Widget.extend({
+        var GridSearchInput = Widget.extend({
             init: function (element, options) {
                 var that = this;
                 Widget.fn.init.call(that, element, options);
@@ -45,17 +41,15 @@
                     .on('keypress' + ns, proxy(that._keypress, that))
                     .on('keyup' + ns, proxy(that._keyup, that));
 
-                that._initialOptions = extend({}, options);         
-                that._reset();
+                that._initialOptions = extend({}, options);
                 that._wrapper();
                 that._validation();
                 value = options.value;
-          
                 kendo.notify(that);
             },
             options: {
-                name: 'GridSearchTextBox',
-                gridname:'',
+                name: 'GridSearchInput',
+                gridname: '',
                 value: NULL,
                 round: true,
                 factor: 1
@@ -74,14 +68,6 @@
 
                 return true;
             },
-            destroy: function () {
-                var that = this;
-                that.element.add(that._text).add(that._inputWrapper).off(ns);
-                if (that._form) {
-                    that._form.off('reset', that._resetHandler);
-                }
-                Widget.fn.destroy.call(that);
-            },
             focus: function () {
                 this._focusin();
             },
@@ -93,42 +79,21 @@
             _blur: function () {
                 var that = this;
             },
-            _click: function (e) {
-                var that = this;
-                clearTimeout(that._focusing);
-                that._focusing = setTimeout(function () {
-                    var input = e.target, idx = caret(input)[0], value = input.value.substring(0, idx),
-                        result, caretPosition = 0;
-                    if (extractRegExp) {
-                        result = extractRegExp.exec(value);
-                    }
-                    if (result) {
-                        caretPosition = result[0].replace(groupRegExp, '').length;
-                        if (value.indexOf('(') != -1 && that._value < 0) {
-                            caretPosition++;
-                        }
-                    }
-                    that._focusin();
-                    caret(that.element[0], caretPosition);
-                });
-            },
-            _focusin: function () {
-                var that = this;
-                that._inputWrapper.addClass(FOCUSED);
-                that._toggleText(false);
-                that.element[0].focus();
-            },
-            _focusout: function () {
-                var that = this;
-                clearTimeout(that._focusing);
-                that._inputWrapper.removeClass(FOCUSED).removeClass(HOVER);
-                that._blur();
-                that._removeInvalidState();
-            },
-
             _keydown: function (e) {
-                var that = this;
-                var options = that.options;
+                //var that = this;
+                //var options = that.options;
+                //var element = that.element;
+                //var value = element.val();
+                //var field = element.attr('name');
+                //if (e.keyCode === keys.BACKSPACE) {
+                //    var grid = $('#' + options.gridname).data('kendoGrid');
+                //    if (value) {
+                //        grid.dataSource.filter({ field: field, operator: "contains", value: value });
+                //        grid.dataSource.read();
+                //    } else {
+                //        grid.dataSource.filter({});
+                //    }
+                //}
             },
             _keypress: function (e) {
                 if (e.which === 0 || e.metaKey || e.ctrlKey || e.keyCode === keys.BACKSPACE || e.keyCode === keys.ENTER) {
@@ -137,14 +102,15 @@
                 var that = this;
                 var options = that.options;
                 var element = that.element;
+                var field = element.attr('name');
                 var selection = caret(element);
                 var selectionStart = selection[0];
                 var selectionEnd = selection[1];
                 var character = String.fromCharCode(e.which);
-             
+
                 var isNumPadDecimal = that._key === keys.NUMPAD_DOT;
                 var value = element.val();
-      
+
                 value = value.substring(0, selectionStart) + character + value.substring(selectionEnd);
                 //isValid = that._numericRegex(numberFormat).test(value);
                 //if (isValid && isNumPadDecimal) {
@@ -157,17 +123,96 @@
                 //}
                 //that._key = 0;
                 var grid = $('#' + options.gridname).data('kendoGrid');
+                var filter = grid.dataSource.filter();
                 if (value) {
-                    grid.dataSource.filter({ field: "CustomerId", operator: "contains", value: value });
-                    grid.dataSource.read();
+                    if (filter && filter.filters) {
+                        var preFilters = {
+                            filters: [],
+                            logic: 'and'
+                        };
+                        preFilters.filters = filter.filters;
+                        grid.dataSource._filter = {};
+                        //grid.dataSource.trigger('reset');
+                        var isFieldExist = false;
+                        preFilters.filters.forEach(function (v,i,that) {
+                            debugger;
+                        });
+                        preFilters.filters.push({ field: field, operator: "contains", value: value });
+                        grid.dataSource.filter(preFilters);
+                    } else {
+                        grid.dataSource.filter({ field: field, operator: "contains", value: value });
+                        grid.dataSource.read();
+                    }
                 } else {
                     grid.dataSource.filter({});
                 }
-
             },
             _keyup: function (e) {
-                this._removeInvalidState();
+                var that = this;
+                var options = that.options;
+                var element = that.element;
+                var value = element.val();
+                var field = element.attr('name');
+                if (e.keyCode === keys.BACKSPACE) {
+                    var grid = $('#' + options.gridname).data('kendoGrid');
+                    var filter = grid.dataSource._filter;
+                    if (value) {
+                        if (filter && filter.filters) {
+                            var preFilters = {
+                                filters: [],
+                                logic: 'and'
+                            };
+                            preFilters.filters = filter.filters;
+                            grid.dataSource._filter = {};
+                            //grid.dataSource.trigger('reset');
+                            preFilters.filters.push({ field: field, operator: "contains", value: value });
+                            grid.dataSource.filter(preFilters);
+                        } else {
+                            grid.dataSource.filter({ field: field, operator: "contains", value: value });
+                            grid.dataSource.read();
+                        }
+                    } else {
+                        grid.dataSource.filter({});
+                    }
+                }
+                //this._removeInvalidState();
             },
+            _merge: function (expression) {
+                var that = this, logic = expression.logic || 'and', filters = expression.filters, filter, result = that.dataSource.filter() || {
+                    filters: [],
+                    logic: 'and'
+                }, idx, length;
+                removeFiltersForField(result, that.options.field);
+                for (idx = 0, length = filters.length; idx < length; idx++) {
+                    filter = filters[idx];
+                    filter.value = that._parse(filter.value);
+                }
+                filters = $.grep(filters, function (filter) {
+                    return filter.value !== '' && filter.value !== null || isNonValueFilter(filter);
+                });
+                if (filters.length) {
+                    if (result.filters.length) {
+                        expression.filters = filters;
+                        if (result.logic !== 'and') {
+                            result.filters = [{
+                                logic: result.logic,
+                                filters: result.filters
+                            }];
+                            result.logic = 'and';
+                        }
+                        if (filters.length > 1) {
+                            result.filters.push(expression);
+                        } else {
+                            result.filters.push(filters[0]);
+                        }
+                    } else {
+                        result.filters = filters;
+                        result.logic = logic;
+                    }
+                }
+                return result;
+            },
+
             _addInvalidState: function () {
                 var that = this;
                 that._inputWrapper.addClass(STATE_INVALID);
@@ -196,16 +241,9 @@
                 if (value === undefined) {
                     return options[option];
                 }
-                value = that._parse(value);
-                if (!value && option === 'step') {
-                    return;
-                }
                 options[option] = value;
                 element.add(that._text).attr('aria-value' + option, value);
                 element.attr(option, value);
-            },
-            _toggleHover: function (e) {
-                $(e.currentTarget).toggleClass(HOVER, e.type === 'mouseenter');
             },
             _wrapper: function () {
                 var that = this, element = that.element, DOMElement = element[0], wrapper;
@@ -214,22 +252,9 @@
                 DOMElement.style.width = '';
                 that.wrapper = wrapper.addClass('k-widget k-textbox').addClass(DOMElement.className).css('display', '');
                 that._inputWrapper = $(wrapper[0].firstChild);
-            },
-            _reset: function () {
-                var that = this, element = that.element, formId = element.attr('form'), form = formId ? $('#' + formId) : element.closest('form');
-                if (form[0]) {
-                    that._resetHandler = function () {
-                        setTimeout(function () {
-                            that.value(element[0].value);
-                            that.max(that._initialOptions.max);
-                            that.min(that._initialOptions.min);
-                        });
-                    };
-                    that._form = form.on('reset', that._resetHandler);
-                }
             }
         });
-        ui.plugin(GridSearchTextBox);
+        ui.plugin(GridSearchInput);
     }(window.kendo.jQuery));
     return window.kendo;
 }, typeof define == 'function' && define.amd ? define : function (a1, a2, a3) {

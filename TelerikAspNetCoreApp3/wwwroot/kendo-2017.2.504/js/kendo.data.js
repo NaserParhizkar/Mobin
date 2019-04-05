@@ -80,9 +80,19 @@
                 var idx, length = this.length, value, json = new Array(length);
                 for (idx = 0; idx < length; idx++) {
                     value = this[idx];
-                    if (value instanceof ObservableObject) {
-                        value = value.toJSON();
+
+                    if (value instanceof ObservableObject || value instanceof ObservableArray) {
+                        //naser edited
+                        if (value && value.hasOwnProperty('persianFormat'))
+                            value = new Date(+value);
+                        //////////////////////////////////
+                        else
+                            value = value.toJSON();
                     }
+
+                    //if (value instanceof ObservableObject) {
+                    //    value = value.toJSON();
+                    //}
                     json[idx] = value;
                 }
                 return json;

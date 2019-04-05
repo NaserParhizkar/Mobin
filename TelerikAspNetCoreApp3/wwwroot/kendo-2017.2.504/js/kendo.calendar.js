@@ -47,11 +47,22 @@
                     if ((options.value instanceof pDate || options.value == undefined) &&
                         (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
                         DATE = pDate;
+                        that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
+                        that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
+                        options.min = that.options.min;
+                        options.max = that.options.max;
+                        options.culture = "fa-IR";
+                        that.culture = "fa-IR";
+                        that.options.culture = "fa-IR";
                     } else {
                         DATE = Date;
-                        this.options.min = new DATE(1900, 0, 1);
-                        this.options.max = new DATE(2099, 11, 31);
-                        options.culture = 'en-US';
+                        that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                        that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                        options.min = that.options.min;
+                        options.max = that.options.max;
+                        options.culture = "en-US";
+                        that.culture = "en-US";
+                        that.options.culture = "en-US";
                     }
                 }
                 //else {
@@ -71,7 +82,7 @@
                 that._header();
                 that._footer(that.footer);
                 var style = options.culture == "fa-IR" ? "direction:rtl" : "direction:initial";
-                id = element.attr('style',style).addClass('k-widget k-calendar ' + (options.weekNumber ? ' k-week-number' : '')).on(MOUSEENTER_WITH_NS + ' ' + MOUSELEAVE, CELLSELECTOR, mousetoggle).on(KEYDOWN_NS, 'table.k-content', proxy(that._move, that)).on(CLICK, CELLSELECTOR, function (e) {
+                id = element.attr('style', style).addClass('k-widget k-calendar ' + (options.weekNumber ? ' k-week-number' : '')).on(MOUSEENTER_WITH_NS + ' ' + MOUSELEAVE, CELLSELECTOR, mousetoggle).on(KEYDOWN_NS, 'table.k-content', proxy(that._move, that)).on(CLICK, CELLSELECTOR, function (e) {
                     var link = e.currentTarget.firstChild, value = that._toDateObject(link);
                     if (link.href.indexOf('#') != -1) {
                         e.preventDefault();
@@ -211,28 +222,30 @@
                 that.navigate(value, --index);
             },
             navigate: function (value, view) {
-                view = isNaN(view) ? views[view] : view;
-                if (this.options.value instanceof pDate && this.options.culture != "" && this.options.culture != "en-US") {
-                    DATE = pDate;
-                    if (!this.options.min)
-                        this.options.min = new DATE(1300, 0, 1);
-                    if (!this.options.max)
-                        this.options.max = new DATE(1499, 11, 29);
-                    this.culture = "fa-IR";
-                    this.options.culture = "fa-IR";
-                }
-                else {
-                    DATE = Date;
-                    this.culture = "en-US";
-                    this.options.culture = "en-US";
-                    if (!this.options.min)
-                        this.options.min = new DATE(1900, 0, 1);
-                    if (!this.options.max)
-                        this.options.max = new DATE(2099, 11, 31);
-                }
                 var that = this,
                     options = that.options,
-                    culture = options.culture,
+                view = isNaN(view) ? views[view] : view;
+                if ((options.value instanceof pDate || options.value == undefined) &&
+                    (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
+                    DATE = pDate;
+                    that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
+                    that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
+                    options.min = that.options.min;
+                    options.max = that.options.max;
+                    options.culture = "fa-IR";
+                    that.culture = "fa-IR";
+                    that.options.culture = "fa-IR";
+                } else {
+                    DATE = Date;
+                    that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                    that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                    options.min = that.options.min;
+                    options.max = that.options.max;
+                    options.culture = "en-US";
+                    that.culture = "en-US";
+                    that.options.culture = "en-US";
+                }
+                var culture = options.culture,
                     min = options.min,
                     max = options.max,
                     title = that._title,
@@ -309,7 +322,7 @@
                     return that._value;
                 }
                 if (value === null) {
-                    that._current = new Date(that._current.getFullYear(), that._current.getMonth(), that._current.getDate());
+                    that._current = new DATE(that._current.getFullYear(), that._current.getMonth(), that._current.getDate());
                 }
                 value = parse(value, options.format, options.culture);
                 if (value !== null) {
@@ -396,7 +409,7 @@
                 return that._current;
             },
             _nextNavigatable: function (currentValue, value) {
-                var that = this, disabled = true, view = that._view, min = that.options.min, max = that.options.max, isDisabled = that.options.disableDates, navigatableDate = new Date(currentValue.getTime());
+                var that = this, disabled = true, view = that._view, min = that.options.min, max = that.options.max, isDisabled = that.options.disableDates, navigatableDate = new DATE(currentValue.getTime());
                 view.setDate(navigatableDate, -value);
                 while (disabled) {
                     view.setDate(currentValue, value);
@@ -440,10 +453,10 @@
                     that._focusView(active, from);
                     from.parent().css({
                         position: 'relative',
-                            width: viewWidth * 2,
+                        width: viewWidth * 2,
                         'float': LEFT,
                         'margin-left': future ? 0 : -viewWidth
-                        });
+                    });
                     to[future ? 'insertAfter' : 'insertBefore'](from);
                     extend(horizontal, {
                         effects: SLIDE + ':' + (future ? 'right' : LEFT),
@@ -494,8 +507,8 @@
             },
             _cellByDate: function (value) {
                 return this._table.find('td:not(.' + OTHERMONTH + ')').filter(function () {
-                        return $(this.firstChild).attr(kendo.attr(VALUE)) === value;
-                    });
+                    return $(this.firstChild).attr(kendo.attr(VALUE)) === value;
+                });
             },
             _class: function (className, date) {
                 var that = this, id = that._cellID, cell = that._cell, value = that._view.toDateString(date), disabledDate;
@@ -508,8 +521,8 @@
                     disabledDate = that.options.disableDates(date);
                 }
                 cell = that._table.find('td:not(.' + OTHERMONTH + ')').removeClass(className).filter(function () {
-                        return $(this.firstChild).attr(kendo.attr(VALUE)) === value;
-                    }).attr(ARIA_SELECTED, true);
+                    return $(this.firstChild).attr(kendo.attr(VALUE)) === value;
+                }).attr(ARIA_SELECTED, true);
                 if (className === FOCUSED && !that._active && that.options.focusOnNav !== false || disabledDate) {
                     className = '';
                 }
@@ -709,259 +722,259 @@
             },
             views: [
                 {
-                name: MONTH,
-                title: function (date, min, max, culture) {
-                    return getCalendarInfo(culture).months.names[date.getMonth()] + ' ' + date.getFullYear();
-                },
-                content: function (options) {
-                    var that = this, idx = 0, min = options.min, max = options.max, date = options.date, dates = options.dates, format = options.format, culture = options.culture, navigateUrl = options.url, isWeekColumnVisible = options.isWeekColumnVisible, hasUrl = navigateUrl && dates[0], currentCalendar = getCalendarInfo(culture), firstDayIdx = currentCalendar.firstDay, days = currentCalendar.days, names = shiftArray(days.names, firstDayIdx), shortNames = shiftArray(days.namesShort, firstDayIdx), start = calendar.firstVisibleDay(date, currentCalendar), firstDayOfMonth = that.first(date), lastDayOfMonth = that.last(date), toDateString = that.toDateString, today = new DATE(), html = '<table tabindex="0" role="grid" class="k-content" cellspacing="0"><thead><tr role="row">';
-                    if (isWeekColumnVisible) {
-                        html += '<th scope="col" class="k-alt">' + options.messages.weekColumnHeader + '</th>';
-                    }
-                    for (; idx < 7; idx++) {
-                        html += '<th scope="col" title="' + names[idx] + '">' + shortNames[idx] + '</th>';
-                    }
-                    today = new DATE(today.getFullYear(), today.getMonth(), today.getDate());
-                    adjustDST(today, 0);
-                    today = +today;
-                    start = new DATE(start.getFullYear(), start.getMonth(), start.getDate());
-                    adjustDST(start, 0);
-                    return view({
-                        cells: 42,
-                        perRow: 7,
-                        html: html += '</tr></thead><tbody><tr role="row">',
-                        start: start,
-                        isWeekColumnVisible: isWeekColumnVisible,
-                        weekNumber: options.weekNumber,
-                        min: new DATE(min.getFullYear(), min.getMonth(), min.getDate()),
-                        max: new DATE(max.getFullYear(), max.getMonth(), max.getDate()),
-                        content: options.content,
-                        empty: options.empty,
-                        setter: that.setDate,
-                        disableDates: options.disableDates,
-                        build: function (date, idx, disableDates) {
-                            var cssClass = [], day = date.getDay(), linkClass = '', url = '#';
-                            if (date < firstDayOfMonth || date > lastDayOfMonth) {
-                                cssClass.push(OTHERMONTH);
+                    name: MONTH,
+                    title: function (date, min, max, culture) {
+                        return getCalendarInfo(culture).months.names[date.getMonth()] + ' ' + date.getFullYear();
+                    },
+                    content: function (options) {
+                        var that = this, idx = 0, min = options.min, max = options.max, date = options.date, dates = options.dates, format = options.format, culture = options.culture, navigateUrl = options.url, isWeekColumnVisible = options.isWeekColumnVisible, hasUrl = navigateUrl && dates[0], currentCalendar = getCalendarInfo(culture), firstDayIdx = currentCalendar.firstDay, days = currentCalendar.days, names = shiftArray(days.names, firstDayIdx), shortNames = shiftArray(days.namesShort, firstDayIdx), start = calendar.firstVisibleDay(date, currentCalendar), firstDayOfMonth = that.first(date), lastDayOfMonth = that.last(date), toDateString = that.toDateString, today = new DATE(), html = '<table tabindex="0" role="grid" class="k-content" cellspacing="0"><thead><tr role="row">';
+                        if (isWeekColumnVisible) {
+                            html += '<th scope="col" class="k-alt">' + options.messages.weekColumnHeader + '</th>';
+                        }
+                        for (; idx < 7; idx++) {
+                            html += '<th scope="col" title="' + names[idx] + '">' + shortNames[idx] + '</th>';
+                        }
+                        today = new DATE(today.getFullYear(), today.getMonth(), today.getDate());
+                        adjustDST(today, 0);
+                        today = +today;
+                        start = new DATE(start.getFullYear(), start.getMonth(), start.getDate());
+                        adjustDST(start, 0);
+                        return view({
+                            cells: 42,
+                            perRow: 7,
+                            html: html += '</tr></thead><tbody><tr role="row">',
+                            start: start,
+                            isWeekColumnVisible: isWeekColumnVisible,
+                            weekNumber: options.weekNumber,
+                            min: new DATE(min.getFullYear(), min.getMonth(), min.getDate()),
+                            max: new DATE(max.getFullYear(), max.getMonth(), max.getDate()),
+                            content: options.content,
+                            empty: options.empty,
+                            setter: that.setDate,
+                            disableDates: options.disableDates,
+                            build: function (date, idx, disableDates) {
+                                var cssClass = [], day = date.getDay(), linkClass = '', url = '#';
+                                if (date < firstDayOfMonth || date > lastDayOfMonth) {
+                                    cssClass.push(OTHERMONTH);
+                                }
+                                if (disableDates(date)) {
+                                    cssClass.push(DISABLED);
+                                }
+                                if (+date === today) {
+                                    cssClass.push('k-today');
+                                }
+                                if (day === 0 || day === 6) {
+                                    cssClass.push('k-weekend');
+                                }
+                                if (hasUrl && inArray(+date, dates)) {
+                                    url = navigateUrl.replace('{0}', kendo.toString(date, format, culture));
+                                    linkClass = ' k-action-link';
+                                }
+                                return {
+                                    date: date,
+                                    dates: dates,
+                                    ns: kendo.ns,
+                                    title: kendo.toString(date, DATE === pDate ? "D" : "b", culture),
+                                    value: date.getDate(),
+                                    dateString: toDateString(date),
+                                    cssClass: cssClass[0] ? ' class="' + cssClass.join(' ') + '"' : '',
+                                    linkClass: linkClass,
+                                    url: url
+                                };
+                            },
+                            weekNumberBuild: function (date) {
+                                return {
+                                    weekNumber: weekInYear(date, kendo.culture().calendar.firstDay),
+                                    currentDate: date
+                                };
                             }
-                            if (disableDates(date)) {
-                                cssClass.push(DISABLED);
+                        });
+                    },
+                    first: function (date) {
+                        return calendar.firstDayOfMonth(date);
+                    },
+                    last: function (date) {
+                        var last = new DATE(date.getFullYear(), date.getMonth() + 1, 0),
+                            first = calendar.firstDayOfMonth(date);
+                        if (DATE == Date) {
+                            timeOffset = Math.abs(last.getTimezoneOffset() - first.getTimezoneOffset());
+                            if (timeOffset) {
+                                last.setHours(first.getHours() + timeOffset / 60);
                             }
-                            if (+date === today) {
-                                cssClass.push('k-today');
-                            }
-                            if (day === 0 || day === 6) {
-                                cssClass.push('k-weekend');
-                            }
-                            if (hasUrl && inArray(+date, dates)) {
-                                url = navigateUrl.replace('{0}', kendo.toString(date, format, culture));
-                                linkClass = ' k-action-link';
-                            }
-                            return {
-                                date: date,
-                                dates: dates,
-                                ns: kendo.ns,
-                                title: kendo.toString(date, DATE === pDate ? "D" : "b", culture),
-                                value: date.getDate(),
-                                dateString: toDateString(date),
-                                cssClass: cssClass[0] ? ' class="' + cssClass.join(' ') + '"' : '',
-                                linkClass: linkClass,
-                                url: url
-                            };
-                        },
-                        weekNumberBuild: function (date) {
-                            return {
-                                weekNumber: weekInYear(date, kendo.culture().calendar.firstDay),
-                                currentDate: date
-                            };
                         }
-                    });
-                },
-                first: function (date) {
-                    return calendar.firstDayOfMonth(date);
-                },
-                last: function (date) {
-                    var last = new DATE(date.getFullYear(), date.getMonth() + 1, 0),
-                        first = calendar.firstDayOfMonth(date);
-                    if (DATE == Date) {
-                        timeOffset = Math.abs(last.getTimezoneOffset() - first.getTimezoneOffset());
-                        if (timeOffset) {
-                            last.setHours(first.getHours() + timeOffset / 60);
+                        return last;
+                    },
+                    compare: function (date1, date2) {
+                        var result, month1 = date1.getMonth(), year1 = date1.getFullYear(), month2 = date2.getMonth(), year2 = date2.getFullYear();
+                        if (year1 > year2) {
+                            result = 1;
+                        } else if (year1 < year2) {
+                            result = -1;
+                        } else {
+                            result = month1 == month2 ? 0 : month1 > month2 ? 1 : -1;
                         }
+                        return result;
+                    },
+                    setDate: function (date, value) {
+                        var hours = date.getHours();
+                        if (value instanceof DATE) {
+                            date.setFullYear(value.getFullYear(), value.getMonth(), value.getDate());
+                        } else {
+                            calendar.setTime(date, value * MS_PER_DAY);
+                        }
+                        adjustDST(date, hours);
+                    },
+                    toDateString: function (date) {
+                        return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
                     }
-                    return last;
                 },
-                compare: function (date1, date2) {
-                    var result, month1 = date1.getMonth(), year1 = date1.getFullYear(), month2 = date2.getMonth(), year2 = date2.getFullYear();
-                    if (year1 > year2) {
-                        result = 1;
-                    } else if (year1 < year2) {
-                        result = -1;
-                    } else {
-                        result = month1 == month2 ? 0 : month1 > month2 ? 1 : -1;
-                    }
-                    return result;
-                },
-                setDate: function (date, value) {
-                    var hours = date.getHours();
-                    if (value instanceof DATE) {
-                        date.setFullYear(value.getFullYear(), value.getMonth(), value.getDate());
-                    } else {
-                        calendar.setTime(date, value * MS_PER_DAY);
-                    }
-                    adjustDST(date, hours);
-                },
-                toDateString: function (date) {
-                    return date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-                }
-            },
-            {
-                name: 'year',
-                title: function (date) {
-                    return date.getFullYear();
-                },
-                content: function (options) {
-                    var namesAbbr = getCalendarInfo(options.culture).months.namesAbbr, toDateString = this.toDateString, min = options.min, max = options.max;
-                    return view({
-                        min: new DATE(min.getFullYear(), min.getMonth(), 1),
-                        max: new DATE(max.getFullYear(), max.getMonth(), 1),
-                        start: new DATE(options.date.getFullYear(), 0, 1),
-                        setter: this.setDate,
-                        build: function (date) {
-                            return {
-                                value: namesAbbr[date.getMonth()],
-                                ns: kendo.ns,
-                                dateString: toDateString(date),
-                                cssClass: ''
-                            };
-                        }
-                    });
-                },
-                first: function (date) {
-                    return new DATE(date.getFullYear(), 0, date.getDate());
-                },
-                last: function (date) {
-                    return new DATE(date.getFullYear(), 11, date.getDate());
-                },
-                compare: function (date1, date2) {
-                    return compare(date1, date2);
-                },
-                setDate: function (date, value) {
-                    var month, hours = date.getHours();
-                    if (value instanceof DATE) {
-                        month = value.getMonth();
-                        date.setFullYear(value.getFullYear(), month, date.getDate());
-                        if (month !== date.getMonth()) {
-                            date.setDate(0);
-                        }
-                    } else {
-                        month = date.getMonth() + value;
-                        date.setMonth(month);
-                        if (month > 11) {
-                            month -= 12;
-                        }
-                        if (month > 0 && date.getMonth() != month) {
-                            date.setDate(0);
-                        }
-                    }
-                    adjustDST(date, hours);
-                },
-                toDateString: function (date) {
-                    return date.getFullYear() + '/' + date.getMonth() + '/1';
-                }
-            },
-            {
-                name: 'decade',
-                title: function (date, min, max) {
-                    return title(date, min, max, 10);
-                },
-                content: function (options) {
-                    var year = options.date.getFullYear(), toDateString = this.toDateString;
-                    return view({
-                        start: new DATE(year - year % 10 - 1, 0, 1),
-                        min: new DATE(options.min.getFullYear(), 0, 1),
-                        max: new DATE(options.max.getFullYear(), 0, 1),
-                        setter: this.setDate,
-                        build: function (date, idx) {
-                            return {
-                                value: date.getFullYear(),
-                                ns: kendo.ns,
-                                dateString: toDateString(date),
-                                cssClass: idx === 0 || idx == 11 ? OTHERMONTHCLASS : ''
-                            };
-                        }
-                    });
-                },
-                first: function (date) {
-                    var year = date.getFullYear();
-                    return new DATE(year - year % 10, date.getMonth(), date.getDate());
-                },
-                last: function (date) {
-                    var year = date.getFullYear();
-                    return new DATE(year - year % 10 + 9, date.getMonth(), date.getDate());
-                },
-                compare: function (date1, date2) {
-                    return compare(date1, date2, 10);
-                },
-                setDate: function (date, value) {
-                    setDate(date, value, 1);
-                },
-                toDateString: function (date) {
-                    return date.getFullYear() + '/0/1';
-                }
-            },
-            {
-                name: CENTURY,
-                title: function (date, min, max) {
-                    return title(date, min, max, 100);
-                },
-                content: function (options) {
-                    var year = options.date.getFullYear(), min = options.min.getFullYear(), max = options.max.getFullYear(), toDateString = this.toDateString, minYear = min, maxYear = max;
-                    minYear = minYear - minYear % 10;
-                    maxYear = maxYear - maxYear % 10;
-                    if (maxYear - minYear < 10) {
-                        maxYear = minYear + 9;
-                    }
-                    return view({
-                        start: new DATE(year - year % 100 - 10, 0, 1),
-                        min: new DATE(minYear, 0, 1),
-                        max: new DATE(maxYear, 0, 1),
-                        setter: this.setDate,
-                        build: function (date, idx) {
-                            var start = date.getFullYear(), end = start + 9;
-                            if (start < min) {
-                                start = min;
+                {
+                    name: 'year',
+                    title: function (date) {
+                        return date.getFullYear();
+                    },
+                    content: function (options) {
+                        var namesAbbr = getCalendarInfo(options.culture).months.namesAbbr, toDateString = this.toDateString, min = options.min, max = options.max;
+                        return view({
+                            min: new DATE(min.getFullYear(), min.getMonth(), 1),
+                            max: new DATE(max.getFullYear(), max.getMonth(), 1),
+                            start: new DATE(options.date.getFullYear(), 0, 1),
+                            setter: this.setDate,
+                            build: function (date) {
+                                return {
+                                    value: namesAbbr[date.getMonth()],
+                                    ns: kendo.ns,
+                                    dateString: toDateString(date),
+                                    cssClass: ''
+                                };
                             }
-                            if (end > max) {
-                                end = max;
+                        });
+                    },
+                    first: function (date) {
+                        return new DATE(date.getFullYear(), 0, date.getDate());
+                    },
+                    last: function (date) {
+                        return new DATE(date.getFullYear(), 11, date.getDate());
+                    },
+                    compare: function (date1, date2) {
+                        return compare(date1, date2);
+                    },
+                    setDate: function (date, value) {
+                        var month, hours = date.getHours();
+                        if (value instanceof DATE) {
+                            month = value.getMonth();
+                            date.setFullYear(value.getFullYear(), month, date.getDate());
+                            if (month !== date.getMonth()) {
+                                date.setDate(0);
                             }
-                            return {
-                                ns: kendo.ns,
-                                value: start + ' - ' + end,
-                                dateString: toDateString(date),
-                                cssClass: idx === 0 || idx == 11 ? OTHERMONTHCLASS : ''
-                            };
+                        } else {
+                            month = date.getMonth() + value;
+                            date.setMonth(month);
+                            if (month > 11) {
+                                month -= 12;
+                            }
+                            if (month > 0 && date.getMonth() != month) {
+                                date.setDate(0);
+                            }
                         }
-                    });
+                        adjustDST(date, hours);
+                    },
+                    toDateString: function (date) {
+                        return date.getFullYear() + '/' + date.getMonth() + '/1';
+                    }
                 },
-                first: function (date) {
-                    var year = date.getFullYear();
-                    return new DATE(year - year % 100, date.getMonth(), date.getDate());
+                {
+                    name: 'decade',
+                    title: function (date, min, max) {
+                        return title(date, min, max, 10);
+                    },
+                    content: function (options) {
+                        var year = options.date.getFullYear(), toDateString = this.toDateString;
+                        return view({
+                            start: new DATE(year - year % 10 - 1, 0, 1),
+                            min: new DATE(options.min.getFullYear(), 0, 1),
+                            max: new DATE(options.max.getFullYear(), 0, 1),
+                            setter: this.setDate,
+                            build: function (date, idx) {
+                                return {
+                                    value: date.getFullYear(),
+                                    ns: kendo.ns,
+                                    dateString: toDateString(date),
+                                    cssClass: idx === 0 || idx == 11 ? OTHERMONTHCLASS : ''
+                                };
+                            }
+                        });
+                    },
+                    first: function (date) {
+                        var year = date.getFullYear();
+                        return new DATE(year - year % 10, date.getMonth(), date.getDate());
+                    },
+                    last: function (date) {
+                        var year = date.getFullYear();
+                        return new DATE(year - year % 10 + 9, date.getMonth(), date.getDate());
+                    },
+                    compare: function (date1, date2) {
+                        return compare(date1, date2, 10);
+                    },
+                    setDate: function (date, value) {
+                        setDate(date, value, 1);
+                    },
+                    toDateString: function (date) {
+                        return date.getFullYear() + '/0/1';
+                    }
                 },
-                last: function (date) {
-                    var year = date.getFullYear();
-                    return new DATE(year - year % 100 + 99, date.getMonth(), date.getDate());
-                },
-                compare: function (date1, date2) {
-                    return compare(date1, date2, 100);
-                },
-                setDate: function (date, value) {
-                    setDate(date, value, 10);
-                },
-                toDateString: function (date) {
-                    var year = date.getFullYear();
-                    return year - year % 10 + '/0/1';
-                }
+                {
+                    name: CENTURY,
+                    title: function (date, min, max) {
+                        return title(date, min, max, 100);
+                    },
+                    content: function (options) {
+                        var year = options.date.getFullYear(), min = options.min.getFullYear(), max = options.max.getFullYear(), toDateString = this.toDateString, minYear = min, maxYear = max;
+                        minYear = minYear - minYear % 10;
+                        maxYear = maxYear - maxYear % 10;
+                        if (maxYear - minYear < 10) {
+                            maxYear = minYear + 9;
+                        }
+                        return view({
+                            start: new DATE(year - year % 100 - 10, 0, 1),
+                            min: new DATE(minYear, 0, 1),
+                            max: new DATE(maxYear, 0, 1),
+                            setter: this.setDate,
+                            build: function (date, idx) {
+                                var start = date.getFullYear(), end = start + 9;
+                                if (start < min) {
+                                    start = min;
+                                }
+                                if (end > max) {
+                                    end = max;
+                                }
+                                return {
+                                    ns: kendo.ns,
+                                    value: start + ' - ' + end,
+                                    dateString: toDateString(date),
+                                    cssClass: idx === 0 || idx == 11 ? OTHERMONTHCLASS : ''
+                                };
+                            }
+                        });
+                    },
+                    first: function (date) {
+                        var year = date.getFullYear();
+                        return new DATE(year - year % 100, date.getMonth(), date.getDate());
+                    },
+                    last: function (date) {
+                        var year = date.getFullYear();
+                        return new DATE(year - year % 100 + 99, date.getMonth(), date.getDate());
+                    },
+                    compare: function (date1, date2) {
+                        return compare(date1, date2, 100);
+                    },
+                    setDate: function (date, value) {
+                        setDate(date, value, 10);
+                    },
+                    toDateString: function (date) {
+                        var year = date.getFullYear();
+                        return year - year % 10 + '/0/1';
+                    }
                 }
             ]
         };
@@ -1051,7 +1064,7 @@
         }
         function normalize(options) {
             var start = views[options.start], depth = views[options.depth], culture = getCulture(options.culture);
-            options.format = extractFormat(options.format || culture.calendars.standard.patterns.d);
+            options.format = extractFormat(options.format || (options.culture == 'fa-IR' ? culture.calendars.standard.patterns.n : culture.calendars.standard.patterns.d));
             if (isNaN(start)) {
                 start = 0;
                 options.start = MONTH;

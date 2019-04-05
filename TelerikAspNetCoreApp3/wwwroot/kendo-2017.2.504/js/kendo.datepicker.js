@@ -81,11 +81,27 @@
                 if (!calendar) {
                     div = $(DIV).attr(ID, kendo.guid()).appendTo(that.popup.element).on(MOUSEDOWN, preventDefault).on(CLICK, 'td:has(.k-link)', proxy(that._click, that));
                     that.calendar = calendar = new ui.Calendar(div, options);
-                    if (options.min instanceof Date) {
-                        that.calendar.min = options.min;
-                        that.calendar.max = options.max;
-                        calendar.max = options.max;
-                        calendar.min = options.min;
+                    if (options) {
+                        if ((options.value instanceof pDate || options.value == undefined) &&
+                            (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
+                            DATE = pDate;
+                            that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
+                            that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
+                            options.min = that.options.min;
+                            options.max = that.options.max;
+                            options.culture = "fa-IR";
+                            that.culture = "fa-IR";
+                            that.options.culture = "fa-IR";
+                        } else {
+                            DATE = Date;
+                            that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                            that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                            options.min = that.options.min;
+                            options.max = that.options.max;
+                            options.culture = "en-US";
+                            that.culture = "en-US";
+                            that.options.culture = "en-US";
+                        }
                     }
                     that._setOptions(options);
                     kendo.calendar.makeUnselectable(calendar.element);
@@ -206,23 +222,23 @@
                 if (options.culture == "en-US") {
 
                     DATE = Date;
-                    this.options.min = options.min ? options.min : new DATE(1900, 0, 1);
-                    this.options.max = options.max ? options.max : new DATE(2099, 11, 31);
-                    options.min = this.options.min;
-                    options.max = this.options.max;
+                    that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                    that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                    options.min = that.options.min;
+                    options.max = that.options.max;
                     options.culture = "en-US";
-                    this.culture = "en-US";
-                    this.options.culture = "en-US";
+                    that.culture = "en-US";
+                    that.options.culture = "en-US";
                 }
                 else {
                     DATE = pDate;
-                    this.options.min = options.min ? options.min : new DATE(1300, 0, 1);
-                    this.options.max = options.max ? options.max : new DATE(1499, 11, 29);
-                    options.min = this.options.min;
-                    options.max = this.options.max;
+                    that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
+                    that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
+                    options.min = that.options.min;
+                    options.max = that.options.max;
                     options.culture = "fa-IR";
-                    this.culture = "fa-IR";
-                    this.options.culture = "fa-IR";
+                    that.culture = "fa-IR";
+                    that.options.culture = "fa-IR";
                 }
                 Widget.fn.init.call(that, element, options);
                 element = that.element;
@@ -462,7 +478,7 @@
             },
             _keydown: function (e) {
                 var that = this, dateView = that.dateView, value = that.element.val(), handled = false;
-                var element = this.element;
+                var element = that.element;
                 var selection = kendo.caret(element);
                 var selectionStart = selection[0];
                 var selectionEnd = selection[1];
@@ -560,8 +576,8 @@
             _findSlashLocation: function () {
                 var that = this,
                     slashLocation = [];
-                for (var i = 0; i < this.options.format.length; i++) {
-                    if (this.options.format[i] == '/') {
+                for (var i = 0; i < that.options.format.length; i++) {
+                    if (that.options.format[i] == '/') {
                         slashLocation.push(i);
                     }
                 }
@@ -591,7 +607,7 @@
                 that.dateView[option](value);
             },
             _update: function (value) {
-                var that = this, options = that.options, min = options.min, max = options.max, current = that._value, date = parse(value, options.parseFormats, options.culture), isSameType = date === null && current === null || date instanceof Date && current instanceof Date, formattedValue;
+                var that = this, options = that.options, min = options.min, max = options.max, current = that._value, date = parse(value, options.parseFormats, options.culture), isSameType = date === null && current === null || date instanceof DATE && current instanceof DATE, formattedValue;
                 //if (options.disableDates(date)) {
                 //    date = null;
                 //    if (!that._old && !that.element.val()) {

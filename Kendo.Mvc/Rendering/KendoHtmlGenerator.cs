@@ -43,16 +43,16 @@ namespace Kendo.Mvc.Rendering
         public string IdAttributeDotReplacement { get; }
 
         public TagBuilder GenerateInput(
-		   ViewContext viewContext,
+           ViewContext viewContext,
            ModelExplorer modelExplorer,
            string id,
-		   string name,
-		   object value,
-		   string format,
-		   string type,
-		   IDictionary<string, object> htmlAttributes)
-		{
-			var tagBuilder = GenerateTag("input", viewContext, id, name, htmlAttributes);
+           string name,
+           object value,
+           string format,
+           string type,
+           IDictionary<string, object> htmlAttributes)
+        {
+            var tagBuilder = GenerateTag("input", viewContext, id, name, htmlAttributes);
             tagBuilder.TagRenderMode = TagRenderMode.SelfClosing;
 
             if (!string.IsNullOrEmpty(type))
@@ -64,27 +64,27 @@ namespace Kendo.Mvc.Rendering
                 ExpressionMetadataProvider.FromStringExpression(name, viewContext.ViewData, _metadataProvider);
 
             var fullName = tagBuilder.Attributes["name"];
-			var valueParameter = FormatValue(value, format);
-			var useViewData = modelExplorer.Metadata == null && value == null;
-			var attributeValue = (string)GetModelStateValue(viewContext, fullName, typeof(string));
-			if (attributeValue == null)
-			{
-				attributeValue = useViewData ? EvalString(viewContext, fullName, format) : valueParameter;
-			}
+            var valueParameter = FormatValue(value, format);
+            var useViewData = modelExplorer.Metadata == null && value == null;
+            var attributeValue = (string)GetModelStateValue(viewContext, fullName, typeof(string));
+            if (attributeValue == null)
+            {
+                attributeValue = useViewData ? EvalString(viewContext, fullName, format) : valueParameter;
+            }
 
-			tagBuilder.MergeAttribute("value", attributeValue, true);
+            tagBuilder.MergeAttribute("value", attributeValue, true);
 
             // If there are any errors for a named field, we add the CSS attribute.
             ModelStateEntry modelState;
-			if (viewContext.ViewData.ModelState.TryGetValue(fullName, out modelState) && modelState.Errors.Count > 0)
-			{
-				tagBuilder.AddCssClass(HtmlHelper.ValidationInputCssClassName);
-			}
+            if (viewContext.ViewData.ModelState.TryGetValue(fullName, out modelState) && modelState.Errors.Count > 0)
+            {
+                tagBuilder.AddCssClass(HtmlHelper.ValidationInputCssClassName);
+            }
 
             AddValidationAttributes(viewContext, tagBuilder, modelExplorer, name);
 
             return tagBuilder;
-		}
+        }
 
         private TagBuilder GenerateSelect(
             ViewContext viewContext,
@@ -112,15 +112,15 @@ namespace Kendo.Mvc.Rendering
         }
 
         public virtual TagBuilder GenerateColorInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer,
-			string id,
-			string name,
-			object value,
-			IDictionary<string, object> htmlAttributes)
-		{
-			return GenerateInput(viewContext, modelExplorer, id, name, value, null, "color", htmlAttributes);
-		}
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            IDictionary<string, object> htmlAttributes)
+        {
+            return GenerateInput(viewContext, modelExplorer, id, name, value, null, "color", htmlAttributes);
+        }
 
         public virtual TagBuilder GenerateRangeInput(
             ViewContext viewContext,
@@ -142,7 +142,7 @@ namespace Kendo.Mvc.Rendering
             string format,
             IDictionary<string, object> htmlAttributes)
         {
-			return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
+            return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
         }
 
         public virtual TagBuilder GenerateDateTimeInput(
@@ -153,9 +153,9 @@ namespace Kendo.Mvc.Rendering
             object value,
             string format,
             IDictionary<string, object> htmlAttributes)
-        {            
+        {
             return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
-		}
+        }
 
         public virtual TagBuilder GenerateTimeInput(
             ViewContext viewContext,
@@ -170,16 +170,16 @@ namespace Kendo.Mvc.Rendering
         }
 
         public virtual TagBuilder GenerateNumericInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer,
-			string id,
-			string name,
-			object value,
-			string format,
-			IDictionary<string, object> htmlAttributes)
-		{			
-			return GenerateInput(viewContext, modelExplorer, id, name, value, format, "number", htmlAttributes);
-		}
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes)
+        {
+            return GenerateInput(viewContext, modelExplorer, id, name, value, format, "number", htmlAttributes);
+        }
 
         public virtual TagBuilder GenerateMultiSelect(
             ViewContext viewContext,
@@ -191,11 +191,24 @@ namespace Kendo.Mvc.Rendering
             return GenerateSelect(viewContext, modelExplorer, id, name, "multiple", htmlAttributes);
         }
 
-        public virtual TagBuilder GenerateTag(
-            string tagName,            
+        //Added By Naser Parhizkar
+        public virtual TagBuilder GenerateGridSearchInput(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
             IDictionary<string, object> htmlAttributes)
-        {            
-            var tagBuilder = new TagBuilder(tagName);            
+        {
+            return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
+        }
+
+        public virtual TagBuilder GenerateTag(
+            string tagName,
+            IDictionary<string, object> htmlAttributes)
+        {
+            var tagBuilder = new TagBuilder(tagName);
             tagBuilder.MergeAttributes(htmlAttributes, replaceExisting: true);
             return tagBuilder;
         }
@@ -304,17 +317,17 @@ namespace Kendo.Mvc.Rendering
             return ViewDataDictionary.FormatValue(value, format);
         }
 
-		public TagBuilder GenerateTextInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer, 
-			string id, 
-			string name, 
-			object value, 
-			string format, 
-			IDictionary<string, object> htmlAttributes)
-		{
-			return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
-		}
+        public TagBuilder GenerateTextInput(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes)
+        {
+            return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
+        }
 
         private bool IsValidCharacter(char c)
         {

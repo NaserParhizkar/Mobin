@@ -948,7 +948,7 @@
                     }
                     return i;
                 }, getNumber = function (size) {
-                    var rg = numberRegExp[size] || new RegExp('^\\d{1,' + size + '}'), match = value.substr(valueIdx, size).match(rg);
+                    var rg = numberRegExp[size] || new RegExp('^\\d{1,' + size + '}'), match = value.toString().substr(valueIdx, size).match(rg);
                     if (match) {
                         match = match[0];
                         valueIdx += match.length;
@@ -960,7 +960,7 @@
                     for (; i < length; i++) {
                         name = names[i];
                         nameLength = name.length;
-                        subValue = value.substr(valueIdx, nameLength);
+                        subValue = value.toString().substr(valueIdx, nameLength);
                         if (lower) {
                             subValue = subValue.toLowerCase();
                         }
