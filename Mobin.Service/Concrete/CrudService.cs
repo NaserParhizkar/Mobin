@@ -10,7 +10,7 @@ namespace Mobin.Service
 {
     public class CrudService<TEntity> : ICrudService<TEntity> where TEntity : class, new()
     {
-        private readonly IMobinUnitOfWork mobinUnitOfWork;
+        protected readonly IMobinUnitOfWork mobinUnitOfWork;
 
         public CrudService(IMobinUnitOfWork unitofwork)
         {

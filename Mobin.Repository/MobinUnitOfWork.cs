@@ -47,39 +47,4 @@ namespace Mobin.Repository
             GC.SuppressFinalize(this);
         }
     }
-
-    public static class FactoryContextGenerator<TDbContext> where TDbContext : DbContext
-    {
-        //public static MobinUnitOfWork<TDbContext> CreateContext()
-        //{
-        //    IServiceCollection serviceCollection = new ServiceDescriptor(null, null, new ServiceLifetime());
-        //    serviceCollection.AddTransient()
-        //}
-    }
-
-
-    //class MyFactory<TDbContext> : Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory<TDbContext>
-    //    where TDbContext : DbContext
-    //{
-    //    //public TDbContext CreateDbContext(string[] args)
-    //    //{
-    //    //    Microsoft.EntityFrameworkCore.Internal.DbContextDependencies dbContextDependencies =
-    //    //        new Microsoft.EntityFrameworkCore.Internal.DbContextDependencies();
-
-
-    //    //}
-    //}
-
-    class M<T> : Microsoft.EntityFrameworkCore.Infrastructure.ISingletonOptions
-    {
-        public void Initialize(IDbContextOptions options)
-        {
-            
-        }
-
-        public void Validate(IDbContextOptions options)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

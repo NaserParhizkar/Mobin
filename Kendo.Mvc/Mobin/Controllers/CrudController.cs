@@ -13,7 +13,7 @@ namespace Kendo.Mvc.Mobin
 {
     public class CrudController<TEntity> : Controller where TEntity : class, new()
     {
-        private readonly ICrudService<TEntity> crudService;
+        protected readonly ICrudService<TEntity> crudService;
 
         public CrudController(ICrudService<TEntity> _crudService)
         {
@@ -34,7 +34,7 @@ namespace Kendo.Mvc.Mobin
         /// This method read expression tree that serialized in a file and found it by unique callerkey
         /// </summary>
         /// <returns></returns>
-        public virtual object Read(DataSourceRequest request)
+        public virtual object Read([DataSourceRequest] DataSourceRequest request)
         {
 #if DEBUG
             request.ComponentId = Guid.NewGuid();

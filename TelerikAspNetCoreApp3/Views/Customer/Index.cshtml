@@ -10,24 +10,28 @@
         @(Html.Kendo().Grid<Customer>().Name("grid")
                 .Columns(columns =>
                 {
-                    columns.Bound(p => p.CustomerId);
-                    columns.Bound(p => p.CompanyName);
-                    columns.Bound(p => p.Country);
-                    columns.Bound(p => p.City);
+                    columns.Bound(x => x.CustomerId).Filterable(t => t.Enabled(false));
+                    columns.Bound(x => x.CompanyName).Filterable(t => t.Enabled(false));
+                    columns.Bound(x => x.ContactName).Filterable(t => t.Enabled(false));
+                    columns.Bound(x => x.ContactTitle).Filterable(t => t.Enabled(false));
+                    columns.Bound(x => x.Country).Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+                    columns.Bound(x => x.City).Filterable(t => t.Enabled(false));
+                    columns.Bound(x => x.Phone).Filterable(t => t.Enabled(false));
                 })
                 .DataSource(dataSource =>
                 {
                     dataSource
                         .AutoReadData()
                         .Ajax()
-                        .PageSize(20)
+                        .Filter(t => t.Add(r => r.Country).Contains("u"))
+                        .PageSize(10)
                         .Read(read => read.Action<CustomerApiController>(t => t.Read(null)));
 
                 })
                 .Pageable()
                 .Sortable()
                 .Scrollable()
-                .Filterable()
+                .Filterable(t => t.Mode(GridFilterMode.Row).Enabled(true))
                 .HtmlAttributes(new { style = "height:550px;" })
         )
     </div>

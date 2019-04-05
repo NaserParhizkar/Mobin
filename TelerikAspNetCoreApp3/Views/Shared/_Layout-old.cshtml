@@ -38,31 +38,20 @@
     <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
 
-
-
-    <link href="~/kendo-2018.2.516/styles/kendo.rtl.min.css" rel="stylesheet" />
     <script src="~/kendo-2017.2.504/js/jquery.js"></script>
 
     <script src="~/kendo-2017.2.504/js/mobin.common.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.core.js"></script>
-   
-
-
     <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.calendar.js"></script>
 
-    @*<script src="~/kendo-2017.2.504/js/kendo.unchanged.calendar.js"></script>*@
-
-
-
     <script src="~/kendo-2017.2.504/js/kendo.popup.js"></script>
-
-
     <script src="~/kendo-2017.2.504/js/kendo.datepicker.js"></script>
 
-    @*<script src="~/kendo-2017.2.504/js/kendo.data.xml.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.data.xml.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.data.odata.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.data.js"></script>
 
@@ -74,9 +63,56 @@
     <script src="~/kendo-2017.2.504/js/kendo.list.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.combobox.js"></script>
 
-    <script src="~/kendo-2017.2.504/js/kendo.multiselect.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.columnsorter.js"></script>
+
+    <script src="~/lib/mobin.search.input.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
-    <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>*@
+    <script src="~/kendo-2017.2.504/js/kendo.binder.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.editable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.window.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.dropdownlist.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtermenu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtercell.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.menu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.columnmenu.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.groupable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.pager.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.selectable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.sortable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.reorderable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.resizable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.pane.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.shim.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.popover.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.actionsheet.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.ooxml.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.excel.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.progressbar.js"></script>
+
+
+    @*//this lib needs "util/text-metrics"*@
+    <script src="~/kendo-2017.2.504/js/kendo.pdf.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.grid.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.multiselect.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>
 
     @*---------------------------------------------------------------------------------------------------------------------------------------*@
     @*---------------------------------------------------------------------------------------------------------------------------------------*@
@@ -94,7 +130,7 @@
     </environment>
 
 </head>
-<body style="font-family:Tahoma;font-size:12px;" >
+<body style="font-family:Tahoma;font-size:12px;" class="k-rtl">
     <div class="k-header">
         <div class="container">
             <div class="row">
@@ -104,7 +140,27 @@
     </div>
     <div class="container menu-content">
         <div id="responsive-panel">
-   
+
+        </div>
+        <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+    </div>
+    <div class="container menu-content">
+        <div id="responsive-panel">
+            @(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            items.Add()
+                                .Text("KendoGridHelper")
+                                .Action("Index", "KendoGridHelper");
+                            items.Add()
+                                 .Text("MySearchInputs")
+                                 .Action("MySearchInputs", "KendoGridHelper");
+                            items.Add()
+                                .Text("BothDates")
+                                .Action("Index", "PersianDate");
+                        })
+            )
         </div>
         <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
     </div>

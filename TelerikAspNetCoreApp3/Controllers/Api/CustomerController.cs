@@ -1,18 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Kendo.Mvc.Mobin;
-using Microsoft.AspNetCore.Mvc;
-using Mobin.Service;
+﻿using Kendo.Mvc.Mobin;
+using Kendo.Mvc.UI;
+using Microsoft.Extensions.DependencyInjection;
 using Northwind.Repository.EntityModels;
+using Kendo.Mvc.Extensions;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Northwind.WebUI.Controllers
 {
     public class CustomerApiController : CrudController<Customer>
     {
-        public CustomerApiController(ICrudService<Customer> _crudService) : base(_crudService)
+        private readonly ICustomerService customerService;
+        public CustomerApiController(ICustomerService _crudService) : base(_crudService)
         {
+            customerService = _crudService;
+        }
+
+        public override object Read([DataSourceRequest] DataSourceRequest request)
+        {
+            var query = customerService.GetAllAsQueryable();
+            var dataSourceResult = query.ToDataSourceResult(request);
+
+            return dataSourceResult;
+        }
+
+        public DataSourceResult GetCustomersOrderInfo([DataSourceRequest] DataSourceRequest request)
+        {
+            var query = customerService.GetCustomersOrderInfo();
+            var dataSourceResult = query.ToDataSourceResult(request);
+
+            return dataSourceResult;
         }
     }
 }

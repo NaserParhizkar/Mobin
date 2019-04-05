@@ -66,7 +66,7 @@ namespace Mobin.ExpressionJsonSerializer
             string path = string.Empty,
                 json = string.Empty;
 #if DEBUG
-            path = @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\Customer\Index/grid.json";
+            path = @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\KendoGridHelper\Index/grid.json";
 #endif
 
             using (var stream = File.OpenRead(path))

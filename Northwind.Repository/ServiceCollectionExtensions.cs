@@ -8,7 +8,7 @@ namespace Northwind.Repository
         public static IServiceCollection AddNorthwindRepository(this IServiceCollection services)
         {
             services.AddScoped<NorthwindContext>();
-            services.AddScoped<IMobinUnitOfWork,MobinUnitOfWork<NorthwindContext>>();
+            services.AddTransient<IMobinUnitOfWork,MobinUnitOfWork<NorthwindContext>>();
             return services;
         }
     }
