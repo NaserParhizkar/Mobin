@@ -44,8 +44,9 @@
             init: function (element, options) {
                 var that = this, value, id;
                 if (options) {
-                    if ((options.value instanceof pDate || options.value == undefined) &&
-                        (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
+                    options.culture = options.culture || kendo.culture().name; 
+
+                    if (options.culture == "fa-IR") {
                         DATE = pDate;
                         that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
                         that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
@@ -54,7 +55,8 @@
                         options.culture = "fa-IR";
                         that.culture = "fa-IR";
                         that.options.culture = "fa-IR";
-                    } else {
+                    }
+                    else if (options.culture == "en-US") {
                         DATE = Date;
                         that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
                         that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
@@ -65,13 +67,6 @@
                         that.options.culture = "en-US";
                     }
                 }
-                //else {
-                //    DATE = Date;
-                //    this.options.min = new DATE(1900, 0, 1);
-                //    this.options.max = new DATE(2099, 11, 31);
-                //    var that = this;
-                //    //options.culture = null;
-                //}
 
                 Widget.fn.init.call(that, element, options);
                 element = that.wrapper = that.element;
@@ -224,9 +219,8 @@
             navigate: function (value, view) {
                 var that = this,
                     options = that.options,
-                view = isNaN(view) ? views[view] : view;
-                if ((options.value instanceof pDate || options.value == undefined) &&
-                    (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
+                    view = isNaN(view) ? views[view] : view;
+                if (options.culture == "fa-IR") {
                     DATE = pDate;
                     that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
                     that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
@@ -235,7 +229,8 @@
                     options.culture = "fa-IR";
                     that.culture = "fa-IR";
                     that.options.culture = "fa-IR";
-                } else {
+                }
+                else if (options.culture == "en-US") {
                     DATE = Date;
                     that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
                     that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
@@ -1147,7 +1142,7 @@
             return callback;
         }
         function isEqualDate(oldValue, newValue) {
-            if (oldValue instanceof Date && newValue instanceof Date) {
+            if (oldValue instanceof DATE && newValue instanceof DATE) {
                 oldValue = oldValue.getTime();
                 newValue = newValue.getTime();
             }

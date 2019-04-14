@@ -132,11 +132,12 @@
                         };
                         preFilters.filters = filter.filters;
                         grid.dataSource._filter = {};
-                        //grid.dataSource.trigger('reset');
-                        var isFieldExist = false;
-                        preFilters.filters.forEach(function (v,i,that) {
-                            debugger;
+
+                        var uniqueFilters = [];
+                        uniqueFilters = $.grep(preFilters.filters, function (item) {
+                            return item.field != field;
                         });
+                        preFilters.filters = uniqueFilters;
                         preFilters.filters.push({ field: field, operator: "contains", value: value });
                         grid.dataSource.filter(preFilters);
                     } else {
@@ -155,7 +156,7 @@
                 var field = element.attr('name');
                 if (e.keyCode === keys.BACKSPACE) {
                     var grid = $('#' + options.gridname).data('kendoGrid');
-                    var filter = grid.dataSource._filter;
+                    var filter = grid.dataSource.filter();
                     if (value) {
                         if (filter && filter.filters) {
                             var preFilters = {
@@ -164,7 +165,12 @@
                             };
                             preFilters.filters = filter.filters;
                             grid.dataSource._filter = {};
-                            //grid.dataSource.trigger('reset');
+
+                            var uniqueFilters = [];
+                            uniqueFilters = $.grep(preFilters.filters, function (item) {
+                                return item.field != field;
+                            });
+                            preFilters.filters = uniqueFilters;
                             preFilters.filters.push({ field: field, operator: "contains", value: value });
                             grid.dataSource.filter(preFilters);
                         } else {

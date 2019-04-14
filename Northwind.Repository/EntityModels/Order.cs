@@ -19,6 +19,8 @@ namespace Northwind.Repository.EntityModels
         public string CustomerId { get; set; }
         [Column("EmployeeID")]
         public int? EmployeeId { get; set; }
+
+        [Display(Name = "تاریخ سفارش")]
         [Column(TypeName = "datetime")]
         public DateTime? OrderDate { get; set; }
         [Column(TypeName = "datetime")]

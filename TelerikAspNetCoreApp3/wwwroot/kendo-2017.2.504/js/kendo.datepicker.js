@@ -82,8 +82,7 @@
                     div = $(DIV).attr(ID, kendo.guid()).appendTo(that.popup.element).on(MOUSEDOWN, preventDefault).on(CLICK, 'td:has(.k-link)', proxy(that._click, that));
                     that.calendar = calendar = new ui.Calendar(div, options);
                     if (options) {
-                        if ((options.value instanceof pDate || options.value == undefined) &&
-                            (options.calendarType == "solarHejri" || options.culture == "fa-IR")) {
+                        if (options.culture == "fa-IR") {
                             DATE = pDate;
                             that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
                             that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
@@ -92,7 +91,8 @@
                             options.culture = "fa-IR";
                             that.culture = "fa-IR";
                             that.options.culture = "fa-IR";
-                        } else {
+                        }
+                        else if (options.culture == "en-US") {
                             DATE = Date;
                             that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
                             that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
@@ -219,18 +219,9 @@
         var DatePicker = Widget.extend({
             init: function (element, options) {
                 var that = this, disabled, div;
-                if (options.culture == "en-US") {
+                options.culture = options.culture || kendo.culture().name; 
 
-                    DATE = Date;
-                    that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
-                    that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
-                    options.min = that.options.min;
-                    options.max = that.options.max;
-                    options.culture = "en-US";
-                    that.culture = "en-US";
-                    that.options.culture = "en-US";
-                }
-                else {
+                if (options.culture == "fa-IR") {
                     DATE = pDate;
                     that.options.min = options.min ? options.min : new DATE(1300, 0, 1);
                     that.options.max = options.max ? options.max : new DATE(1499, 11, 29);
@@ -239,6 +230,16 @@
                     options.culture = "fa-IR";
                     that.culture = "fa-IR";
                     that.options.culture = "fa-IR";
+                }
+                else if (options.culture == "en-US") {
+                    DATE = Date;
+                    that.options.min = options.min ? options.min : new DATE(1900, 0, 1);
+                    that.options.max = options.max ? options.max : new DATE(2099, 11, 31);
+                    options.min = that.options.min;
+                    options.max = that.options.max;
+                    options.culture = "en-US";
+                    that.culture = "en-US";
+                    that.options.culture = "en-US";
                 }
                 Widget.fn.init.call(that, element, options);
                 element = that.element;
@@ -290,7 +291,7 @@
                     role: 'combobox',
                     'aria-expanded': false,
                     'aria-owns': that.dateView._dateViewID
-                    });
+                });
                 that._reset();
                 that._template();
                 disabled = element.is('[disabled]') || $(that.element).parents('fieldset').is(':disabled');
@@ -370,8 +371,8 @@
                 if (!readonly && !disable) {
                     wrapper.addClass(DEFAULT).removeClass(STATEDISABLED).on(HOVEREVENTS, that._toggleHover);
                     element.removeAttr(DISABLED).removeAttr(READONLY).attr(ARIA_DISABLED, false).on('keydown' + ns, proxy(that._keydown, that)).on('focusout' + ns, proxy(that._blur, that)).on('focus' + ns, function () {
-                            that._inputWrapper.addClass(FOCUSED);
-                        });
+                        that._inputWrapper.addClass(FOCUSED);
+                    });
                     icon.on(CLICK, proxy(that._click, that)).on(MOUSEDOWN, preventDefault);
                 } else {
                     wrapper.addClass(disable ? STATEDISABLED : DEFAULT).removeClass(disable ? DEFAULT : STATEDISABLED);
@@ -628,8 +629,8 @@
                 }
                 that._value = date;
                 that.dateView.value(date);
-                that.element.val(date ? (that.options.culture == "fa-IR" ? (new pDate(+date)).persianFormat() : kendo.toString(date, options.format, options.culture))
-                    : value);
+                //that.element.val(date ? (that.options.culture == "fa-IR" ? (new pDate(+date)).persianFormat() : kendo.toString(date, options.format, options.culture))
+                //    : value);
                 if (that._dateInput) {
                     that._dateInput.value(date || value);
                 } else {

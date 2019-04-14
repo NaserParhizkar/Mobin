@@ -437,7 +437,7 @@
                 var get;
                 var change;
                 var type = toString.call(object);
-                if (object != null && (type === '[object Object]' || type === '[object Array]')) {
+                if (object != null && (type === '[object Object]' || type === '[object Array]') && !(object instanceof pDate)) {
                     var isObservableArray = object instanceof ObservableArray;
                     var isDataSource = object instanceof DataSource;
                     if (type === '[object Object]' && !isDataSource && !isObservableArray) {

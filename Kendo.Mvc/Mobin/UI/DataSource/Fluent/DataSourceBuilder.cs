@@ -10,7 +10,7 @@ namespace Kendo.Mvc.UI.Fluent
     {
         public DataSourceBuilder<TModel> AutoReadData(bool autoRead = true)
         {
-            //dataSource.AutoReadData = true;
+            dataSource.AutoReadData = true;
 
             return this;
         }

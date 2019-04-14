@@ -8,8 +8,6 @@ namespace Kendo.Mvc.UI
     {
         public Guid? ComponentId { get; set; }
 
-
-
         protected virtual void MobinSettings(DataSourceRequest dataSourceRequest)
         {
             dataSourceRequest.ComponentId = ComponentId;

@@ -92,7 +92,11 @@
 
 
 
-
+    <script type="text/javascript">
+        $(function () {
+            kendo.culture('fa-IR');
+        });
+    </script>
 
 
 
@@ -159,14 +163,14 @@
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
-            $("#responsive-panel").kendoResponsivePanel({
-                breakpoint: 768,
-                autoClose: false,
-                orientation: "top"
-            });
+            //$("#responsive-panel").kendoResponsivePanel({
+            //    breakpoint: 768,
+            //    autoClose: false,
+            //    orientation: "top"
+            //});
         });
         function onclick(e) {
-            $("#responsive-panel").getKendoResponsivePanel().toggle();
+            //$("#responsive-panel").getKendoResponsivePanel().toggle();
         }
     </script>
 </body>

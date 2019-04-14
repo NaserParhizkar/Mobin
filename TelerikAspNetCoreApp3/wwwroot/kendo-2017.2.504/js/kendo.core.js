@@ -834,7 +834,7 @@
                 var values = arguments;
                 return fmt.replace(formatRegExp, function (match, index, placeholderFormat) {
                     var value = values[parseInt(index, 10) + 1];
-                    return toString(value, placeholderFormat ? placeholderFormat.substring(1) : '');
+                    return toString(value instanceof pDate ? new Date(+value) : value, placeholderFormat ? placeholderFormat.substring(1) : '');
                 });
             };
             kendo._extractFormat = function (format) {
@@ -1186,7 +1186,7 @@
                     return value;
                 }
 
-                if (value instanceof pDate) {
+                if (value instanceof pDate || (value && +(new pDate(+value)) === +value)) {
                     return value;
                 }
 

@@ -9,38 +9,40 @@
 }
 
 
-
-<div class="form-group">
-    @Html.LabelFor(t => t.Customer.Country, new { @class = "control-label" })
-    <div>
-        @(Html.Kendo().GridSearchInputFor(t => t.Customer.Country, "grid"))
+@*<div class="panel panel-default">
+    <div class="panel-heading"> <h3 class="panel-title">پارامترهای جستجو</h3></div>
+    <div class="panel-body">
+        <div class="form-group">
+            @Html.LabelFor(t => t.Customer.Country, new { @class = "control-label" })
+            <div>
+                @(Html.Kendo().GridSearchInputFor(t => t.Customer.Country, "grid"))
+            </div>
+            @Html.LabelFor(t => t.Customer.City, new { @class = "control-label" })
+            <div>
+                @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
+            </div>
+        </div>
     </div>
-    @Html.LabelFor(t => t.Customer.City, new { @class = "control-label" })
-    <div>
-        @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
-    </div>
-</div>
-
-
+</div>*@
 
 @(Html.Kendo().Grid<Order>()
-                    .Name("grid").Columns(columns =>
-                    {
-                        columns.Bound(x => x.Customer.CustomerId);
-                        columns.Bound(x => x.Customer.CompanyName);
-                        columns.Bound(x => x.Customer.Country);
-                        columns.Bound(x => x.Customer.City);
-                        columns.Bound(x => x.OrderDate);
-                    })
-                    .DataSource(dataSource =>
-                    {
-                        dataSource
-                        .AutoReadData()
-                        .Ajax()
-                        .PageSize(5)
-                        .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
+                                .Name("grid").Columns(columns =>
+                                {
+                                    columns.Bound(x => x.Customer.CustomerId);
+                                    columns.Bound(x => x.Customer.CompanyName);
+                                    columns.Bound(x => x.Customer.Country);
+                                    columns.Bound(x => x.Customer.City);
+                                    columns.Bound(x => x.OrderDate);
+                                })
+                                .DataSource(dataSource =>
+                                {
+                                    dataSource
+                                    .AutoReadData()
+                                    .Ajax()
+                                    .PageSize(10)
+                                    .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
 
-                    }).AutoBind(true)
-                    .Pageable()
-                    .Sortable()
+                                }).AutoBind(true)
+                                .Pageable()
+                                .Sortable()
 )
