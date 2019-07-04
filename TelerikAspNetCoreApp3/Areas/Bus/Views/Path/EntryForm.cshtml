@@ -1,0 +1,32 @@
+﻿@model Address
+
+    <div class="k-edit-form-container">
+
+        <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+            <div class="container">
+                <div class="form-group">
+                    @Html.LabelFor(t => t.AddressId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        @Html.Kendo().IntegerTextBoxFor(t => t.AddressId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Country, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        @Html.Kendo().TextBoxFor(t => t.Country)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.PersonID, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        @Html.Kendo().IntegerTextBoxFor(t => t.PersonID).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="k-edit-buttons k-state-default">
+            <a class="k-button k-button-icontext k-primary k-grid-update" href="#"><span class="k-icon k-update"></span>بروزرسانی</a>
+            <a class="k-button k-button-icontext k-grid-cancel" href="#"><span class="k-icon k-cancel"></span>انصراف</a>
+        </div>
+    </div>

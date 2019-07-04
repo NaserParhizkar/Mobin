@@ -1,0 +1,36 @@
+﻿
+@using Northwind.WebUI.Controllers
+@using Northwind.Repository;
+
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout-old.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+        @(Html.Kendo().Grid<Category>().Name("grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(x => x.CategoryName).Filterable(t => t.Enabled(false));
+                            columns.Bound(x => x.Description).Filterable(t => t.Enabled(false));
+                        }).ToolBar(t => t.Create().Text("افزودن"))
+                        .Editable(t => t.Mode(GridEditMode.PopUp))
+                        .DataSource(dataSource =>
+                        {
+                            dataSource
+                                .Ajax()
+                                .PageSize(10)
+                                .Read(read => read.Action<CategoryApiController>(t => t.Read(null)));
+
+                        })
+                        .Pageable()
+                        .Sortable()
+                        .Scrollable()
+                        .Filterable(t => t.Mode(GridFilterMode.Row).Enabled(true))
+                        .HtmlAttributes(new { style = "height:550px;" })
+        )
+    </div>
+</div>
+
+

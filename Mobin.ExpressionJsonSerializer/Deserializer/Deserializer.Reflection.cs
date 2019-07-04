@@ -11,6 +11,8 @@ namespace Mobin.ExpressionJsonSerializer
 {
     partial class Deserializer
     {
+        private readonly static object _threadSafeObj = new object();
+
         private static readonly Dictionary<Assembly, Dictionary<string, Dictionary<string, Type>>>
             TypeCache = new Dictionary<Assembly, Dictionary<string, Dictionary<string, Type>>>();
 
@@ -19,6 +21,7 @@ namespace Mobin.ExpressionJsonSerializer
 
         private Type Type(JToken token)
         {
+            System.Threading.Monitor.Enter(_threadSafeObj);
             if (token == null || token.Type != JTokenType.Object)
             {
                 return null;
@@ -74,11 +77,15 @@ namespace Mobin.ExpressionJsonSerializer
                 type = type.MakeGenericType(generic.ToArray());
             }
 
+            System.Threading.Monitor.Exit(_threadSafeObj);
+
             return type;
         }
 
         private ConstructorInfo Constructor(JToken token)
         {
+            System.Threading.Monitor.Enter(_threadSafeObj);
+
             if (token == null || token.Type != JTokenType.Object)
             {
                 return null;
@@ -126,6 +133,8 @@ namespace Mobin.ExpressionJsonSerializer
                 constructor = this.ConstructorInternal(type, name, signature);
                 cache2[signature] = constructor;
             }
+
+            System.Threading.Monitor.Exit(_threadSafeObj);
 
             return constructor;
         }

@@ -1,4 +1,26 @@
-﻿
+﻿$(document).ajaxError(function myErrorHandler(event, xhr, ajaxOptions, thrownError) {
+    if (xhr.status != 200) {
+        var un200StatusElement = document.createElement('div');
+        $(un200StatusElement).css("direction", "ltr");
+        un200StatusElement.innerHTML = xhr.responseText;
+        document.body.appendChild(un200StatusElement);
+        var myWindow = $(un200StatusElement);
+        myWindow.kendoWindow({
+            width: "600px",
+            title: "Exception",
+            visible: false,
+            modal: true,
+            actions: [
+                "Pin",
+                "Minimize",
+                "Maximize",
+                "Close"
+            ]
+        }).data("kendoWindow").center().open().maximize();
+
+    }
+});
+
 function pDate() {
 
     var pYear = undefined, pMonth = undefined, pDate = undefined, pDay, pHours = undefined, pMinutes = undefined,
@@ -377,8 +399,12 @@ function pDate() {
         pMilliseconds = gMilliseconds;
 
         //621 355 104 000 000 000
-        var diff = pHours >= 17 ? 0 : 17 - pHours;
-        var ticks = ((date.getTime() * 10000) + 621355104000000000 + diff * 3600 * 10000 * 1000);
+        var diff = 0;
+        var ticks = ((date.getTime() * 10000) +
+            //621355104000000000
+            //621672315440000000
+            621356094000000000
+            + diff * 3600 * 10000 * 1000);
 
         pyear = GetDatePart(ticks, 0);
         pmonth = GetDatePart(ticks, 2);
@@ -472,7 +498,7 @@ function pDate() {
 
     this.valueOf = function () {
 
-        var countMS = -62135510400000;
+        var countMS = -62135609400000;
 
 
         if (pYear != null && typeof pYear !== "undefined"

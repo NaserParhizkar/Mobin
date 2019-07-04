@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Northwind.Repository</RootNamespace>
+    <AssemblyName>Northwind.Repository</AssemblyName>
+    <PackageId>Northwind.Repository</PackageId>
+    <Product>Northwind.Repository</Product>
+    <Company>Northwind.Repository</Company>
+    <Authors>Northwind.Repository</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
+    <ProjectReference Include="..\Mobin.Repository\Mobin.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

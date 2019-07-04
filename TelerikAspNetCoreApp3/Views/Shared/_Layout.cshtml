@@ -129,27 +129,33 @@
         </div>
     </div>
     <div class="container menu-content">
-            <div id="responsive-panel">
-                @(Html.Kendo().Menu()
-                    .Name("Menu")
-                    .Items(items =>
-                    {
-                        items.Add()
-                            .Text("Customer")
-                            .Action("Index", "Customer");
-                        items.Add()
-                            .Text("Home")
-                            .Action("Index", "Home");
-                        items.Add()
-                            .Text("About")
-                            .Action("About", "Home");
-                        items.Add()
-                            .Text("Contact")
-                            .Action("Contact", "Home");
-                        items.Add().Text("Disabled item").Enabled(false);
-                    })
-                )
-            </div>
+        <div id="responsive-panel">
+            @(Html.Kendo().Menu()
+                                    .Name("Menu")
+                                    .Items(items =>
+                                    {
+                                        items.Add()
+                                      .Text("Home")
+                                      .Action<Northwind.WebUI.Controllers.HomeController>(t => t.Index());
+
+                                        items.Add()
+                                            .Text("Order_Index").Action("Index","Order",new { area="Northwind" });
+                                        items.Add()
+                                            .Text("SearchInputs")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderController>(t => t.SearchInputs());
+                                        items.Add()
+                                            .Text("TestExpression")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderDetailController>(t => t.TestExpression());
+                                        items.Add()
+                                            .Text("BothDates")
+                                            .Action<Northwind.WebUI.Controllers.PersianDateController>(t => t.Index());
+                                        items.Add()
+                                            .Text("Customer")
+                                            .Text("Order_Index").Action("Index", "Customer", new { area = "Northwind" });
+
+                                    })
+            )
+        </div>
             <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
         </div>
     <div class="container body-content">

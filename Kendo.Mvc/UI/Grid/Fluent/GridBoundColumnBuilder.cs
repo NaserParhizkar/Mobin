@@ -9,7 +9,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent interface for configuring bound columns
     /// </summary>
     /// <typeparam name="T">The type of the data item</typeparam>
-    public class GridBoundColumnBuilder<T> : GridColumnBuilderBase<IGridBoundColumn, GridBoundColumnBuilder<T>>
+    public partial class GridBoundColumnBuilder<T> : GridColumnBuilderBase<IGridBoundColumn, GridBoundColumnBuilder<T>>
         where T : class
     {
         private ViewContext viewContext;

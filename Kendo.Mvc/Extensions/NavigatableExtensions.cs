@@ -56,7 +56,7 @@ namespace Kendo.Mvc.UI
         /// </summary>
         /// <param name="item">The <see cref="INavigatable"/> object.</param>
         /// <param name="controllerAction">The controller action.</param>
-        public static void Action<TController>(this INavigatable item, Expression<Action<TController>> controllerAction) where TController : Controller
+        public static void Action<TController>(this INavigatable item, Expression<Action<TController>> controllerAction) where TController : ControllerBase
         {
             MethodCallExpression call = (MethodCallExpression)controllerAction.Body;
 

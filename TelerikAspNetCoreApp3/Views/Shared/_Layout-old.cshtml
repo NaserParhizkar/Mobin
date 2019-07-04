@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>@ViewData["Title"] - Northwind.WebUI</title>
 
- 
-   @*---------------------------------------------------------------------------------------------------------------------------------------*@
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
     @*-----------------Style Sheet liberaries include kendo libs-----------------*@
     <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
-    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
 
     @*---------------------------------------------------------------------------------------------------------------------------------------*@
     @*------------------------Javascript liberaries include kendo, mobin and jquery libs------------------------*@
+
     <script src="~/kendo-2017.2.504/js/jquery.js"></script>
     <script src="~/kendo-2017.2.504/js/mobin.common.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.core.js"></script>
-    <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.calendar.js"></script>
 
@@ -44,14 +46,18 @@
     <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.binder.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.window.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.editable.js"></script>
 
-    <script src="~/kendo-2017.2.504/js/kendo.window.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.dropdownlist.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.filtermenu.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.filtercell.js"></script>
+
+    <script src="~/lib/mobin.search.dropdownlist.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.upload.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.menu.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.columnmenu.js"></script>
@@ -87,6 +93,7 @@
     <script src="~/kendo-2017.2.504/js/kendo.multiselect.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>
+    <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -127,19 +134,47 @@
     <div class="container menu-content">
         <div id="responsive-panel">
             @(Html.Kendo().Menu()
-                        .Name("Menu")
-                        .Items(items =>
-                        {
-                            items.Add()
-                                .Text("KendoGridHelper")
-                                .Action("Index", "KendoGridHelper");
-                            items.Add()
-                                 .Text("MySearchInputs")
-                                 .Action("MySearchInputs", "KendoGridHelper");
-                            items.Add()
-                                .Text("BothDates")
-                                .Action("Index", "PersianDate");
-                        })
+                    .Name("Menu")
+                    .Items(items =>
+                    {
+                        items.Add()
+                      .Text("Home")
+                      .Action( "Index", "Home", new { area = "" });
+
+                        items.Add()
+                            .Text("Order_Index")
+                           .Action("Index", "Order", new { area = "northwind" });
+
+                        items.Add()
+                            .Text("SearchInputs")
+                           .Action("SearchInputs", "Order", new { area = "northwind" });
+
+                        items.Add()
+                            .Text("TestExpression")
+                            .Action("TestExpression", "OrderDetail",new { area = "northwind" });
+
+                        items.Add()
+                            .Text("BothDates")
+                            .Action("Index", "PersianDate", new { area = "" });
+
+                        items.Add()
+                            .Text("Path_PathView")
+                           .Action("PathView", "Path", new { area = "bus" });
+
+                        items.Add()
+                            .Text("ValidateForm")
+                           .Action("ValidateForm", "Path", new { area = "bus" });
+
+                        items.Add()
+                            .Text("Customer")
+                           .Action("Index", "Customer", new { area = "northwind" });
+
+
+                        items.Add()
+                            .Text("Category")
+                           .Action("Index", "Category", new { area = "northwind" });
+
+                    })
             )
         </div>
         <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>

@@ -722,7 +722,19 @@
                         return getCalendarInfo(culture).months.names[date.getMonth()] + ' ' + date.getFullYear();
                     },
                     content: function (options) {
-                        var that = this, idx = 0, min = options.min, max = options.max, date = options.date, dates = options.dates, format = options.format, culture = options.culture, navigateUrl = options.url, isWeekColumnVisible = options.isWeekColumnVisible, hasUrl = navigateUrl && dates[0], currentCalendar = getCalendarInfo(culture), firstDayIdx = currentCalendar.firstDay, days = currentCalendar.days, names = shiftArray(days.names, firstDayIdx), shortNames = shiftArray(days.namesShort, firstDayIdx), start = calendar.firstVisibleDay(date, currentCalendar), firstDayOfMonth = that.first(date), lastDayOfMonth = that.last(date), toDateString = that.toDateString, today = new DATE(), html = '<table tabindex="0" role="grid" class="k-content" cellspacing="0"><thead><tr role="row">';
+                        var that = this, idx = 0,
+                            min = options.min,
+                            max = options.max, date = options.date, dates = options.dates, format = options.format,
+                            culture = options.culture, navigateUrl = options.url,
+                            isWeekColumnVisible = options.isWeekColumnVisible, hasUrl = navigateUrl && dates[0],
+                            currentCalendar = getCalendarInfo(culture), firstDayIdx = currentCalendar.firstDay,
+                            days = currentCalendar.days, names = shiftArray(days.names, firstDayIdx),
+                            shortNames = shiftArray(days.namesShort, firstDayIdx),
+                            start = calendar.firstVisibleDay(date, currentCalendar),
+                            firstDayOfMonth = that.first(date), lastDayOfMonth = that.last(date),
+                            toDateString = that.toDateString, today = new DATE(),
+                            html = '<table tabindex="0" role="grid" class="k-content" cellspacing="0"><thead><tr role="row">';
+
                         if (isWeekColumnVisible) {
                             html += '<th scope="col" class="k-alt">' + options.messages.weekColumnHeader + '</th>';
                         }

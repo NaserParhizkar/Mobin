@@ -12,9 +12,14 @@ namespace Mobin.Service
     {
         protected readonly IMobinUnitOfWork mobinUnitOfWork;
 
-        public CrudService(IMobinUnitOfWork unitofwork)
+        //public CrudService(IMobinUnitOfWork unitofwork):this(delegate(Type type) { return unitofwork; })
+        //{
+        //    mobinUnitOfWork = unitofwork;
+        //}
+
+        public CrudService(Func<Type, IMobinUnitOfWork> unitofwork)
         {
-            mobinUnitOfWork = unitofwork;
+            mobinUnitOfWork = unitofwork(typeof(TEntity));
         }
 
         public virtual TEntity GetEntityByKey<TKey>(TKey key)

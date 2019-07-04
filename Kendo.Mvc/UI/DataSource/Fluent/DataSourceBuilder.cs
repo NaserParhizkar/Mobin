@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="DataSource"/> component.
     /// </summary>
-    public partial class DataSourceBuilder<TModel> : IHideObjectMembers
+    public class DataSourceBuilder<TModel> : IHideObjectMembers
         where TModel : class
     {
         protected readonly DataSource dataSource;

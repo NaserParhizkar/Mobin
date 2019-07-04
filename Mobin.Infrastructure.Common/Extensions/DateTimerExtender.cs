@@ -19,7 +19,7 @@ namespace Mobin.Common
             return string.Format(format, pYear, pMonth, pDay);
         }
 
-        public static string GetJavascriptPDateType(this DateTime dateTime, string format = "yyyy/MM/dd")
+        public static string GetJavascriptPDate(this DateTime dateTime, string format = "yyyy/MM/dd")
         {
             PersianCalendar persianCalendar = new PersianCalendar();
             int pYear, pMonth, pDay;
@@ -28,7 +28,7 @@ namespace Mobin.Common
             pMonth = persianCalendar.GetMonth(dateTime);
             pDay = persianCalendar.GetDayOfMonth(dateTime);
 
-            return $"new pDate({pYear},{pMonth},{pDay})";
+            return $"new pDate(+(new Date({dateTime})))";
         }
     }
 }

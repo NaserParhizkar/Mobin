@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
     <ProjectReference Include="..\Mobin.Service\Mobin.Service.csproj" />
-    <ProjectReference Include="..\Northwind.Repository\Northwind.Repository.csproj" />
+    <ProjectReference Include="..\Repository\Northwind.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -219,8 +219,7 @@
         var DatePicker = Widget.extend({
             init: function (element, options) {
                 var that = this, disabled, div;
-                options.culture = options.culture || kendo.culture().name; 
-
+                options.culture = options.culture || kendo.culture().name;
                 if (options.culture == "fa-IR") {
                     DATE = pDate;
                     that.options.min = options.min ? options.min : new DATE(1300, 0, 1);

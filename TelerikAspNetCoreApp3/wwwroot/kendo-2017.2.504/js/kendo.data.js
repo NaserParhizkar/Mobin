@@ -1785,6 +1785,8 @@
                 that._destroyed = [];
                 that._pageSize = options.pageSize;
                 that._page = options.page || (options.pageSize ? 1 : undefined);
+                that._widgetId = options.widgetId;
+                that._autoMakeQueryExpression = options.autoMakeQueryExpression;
                 that._sort = normalizeSort(options.sort);
                 that._filter = normalizeFilter(options.filter);
                 that._group = normalizeGroup(options.group);
@@ -2716,6 +2718,8 @@
             _process: function (data, e) {
                 var that = this, options = {}, result;
                 if (that.options.serverPaging !== true) {
+                    options._widgetId = that._widgetId;
+                    options._autoMakeQueryExpression = that._autoMakeQueryExpression;
                     options.skip = that._skip;
                     options.take = that._take || that._pageSize;
                     if (options.skip === undefined && that._page !== undefined && that._pageSize !== undefined) {
@@ -2750,6 +2754,8 @@
             _mergeState: function (options) {
                 var that = this;
                 if (options !== undefined) {
+                    that._widgetId = options.widgetId;
+                    that._autoMakeQueryExpression = options.autoMakeQueryExpression;
                     that._pageSize = options.pageSize;
                     that._page = options.page;
                     that._sort = options.sort;
@@ -2822,7 +2828,9 @@
                     sort: that.sort(),
                     filter: that.filter(),
                     group: that.group(),
-                    aggregate: that.aggregate()
+                    aggregate: that.aggregate(),
+                    widgetId: that.widgetId(),
+                    autoMakeQueryExpression: that.autoMakeQueryExpression()
                 }, options));
             },
             next: function (options) {
@@ -2869,6 +2877,14 @@
                     return;
                 }
                 return that.take();
+            },
+            widgetId: function (val) {
+                var that = this;
+                return that._widgetId;
+            },
+            autoMakeQueryExpression: function (val) {
+                var that = this;
+                return that._autoMakeQueryExpression;
             },
             sort: function (val) {
                 var that = this;

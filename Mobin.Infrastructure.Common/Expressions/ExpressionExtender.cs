@@ -13,6 +13,9 @@ namespace Mobin.Common.Expressions
 {
     public static class ExpressionExtender
     {
+        static int traverse = 0;
+        static readonly object threadSafeTravers = new object();
+
         public static MemberExpression GetMemberExpression(this ParameterExpression parameterExpression, MemberExpression memberExpression)
         {
             var isParameterExpression = memberExpression.Expression is ParameterExpression;
@@ -63,7 +66,6 @@ namespace Mobin.Common.Expressions
                 return Expression.Bind(propertyInfo, makeBindingExpr);
             }
         }
-
         public static MemberInitExpression MakeInitExpression(this Type dynamicClassType, List<Expression> expressions)
         {
             var dynamicProps = dynamicClassType.GetProperties();
@@ -71,7 +73,7 @@ namespace Mobin.Common.Expressions
 
             for (int i = 0; i < expressions.Count; i++)
             {
-                foreach (var prop in dynamicProps)
+                for (var j = 0; j < dynamicProps.Length; j++)
                 {
                     var value = (Expression)expressions[i].GetPropertyValue("Body", false);
 
@@ -80,23 +82,34 @@ namespace Mobin.Common.Expressions
                         var memberExp = (MemberExpression)(expressions[i].GetPropertyValue("Body"));
                         var memberName = memberExp.Member.Name;
 
-                        if (memberName == prop.Name)
+                        var expLen = memberExp.ToString().Split('.').Length;
+                        var diff = expLen - traverse;
+                        //x.Order.Employee.ReportsToNavigation.FirstName contain three nested json object
+                        //new {order = new { Employee = new { ReportsToNavigation = new { FirstName = ??}}}}
+                        //then diff variable must be 2 always      diff == 2   is true
+                        if (memberName == dynamicProps[j].Name && diff == 2)
                         {
-                            members_AssignmentExpression.Add(prop.BindNestedExpression(memberExp));
-                            expressions.RemoveAt(i);
-                            if (i != 0)
-                                break;
+                            if (members_AssignmentExpression.All(t => t.Member.Name != dynamicProps[j].Name))
+                            {
+                                members_AssignmentExpression.Add(dynamicProps[j].BindNestedExpression(memberExp));
+                                expressions.RemoveAt(i);
+                                if (i != 0 && j == dynamicProps.Length - 1)
+                                    break;
+                                if (expressions.Count == i)
+                                    break;
+                            }
                         }
                         else
                         {
-                            if (!prop.PropertyType.IsSealed && prop.PropertyType.GetProperties().Any())
+                            if (!dynamicProps[j].PropertyType.IsSealed && dynamicProps[j].PropertyType.GetProperties().Any())
                             {
-                                if (!members_AssignmentExpression.Any(t => t.Expression.Type == prop.PropertyType))
+                                if (!members_AssignmentExpression.Any(t => t.Expression.Type == dynamicProps[j].PropertyType))
                                 {
-                                    var newExp = MakeInitExpression(prop.PropertyType, expressions);
-                                    var bindToProperty = Expression.Bind(prop, newExp);
-
+                                    traverse++;
+                                    var newExp = MakeInitExpression(dynamicProps[j].PropertyType, expressions);
+                                    var bindToProperty = Expression.Bind(dynamicProps[j], newExp);
                                     members_AssignmentExpression.Add(bindToProperty);
+                                    traverse--;
                                 }
                             }
                         }
@@ -111,7 +124,7 @@ namespace Mobin.Common.Expressions
         {
             ParameterExpression sourceItem = Expression.Parameter(typeof(T), "x");
             var memberExprList = new List<MemberAssignment>();
-
+            traverse = 0;
             Type dynamicType = AppDomain.CurrentDomain.GetAssemblies()
                 .FirstOrDefault(ass => ass.GetName().Name == "DynamicLinqTypes")?.GetType("Anonymous");
             if (dynamicType == null)
@@ -145,6 +158,12 @@ namespace Mobin.Common.Expressions
             }
 
             return GetDynamicClass(properties);
+        }
+
+        public static Expression MakeItAsSimpleExpession(this Expression expression)
+        {
+            var body = (Expression)expression.GetPropertyValue(nameof(LambdaExpression.Body));//arguments
+            return body;
         }
 
         internal static Type GetDynamicClass(IDictionary<string, object> properties)

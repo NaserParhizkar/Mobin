@@ -8,9 +8,15 @@ namespace Northwind.WebUI.Controllers
 {
     public class PersianDateController : Controller
     {
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
+        }
+
+
+        public PartialViewResult EntryForm()
+        {
+            return PartialView();
         }
     }
 }

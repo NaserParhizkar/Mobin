@@ -23,7 +23,6 @@
             Widget = ui.Widget,
             CHANGE = 'change',
             ns = '.kendoGridSearchInput',
-            MOUSELEAVE = 'mouseleave' + ns,
             CLASS_ICON = 'k-icon',
             STATE_INVALID = 'k-state-invalid',
             NULL = null,
@@ -142,7 +141,6 @@
                         grid.dataSource.filter(preFilters);
                     } else {
                         grid.dataSource.filter({ field: field, operator: "contains", value: value });
-                        grid.dataSource.read();
                     }
                 } else {
                     grid.dataSource.filter({});

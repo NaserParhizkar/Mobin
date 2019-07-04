@@ -117,7 +117,7 @@
             return (TCrudOperationBuilder)this;
         }
 
-        public TCrudOperationBuilder Action<TController>(Expression<Action<TController>> controllerAction) where TController : Controller
+        public TCrudOperationBuilder Action<TController>(Expression<Action<TController>> controllerAction) where TController : ControllerBase
         {
             operation.Action(controllerAction);
 

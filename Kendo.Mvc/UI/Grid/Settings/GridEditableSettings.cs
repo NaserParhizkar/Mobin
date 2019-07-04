@@ -138,8 +138,9 @@ namespace Kendo.Mvc.UI
 				["draggable"] = PopUp.Draggable,
 				["resizable"] = PopUp.ResizingSettings.Enabled,
 				["width"] = PopUp.Width ?? 0,
-				["height"] = PopUp.Height ?? 0
-			};
+                ["height"] = PopUp.Height ?? 0,
+                ["content"] = PopUp.ContentUrl
+            };
 
 			var popupPosition = PopUp.Position;
 

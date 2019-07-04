@@ -26,6 +26,8 @@ namespace Mobin.TestConsoleApplication.Model
         [StringLength(60)]
         public string Address { get; set; }
         [StringLength(15)]
+
+        [Display(Name =" City manam ")]
         public string City { get; set; }
         [StringLength(15)]
         public string Region { get; set; }
