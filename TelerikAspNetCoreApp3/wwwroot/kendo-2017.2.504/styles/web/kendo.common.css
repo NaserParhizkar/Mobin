@@ -3878,7 +3878,7 @@ span.k-dropdown,
 .k-dropdown,
 .k-selectbox,
 .k-toolbar .k-split-button {
-  white-space: nowrap;
+  white-space: normal;
 }
 .k-colorpicker,
 .k-toolbar .k-split-button {
@@ -4080,7 +4080,7 @@ span.k-datetimepicker .k-select + .k-select {
 .k-picker-wrap:before,
 .k-numeric-wrap:before {
   content: "\a0";
-  display: inline-block;
+  display: none;
   width: 0;
   height: 1.65em;
   padding-bottom: 0.3em;
@@ -12099,4 +12099,9 @@ div.k-spreadsheet-window {
 .k-pdf-export sub,
 .k-pdf-export sup {
   display: inline-block;
+}
+
+/*naser edited*/
+.k-invalid {
+    border: 1px solid red !important
 }

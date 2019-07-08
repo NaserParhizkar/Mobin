@@ -95,6 +95,17 @@
     <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>
     <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
 
+    <style type="text/css">
+        .k-widget.k-tooltip-validation {
+            width: 80%;
+        }
+
+        .control-label {
+            float: right;
+            padding-bottom: 5px;
+        }
+    </style>
+
     <script type="text/javascript">
         $(function () {
             kendo.culture('fa-IR');
@@ -117,77 +128,82 @@
     </environment>
 
 </head>
-<body style="font-family:Tahoma;font-size:12px;" class="k-rtl">
-    <div class="k-header">
-        <div class="container">
-            <div class="row">
-                <h1><a asp-controller="Home" asp-action="Index">Your .NET Core Application</a></h1>
+<body style="font-family:Tahoma;font-size:14px;">
+    <div id="errorTree" style="word-wrap:break-word;overflow-wrap:break-word;overflow-x:auto;width:500px;"></div>
+    <div class="k-rtl">
+
+
+        <div class="k-header">
+            <div class="container">
+                <div class="row">
+                    <h1><a asp-controller="Home" asp-action="Index">Your .NET Core Application</a></h1>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container menu-content">
-        <div id="responsive-panel">
+        <div class="container menu-content">
+            <div id="responsive-panel">
 
+            </div>
+            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
         </div>
-        <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
-    </div>
-    <div class="container menu-content">
-        <div id="responsive-panel">
-            @(Html.Kendo().Menu()
-                    .Name("Menu")
-                    .Items(items =>
-                    {
-                        items.Add()
-                      .Text("Home")
-                      .Action( "Index", "Home", new { area = "" });
+        <div class="container menu-content">
+            <div id="responsive-panel">
+                @(Html.Kendo().Menu()
+                                        .Name("Menu")
+                                        .Items(items =>
+                                        {
+                                            items.Add()
+                                          .Text("Home")
+                                          .Action("Index", "Home", new { area = "" });
 
-                        items.Add()
-                            .Text("Order_Index")
-                           .Action("Index", "Order", new { area = "northwind" });
+                                            items.Add()
+                                                .Text("Order_Index")
+                                               .Action("Index", "Order", new { area = "northwind" });
 
-                        items.Add()
-                            .Text("SearchInputs")
-                           .Action("SearchInputs", "Order", new { area = "northwind" });
+                                            items.Add()
+                                                .Text("SearchInputs")
+                                               .Action("SearchInputs", "Order", new { area = "northwind" });
 
-                        items.Add()
-                            .Text("TestExpression")
-                            .Action("TestExpression", "OrderDetail",new { area = "northwind" });
+                                            items.Add()
+                                                .Text("TestExpression")
+                                                .Action("TestExpression", "OrderDetail", new { area = "northwind" });
 
-                        items.Add()
-                            .Text("BothDates")
-                            .Action("Index", "PersianDate", new { area = "" });
+                                            items.Add()
+                                                .Text("BothDates")
+                                                .Action("Index", "PersianDate", new { area = "" });
 
-                        items.Add()
-                            .Text("Path_PathView")
-                           .Action("PathView", "Path", new { area = "bus" });
+                                            items.Add()
+                                                .Text("Path_PathView")
+                                               .Action("PathView", "Path", new { area = "bus" });
 
-                        items.Add()
-                            .Text("ValidateForm")
-                           .Action("ValidateForm", "Path", new { area = "bus" });
+                                            items.Add()
+                                                .Text("ValidateForm")
+                                               .Action("ValidateForm", "Path", new { area = "bus" });
 
-                        items.Add()
-                            .Text("Customer")
-                           .Action("Index", "Customer", new { area = "northwind" });
+                                            items.Add()
+                                                .Text("Customer")
+                                               .Action("Index", "Customer", new { area = "northwind" });
 
 
-                        items.Add()
-                            .Text("Category")
-                           .Action("Index", "Category", new { area = "northwind" });
+                                            items.Add()
+                                                .Text("Category")
+                                               .Action("Index", "Category", new { area = "northwind" });
 
-                    })
-            )
+                                        })
+                )
+            </div>
+            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
         </div>
-        <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <footer class="footer">
-            <span class="text-muted">Copyright © @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates.</span>
-            <span class="text-muted">All rights reserved.</span>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <footer class="footer">
+                <span class="text-muted">Copyright © @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates.</span>
+                <span class="text-muted">All rights reserved.</span>
+            </footer>
+        </div>
 
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
+    </div>
 
 </body>
 </html>

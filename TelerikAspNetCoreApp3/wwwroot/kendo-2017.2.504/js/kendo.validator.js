@@ -116,7 +116,7 @@
             ],
             options: {
                 name: 'Validator',
-                errorTemplate: '<span class="k-widget k-tooltip k-tooltip-validation">' + '<span class="k-icon k-i-warning"> </span> #=message#</span>',
+                errorTemplate: '<div class="k-widget k-tooltip k-tooltip-validation"><div class="k-icon k-warning"> </div> #=message#</div>',
                 messages: {
                     required: '{0} is required',
                     pattern: '{0} is not valid',
@@ -255,42 +255,240 @@
                 }
                 return result;
             },
-            validateInput: function (input) {
+            validateInput: function (input, preValue) {
                 input = $(input);
+
                 this._isValidated = true;
-                var that = this, template = that._errorTemplate, result = that._checkValidity(input), valid = result.valid, className = '.' + INVALIDMSG, fieldName = input.attr(NAME) || '', lbl = that._findMessageContainer(fieldName).add(input.next(className).filter(function () {
+
+                var that = this,
+                    template = that._errorTemplate,
+                    result = that._checkValidity(input, preValue),
+                    valid = result.valid,
+                    className = "." + INVALIDMSG,
+                    fieldName = (input.attr(NAME) || ""),
+                    lbl = that._findMessageContainer(fieldName).add(input.next(className).filter(function () {
                         var element = $(this);
-                        if (element.filter('[' + kendo.attr('for') + ']').length) {
-                            return element.attr(kendo.attr('for')) === fieldName;
+                        if (element.filter("[" + kendo.attr("for") + "]").length) {
+                            return element.attr(kendo.attr("for")) === fieldName;
                         }
+
                         return true;
-                    })).hide(), messageText, wasValid = !input.attr('aria-invalid');
-                input.removeAttr('aria-invalid');
+
+                    })).hide(),
+                    messageText;
+
+                input.removeAttr("aria-invalid");
+
+
+                if (input.attr('data-role') === "dropdownlist") {
+                    if (input.data('kendoDropDownList').value() == 0) {
+                        if (input.data('kendoDropDownList').options.optionLabel) {
+                            valid = false;
+                            if (!input.closest('span').hasClass(INVALIDINPUT))
+                                input.closest('span').addClass(INVALIDINPUT);
+                        }
+                    } else {
+                        if (input.closest('span').hasClass(INVALIDINPUT))
+                            input.closest('span').removeClass(INVALIDINPUT);
+                        //if (input.data('kendoDropDownList').options.optionLabel != input.data('kendoDropDownList').text()) {
+                        //    if (!$(this).hasClass(INVALIDINPUT))
+                        //        $(this).addClass(INVALIDINPUT);
+                        //}
+                    }
+                }
+
                 if (!valid) {
-                    messageText = that._extractMessage(input, result.key);
-                    that._errors[fieldName] = messageText;
-                    var messageLabel = parseHtml(template({ message: decode(messageText) }));
-                    var lblId = lbl.attr('id');
-                    that._decorateMessageContainer(messageLabel, fieldName);
-                    if (lblId) {
-                        messageLabel.attr('id', lblId);
+                    if (result.key) {
+                        messageText = that._extractMessage(input, result.key);
+                        that._errors[fieldName] = messageText;
+                        var messageLabel = parseHtml(template({ message: decode(messageText) }));
+
+
+                        var lblId = lbl.attr('id');
+
+                        that._decorateMessageContainer(messageLabel, fieldName);
+
+                        if (lblId) {
+                            messageLabel.attr('id', lblId);
+                        }
+
+                        if (!lbl.replaceWith(messageLabel).length) {
+                            messageLabel.insertAfter(input);
+                        }
                     }
-                    if (!lbl.replaceWith(messageLabel).length) {
-                        messageLabel.insertAfter(input);
-                    }
-                    messageLabel.show();
-                    input.attr('aria-invalid', true);
+
+                    //////naser edited
+                    //if (input.is(':focus'))
+                    input.on("keyup", messageLabel, function (ev) {
+                        var objValidator = new kendo.ui.Validator(input, {
+                            validateOnBlur: false,
+                            errorTemplate: that.options.errorTemplate || undefined,
+                            rules: kendo.ui.validator.rules
+                        });
+                        var fieldName = (input.attr(NAME) || "");
+
+                        var lbl = objValidator._findMessageContainer(fieldName).add(input.next(className).filter(function () {
+                            var element = $(objValidator);
+                            if (element.filter("[" + kendo.attr("for") + "]").length) {
+                                return element.attr(kendo.attr("for")) === fieldName;
+                            }
+                            return true;
+                        })).hide();
+
+                        var result = objValidator._checkValidity(input, preValue);
+
+                        if (result.valid) {
+
+                            if ($(this).hasClass(INVALIDINPUT))
+                                $(this).removeClass(INVALIDINPUT);
+                            messageLabel.hide();
+                        } else {
+                            var messageText = objValidator._extractMessage(input, result.key);
+                            messageLabel.text(messageText);
+                            if (!$(this).hasClass(INVALIDINPUT))
+                                $(this).addClass(INVALIDINPUT);
+                            messageLabel.show();
+                        }
+                    });
+
+                    input.on("focusin", function (ev) {
+                        var objValidator = new kendo.ui.Validator(input, {
+                            validateOnBlur: false,
+                            errorTemplate: that.options.errorTemplate || undefined,
+                            rules: kendo.ui.validator.rules
+                        });
+                        var fieldName = (input.attr(NAME) || "");
+
+                        var lbl = objValidator._findMessageContainer(fieldName).add(input.next(className).filter(function () {
+                            var element = $(objValidator);
+                            if (element.filter("[" + kendo.attr("for") + "]").length) {
+                                return element.attr(kendo.attr("for")) === fieldName;
+                            }
+                            return true;
+                        })).hide();
+
+                        var result = objValidator._checkValidity(input, preValue);
+
+                        if (result.valid) {
+                            if ($(this).hasClass(INVALIDINPUT))
+                                $(this).removeClass(INVALIDINPUT);
+                            messageLabel.hide();
+                        } else {
+                            var messageText = objValidator._extractMessage(input, result.key);
+                            messageLabel.text(messageText);
+                            if (!$(this).hasClass(INVALIDINPUT))
+                                $(this).addClass(INVALIDINPUT);
+                            messageLabel.show();
+                        }
+                    });
+                    input.on("focusout", function (ev) {
+                        if (input.attr('data-role') != 'dropdownlist') {
+                            messageLabel.hide();
+                        }
+                    });
+                    /////////////////////////////////////////////////////////
+
+
+                    input.attr("aria-invalid", true);
                 } else {
                     delete that._errors[fieldName];
                 }
-                if (wasValid !== valid) {
-                    this.trigger(VALIDATE_INPUT, {
-                        valid: valid,
-                        input: input
+
+                //naser edited
+                if (input.attr('data-role') === "dropdownlist") {
+                    input.closest('span').on('focusin', messageLabel, function (ev) {
+
+                        var objValidator = new kendo.ui.Validator(input, {
+                            validateOnBlur: false,
+                            errorTemplate: that.options.errorTemplate || undefined,
+                            rules: kendo.ui.validator.rules
+                        });
+                        var fieldName = (input.attr(NAME) || "");
+
+                        var lbl = objValidator._findMessageContainer(fieldName).add(input.next(className).filter(function () {
+                            var element = $(objValidator);
+                            if (element.filter("[" + kendo.attr("for") + "]").length) {
+                                return element.attr(kendo.attr("for")) === fieldName;
+                            }
+                            return true;
+                        })).hide();
+
+                        var result = objValidator._checkValidity(input, preValue);
+
+                        if (result.valid) {
+                            if (messageLabel)
+                                messageLabel.hide();
+                            if (input.closest('span').hasClass(INVALIDINPUT))
+                                input.closest('span').removeClass(INVALIDINPUT);
+
+                        } else {
+                            if (messageLabel)
+                                messageLabel.show();
+                            if (!input.closest('span').hasClass(INVALIDINPUT))
+                                input.closest('span').addClass(INVALIDINPUT);
+                        }
+                    });
+                    input.closest('span').on('focusout', messageLabel, function (ev) {
+                        var objValidator = new kendo.ui.Validator(input, {
+                            validateOnBlur: false,
+                            errorTemplate: that.options.errorTemplate || undefined,
+                            rules: kendo.ui.validator.rules
+                        });
+                        var fieldName = (input.attr(NAME) || "");
+
+                        var lbl = objValidator._findMessageContainer(fieldName).add(input.next(className).filter(function () {
+                            var element = $(objValidator);
+                            if (element.filter("[" + kendo.attr("for") + "]").length) {
+                                return element.attr(kendo.attr("for")) === fieldName;
+                            }
+                            return true;
+                        })).hide();
+
+                        var result = objValidator._checkValidity(input, preValue);
+
+                        if (result.valid) {
+                            if (messageLabel)
+                                messageLabel.hide();
+                            if (input.closest('span').hasClass(INVALIDINPUT))
+                                input.closest('span').removeClass(INVALIDINPUT);
+
+                        } else {
+                            if (messageLabel)
+                                messageLabel.hide();
+                            if (!input.closest('span').hasClass(INVALIDINPUT))
+                                input.closest('span').addClass(INVALIDINPUT);
+                        }
                     });
                 }
+
+                if (input.attr('data-role') === "numerictextbox") {
+                    var objValidator = new kendo.ui.Validator(input, {
+                        validateOnBlur: false,
+                        errorTemplate: that.options.errorTemplate || undefined,
+                        rules: kendo.ui.validator.rules
+                    });
+                    var fieldName = (input.attr(NAME) || "");
+
+                    var result = objValidator._checkValidity(input, preValue);
+
+                    if (result.valid) {
+                        if (input.siblings('input').hasClass(INVALIDINPUT)) {
+                            input.closest('span').css('border-style', 'solid');
+                            input.siblings('input').removeClass(INVALIDINPUT);
+                        }
+                    } else {
+                        if (!input.siblings('input').hasClass(INVALIDINPUT)) {
+                            input.closest('span').css('border-style', 'none');
+                            input.siblings('input').addClass(INVALIDINPUT).css('border-style', 'none');
+                        }
+                    }
+                }
+
+                /////////////////////////////////////////////////////////
+
                 input.toggleClass(INVALIDINPUT, !valid);
                 input.toggleClass(VALIDINPUT, valid);
+
                 return valid;
             },
             hideMessages: function () {
