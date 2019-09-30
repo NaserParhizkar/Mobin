@@ -126,7 +126,8 @@
                     email: '{0} is not valid email',
                     url: '{0} is not valid URL',
                     date: '{0} is not valid date',
-                    dateCompare: 'End date should be greater than or equal to the start date'
+                    dateCompare: 'End date should be greater than or equal to the start date',
+                    nationalCode: function (input) { return input.attr('data-val-nationalcode'); }
                 },
                 rules: {
                     required: function (input) {
@@ -173,6 +174,32 @@
                     date: function (input) {
                         if (input.filter('[type^=date],[' + kendo.attr('type') + '=date]').length && input.val() !== '') {
                             return kendo.parseDate(input.val(), input.attr(kendo.attr('format'))) !== null;
+                        }
+                        return true;
+                    },
+                    nationalCode: function (input) {
+                        if (typeof input.attr('data-val-nationalcode') !== "undefined") {
+                            try {
+                                if (input.val() == "" || input.val() == undefined)
+                                    return true;
+                                var value = input.val();
+
+                                if (value.length != 10) {
+                                    return false;
+                                }
+
+                                var result = 0, controlNr = (Number(value[9]));
+                                for (var i = 0; i < value.length - 1; i++)
+                                    result += (Number(value[i])) * (10 - i);
+
+                                var remainder = result % 11;
+                                var isValid = controlNr == (remainder < 2 ? remainder : 11 - remainder);
+
+                                return isValid;
+                            }
+                            catch (ex) {
+                                return false;
+                            }
                         }
                         return true;
                     }

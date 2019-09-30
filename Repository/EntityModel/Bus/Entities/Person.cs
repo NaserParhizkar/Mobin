@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Mobin.Common.ComponentModel.DataAnnotations;
 
 namespace KendoBus.Repository
 {
@@ -25,7 +26,7 @@ namespace KendoBus.Repository
         //[RegularExpression(@"[0-9]{10}",ErrorMessage = "لطفاً کد ملی را به صورت عددی و با 10 کاراکتر وارد نمایید")]
         [Display(Name = "کد ملی")]
         [Required(ErrorMessage = "لطفا کد ملی را وارد نمایید")]
-        //[NationalCode(ErrorMessage = "کد ملی وارد شده نامعتبر می باشد")]
+        [NationalCode(ErrorMessage = "کد ملی وارد شده نامعتبر می باشد")]
         public string NationalCode { get; set; }
 
         [Display(Name="نام"),Required(ErrorMessage="لطفا نام را وارد نمایید")]

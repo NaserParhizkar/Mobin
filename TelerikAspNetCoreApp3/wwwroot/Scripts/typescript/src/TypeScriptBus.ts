@@ -18,3 +18,32 @@ $(function () {
         max: new pDate(1399, 11, 29, 0, 0, 0, 0)
     });
 });
+
+
+class MyPerson extends kendo.data.ObservableObject {
+    name = "John Doe";
+
+    constructor() {
+        super();
+
+        super.init(this);
+    }
+}
+
+class ViewModel extends kendo.data.ObservableObject {
+    person = new MyPerson();
+
+    constructor() {
+        super();
+
+        super.init(this);
+    }
+}
+
+$(function () {
+    var viewModel = new ViewModel();
+
+    kendo.bind(document.body, viewModel);
+
+    viewModel.set(person.name, "Jane Doe");
+});

@@ -12,10 +12,10 @@ namespace Northwind.WebUI.Controllers
 {
     public class CustomerApiController : CrudController<Customer>
     {
-        private readonly CustomerService customerService;
+        private readonly ICustomerService customerService;
         public CustomerApiController(ICustomerService _customerService) : base(_customerService)
         {
-            customerService = (CustomerService)_customerService;
+            customerService = _customerService;
         }
 
         public override async System.Threading.Tasks.Task<object> Read([DataSourceRequest] DataSourceRequest request)
