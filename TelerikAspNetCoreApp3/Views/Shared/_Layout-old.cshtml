@@ -8,8 +8,10 @@
 
     @*---------------------------------------------------------------------------------------------------------------------------------------*@
     @*-----------------Style Sheet liberaries include kendo libs-----------------*@
+
     <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
+    <link href="~/Content/mobin.kendo.common.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
     <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.default.css" rel="stylesheet" />
@@ -119,9 +121,10 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link type="text/javascript" href="~/js/config-kendo.min.js" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
@@ -148,48 +151,75 @@
         </div>
         <div class="container menu-content">
             <div id="responsive-panel">
+                @*@(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            items.Add()
+                          .Text("اصلی")
+                          .Action("Index", "Home", new { area = "" });
+
+                            items.Add()
+                                .Text("مشتری")
+                               .Action("Index", "PDNCustomer", new { area = "pdn" });
+
+                            items.Add()
+                                .Text("سفارش")
+                               .Action("Index", "PDNOrderItem", new { area = "pdn" });
+
+                            items.Add()
+                                .Text("محصول")
+                                .Action("Index", "PDNProduct", new { area = "pdn" });
+                              items.Add()
+                    .Text("Path_PathView")
+                   .Action("PathView", "Path", new { area = "bus" });
+
+
+                        })
+        )*@
+
                 @(Html.Kendo().Menu()
-                                        .Name("Menu")
-                                        .Items(items =>
-                                        {
-                                            items.Add()
-                                          .Text("Home")
-                                          .Action("Index", "Home", new { area = "" });
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            items.Add()
+                          .Text("Home")
+                          .Action("Index", "Home", new { area = "" });
 
-                                            items.Add()
-                                                .Text("Order_Index")
-                                               .Action("Index", "Order", new { area = "northwind" });
+                            items.Add()
+                                .Text("Order_Index")
+                               .Action("Index", "Order", new { area = "northwind" });
 
-                                            items.Add()
-                                                .Text("SearchInputs")
-                                               .Action("SearchInputs", "Order", new { area = "northwind" });
+                            items.Add()
+                                .Text("SearchInputs")
+                               .Action("SearchInputs", "Order", new { area = "northwind" });
 
-                                            items.Add()
-                                                .Text("TestExpression")
-                                                .Action("TestExpression", "OrderDetail", new { area = "northwind" });
+                            items.Add()
+                                .Text("TestExpression")
+                                .Action("TestExpression", "OrderDetail", new { area = "northwind" });
 
-                                            items.Add()
-                                                .Text("BothDates")
-                                                .Action("Index", "PersianDate", new { area = "" });
+                            items.Add()
+                                .Text("BothDates")
+                                .Action("Index", "PersianDate", new { area = "" });
 
-                                            items.Add()
-                                                .Text("Path_PathView")
-                                               .Action("PathView", "Path", new { area = "bus" });
+                            items.Add()
+                                .Text("Path_PathView")
+                               .Action("PathView", "Path", new { area = "bus" });
 
-                                            items.Add()
-                                                .Text("ValidateForm")
-                                               .Action("ValidateForm", "Path", new { area = "bus" });
+                            items.Add()
+                                .Text("ValidateForm")
+                               .Action("ValidateForm", "Path", new { area = "bus" });
 
-                                            items.Add()
-                                                .Text("Customer")
-                                               .Action("Index", "Customer", new { area = "northwind" });
+                            items.Add()
+                                .Text("Customer")
+                               .Action("Index", "Customer", new { area = "northwind" });
 
 
-                                            items.Add()
-                                                .Text("Category")
-                                               .Action("Index", "Category", new { area = "northwind" });
+                            items.Add()
+                                .Text("Category")
+                               .Action("Index", "Category", new { area = "northwind" });
 
-                                        })
+                        })
                 )
             </div>
             <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>

@@ -13,7 +13,7 @@ namespace Kendo.Mvc.Infrastructure
         void Register<TService, TArg1, TArg2>(Func<TArg1, TArg2, TService> factory);
 
         void Register<TService>(Func<TService> factory);
-        
+
         void Register<TService>(Func<IDependencyInjectionContainer, TService> factory);
 
         TService Resolve<TService>();

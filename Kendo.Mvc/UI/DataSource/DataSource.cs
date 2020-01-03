@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI
 {

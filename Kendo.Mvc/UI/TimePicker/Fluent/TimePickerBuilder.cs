@@ -7,8 +7,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TimePicker
     /// </summary>
-    public partial class TimePickerBuilder: WidgetBuilderBase<TimePicker, TimePickerBuilder>
-        
+    public partial class TimePickerBuilder : WidgetBuilderBase<TimePicker, TimePickerBuilder>
+
     {
         public TimePickerBuilder(TimePicker component) : base(component)
         {

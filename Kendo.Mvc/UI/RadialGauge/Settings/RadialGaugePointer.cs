@@ -1,6 +1,4 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// <summary>
     /// Kendo UI RadialGaugePointer class
     /// </summary>
-    public partial class RadialGaugePointer 
+    public partial class RadialGaugePointer
     {
         public RadialGaugePointerCapSettings Cap { get; } = new RadialGaugePointerCapSettings();
 

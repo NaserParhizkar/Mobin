@@ -23,7 +23,7 @@
                     .DataSource(dataSource =>
                     {
                         dataSource
-                            .Ajax()
+                            .WebApi()
                             .Filter(t => t.Add(r => r.Country).Contains("u"))
                             .PageSize(10)
                             .Read(read => read.Action<CustomerApiController>(t => t.Read(null)));

@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Routing
+@using Microsoft.AspNetCore.Mvc;
 
 @{
     ViewData["Title"] = "PathView";
@@ -14,8 +15,10 @@
                              col.Bound(t => t.PathId).Filterable(w => w.Mode(GridFilterMode.Row)).Width(300);
                              col.Bound(t => t.Name).Width(300);
                              col.Bound(t => t.Distance).Width(300);
+
+                             col.Command(t => t.Edit().UpdateText("ویرایش").Text("asd").CancelText("dfgfg"));
                          })
-                                   .DataSource(source => source.Ajax().PageSize(20).AutoMakeQueryExpression()
+                                   .DataSource(source => source.WebApi().PageSize(20).AutoMakeQueryExpression()
                                            .Model(model =>
                                            {
                                                model.Id(t => t.ID);
@@ -23,12 +26,13 @@
                                            .Read(read => read.Action<PathApiController>(action => action.Read(null)))
                                                    .Create(create => create.Action<PathApiController>(action => action.Insert(null)))
                                                            .Update(update => update.Action<PathApiController>(action => action.Update(null)))
-                                                   .Destroy(destroy => destroy.Action<PathApiController>(action => action.Delete(null))))
-                                                   .ToolBar(toolbar => toolbar.Create().Text("افزودن"))
-                                       .Editable(edit => edit.Mode(GridEditMode.PopUp)
-                                        .Window(win => win.Name("wind").Modal().LoadContentFrom("EntryForm", "Path", "Bus")
-                                        .Pinned(false).Modal(true).Title("مسیر")))
-                                       )
-
-
+                                                   .Destroy(destroy => destroy.Action<PathApiController>
+    (action => action.Delete(null))))
+    .ToolBar(toolbar => toolbar.Create().Text("افزودن"))
+    .Editable(t => t.TemplateName("EntryForm").Mode(GridEditMode.PopUp).Window(y => y.Name("wind").Pinned(false).Modal(true).Title("مسیffر")))
+        //.Editable(edit => edit.Mode(GridEditMode.PopUp)
+        // .Window(win => win.Name("wind").Modal().LoadContentFrom<PathController>
+        //(t => t.EntryForm())
+        // .Pinned(false).Modal(true).Title("مسیر")))
+        )
 

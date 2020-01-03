@@ -29,51 +29,51 @@
         }
 
         public DataSource DataSource
-        { 
+        {
             get;
             private set;
         }
 
-        public string Title 
-        { 
-            get; 
+        public string Title
+        {
+            get;
             set;
         }
-        
-        public string Field 
-        { 
-            get; 
-            set; 
-        } 
-        
-        public bool Multiple
-        { 
+
+        public string Field
+        {
             get;
-            set; 
+            set;
         }
 
-        public string DataTextField 
-        { 
-            get; 
-            set; 
+        public bool Multiple
+        {
+            get;
+            set;
         }
 
-        public string DataValueField 
-        { 
-            get; 
-            set; 
+        public string DataTextField
+        {
+            get;
+            set;
         }
 
-        public string DataColorField 
-        { 
-            get; 
-            set; 
+        public string DataValueField
+        {
+            get;
+            set;
         }
 
-        public bool ValuePrimitive 
-        { 
-            get; 
-            set; 
+        public string DataColorField
+        {
+            get;
+            set;
+        }
+
+        public bool ValuePrimitive
+        {
+            get;
+            set;
         }
 
         public string Name

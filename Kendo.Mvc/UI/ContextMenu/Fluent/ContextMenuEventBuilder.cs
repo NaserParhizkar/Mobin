@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ContextMenu for ASP.NET MVC events.
     /// </summary>
-    public class ContextMenuEventBuilder: EventBuilder
+    public class ContextMenuEventBuilder : EventBuilder
     {
         public ContextMenuEventBuilder(IDictionary<string, object> events)
             : base(events)

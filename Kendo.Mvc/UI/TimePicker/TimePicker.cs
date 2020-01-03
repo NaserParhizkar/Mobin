@@ -1,10 +1,9 @@
 using Kendo.Mvc.Extensions;
-using System.IO;
-using System.Globalization;
-using System.Linq;
+using Kendo.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
@@ -12,7 +11,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI TimePicker component
     /// </summary>
     public partial class TimePicker : WidgetBase
-        
+
     {
         public TimePicker(ViewContext viewContext) : base(viewContext)
         {

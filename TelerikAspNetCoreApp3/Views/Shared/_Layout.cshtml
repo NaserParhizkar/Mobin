@@ -130,6 +130,7 @@
     </div>
     <div class="container menu-content">
         <div id="responsive-panel">
+
             @(Html.Kendo().Menu()
                                     .Name("Menu")
                                     .Items(items =>
@@ -137,9 +138,12 @@
                                         items.Add()
                                       .Text("Home")
                                       .Action<Northwind.WebUI.Controllers.HomeController>(t => t.Index());
-
+                                        //items.Add()
+                                        //    .Text("Order_Index").Action("Index","Order",new { area="Northwind" });
                                         items.Add()
-                                            .Text("Order_Index").Action("Index","Order",new { area="Northwind" });
+                                            .Text("Order_Index")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderController>(t => t.Index());
+
                                         items.Add()
                                             .Text("SearchInputs")
                                             .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderController>(t => t.SearchInputs());
@@ -149,15 +153,14 @@
                                         items.Add()
                                             .Text("BothDates")
                                             .Action<Northwind.WebUI.Controllers.PersianDateController>(t => t.Index());
-                                        items.Add()
+                                            items.Add()
                                             .Text("Customer")
-                                            .Text("Order_Index").Action("Index", "Customer", new { area = "Northwind" });
-
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.CustomerController>(t => t.Index());
                                     })
             )
         </div>
-            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
-        </div>
+        <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <footer class="footer">

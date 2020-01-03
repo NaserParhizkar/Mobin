@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring MapLayerDefaultsMarkerSettings
     /// </summary>
     public partial class MapLayerDefaultsMarkerSettingsBuilder
-        
+
     {
         public MapLayerDefaultsMarkerSettingsBuilder(MapLayerDefaultsMarkerSettings container)
         {

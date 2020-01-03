@@ -1,15 +1,15 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ListBox
     /// </summary>
-    public partial class ListBoxBuilder: WidgetBuilderBase<ListBox, ListBoxBuilder>
+    public partial class ListBoxBuilder : WidgetBuilderBase<ListBox, ListBoxBuilder>
     {
         public ListBoxBuilder(ListBox component) : base(component)
         {
@@ -42,7 +42,8 @@ namespace Kendo.Mvc.UI.Fluent
             }
 
             Component.DataSource.Data = dataSource
-                .Select(item => new {
+                .Select(item => new
+                {
                     Text = item.Text,
                     Value = item.Value ?? item.Text,
                     Selected = item.Selected

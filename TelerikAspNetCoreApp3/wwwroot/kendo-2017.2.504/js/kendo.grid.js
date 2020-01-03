@@ -1,4 +1,4 @@
-/** 
+﻿/** 
  * Kendo UI v2017.2.504 (http://www.telerik.com/kendo-ui)                                                                                                                                               
  * Copyright 2017 Telerik AD. All rights reserved.                                                                                                                                                      
  *                                                                                                                                                                                                      
@@ -1078,12 +1078,12 @@
         }
         function normalizeCols(table, visibleColumns, hasDetails, groups) {
             var colgroup = table.find('>colgroup'), width, cols = map(visibleColumns, function (column) {
-                    width = column.width;
-                    if (width && parseInt(width, 10) !== 0) {
-                        return kendo.format('<col style="width:{0}"/>', typeof width === STRING ? width : width + 'px');
-                    }
-                    return '<col />';
-                });
+                width = column.width;
+                if (width && parseInt(width, 10) !== 0) {
+                    return kendo.format('<col style="width:{0}"/>', typeof width === STRING ? width : width + 'px');
+                }
+                return '<col />';
+            });
             if (hasDetails || colgroup.find('.k-hierarchy-col').length) {
                 cols.splice(0, 0, '<col class="k-hierarchy-col" />');
             }
@@ -2170,13 +2170,13 @@
             },
             _editable: function () {
                 var that = this, selectable = that.selectable && that.selectable.options.multiple, editable = that.options.editable, handler = function () {
-                        var target = activeElement(), cell = that._editContainer;
-                        if (cell && !$.contains(cell[0], target) && cell[0] !== target && !$(target).closest('.k-animation-container').length) {
-                            if (that.editable.end()) {
-                                that.closeCell();
-                            }
+                    var target = activeElement(), cell = that._editContainer;
+                    if (cell && !$.contains(cell[0], target) && cell[0] !== target && !$(target).closest('.k-animation-container').length) {
+                        if (that.editable.end()) {
+                            that.closeCell();
                         }
-                    };
+                    }
+                };
                 if (editable) {
                     this.wrapper.addClass('k-editable');
                     var mode = that._editMode();
@@ -2252,10 +2252,10 @@
                         target: that,
                         change: function (e) {
                             if (that.trigger(SAVE, {
-                                    values: e.values,
-                                    container: cell,
-                                    model: model
-                                })) {
+                                values: e.values,
+                                container: cell,
+                                model: model
+                            })) {
                                 e.preventDefault();
                             }
                         }
@@ -2355,9 +2355,9 @@
                 id = cell.closest('tr').attr(kendo.attr('uid'));
                 model = that.dataSource.getByUid(id);
                 if (isCancel && that.trigger('cancel', {
-                        container: cell,
-                        model: model
-                    })) {
+                    container: cell,
+                    model: model
+                })) {
                     return;
                 }
                 that.trigger(CELLCLOSE, {
@@ -2384,9 +2384,9 @@
             },
             _displayCell: function (cell, column, dataItem) {
                 var that = this, state = {
-                        storage: {},
-                        count: 0
-                    }, settings = extend({}, kendo.Template, that.options.templateSettings), tmpl = kendo.template(that._cellTmpl(column, state), settings);
+                    storage: {},
+                    count: 0
+                }, settings = extend({}, kendo.Template, that.options.templateSettings), tmpl = kendo.template(that._cellTmpl(column, state), settings);
                 if (state.count > 0) {
                     tmpl = proxy(tmpl, state.storage);
                 }
@@ -2416,9 +2416,9 @@
                 row = row.hide();
                 model = that._modelForContainer(row);
                 if (model && !that.trigger(REMOVE, {
-                        row: row,
-                        model: model
-                    })) {
+                    row: row,
+                    model: model
+                })) {
                     that.dataSource.remove(model);
                     if (mode === 'inline' || mode === 'popup') {
                         that.dataSource.sync();
@@ -2485,6 +2485,21 @@
                 e.preventDefault();
                 e.stopPropagation();
                 this.saveRow();
+                //naser///////////////////////////////////////////////////////////
+                this.setFocusAtFirstInvalidElement();
+                //////////////////////////////////////////////////////////////////
+            },
+            setFocusAtFirstInvalidElement: function () {
+                if (this.editable && this.editable.element && this.editable.element.find('input.k-invalid').length > 0) {
+                    var elem = this.editable.element.find('input.k-invalid').first().focus();
+                    if (this.editable.element.find('div.k-tabstrip-top').length > 0) {
+                        var tabstrip = elem;
+                        while (!tabstrip.parent().hasClass('k-tabstrip-top') && tabstrip) {
+                            tabstrip = tabstrip.parent();
+                        }
+                        tabstrip.parent().data('kendoTabStrip').select(tabstrip.index() - 1);
+                    }
+                }
             },
             _editCancelClick: function (e) {
                 var that = this;
@@ -2494,9 +2509,9 @@
                 e.preventDefault();
                 e.stopPropagation();
                 if (that.trigger('cancel', {
-                        container: container,
-                        model: model
-                    })) {
+                    container: container,
+                    model: model
+                })) {
                     return;
                 }
                 var currentIndex = that.items().index($(that.current()).parent());
@@ -2608,9 +2623,9 @@
                             if (e.userTriggered) {
                                 e.sender.element.focus();
                                 if (that.trigger('cancel', {
-                                        container: container,
-                                        model: model
-                                    })) {
+                                    container: container,
+                                    model: model
+                                })) {
                                     e.preventDefault();
                                     return;
                                 }
@@ -2731,9 +2746,9 @@
                 if (container) {
                     model = that._modelForContainer(container);
                     if (notify && that.trigger('cancel', {
-                            container: container,
-                            model: model
-                        })) {
+                        container: container,
+                        model: model
+                    })) {
                         return;
                     }
                     that._destroyEditable();
@@ -2753,9 +2768,9 @@
                     return deferred.resolve().promise();
                 }
                 if (!this.editable.end() || this.trigger(SAVE, {
-                        container: container,
-                        model: model
-                    })) {
+                    container: container,
+                    model: model
+                })) {
                     return deferred.reject().promise();
                 }
                 return this.dataSource.sync();
@@ -2808,10 +2823,55 @@
                     }
                 }
             },
+            cancelHandler: function (row, win) {
+                win.close();
+            },
+
+            removeHandler: function (row, win) {
+                win.close();
+                this._removeRow(row);
+            },
+            _showWindowDeleteMessage: function (msg, row) {
+                var grid = this;
+
+                var div = '<div><span class="Nk-i-info"></span><span><h3>' + msg + PERSIANQUESTIONMARK + '</h3></span>'
+                    + '</div>' +
+                    '<div class="deleteConfirmationButtons"><input class="agreeDeleteButton k-button" type="button" value="بله" />' +
+                    '<input class="disagreeDeleteButton k-button" type="button" value="خیر" /></div>',
+                    deleteConfirmWindow = $(".windowDeleteConfirmation").data("kendoWindow");
+
+                $('.windowDeleteConfirmation').html(div);
+                $('.agreeDeleteButton.k-button').focus();
+                $('.windowDeleteConfirmation .agreeDeleteButton').on('click', grid, function (e) {
+                    grid.removeHandler(row, deleteConfirmWindow);
+                });
+
+                $('.windowDeleteConfirmation .disagreeDeleteButton').on('click', grid, function (e) {
+                    grid.cancelHandler(row, deleteConfirmWindow);
+                });
+            },
+            //_excuteDeleteConfirmation: function (row) {
+            //    this._removeRow(row);
+            //},
             _showMessage: function (messages, row) {
                 var that = this;
                 if (!that._isMobile) {
-                    return window.confirm(messages.title);
+                    {
+                        $(".windowDeleteConfirmation").kendoWindow({
+                            pinned: false,
+                            width: 300,
+                            height: 120,
+                            modal: true,
+                            autoFocus: false
+                        });
+                        var dialog = $(".windowDeleteConfirmation").data("kendoWindow");
+                        dialog.center();
+                        dialog.open();
+                        var delayToSetFocus = dialog.options.animation.open.duration;
+                        $('.agreeDeleteButton.k-button').focus();
+                        return this._showWindowDeleteMessage(messages.title, row);
+                        //return window.confirm(messages.title);
+                    }
                 }
                 var template = kendo.template('<ul>' + '<li class="km-actionsheet-title">#:title#</li>' + '<li><a href="\\#" class="k-button k-grid-delete">#:confirmDelete#</a></li>' + '</ul>');
                 var html = $(template(messages)).appendTo(that.view.element);
@@ -2948,12 +3008,12 @@
             },
             _createButton: function (command) {
                 var template = command.template || COMMANDBUTTONTMPL, commandName = typeof command === STRING ? command : command.name || command.text, className = defaultCommands[commandName] ? defaultCommands[commandName].className : 'k-grid-' + (commandName || '').replace(/\s/g, ''), options = {
-                        className: className,
-                        text: commandName,
-                        imageClass: '',
-                        attr: '',
-                        iconClass: ''
-                    }, messages = this.options.messages.commands, attributeClassMatch;
+                    className: className,
+                    text: commandName,
+                    imageClass: '',
+                    attr: '',
+                    iconClass: ''
+                }, messages = this.options.messages.commands, attributeClassMatch;
                 if (!commandName && !(isPlainObject(command) && command.template)) {
                     throw new Error('Custom commands should have name specified');
                 }
@@ -4355,31 +4415,31 @@
             },
             _columnMenu: function () {
                 var that = this, menu, columns = leafColumns(that.columns), column, options = that.options, columnMenu = options.columnMenu, menuOptions, sortable, filterable, cells, hasMultiColumnHeaders = grep(that.columns, function (item) {
-                        return item.columns !== undefined;
-                    }).length > 0, isMobile = this._isMobile, initCallback = function (e) {
-                        that.trigger(COLUMNMENUINIT, {
-                            field: e.field,
-                            container: e.container
-                        });
-                    }, openCallback = function (e) {
-                        that.trigger(COLUMNMENUOPEN, {
-                            field: e.field,
-                            container: e.container
-                        });
-                    }, closeCallback = function (element) {
-                        focusTable(element.closest('table'), true);
-                    }, sortHandler = function (e) {
-                        if (that.trigger('sort', { sort: e.sort })) {
-                            e.preventDefault();
-                        }
-                    }, filterHandler = function (e) {
-                        if (that.trigger('filter', {
-                                filter: e.filter,
-                                field: e.field
-                            })) {
-                            e.preventDefault();
-                        }
-                    }, $angular = options.$angular;
+                    return item.columns !== undefined;
+                }).length > 0, isMobile = this._isMobile, initCallback = function (e) {
+                    that.trigger(COLUMNMENUINIT, {
+                        field: e.field,
+                        container: e.container
+                    });
+                }, openCallback = function (e) {
+                    that.trigger(COLUMNMENUOPEN, {
+                        field: e.field,
+                        container: e.container
+                    });
+                }, closeCallback = function (element) {
+                    focusTable(element.closest('table'), true);
+                }, sortHandler = function (e) {
+                    if (that.trigger('sort', { sort: e.sort })) {
+                        e.preventDefault();
+                    }
+                }, filterHandler = function (e) {
+                    if (that.trigger('filter', {
+                        filter: e.filter,
+                        field: e.field
+                    })) {
+                        e.preventDefault();
+                    }
+                }, $angular = options.$angular;
                 if (columnMenu) {
                     if (typeof columnMenu == 'boolean') {
                         columnMenu = {};
@@ -4435,25 +4495,25 @@
             },
             _filterable: function () {
                 var that = this, columns = leafColumns(that.columns), filterMenu, cells, cell, filterInit = function (e) {
-                        that.trigger(FILTERMENUINIT, {
-                            field: e.field,
-                            container: e.container
-                        });
-                    }, closeCallback = function (element) {
-                        focusTable(element.closest('table'), true);
-                    }, filterHandler = function (e) {
-                        if (that.trigger('filter', {
-                                filter: e.filter,
-                                field: e.field
-                            })) {
-                            e.preventDefault();
-                        }
-                    }, filterOpen = function (e) {
-                        that.trigger(FILTERMENUOPEN, {
-                            field: e.field,
-                            container: e.container
-                        });
-                    }, filterable = that.options.filterable;
+                    that.trigger(FILTERMENUINIT, {
+                        field: e.field,
+                        container: e.container
+                    });
+                }, closeCallback = function (element) {
+                    focusTable(element.closest('table'), true);
+                }, filterHandler = function (e) {
+                    if (that.trigger('filter', {
+                        filter: e.filter,
+                        field: e.field
+                    })) {
+                        e.preventDefault();
+                    }
+                }, filterOpen = function (e) {
+                    that.trigger(FILTERMENUOPEN, {
+                        field: e.field,
+                        container: e.container
+                    });
+                }, filterable = that.options.filterable;
                 if (filterable && typeof filterable.mode == STRING && filterable.mode.indexOf('menu') == -1) {
                     filterable = false;
                 }
@@ -4506,13 +4566,13 @@
                 var settings;
                 var $angular = that.options.$angular;
                 var columns = leafColumns(that.columns), filterable = that.options.filterable, rowheader = that.thead.find('.k-filter-row'), filterHandler = function (e) {
-                        if (that.trigger('filter', {
-                                filter: e.filter,
-                                field: e.field
-                            })) {
-                            e.preventDefault();
-                        }
-                    };
+                    if (that.trigger('filter', {
+                        filter: e.filter,
+                        field: e.field
+                    })) {
+                        e.preventDefault();
+                    }
+                };
                 this._updateHeader(this.dataSource.group().length);
                 for (var i = 0; i < columns.length; i++) {
                     var suggestDataSource, col = columns[i], operators = that.options.filterable.operators, customDataSource = false, th = $('<th/>'), field = col.field;
@@ -4571,10 +4631,10 @@
             },
             _sortable: function () {
                 var that = this, columns = leafColumns(that.columns), column, sorterInstance, cell, sortable = that.options.sortable, sortHandler = function (e) {
-                        if (that.trigger('sort', { sort: e.sort })) {
-                            e.preventDefault();
-                        }
-                    };
+                    if (that.trigger('sort', { sort: e.sort })) {
+                        e.preventDefault();
+                    }
+                };
                 if (sortable) {
                     var cells = leafDataCells(that.thead);
                     for (var idx = 0, length = cells.length; idx < length; idx++) {
@@ -4635,9 +4695,9 @@
             },
             _tmpl: function (rowTemplate, columns, alt, skipGroupCells) {
                 var that = this, settings = extend({}, kendo.Template, that.options.templateSettings), idx, length = columns.length, template, state = {
-                        storage: {},
-                        count: 0
-                    }, column, type, hasDetails = that._hasDetails(), className = [], groups = that._groups(), navigatable = that.options.navigatable;
+                    storage: {},
+                    count: 0
+                }, column, type, hasDetails = that._hasDetails(), className = [], groups = that._groups(), navigatable = that.options.navigatable;
                 if (!rowTemplate) {
                     rowTemplate = '<tr';
                     if (alt) {
@@ -4753,13 +4813,13 @@
                     that.detailTemplate = that._detailTmpl(options.detailTemplate || '');
                 }
                 if (that._group && !isEmptyObject(aggregates) || !isEmptyObject(aggregates) && !footer.length || grep(columnLeafs, function (column) {
-                        return column.footerTemplate;
-                    }).length) {
+                    return column.footerTemplate;
+                }).length) {
                     that.footerTemplate = that._footerTmpl(columnLeafs, aggregates, 'footerTemplate', 'k-footer-template');
                 }
                 if (groups && grep(columnLeafs, function (column) {
-                        return column.groupFooterTemplate;
-                    }).length) {
+                    return column.groupFooterTemplate;
+                }).length) {
                     aggregates = $.map(groups, function (g) {
                         return g.aggregates;
                     });
@@ -5112,10 +5172,10 @@
                     tr = thead.children().first();
                     if (!tr.length) {
                         var rows = [{
-                                rowSpan: 1,
-                                cells: [],
-                                index: 0
-                            }];
+                            rowSpan: 1,
+                            cells: [],
+                            index: 0
+                        }];
                         that._prepareColumns(rows, columns);
                         for (idx = 0; idx < rows.length; idx++) {
                             html += '<tr>';
@@ -5333,13 +5393,13 @@
             },
             _groupRowHtml: function (group, colspan, level, groupHeaderBuilder, templates, skipColspan) {
                 var that = this, html = '', idx, length, field = group.field, column = grep(leafColumns(that.columns), function (column) {
-                        return column.field == field;
-                    })[0] || {}, template = column.groupHeaderTemplate, text = (column.title || field) + ': ' + formatGroupValue(group.value, column.format, column.values, column.encoded), footerDefaults = that._groupAggregatesDefaultObject || {}, groupItems = group.items, aggregates = extend({}, footerDefaults, group.aggregates), headerData = extend({}, {
-                        field: group.field,
-                        value: group.value,
-                        items: groupItems,
-                        aggregates: aggregates
-                    }, group.aggregates[group.field]), groupFooterTemplate = templates.groupFooterTemplate;
+                    return column.field == field;
+                })[0] || {}, template = column.groupHeaderTemplate, text = (column.title || field) + ': ' + formatGroupValue(group.value, column.format, column.values, column.encoded), footerDefaults = that._groupAggregatesDefaultObject || {}, groupItems = group.items, aggregates = extend({}, footerDefaults, group.aggregates), headerData = extend({}, {
+                    field: group.field,
+                    value: group.value,
+                    items: groupItems,
+                    aggregates: aggregates
+                }, group.aggregates[group.field]), groupFooterTemplate = templates.groupFooterTemplate;
                 if (template) {
                     text = typeof template === FUNCTION ? template(headerData) : kendo.template(template)(headerData);
                 }
@@ -5453,8 +5513,8 @@
             },
             _updateHeader: function (groups) {
                 var that = this, container = that._isLocked() ? that.lockedHeader.find('thead') : that.thead, filterCells = container.find('tr.k-filter-row').find('th.k-group-cell').length, length = container.find('tr:first').find('th.k-group-cell').length, rows = container.children('tr:not(:first)').filter(function () {
-                        return !$(this).children(':visible').length;
-                    });
+                    return !$(this).children(':visible').length;
+                });
                 if (groups > length) {
                     $(new Array(groups - length + 1).join('<th class="k-group-cell k-header" scope="col">' + that.options.messages.expandCollapseColumnHeader + '</th>')).prependTo(container.children('tr:not(.k-filter-row)'));
                     if (that.element.is(':visible')) {
@@ -5734,10 +5794,10 @@
                 }
                 e = e || {};
                 if (that.trigger('dataBinding', {
-                        action: e.action || 'rebind',
-                        index: e.index,
-                        items: e.items
-                    })) {
+                    action: e.action || 'rebind',
+                    index: e.index,
+                    items: e.items
+                })) {
                     return;
                 }
                 that._angularItems('cleanup');
@@ -5881,10 +5941,10 @@
             },
             _renderContent: function (data, colspan, groups) {
                 var that = this, idx, length, html = '', isLocked = that.lockedContent != null, templates = {
-                        rowTemplate: that.rowTemplate,
-                        altRowTemplate: that.altRowTemplate,
-                        groupFooterTemplate: that.groupFooterTemplate
-                    };
+                    rowTemplate: that.rowTemplate,
+                    altRowTemplate: that.altRowTemplate,
+                    groupFooterTemplate: that.groupFooterTemplate
+                };
                 colspan = isLocked ? colspan - visibleLeafColumns(visibleLockedColumns(that.columns)).length : colspan;
                 if (groups > 0) {
                     colspan = isLocked ? colspan - groups : colspan;
@@ -5904,10 +5964,10 @@
             },
             _renderLockedContent: function (data, colspan, groups) {
                 var html = '', idx, length, templates = {
-                        rowTemplate: this.lockedRowTemplate,
-                        altRowTemplate: this.lockedAltRowTemplate,
-                        groupFooterTemplate: this.lockedGroupFooterTemplate
-                    };
+                    rowTemplate: this.lockedRowTemplate,
+                    altRowTemplate: this.lockedAltRowTemplate,
+                    groupFooterTemplate: this.lockedGroupFooterTemplate
+                };
                 if (this.lockedContent) {
                     var table = this.lockedTable;
                     if (groups > 0) {

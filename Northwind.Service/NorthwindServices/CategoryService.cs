@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Mobin.Repository;
+﻿using Mobin.Repository;
 using Mobin.Service;
 using Northwind.Repository;
 using System;
@@ -15,7 +14,7 @@ namespace Northwind.Service
     {
         //public CustomerService(IMobinUnitOfWork unitofwork) : base(unitofwork) { }
 
-        public CategoryService(Func<Type, IMobinUnitOfWork> unitofwork) :base(unitofwork)
+        public CategoryService(Func<Type, IMobinUnitOfWork> unitofwork) : base(unitofwork)
         {
         }
 

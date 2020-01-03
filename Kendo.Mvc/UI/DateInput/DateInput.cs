@@ -1,13 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
+using System.IO;
 
 namespace Kendo.Mvc.UI
 {
@@ -15,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI DateInput component
     /// </summary>
     public partial class DateInput : WidgetBase
-        
+
     {
         public DateInput(ViewContext viewContext) : base(viewContext)
         {

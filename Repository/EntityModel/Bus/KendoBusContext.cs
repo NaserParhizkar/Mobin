@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using KendoBus.Repository;
+﻿using KendoBus.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace KendoBus
 {

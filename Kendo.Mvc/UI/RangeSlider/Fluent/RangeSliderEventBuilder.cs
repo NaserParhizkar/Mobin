@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI RangeSlider for ASP.NET MVC events.
     /// </summary>
-    public class RangeSliderEventBuilder: EventBuilder
+    public class RangeSliderEventBuilder : EventBuilder
     {
         public RangeSliderEventBuilder(IDictionary<string, object> events)
             : base(events)

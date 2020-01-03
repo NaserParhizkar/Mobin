@@ -7,9 +7,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation
         void Visit(IValueNode valueNode);
 
         void StartVisit(ILogicalNode logicalNode);
-        
+
         void StartVisit(IOperatorNode operatorNode);
-        
+
         void EndVisit();
     }
 }

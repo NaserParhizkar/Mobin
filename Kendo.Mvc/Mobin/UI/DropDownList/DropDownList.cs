@@ -1,14 +1,9 @@
-﻿using Kendo.Mvc.Mobin;
-using Kendo.Mvc.Mobin.Common;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Mobin.Common;
+﻿using Kendo.Mvc.Mobin.Common;
 using Mobin.Common.Expressions;
 using Mobin.ExpressionJsonSerializer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Kendo.Mvc.UI
 {
@@ -17,7 +12,7 @@ namespace Kendo.Mvc.UI
     /// </summary>
     public partial class DropDownList
     {
-        internal IDictionary<string,Expression> DataFields { get; set; }
+        internal IDictionary<string, Expression> DataFields { get; set; }
 
         protected override void MobinProcessSettings()
         {

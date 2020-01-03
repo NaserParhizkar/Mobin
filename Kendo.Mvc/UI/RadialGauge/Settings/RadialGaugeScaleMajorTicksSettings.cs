@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI RadialGaugeScaleMajorTicksSettings class
     /// </summary>
-    public partial class RadialGaugeScaleMajorTicksSettings 
+    public partial class RadialGaugeScaleMajorTicksSettings
     {
         /// <summary>
         /// Gets or sets the ticks dash type.

@@ -1,5 +1,5 @@
 namespace Kendo.Mvc.UI
-{    
+{
     using Kendo.Mvc.Resources;
 
     public class GridToolBarCreateCommand : GridActionCommandBase
@@ -9,12 +9,12 @@ namespace Kendo.Mvc.UI
             Text = Messages.Grid_Create;
         }
 
-		public override string Name
-		{
-			get
-			{
-				return "create";
-			}			
-		}
-	}
+        public override string Name
+        {
+            get
+            {
+                return "create";
+            }
+        }
+    }
 }

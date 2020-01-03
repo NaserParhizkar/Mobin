@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartAxisDefaultsSettingsPlotBand
     /// </summary>
     public partial class ChartAxisDefaultsSettingsPlotBandBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartAxisDefaultsSettingsPlotBandBuilder(ChartAxisDefaultsSettingsPlotBand<T> container)
         {

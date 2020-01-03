@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Tooltip for ASP.NET MVC events.
     /// </summary>
-    public class TooltipEventBuilder: EventBuilder
+    public class TooltipEventBuilder : EventBuilder
     {
         public TooltipEventBuilder(IDictionary<string, object> events)
             : base(events)

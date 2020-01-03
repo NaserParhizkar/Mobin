@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring CalendarMonthTemplateSettings
     /// </summary>
     public partial class CalendarMonthTemplateSettingsBuilder
-        
+
     {
         public CalendarMonthTemplateSettingsBuilder(CalendarMonthTemplateSettings container)
         {

@@ -16,7 +16,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="item">The item.</param>
         public TreeViewItemBuilder(TreeViewItem item, ViewContext viewContext)
             : base(item, viewContext)
-        {            
+        {
             this.item = item;
             this.viewContext = viewContext;
         }

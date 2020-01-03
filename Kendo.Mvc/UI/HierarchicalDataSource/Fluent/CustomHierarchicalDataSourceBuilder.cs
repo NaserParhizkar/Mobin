@@ -1,13 +1,13 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
     public class CustomHierarchicalDataSourceBuilder : CustomDataSourceBuilderBase<CustomHierarchicalDataSourceBuilder>
     {
         public CustomHierarchicalDataSourceBuilder(DataSource dataSource, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(dataSource, viewContext, urlGenerator)
-        { 
+        {
         }
 
         /// <summary>

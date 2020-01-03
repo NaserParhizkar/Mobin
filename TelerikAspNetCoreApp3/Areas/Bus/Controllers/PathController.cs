@@ -1,19 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Kendo.Mvc.Mobin.Controllers;
+using KendoBus.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Northwind.WebUI.Areas.Bus.Controllers
 {
-    public class PathController : Controller
+    public class PathController : HtmlManagerController<Path>
     {
         public ActionResult PathView()
         {
             return View();
         }
 
-        public PartialViewResult EntryForm()
+        public override PartialViewResult EntryForm()
         {
-            return PartialView();
+            return base.EntryForm();
         }
-
 
         public ActionResult ValidateForm()
         {

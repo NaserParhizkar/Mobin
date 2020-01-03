@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI ChartSeriesAggregateSettings class
     /// </summary>
-    public partial class ChartSeriesAggregateSettings<T> where T : class 
+    public partial class ChartSeriesAggregateSettings<T> where T : class
     {
         public ChartSeriesAggregate? Close { get; set; }
         public ClientHandlerDescriptor CloseHandler { get; set; }
@@ -43,7 +39,7 @@ namespace Kendo.Mvc.UI
 
         public ChartSeriesAggregate? Upper { get; set; }
         public ClientHandlerDescriptor UpperHandler { get; set; }
-        
+
         public Chart<T> Chart { get; set; }
 
         protected Dictionary<string, object> SerializeSettings()

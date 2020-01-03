@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartXAxisMajorGridLinesSettings
     /// </summary>
     public partial class ChartXAxisMajorGridLinesSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartXAxisMajorGridLinesSettingsBuilder(ChartXAxisMajorGridLinesSettings<T> container)
         {

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxisNotesIconBorderSettings
     /// </summary>
     public partial class ChartYAxisNotesIconBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisNotesIconBorderSettingsBuilder(ChartYAxisNotesIconBorderSettings<T> container)
         {

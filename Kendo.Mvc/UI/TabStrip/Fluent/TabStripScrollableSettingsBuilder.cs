@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TabStripScrollableSettings
     /// </summary>
     public partial class TabStripScrollableSettingsBuilder
-        
+
     {
         public TabStripScrollableSettingsBuilder(TabStripScrollableSettings container)
         {

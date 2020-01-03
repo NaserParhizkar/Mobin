@@ -2,20 +2,20 @@
 using Kendo.Mvc.Infrastructure;
 using Kendo.Mvc.Rendering;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
-using System.Text.Encodings.Web;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Linq;
+using System.Net;
+using System.Text.Encodings.Web;
+using System.Text.RegularExpressions;
 
 namespace Kendo.Mvc.UI
 {
@@ -32,18 +32,19 @@ namespace Kendo.Mvc.UI
             Initializer = new JavaScriptInitializer();
             ViewContext = viewContext;
 
-            Activate();			
+            Activate();
         }
-	
-		/// <summary>
-		/// Gets the client events of the widget.
-		/// </summary>
-		/// <value>The client events.</value>
-		public IDictionary<string, object> Events {
+
+        /// <summary>
+        /// Gets the client events of the widget.
+        /// </summary>
+        /// <value>The client events.</value>
+        public IDictionary<string, object> Events
+        {
             get;
             private set;
         }
-        
+
         /// <summary>
         /// Gets the unique ID of the widget
         /// </summary>
@@ -52,7 +53,7 @@ namespace Kendo.Mvc.UI
         {
             get
             {
-                return Generator.SanitizeId(HtmlAttributes.ContainsKey("id") ? (string) HtmlAttributes["id"] : ViewContext.GetFullHtmlFieldName(Name));
+                return Generator.SanitizeId(HtmlAttributes.ContainsKey("id") ? (string)HtmlAttributes["id"] : ViewContext.GetFullHtmlFieldName(Name));
             }
         }
 
@@ -116,19 +117,19 @@ namespace Kendo.Mvc.UI
             }
         }
 
-		public string IdPrefix
-		{
-			get
-			{
-				return IsInClientTemplate ? "\\#" : "#";
-			}
-		}
+        public string IdPrefix
+        {
+            get
+            {
+                return IsInClientTemplate ? "\\#" : "#";
+            }
+        }
 
-		/// <summary>
-		/// Gets or sets the view context to rendering a view.
-		/// </summary>
-		/// <value>The view context.</value>
-		public ViewContext ViewContext
+        /// <summary>
+        /// Gets or sets the view context to rendering a view.
+        /// </summary>
+        /// <value>The view context.</value>
+        public ViewContext ViewContext
         {
             get;
             private set;
@@ -190,31 +191,31 @@ namespace Kendo.Mvc.UI
 
         public HtmlString ToClientTemplate()
         {
-			IsInClientTemplate = true;
+            IsInClientTemplate = true;
 
-			var html = ToHtmlString().Replace("</script>", "<\\/script>");
+            var html = ToHtmlString().Replace("</script>", "<\\/script>");
 
-			//TODO: Handle AntiXssEncoder
-			//if (HttpEncoder.Current != null && HttpEncoder.Current.GetType().ToString().Contains("AntiXssEncoder"))
-			//{
-			//	html = Regex.Replace(html, "\\u0026", "&", RegexOptions.IgnoreCase);
-			//	html = Regex.Replace(html, "%23", "#", RegexOptions.IgnoreCase);
-			//	html = Regex.Replace(html, "%3D", "=", RegexOptions.IgnoreCase);
-			//	html = Regex.Replace(html, "&#32;", " ", RegexOptions.IgnoreCase);
-			//	html = Regex.Replace(html, @"\\u0026#32;", " ", RegexOptions.IgnoreCase);
-			//}
-			//escape entities in attributes encoded by the TextWriter Unicode encoding
-			html = UnicodeEntityExpression.Replace(html, (m) =>
-			{
-				return WebUtility.HtmlDecode(Regex.Unescape(@"\u" + m.Groups[1].Value + "#" + m.Groups[2].Value));
-			});
+            //TODO: Handle AntiXssEncoder
+            //if (HttpEncoder.Current != null && HttpEncoder.Current.GetType().ToString().Contains("AntiXssEncoder"))
+            //{
+            //	html = Regex.Replace(html, "\\u0026", "&", RegexOptions.IgnoreCase);
+            //	html = Regex.Replace(html, "%23", "#", RegexOptions.IgnoreCase);
+            //	html = Regex.Replace(html, "%3D", "=", RegexOptions.IgnoreCase);
+            //	html = Regex.Replace(html, "&#32;", " ", RegexOptions.IgnoreCase);
+            //	html = Regex.Replace(html, @"\\u0026#32;", " ", RegexOptions.IgnoreCase);
+            //}
+            //escape entities in attributes encoded by the TextWriter Unicode encoding
+            html = UnicodeEntityExpression.Replace(html, (m) =>
+            {
+                return WebUtility.HtmlDecode(Regex.Unescape(@"\u" + m.Groups[1].Value + "#" + m.Groups[2].Value));
+            });
 
-			//must decode unicode symbols otherwise they will be rendered as HTML entities
-			//which will break the client template
-			html = WebUtility.HtmlDecode(html);
+            //must decode unicode symbols otherwise they will be rendered as HTML entities
+            //which will break the client template
+            html = WebUtility.HtmlDecode(html);
 
-			return new HtmlString(html);
-		}
+            return new HtmlString(html);
+        }
 
         public string ToHtmlString()
         {
@@ -232,7 +233,7 @@ namespace Kendo.Mvc.UI
                 throw new InvalidOperationException(Resources.Exceptions.NameCannotContainSpaces);
             }
 
-            ((IHtmlAttributesContainer) this).ThrowIfClassIsPresent("k-" + GetType().Name.ToLowerInvariant() + "-rtl", Resources.Exceptions.Rtl);
+            ((IHtmlAttributesContainer)this).ThrowIfClassIsPresent("k-" + GetType().Name.ToLowerInvariant() + "-rtl", Resources.Exceptions.Rtl);
         }
 
         /// <summary>
@@ -262,10 +263,10 @@ namespace Kendo.Mvc.UI
             VerifySettings();
 
             if (IsSelfInitialized && !HasDeferredInitialization)
-            {                
+            {
                 writer.Write("<script>");
                 WriteInitializationScript(writer);
-                writer.Write("</script>");                
+                writer.Write("</script>");
             }
         }
 
@@ -277,7 +278,7 @@ namespace Kendo.Mvc.UI
         }
 
         private void Activate()
-        {            
+        {
             Generator = GetService<IKendoHtmlGenerator>();
             HtmlHelper = GetService<IHtmlHelper>();
             HtmlEncoder = GetService<HtmlEncoder>();
@@ -288,7 +289,7 @@ namespace Kendo.Mvc.UI
 
             if (Generator == null)
             {
-                throw( new Exception("Kendo services are not registered. Please call services.AddKendo() in ConfigureServices method of your project."));
+                throw (new Exception("Kendo services are not registered. Please call services.AddKendo() in ConfigureServices method of your project."));
             }
         }
 
@@ -301,7 +302,7 @@ namespace Kendo.Mvc.UI
         {
             var items = ViewContext.HttpContext.Items;
 
-            var scripts = new List<KeyValuePair<string,string>>();
+            var scripts = new List<KeyValuePair<string, string>>();
 
             if (items.ContainsKey(DeferredScriptsKey))
             {

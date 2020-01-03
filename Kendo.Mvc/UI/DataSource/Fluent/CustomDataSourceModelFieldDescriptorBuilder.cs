@@ -35,7 +35,7 @@
         /// <summary>
         /// Specifies the handler which will parse the field value. If not set default parsers will be used.
         /// </summary>
-        public virtual CustomDataSourceModelFieldDescriptorBuilder<T> Parse(Func<object,object> handler)
+        public virtual CustomDataSourceModelFieldDescriptorBuilder<T> Parse(Func<object, object> handler)
         {
             descriptor.Parse.TemplateDelegate = handler;
             return this;

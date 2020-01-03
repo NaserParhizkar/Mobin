@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using Kendo.Mvc.Infrastructure;
+using System.Collections;
 using System.Collections.Generic;
-using Kendo.Mvc.Infrastructure;
 
 namespace Kendo.Mvc.UI
 {
@@ -14,5 +14,5 @@ namespace Kendo.Mvc.UI
         public IEnumerable Data { get; set; }
         public IDictionary<string, IEnumerable<AggregateResult>> AggregateResults { get; set; }
         public object Errors { get; set; }
-    }   
+    }
 }

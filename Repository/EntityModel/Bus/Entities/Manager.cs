@@ -7,7 +7,7 @@ namespace KendoBus.Repository
     [Description("مدیر")]
     public class Manager : Employee
     {
-        [Display(Name="تاریخ شروع مدیریت")]
+        [Display(Name = "تاریخ شروع مدیریت")]
         public DateTime ManagerDate { get; set; }
     }
 }

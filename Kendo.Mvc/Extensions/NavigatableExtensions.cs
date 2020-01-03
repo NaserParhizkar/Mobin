@@ -1,18 +1,17 @@
 namespace Kendo.Mvc.UI
 {
+    using Extensions;
+    using Kendo.Mvc.Resources;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.AspNetCore.Routing;
+    using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Extensions;
-    using Kendo.Mvc.Resources;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Routing;
-    using Microsoft.Extensions.DependencyInjection;
-    using Infrastructure;
-    using Microsoft.AspNetCore.Mvc.Routing;
     public static class NavigatableExtensions
     {
         /// <summary>
@@ -193,14 +192,14 @@ namespace Kendo.Mvc.UI
         {
             return urlGenerator.Generate(viewContext, navigatable, routeValues);
         }
-              
+
         /// <summary>
         /// Determines whether this instance has value.
         /// </summary>
         /// <returns>true if either ActionName and ControllerName, RouteName or Url are set; false otherwise</returns>
         public static bool HasValue(this INavigatable navigatable)
         {
-            return  (navigatable.ActionName.HasValue() && navigatable.ControllerName.HasValue()) ||
+            return (navigatable.ActionName.HasValue() && navigatable.ControllerName.HasValue()) ||
                     navigatable.RouteName.HasValue() ||
                     navigatable.Url.HasValue();
         }

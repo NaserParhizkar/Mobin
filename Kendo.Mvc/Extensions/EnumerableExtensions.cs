@@ -5,7 +5,7 @@ namespace Kendo.Mvc.Extensions
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    
+
     public static class EnumerableExtensions
     {
         class GenericEnumerable<T> : IEnumerable<T>
@@ -39,7 +39,7 @@ namespace Kendo.Mvc.Extensions
         {
             int index = 0;
             foreach (T item in instance)
-                action(item, index ++);
+                action(item, index++);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Kendo.Mvc.Extensions
             Type elementType = typeof(Object);
 
             Type type = source.GetType().FindGenericType(typeof(IEnumerable<>));
-            if ( type != null )
+            if (type != null)
             {
                 return source;
             }
@@ -87,7 +87,7 @@ namespace Kendo.Mvc.Extensions
             Type genericType = typeof(GenericEnumerable<>).MakeGenericType(elementType);
             object[] constructorParameters = new object[] { source };
 
-            return (IEnumerable) Activator.CreateInstance(genericType, constructorParameters);
+            return (IEnumerable)Activator.CreateInstance(genericType, constructorParameters);
         }
 
         public static int IndexOf(this IEnumerable source, object item)
@@ -122,7 +122,7 @@ namespace Kendo.Mvc.Extensions
 
             foreach (var item in source)
             {
-                if ( index == 0 )
+                if (index == 0)
                 {
                     return item;
                 }
@@ -134,7 +134,7 @@ namespace Kendo.Mvc.Extensions
         }
 
         //Source: http://work.j832.com/2008/01/selectrecursive-if-3rd-times-charm-4th.html
-        public static IEnumerable<TSource> SelectRecursive<TSource>(this IEnumerable<TSource> source, 
+        public static IEnumerable<TSource> SelectRecursive<TSource>(this IEnumerable<TSource> source,
             Func<TSource, IEnumerable<TSource>> recursiveSelector)
         {
             Stack<IEnumerator<TSource>> stack = new Stack<IEnumerator<TSource>>();
@@ -171,7 +171,7 @@ namespace Kendo.Mvc.Extensions
             }
         }
 
-        internal static IEnumerable<TResult> Consolidate<TFirst, TSecond, TResult> (
+        internal static IEnumerable<TResult> Consolidate<TFirst, TSecond, TResult>(
             this IEnumerable<TFirst> first, IEnumerable<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
         {
             if (first == null) throw new ArgumentNullException("first");

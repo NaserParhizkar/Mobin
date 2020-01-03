@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -11,8 +10,8 @@ namespace Kendo.Mvc.UI.Fluent
     {
         public DataSourceEventBuilder(IDictionary<string, object> events) : base(events)
         {
-        }       
-        
+        }
+
         /// <summary>
         /// Defines the name of the JavaScript function that will handle the the Change client-side event.
         /// </summary>  

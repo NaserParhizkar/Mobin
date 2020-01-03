@@ -1,11 +1,11 @@
 namespace Kendo.Mvc
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Extensions;
     using Infrastructure.Implementation;
     using Infrastructure.Implementation.Expressions;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Represents a filtering descriptor which serves as a container for one or more child filtering descriptors.

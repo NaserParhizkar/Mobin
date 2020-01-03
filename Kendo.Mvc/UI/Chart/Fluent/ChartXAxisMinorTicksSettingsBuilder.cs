@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartXAxisMinorTicksSettings
     /// </summary>
     public partial class ChartXAxisMinorTicksSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartXAxisMinorTicksSettingsBuilder(ChartXAxisMinorTicksSettings<T> container)
         {

@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Kendo.Mvc.Extensions;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    using Kendo.Mvc.Extensions;
-    
+
     internal class QueryableAggregatesExpressionBuilder : GroupDescriptorExpressionBuilder
     {
         public QueryableAggregatesExpressionBuilder(IQueryable queryable, IEnumerable<AggregateFunction> aggregateFunctions)
@@ -29,7 +29,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         {
             yield return this.CreateKeyMemberBinding();
             yield return this.CreateCountMemberBinding();
-            yield return this.CreateHasSubgroupsMemberBinding();            
+            yield return this.CreateHasSubgroupsMemberBinding();
             if (GroupDescriptor.AggregateFunctions.Count > 0)
             {
                 yield return this.CreateAggregateFunctionsProjectionMemberBinding();

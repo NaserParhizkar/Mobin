@@ -1,7 +1,7 @@
 ﻿using KendoBus;
-using Microsoft.EntityFrameworkCore;
 using Mobin.Repository;
 using Northwind;
+using PDN;
 using System;
 using System.Linq;
 
@@ -17,14 +17,22 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<KendoBusContext>();
             services.AddTransient<BusUnitOfWork>();
 
+            services.AddScoped<PDNContext>();
+            services.AddTransient<PDNUnitOfWork>();
+
             var busContext = services.BuildServiceProvider().GetService<KendoBusContext>();
-            busContext.Database.EnsureCreated();
+            busContext.Database.EnsureCreatedAsync();
+
+            var pdnContext = services.BuildServiceProvider().GetService<PDNContext>();
+            pdnContext.Database.EnsureCreatedAsync();
 
 
             services.AddTransient<Func<Type, IMobinUnitOfWork>>(serviceProvider => entityType =>
             {
                 if (CheckContextHasEntity(typeof(KendoBusContext), entityType))
                     return (IMobinUnitOfWork)serviceProvider.GetService(typeof(BusUnitOfWork));
+                else if (CheckContextHasEntity(typeof(PDNContext), entityType))
+                    return (IMobinUnitOfWork)serviceProvider.GetService(typeof(PDNUnitOfWork));
                 else
                     return (IMobinUnitOfWork)serviceProvider.GetService(typeof(NorthwindUnitOfWork));
             });

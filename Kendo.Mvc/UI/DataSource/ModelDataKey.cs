@@ -1,10 +1,9 @@
 namespace Kendo.Mvc.UI
 {
-    using System;
-    using System.Linq.Expressions;
-
     using Extensions;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Linq.Expressions;
 
     public class ModelDataKey<TModel, TValue> : IDataKey<TModel>
         where TModel : class
@@ -20,7 +19,7 @@ namespace Kendo.Mvc.UI
 
         public string Name
         {
-            get;            
+            get;
         }
 
         public string RouteKey
@@ -31,14 +30,14 @@ namespace Kendo.Mvc.UI
 
         public Func<TModel, TValue> Value
         {
-            get;            
+            get;
         }
 
         public Expression<Func<TModel, TValue>> Expression
         {
-            get;            
+            get;
         }
-        
+
         public object GetValue(object dataItem)
         {
             return Value((TModel)dataItem);

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TreeListColumnMenuMessagesSettings
     /// </summary>
     public partial class TreeListColumnMenuMessagesSettingsBuilder<T>
-        
+
     {
         public TreeListColumnMenuMessagesSettingsBuilder(TreeListColumnMenuMessagesSettings<T> container)
         {

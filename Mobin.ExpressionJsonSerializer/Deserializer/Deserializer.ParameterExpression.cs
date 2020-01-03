@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Exp = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -14,7 +11,7 @@ namespace Mobin.ExpressionJsonSerializer
         private readonly Dictionary<string, ParameterExpression> _parameterExpression = new Dictionary<string, ParameterExpression>();
 
 
-        private ParameterExpression ParameterExpression(ExpressionType nodeType,System.Type type,JObject obj)
+        private ParameterExpression ParameterExpression(ExpressionType nodeType, System.Type type, JObject obj)
         {
             var name = this.Prop(obj, "Name", t => t.Value<string>());
 

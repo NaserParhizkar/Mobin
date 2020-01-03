@@ -10,8 +10,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI DropDownList
     /// </summary>
-    public partial class DropDownListBuilder: WidgetBuilderBase<DropDownList, DropDownListBuilder>
-        
+    public partial class DropDownListBuilder : WidgetBuilderBase<DropDownList, DropDownListBuilder>
+
     {
         public DropDownListBuilder(DropDownList component) : base(component)
         {
@@ -124,7 +124,8 @@ namespace Kendo.Mvc.UI.Fluent
             }
 
             Component.DataSource.Data = dataSource
-                .Select(item => new {
+                .Select(item => new
+                {
                     Text = item.Text,
                     Value = item.Value ?? item.Text,
                     Selected = item.Selected

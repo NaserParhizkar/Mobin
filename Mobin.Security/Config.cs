@@ -1,13 +1,11 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
+using IdentityServer.Model;
 
-namespace Mobin.Security
+namespace IdentityServer
 {
     public static class Config
     {
@@ -18,26 +16,43 @@ namespace Mobin.Security
                 new TestUser
                 {
                     SubjectId = "1",
-                    Username = "naser",
-                    Password = "parhizkar",
+                    Username = "alice",
+                    Password = "password",
 
-                    Claims = 
+                    Claims = new []
                     {
-                        new Claim("name","Naser"),
-                        new Claim("website","http://naser.com")
+                        new Claim("name", "Alice"),
+                        new Claim("website", "https://alice.com")
                     }
                 },
-                 new TestUser
+                new TestUser
                 {
                     SubjectId = "2",
-                    Username = "yasi",
-                    Password = "parhizkar",
+                    Username = "bob",
+                    Password = "password",
 
-                    Claims = 
+                    Claims = new []
                     {
-                        new Claim("name","Yasi"),
-                        new Claim("website","http://yasi.com")
+                        new Claim("name", "Bob"),
+                        new Claim("website", "https://bob.com")
                     }
+                }
+            };
+        }
+
+        public static List<User> GetUsers1()
+        {
+            return new List<User>
+            {
+                new User
+                {
+                    Username = "david",
+                    Password = "pass1"
+                },
+                new User
+                {
+                    Username = "tom",
+                    Password = "pass2"
                 }
             };
         }
@@ -55,7 +70,7 @@ namespace Mobin.Security
         {
             return new List<ApiResource>
             {
-                new ApiResource("api","My API")
+                new ApiResource("api1", "My API")
             };
         }
 
@@ -67,17 +82,17 @@ namespace Mobin.Security
                 {
                     ClientId = "client",
 
-                    // no interactive user, use the clientid,secret for authentication
+                    // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
                     // secret for authentication
-                    ClientSecrets = 
+                    ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
 
-                    // scopes thst client has access to 
-                    AllowedScopes = {"api1"}
+                    // scopes that client has access to
+                    AllowedScopes = { "api1" }
                 },
                 // resource owner password grant client
                 new Client
@@ -88,34 +103,10 @@ namespace Mobin.Security
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
-                    },   
-                    AllowedScopes = {"api1"}
-                },
-                // OpenID Connect hybrid flow client (MVC)
-                new Client
-                {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
-
-                    ClientSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },  
-
-                    RedirectUris           = { "http://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
-
-                    AllowedScopes =
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        "api1"
                     },
-
-                    AllowOfflineAccess = true
+                    AllowedScopes = { "api1" }
                 },
-                // Javascript Client
+                // JavaScript Client
                 new Client
                 {
                     ClientId = "js",

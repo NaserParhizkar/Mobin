@@ -4,10 +4,10 @@ namespace Kendo.Mvc
     {
         double? Top { get; set; }
 
-        double? Right{ get; set; }
+        double? Right { get; set; }
 
         double? Bottom { get; set; }
 
-        double? Left{ get; set; }
+        double? Left { get; set; }
     }
 }

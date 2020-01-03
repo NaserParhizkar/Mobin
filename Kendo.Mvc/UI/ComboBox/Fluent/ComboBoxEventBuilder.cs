@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ComboBox for ASP.NET MVC events.
     /// </summary>
-    public class ComboBoxEventBuilder: EventBuilder
+    public class ComboBoxEventBuilder : EventBuilder
     {
         public ComboBoxEventBuilder(IDictionary<string, object> events)
             : base(events)

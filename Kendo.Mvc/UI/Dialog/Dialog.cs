@@ -1,7 +1,4 @@
-using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -11,7 +8,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Dialog component
     /// </summary>
     public partial class Dialog : WidgetBase
-        
+
     {
         public Dialog(ViewContext viewContext) : base(viewContext)
         {

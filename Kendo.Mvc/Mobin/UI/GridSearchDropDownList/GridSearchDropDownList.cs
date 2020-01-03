@@ -1,8 +1,6 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Mobin.Common;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,7 +14,7 @@ namespace Kendo.Mvc.UI
     {
         private static readonly Regex EscapeRegex = new Regex(@"([;&,\.\+\*~'\:\""\!\^\$\[\]\(\)\|\/])", RegexOptions.Compiled);
 
-        public GridSearchDropDownList(ViewContext viewContext,string gridName) : base(viewContext)
+        public GridSearchDropDownList(ViewContext viewContext, string gridName) : base(viewContext)
         {
             if (!gridName.HasValue())
                 throw new MobinException($"GridName must be specify for GridSearchDropDownList Component");

@@ -22,7 +22,7 @@
                         .Pageable()
                         .HtmlAttributes(new { style = "height:100px;" })
                         .DataSource(dataSource => dataSource
-                            .Ajax()
+                            .WebApi()
                             .PageSize(5)
                             .Read(read => read.Action("NaserOrders_Read", "Grid"))
                         )

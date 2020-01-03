@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
@@ -19,7 +16,7 @@ namespace Kendo.Mvc.UI.Fluent
             get;
             private set;
         }
-        
+
         // Place custom settings here
 
         /// <summary>

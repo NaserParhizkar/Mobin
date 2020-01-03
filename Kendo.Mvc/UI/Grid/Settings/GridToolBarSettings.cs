@@ -1,17 +1,16 @@
 namespace Kendo.Mvc.UI
 {
+    using Extensions;
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
-    using System;
 
-    public class GridToolBarSettings : JsonObject        
+    public class GridToolBarSettings : JsonObject
     {
         public GridToolBarSettings(WidgetBase grid)
         {
             Commands = new List<GridActionCommandBase>();
-            Component = grid;               
-        }  
+            Component = grid;
+        }
 
         public WidgetBase Component { get; }
 
@@ -19,7 +18,7 @@ namespace Kendo.Mvc.UI
         {
             get
             {
-				return Commands.Any() || ClientTemplate.HasValue() || ClientTemplateId.HasValue();
+                return Commands.Any() || ClientTemplate.HasValue() || ClientTemplateId.HasValue();
             }
         }
 
@@ -28,12 +27,12 @@ namespace Kendo.Mvc.UI
             get;
             private set;
         }
-		
-		public string ClientTemplate
-		{
-			get;
-			set;
-		}
+
+        public string ClientTemplate
+        {
+            get;
+            set;
+        }
 
         public string ClientTemplateId
         {
@@ -42,23 +41,23 @@ namespace Kendo.Mvc.UI
         }
 
         protected override void Serialize(IDictionary<string, object> json)
-		{
-			var commands = new List<IDictionary<string, object>>();
+        {
+            var commands = new List<IDictionary<string, object>>();
 
-			Commands.Each(command =>
-			{
-				commands.Add(command.Serialize());
-			});
+            Commands.Each(command =>
+            {
+                commands.Add(command.Serialize());
+            });
 
-			if (commands.Any() && !ClientTemplate.HasValue())
-			{
-				json["commands"] = commands;
-			}
+            if (commands.Any() && !ClientTemplate.HasValue())
+            {
+                json["commands"] = commands;
+            }
 
-			if (ClientTemplate.HasValue())
-			{
-				json["template"] = ClientTemplate;
-			}
+            if (ClientTemplate.HasValue())
+            {
+                json["template"] = ClientTemplate;
+            }
 
             if (ClientTemplateId.HasValue())
             {

@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Localization;
 using Mobin.Common.ComponentModel.DataAnnotations;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Kendo.Mvc.Mobin.DataAnnotations.Internal
 {

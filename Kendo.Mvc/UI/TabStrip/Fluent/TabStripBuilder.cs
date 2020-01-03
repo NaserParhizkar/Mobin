@@ -6,8 +6,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TabStrip
     /// </summary>
-    public partial class TabStripBuilder: WidgetBuilderBase<TabStrip, TabStripBuilder>
-        
+    public partial class TabStripBuilder : WidgetBuilderBase<TabStrip, TabStripBuilder>
+
     {
         public TabStripBuilder(TabStrip component) : base(component)
         {

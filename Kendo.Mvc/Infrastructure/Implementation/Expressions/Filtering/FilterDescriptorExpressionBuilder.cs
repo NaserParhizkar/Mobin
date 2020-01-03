@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System;
     using System.Globalization;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Extensions;
 
     internal class FilterDescriptorExpressionBuilder : FilterExpressionBuilder
     {
@@ -86,8 +86,8 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
             var memberAccessBuilder =
                             ExpressionBuilderFactory.MemberAccess(this.ParameterExpression.Type, memberType, this.FilterDescriptor.Member);
-            memberAccessBuilder.Options.CopyFrom(this.Options); 
-            
+            memberAccessBuilder.Options.CopyFrom(this.Options);
+
             memberAccessBuilder.ParameterExpression = this.ParameterExpression;
 
             Expression memberAccessExpression = memberAccessBuilder.CreateMemberAccessExpression();
@@ -128,12 +128,12 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
                     else if (nonNullableTargetType == typeof(Guid))
                     {
                         value = new Guid(value.ToString());
-					}
-					else if (value.GetType().IsNumericType())
+                    }
+                    else if (value.GetType().IsNumericType())
                     {
-						value = Convert.ChangeType(value, nonNullableTargetType, culture);
-					}
-				}
+                        value = Convert.ChangeType(value, nonNullableTargetType, culture);
+                    }
+                }
             }
 
             return CreateConstantExpression(value);

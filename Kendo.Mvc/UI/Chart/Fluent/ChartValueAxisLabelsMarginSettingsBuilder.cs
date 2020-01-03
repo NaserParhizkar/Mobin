@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartValueAxisLabelsMarginSettings
     /// </summary>
     public partial class ChartValueAxisLabelsMarginSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartValueAxisLabelsMarginSettingsBuilder(ChartValueAxisLabelsMarginSettings<T> container)
         {

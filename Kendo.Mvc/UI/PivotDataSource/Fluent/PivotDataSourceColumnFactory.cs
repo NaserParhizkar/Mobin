@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// </summary>
     public class PivotDataSourceColumnFactory : IHideObjectMembers
     {
-        private readonly  IList<PivotDataSourceColumn> container;
+        private readonly IList<PivotDataSourceColumn> container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PivotDataSourceColumnFactory"/> class.

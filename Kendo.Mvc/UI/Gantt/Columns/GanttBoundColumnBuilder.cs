@@ -1,7 +1,4 @@
-﻿using System;
-using Kendo.Mvc.Infrastructure;
-
-namespace Kendo.Mvc.UI.Fluent
+﻿namespace Kendo.Mvc.UI.Fluent
 {
     public class GanttBoundColumnBuilder<TTaskModel, TDependenciesModel> : GanttColumnBuilder<TTaskModel, TDependenciesModel>
         where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency

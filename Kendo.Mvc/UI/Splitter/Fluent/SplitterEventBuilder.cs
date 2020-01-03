@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Splitter for ASP.NET MVC events.
     /// </summary>
-    public class SplitterEventBuilder: EventBuilder
+    public class SplitterEventBuilder : EventBuilder
     {
         public SplitterEventBuilder(IDictionary<string, object> events)
             : base(events)

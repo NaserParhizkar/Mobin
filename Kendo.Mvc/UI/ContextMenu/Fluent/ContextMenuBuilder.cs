@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ContextMenu
     /// </summary>
-    public partial class ContextMenuBuilder: WidgetBuilderBase<ContextMenu, ContextMenuBuilder>, IHideObjectMembers
+    public partial class ContextMenuBuilder : WidgetBuilderBase<ContextMenu, ContextMenuBuilder>, IHideObjectMembers
 
     {
         public ContextMenuBuilder(ContextMenu component) : base(component)

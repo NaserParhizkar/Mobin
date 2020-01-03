@@ -1,11 +1,10 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-
-    using Extensions;
     internal abstract class AggregateFunctionExpressionBuilderBase : ExpressionBuilderBase
     {
         private readonly AggregateFunction function;
@@ -43,7 +42,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         private static Type ExtractItemTypeFromEnumerableType(Type type)
         {
             var enumerableType = type.FindGenericType(typeof(IEnumerable<>));
-            
+
             if (enumerableType == null)
             {
                 throw new ArgumentException("Provided type is not IEnumerable<>", "type");

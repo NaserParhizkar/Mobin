@@ -9,8 +9,8 @@
             Create = Destroy = Update = Enabled = true;
         }
 
-        public bool Create 
-        { 
+        public bool Create
+        {
             get;
             set;
         }

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring StockChartNavigatorCategoryAxisMinorTicksSettings
     /// </summary>
     public partial class StockChartNavigatorCategoryAxisMinorTicksSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public StockChartNavigatorCategoryAxisMinorTicksSettingsBuilder(StockChartNavigatorCategoryAxisMinorTicksSettings<T> container)
         {

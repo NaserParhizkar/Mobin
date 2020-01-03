@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Mobin.Common.ComponentModel.DataAnnotations;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Mobin.Common.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace KendoBus.Repository
 {
@@ -29,24 +29,24 @@ namespace KendoBus.Repository
         [NationalCode(ErrorMessage = "کد ملی وارد شده نامعتبر می باشد")]
         public string NationalCode { get; set; }
 
-        [Display(Name="نام"),Required(ErrorMessage="لطفا نام را وارد نمایید")]
+        [Display(Name = "نام"), Required(ErrorMessage = "لطفا نام را وارد نمایید")]
         public string FirstName { get; set; }
 
-        [Display(Name="نام خانوادگی"),Required(ErrorMessage="لطفا نام خانوادگی را وارد نمایید")]
+        [Display(Name = "نام خانوادگی"), Required(ErrorMessage = "لطفا نام خانوادگی را وارد نمایید")]
         public string LastName { get; set; }
 
-        [Display(Name="آدرس الکترونیکی")]
+        [Display(Name = "آدرس الکترونیکی")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "لطفا تاریخ تولد را وارد نمایید")]
-        [Display(Name="تاریخ تولد")]
-        [DataType(DataType.Date,ErrorMessage = "تاریخ وارد شده معتبر نمی باشد")]
+        [Display(Name = "تاریخ تولد")]
+        [DataType(DataType.Date, ErrorMessage = "تاریخ وارد شده معتبر نمی باشد")]
         public DateTime BirthDate { get; set; }
 
-        [Display(Name="شماره تلفن")]
+        [Display(Name = "شماره تلفن")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name="حقوق")]
+        [Display(Name = "حقوق")]
         [Required(ErrorMessage = "لطفا حقوق را وارد نمایید")]
         public decimal Salary { get; set; }
 

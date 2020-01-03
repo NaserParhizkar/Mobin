@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mobin.Common
 {
@@ -10,6 +8,6 @@ namespace Mobin.Common
 
         public MobinException(string message) : base(message) { }
 
-        public MobinException(string message,Exception innerException) : base(message,innerException) { }
+        public MobinException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

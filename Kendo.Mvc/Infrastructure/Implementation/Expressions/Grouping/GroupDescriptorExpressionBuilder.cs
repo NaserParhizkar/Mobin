@@ -1,12 +1,11 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-
-    using Extensions;
 
     internal class GroupDescriptorExpressionBuilder : GroupDescriptorExpressionBuilderBase
     {
@@ -16,7 +15,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
         private ParameterExpression groupingParameterExpression;
         private Expression aggregateParameterExpression;
-       
+
         public GroupDescriptorExpressionBuilder ChildBuilder
         {
             get

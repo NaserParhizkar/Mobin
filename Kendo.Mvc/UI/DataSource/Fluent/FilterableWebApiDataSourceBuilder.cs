@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.ComponentModel;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class FilterableWebApiDataSourceBuilder<TModel> : WebApiDataSourceBuilder<TModel>, IHideObjectMembers
          where TModel : class

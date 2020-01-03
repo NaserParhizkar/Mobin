@@ -1,13 +1,12 @@
 namespace Kendo.Mvc.Extensions
 {
-	using System;
-	using System.Collections.Generic;
-	using System.ComponentModel;
-	using System.Linq;
-	using System.Reflection;
-	using Kendo.Mvc.Resources;
+    using Kendo.Mvc.Resources;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
 
-	internal static class TypeExtensions
+    internal static class TypeExtensions
     {
         internal static readonly Type[] PredefinedTypes = {
             typeof(Object),
@@ -185,13 +184,13 @@ namespace Kendo.Mvc.Extensions
 
             if (st.IsEnumType() || tt.IsEnumType())
             {
-               return st == tt;
+                return st == tt;
             }
 
             if (st == typeof(SByte))
             {
-                return tt == typeof(SByte) || tt == typeof(Int16) || 
-                    tt == typeof(Int32) || tt == typeof(Int64) || 
+                return tt == typeof(SByte) || tt == typeof(Int16) ||
+                    tt == typeof(Int32) || tt == typeof(Int64) ||
                     tt == typeof(Single) || tt == typeof(Double) || tt == typeof(Decimal);
             }
             else if (st == typeof(Byte))
@@ -234,7 +233,8 @@ namespace Kendo.Mvc.Extensions
                 return tt == typeof(UInt64) || tt == typeof(Single) ||
                        tt == typeof(Double) || tt == typeof(Decimal);
             }
-            else if (st == typeof(Single)) {
+            else if (st == typeof(Single))
+            {
                 return tt == typeof(Single) || tt == typeof(Double);
             }
 
@@ -282,11 +282,16 @@ namespace Kendo.Mvc.Extensions
                 return 0;
             }
 
-            if (type == typeof(char) || type == typeof(Single) || type == typeof(Double) || type == typeof(Decimal)) { 
+            if (type == typeof(char) || type == typeof(Single) || type == typeof(Double) || type == typeof(Decimal))
+            {
                 return 1;
-            } else if (type == typeof(SByte) || type == typeof(Int16) || type == typeof(Int32) || type == typeof(Int64)) {
+            }
+            else if (type == typeof(SByte) || type == typeof(Int16) || type == typeof(Int32) || type == typeof(Int64))
+            {
                 return 2;
-            } else if (type == typeof(Byte) || type == typeof(UInt16) || type == typeof(UInt32) || type == typeof(UInt64)) {
+            }
+            else if (type == typeof(Byte) || type == typeof(UInt16) || type == typeof(UInt32) || type == typeof(UInt64))
+            {
                 return 3;
             }
             return 0;
@@ -337,9 +342,9 @@ namespace Kendo.Mvc.Extensions
             return "Object";
         }
 
-		internal static bool IsPlainType(this Type type)
-		{
-			return !type.IsDynamicObject();
-		}
-	}
+        internal static bool IsPlainType(this Type type)
+        {
+            return !type.IsDynamicObject();
+        }
+    }
 }

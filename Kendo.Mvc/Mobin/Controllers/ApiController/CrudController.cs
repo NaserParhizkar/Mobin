@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using Microsoft.AspNetCore.Mvc;
+using Mobin.Common;
+using Mobin.ExpressionJsonSerializer;
+using Mobin.Service;
 using System;
 using System.Collections.Generic;
-using Mobin.Service;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using Mobin.ExpressionJsonSerializer;
-using Mobin.Common;
-using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
-namespace Kendo.Mvc.Mobin
+namespace Kendo.Mvc.Mobin.Controllers
 {
+    [Route("api/[controller]/[action]")]
     public class CrudController<TEntity> : ControllerBase where TEntity : class, new()
     {
         protected readonly ICrudService<TEntity> crudService;
@@ -20,16 +21,19 @@ namespace Kendo.Mvc.Mobin
             crudService = _crudService;
         }
 
+        [HttpGet("{key}")]
         public virtual TEntity GetEntityByKey<TKey>(TKey key)
         {
             return crudService.GetEntityByKey(key);
         }
 
+        [HttpGet]
         public virtual IEnumerable<TEntity> GetAllAsEnumerable()
         {
             return crudService.GetAllAsEnumerable();
         }
 
+        [HttpGet]
         [Display(Name = "دریافت اطلاعات {0}")]
         /// <summary>
         /// This method find expression tree which serialized in a file by unique widgetId
@@ -54,27 +58,52 @@ namespace Kendo.Mvc.Mobin
         }
 
         [Display(Name = "درج رکورد {0}")]
-        public virtual void Insert(TEntity entity)
+        [HttpPost]
+        public virtual void Insert([MyBind] TEntity entity)
         {
-            crudService.Insert(entity);
+            var res = crudService.Insert(entity);
         }
 
+
+        [HttpPut]
         [Display(Name = "ویرایش رکورد {0}")]
         public virtual void Update(TEntity entity)
         {
             crudService.Update(entity);
+
+            throw new MobinException("asdasdasd");
         }
 
+
+        [HttpDelete("{entity}")]
         [Display(Name = "حذف رکورد {0}")]
         public virtual void Delete(TEntity entity)
         {
             crudService.Delete(entity);
         }
 
+        [HttpDelete("{key}")]
         [Display(Name = "حذف رکورد {0}")]
         public virtual void Delete<TKey>(TKey key)
         {
             crudService.Delete(key);
+        }
+    }
+
+    public class MyBind : BindAttribute
+    {
+        public MyBind()
+        {
+
+        }
+        public override bool IsDefaultAttribute()
+        {
+            return base.IsDefaultAttribute();
+        }
+
+        public override bool Match(object obj)
+        {
+            return base.Match(obj);
         }
     }
 }

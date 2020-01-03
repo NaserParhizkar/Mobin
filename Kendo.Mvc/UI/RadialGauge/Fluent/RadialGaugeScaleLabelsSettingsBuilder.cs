@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Kendo.Mvc.Extensions;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -8,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring RadialGaugeScaleLabelsSettings
     /// </summary>
     public partial class RadialGaugeScaleLabelsSettingsBuilder
-        
+
     {
         public RadialGaugeScaleLabelsSettingsBuilder(RadialGaugeScaleLabelsSettings container)
         {

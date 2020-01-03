@@ -1,8 +1,5 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class PivotDataSourceMeasureDescriptor : JsonObject
     {
         public string Name { get; set; }

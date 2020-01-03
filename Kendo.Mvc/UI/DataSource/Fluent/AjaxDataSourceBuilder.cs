@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -136,7 +136,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="enabled">If true changes will be automatically synced, otherwise false.</param>        
         public virtual AjaxDataSourceBuilder<TModel> AutoSync(bool enabled)
         {
-            dataSource.AutoSync= enabled;
+            dataSource.AutoSync = enabled;
 
             return this;
         }

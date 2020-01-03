@@ -23,7 +23,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="controllerName">Controller name</param>        
         public EditorFileBrowserOperationBuilder Action(string actionName, string controllerName)
         {
-            return Action(actionName, controllerName, (object) null);
+            return Action(actionName, controllerName, (object)null);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="routeName"></param>        
         public EditorFileBrowserOperationBuilder Route(string routeName)
         {
-            operation.Route(routeName, (object) null);
+            operation.Route(routeName, (object)null);
 
             SetUrl();
 

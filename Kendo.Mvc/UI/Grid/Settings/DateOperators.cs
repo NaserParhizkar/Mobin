@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Kendo.Mvc.Resources;
 using System.Collections.Generic;
-using System.Linq;
-using Kendo.Mvc.Resources;
 
 namespace Kendo.Mvc.UI
 {

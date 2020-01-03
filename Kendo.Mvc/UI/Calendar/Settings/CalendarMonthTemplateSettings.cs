@@ -1,15 +1,12 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI CalendarMonthTemplateSettings class
     /// </summary>
-    public partial class CalendarMonthTemplateSettings 
+    public partial class CalendarMonthTemplateSettings
     {
         public Dictionary<string, object> Serialize()
         {

@@ -1,10 +1,5 @@
-using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI
 {
@@ -18,7 +13,7 @@ namespace Kendo.Mvc.UI
         {
             Enabled = true;
         }
-                
+
         public override void WriteInitializationScript(TextWriter writer) { }
 
         protected override void WriteHtml(TextWriter writer)
@@ -28,8 +23,8 @@ namespace Kendo.Mvc.UI
             var builder = GetHtmlBuilder();
 
             builder.WriteHtml(writer, HtmlEncoder);
-        }   
-        
+        }
+
         protected virtual CheckBoxHtmlBuilder GetHtmlBuilder()
         {
             return new CheckBoxHtmlBuilder(this);

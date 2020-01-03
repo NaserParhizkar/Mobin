@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxisNotesLineSettings
     /// </summary>
     public partial class ChartYAxisNotesLineSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisNotesLineSettingsBuilder(ChartYAxisNotesLineSettings<T> container)
         {

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring GanttColumn
     /// </summary>
     public partial class GanttColumnBuilder<TTaskModel, TDependenciesModel>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttColumnBuilder(GanttColumn<TTaskModel, TDependenciesModel> container)
         {

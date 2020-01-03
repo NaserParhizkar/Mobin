@@ -1,5 +1,3 @@
-using System;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>

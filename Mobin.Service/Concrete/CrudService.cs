@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Mobin.ExpressionJsonSerializer;
-using Mobin.Common;
 
 namespace Mobin.Service
 {
@@ -37,14 +35,14 @@ namespace Mobin.Service
             return mobinUnitOfWork.Repository<TEntity>().GetAll().AsEnumerable();
         }
 
-        public virtual void Insert(TEntity entity)
+        public virtual TEntity Insert(TEntity entity)
         {
-            mobinUnitOfWork.Repository<TEntity>().Insert(entity);
+            return mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual TEntity Update(TEntity entity)
         {
-            mobinUnitOfWork.Repository<TEntity>().Update(entity);
+            return mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
         }
 
         public virtual void Delete(TEntity entity)

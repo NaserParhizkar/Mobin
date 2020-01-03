@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Mobin.ExpressionJsonSerializer
 {
@@ -136,7 +135,7 @@ namespace Mobin.ExpressionJsonSerializer
 
             throw new NotSupportedException();
 
-            end:
+        end:
             this._writer.WriteEndObject();
         }
     }

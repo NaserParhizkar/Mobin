@@ -1,17 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
 {
     partial class Deserializer
     {
-        private BinaryExpression BinaryExpression(ExpressionType nodeType,System.Type type,JObject obj)
+        private BinaryExpression BinaryExpression(ExpressionType nodeType, System.Type type, JObject obj)
         {
             var left = this.Prop(obj, "Left", this.Expression);
             var right = this.Prop(obj, "Rigth", this.Expression);

@@ -6,8 +6,8 @@
     public static class JsonObjectExtensions
     {
         public static IEnumerable<IDictionary<string, object>> ToJson(this IEnumerable<JsonObject> items)
-        {            
-            return items.Select(i => i.ToJson());         
+        {
+            return items.Select(i => i.ToJson());
         }
     }
 }

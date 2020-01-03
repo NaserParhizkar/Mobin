@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.UI
-{    
+{
     public class GridScrollableSettings : JsonObject
-    {        
+    {
         public GridScrollableSettings()
-        {            
+        {
             Height = "400px";
         }
 

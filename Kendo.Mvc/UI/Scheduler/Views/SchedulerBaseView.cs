@@ -6,22 +6,22 @@
     public abstract class SchedulerViewBase : JsonObject, ISchedulerView
     {
         protected SchedulerViewBase(SchedulerViewType type, IScheduler scheduler)
-	    {
+        {
             Type = type;
             Group = new SchedulerGroupSettings();
             Scheduler = scheduler;
-	    }
-        
-        public IScheduler Scheduler 
-        { 
-            get; 
-            protected set; 
+        }
+
+        public IScheduler Scheduler
+        {
+            get;
+            protected set;
         }
 
         public string Title
-        { 
-            get; 
-            set; 
+        {
+            get;
+            set;
         }
 
         public SchedulerViewType Type
@@ -110,7 +110,7 @@
             {
                 json["selectedDateFormat"] = SelectedDateFormat;
             }
-             
+
             if (!string.IsNullOrEmpty(SelectedShortDateFormat))
             {
                 json["selectedShortDateFormat"] = SelectedShortDateFormat;

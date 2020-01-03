@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI EditorFileBrowserMessagesSettings class
     /// </summary>
-    public partial class EditorFileBrowserMessagesSettings 
+    public partial class EditorFileBrowserMessagesSettings
     {
         public Dictionary<string, object> Serialize()
         {

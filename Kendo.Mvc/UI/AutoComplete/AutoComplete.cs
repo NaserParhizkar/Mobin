@@ -1,7 +1,5 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace Kendo.Mvc.UI
@@ -10,7 +8,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI AutoComplete component
     /// </summary>
     public partial class AutoComplete : WidgetBase
-        
+
     {
         public AutoComplete(ViewContext viewContext) : base(viewContext)
         {

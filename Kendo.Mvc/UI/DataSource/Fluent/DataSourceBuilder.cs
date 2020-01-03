@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -58,6 +57,6 @@ namespace Kendo.Mvc.UI.Fluent
             dataSource.Type = DataSourceType.Custom;
 
             return new SignalRDataSourceBuilder<TModel>(dataSource);
-        }     
+        }
     }
 }

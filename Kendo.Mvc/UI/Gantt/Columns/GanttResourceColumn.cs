@@ -1,8 +1,4 @@
 ﻿using Kendo.Mvc.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Kendo.Mvc.UI
 {
@@ -15,7 +11,7 @@ namespace Kendo.Mvc.UI
         /// <param name="Gantt"></param>
         /// <param name="expression"></param>
         public GanttResourceColumn(string fieldName)
-            :base()
+            : base()
         {
             Field = fieldName;
             Title = fieldName.AsTitle();

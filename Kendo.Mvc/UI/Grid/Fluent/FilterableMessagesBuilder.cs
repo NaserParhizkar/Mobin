@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Kendo.Mvc.UI.Fluent
+﻿namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent interface for configuring the Filter menu options.

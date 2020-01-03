@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
 
     internal class GroupDescriptorCollectionExpressionBuilder : ExpressionBuilderBase
     {

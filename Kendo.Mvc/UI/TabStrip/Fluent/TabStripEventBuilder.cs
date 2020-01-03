@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TabStrip for ASP.NET MVC events.
     /// </summary>
-    public class TabStripEventBuilder: EventBuilder
+    public class TabStripEventBuilder : EventBuilder
     {
         public TabStripEventBuilder(IDictionary<string, object> events)
             : base(events)

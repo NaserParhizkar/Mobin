@@ -1,10 +1,7 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Kendo.Mvc.UI
 {
@@ -18,9 +15,9 @@ namespace Kendo.Mvc.UI
         public DataSource DataSource { get; private set; }
 
         public ViewContext ViewContext { get; private set; }
-        
+
         public IUrlGenerator UrlGenerator { get; private set; }
-        
+
         public StockChartNavigatorSettings() { }
 
         public StockChartNavigatorSettings(StockChart<T> chart, ViewContext viewContext)

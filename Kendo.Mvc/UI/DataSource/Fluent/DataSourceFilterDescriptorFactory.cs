@@ -11,7 +11,7 @@ namespace Kendo.Mvc.UI.Fluent
     public class DataSourceFilterDescriptorFactory<TModel> : DataSourceFilterDescriptorFactoryBase, IHideObjectMembers where TModel : class
     {
         public DataSourceFilterDescriptorFactory(IList<IFilterDescriptor> filters)
-            :base(filters)
+            : base(filters)
         {
         }
 

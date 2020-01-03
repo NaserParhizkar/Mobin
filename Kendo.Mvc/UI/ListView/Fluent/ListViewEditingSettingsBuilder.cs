@@ -1,5 +1,5 @@
 namespace Kendo.Mvc.UI.Fluent
-{    
+{
     /// <summary>
     /// Defines the fluent interface for configuring ListView editing.
     /// </summary>
@@ -21,7 +21,7 @@ namespace Kendo.Mvc.UI.Fluent
         public ListViewEditingSettingsBuilder<T> Enabled(bool value)
         {
             settings.Enabled = value;
-            
+
             return this;
         }
 
@@ -34,6 +34,6 @@ namespace Kendo.Mvc.UI.Fluent
             settings.TemplateName = templateName;
 
             return this;
-        }     
+        }
     }
 }

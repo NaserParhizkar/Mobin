@@ -1,14 +1,10 @@
-﻿using Kendo.Mvc.Mobin;
-using Kendo.Mvc.Mobin.Common;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Kendo.Mvc.Mobin.Common;
 using Mobin.Common;
 using Mobin.Common.Expressions;
 using Mobin.ExpressionJsonSerializer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Kendo.Mvc.UI
 {
@@ -35,14 +31,14 @@ namespace Kendo.Mvc.UI
             var keyExpression = (Expression)ids?.GetPropertyValue(nameof(Expression));
 
             if (keyExpression == null && Editable.Enabled)
-                throw new MobinException($"Editable enabled gird must have a key which specifys edit or delet row or record");
+                throw new MobinException($"Editable enabled gird must have a key which specify edit or delet row or record");
 
             if (keyExpression != null)
-                fetchFields.Add(keyExpression.MakeItAsSimpleExpession());
+                fetchFields.Add(keyExpression);
 
             foreach (var col in Columns)
             {
-                var expression = (Expression)col.GetPropertyValue("Expression",false);
+                var expression = (Expression)col.GetPropertyValue("Expression", false);
                 if (expression != null)
                     fetchFields.Add(expression);
             }

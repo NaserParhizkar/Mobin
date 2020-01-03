@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Encodings.Web;
 
 namespace Kendo.Mvc.UI
@@ -12,7 +12,7 @@ namespace Kendo.Mvc.UI
     /// <summary>
     /// Kendo UI SplitterPane class
     /// </summary>
-    public partial class SplitterPane 
+    public partial class SplitterPane
     {
         public SplitterPane()
         {
@@ -27,7 +27,7 @@ namespace Kendo.Mvc.UI
         /// </summary>
         public IDictionary<string, object> HtmlAttributes
         {
-            get;            
+            get;
         } = new RouteValueDictionary();
 
         /// <summary>

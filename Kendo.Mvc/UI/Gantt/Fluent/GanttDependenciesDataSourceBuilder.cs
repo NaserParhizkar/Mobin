@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
-    using System.ComponentModel;
 
     /// <summary>
     /// Defines the fluent interface for configuring the Gantt dependencies <see cref="DataSource"/>.

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartPanePaddingSettings
     /// </summary>
     public partial class ChartPanePaddingSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartPanePaddingSettingsBuilder(ChartPanePaddingSettings<T> container)
         {

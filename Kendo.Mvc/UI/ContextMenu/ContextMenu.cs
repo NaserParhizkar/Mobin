@@ -1,10 +1,9 @@
 using Kendo.Mvc.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Kendo.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Kendo.Mvc.UI
 {
@@ -55,7 +54,7 @@ namespace Kendo.Mvc.UI
 
                 menuTag.WriteTo(writer, HtmlEncoder);
             }
-            
+
             base.WriteHtml(writer);
         }
 

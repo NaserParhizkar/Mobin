@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Kendo.Mvc.Extensions;
+﻿using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
+using System.Threading.Tasks;
 
 namespace Kendo.Mvc.UI
 {

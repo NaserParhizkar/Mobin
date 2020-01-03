@@ -3,7 +3,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent interface for configuring <see cref="Grid{T}.Reorderable"/>
     /// </summary>
-    public class GridReorderingSettingsBuilder: IHideObjectMembers
+    public class GridReorderingSettingsBuilder : IHideObjectMembers
     {
         private readonly GridSettings settings;
 

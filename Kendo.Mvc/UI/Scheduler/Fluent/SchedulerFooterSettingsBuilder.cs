@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring SchedulerFooterSettings
     /// </summary>
     public partial class SchedulerFooterSettingsBuilder<T>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
         public SchedulerFooterSettingsBuilder(SchedulerFooterSettings<T> container)
         {

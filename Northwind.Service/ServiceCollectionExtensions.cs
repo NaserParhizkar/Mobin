@@ -1,5 +1,4 @@
 ﻿using Northwind.Service;
-using Repository;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

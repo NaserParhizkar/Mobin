@@ -19,7 +19,7 @@ namespace KendoBus.Repository
         public int ShiftId { get; set; }
 
         [NotMapped]
-        public ShiftPeriod Type 
+        public ShiftPeriod Type
         {
             get { return (ShiftPeriod)TypeOfShiftPeriod; }
             set { TypeOfShiftPeriod = (int)value; }

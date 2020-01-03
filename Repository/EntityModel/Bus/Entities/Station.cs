@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace KendoBus.Repository
 {
     [Description("ایستگاه")]
-    public class Station  : BaseEntity<int> 
+    public class Station : BaseEntity<int>
     {
 
         [Required(ErrorMessage = "شماره ایستگاه نمی تواند خالی باشد")]

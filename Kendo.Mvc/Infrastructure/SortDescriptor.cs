@@ -1,8 +1,8 @@
 namespace Kendo.Mvc
 {
+    using Kendo.Mvc.Extensions;
     using System.Collections.Generic;
     using System.Linq;
-    using Kendo.Mvc.Extensions;
 
     /// <summary>
     /// Represents declarative sorting.
@@ -43,18 +43,18 @@ namespace Kendo.Mvc
 
         public void Deserialize(string source)
         {
-            var parts = source.Split(new [] { '-' });
-            
+            var parts = source.Split(new[] { '-' });
+
             if (parts.Length > 1)
             {
                 Member = parts[0];
             }
 
             var sortDirection = parts.Last();
-            
+
             SortDirection = sortDirection == "desc" ? ListSortDirection.Descending : ListSortDirection.Ascending;
         }
-        
+
         public string Serialize()
         {
             return "{0}-{1}".FormatWith(Member, SortDirection == ListSortDirection.Ascending ? "asc" : "desc");

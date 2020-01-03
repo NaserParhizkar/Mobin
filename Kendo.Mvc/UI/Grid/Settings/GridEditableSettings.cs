@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.UI
 {
+    using Extensions;
+    using Kendo.Mvc.Resources;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
-    using Kendo.Mvc.Resources;
     using System.Reflection;
     using System.Text.RegularExpressions;
 
@@ -35,16 +35,16 @@ namespace Kendo.Mvc.UI
         }
 
         public Window PopUp
-		{
-			get;
-			set;
-		}
+        {
+            get;
+            set;
+        }
 
-		public string Confirmation
-		{
-			get;
-			set;
-		}
+        public string Confirmation
+        {
+            get;
+            set;
+        }
 
         public ClientHandlerDescriptor ConfirmationHandler
         {
@@ -113,15 +113,16 @@ namespace Kendo.Mvc.UI
             if (grid.DataSource.Schema.Model != null &&
                 grid.DataSource.Schema.Model.Fields.Any())
             {
-                grid.DataSource.Schema.Model.Fields.Each(f => {
+                grid.DataSource.Schema.Model.Fields.Each(f =>
+                {
                     var property = typeof(T).GetProperty(f.Member, BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
                     if (property != null && property.CanWrite)
-	                {
+                    {
                         if (f.DefaultValue == null || f.DefaultValue.GetType() != typeof(ClientHandlerDescriptor))
                         {
                             property.SetValue(instance, f.DefaultValue, null);
                         }
-	                }
+                    }
                 });
             }
 
@@ -129,42 +130,43 @@ namespace Kendo.Mvc.UI
         }
 
 
-		private IDictionary<string, object> SerializePopUp()
-		{
-			var title = PopUp.Title ?? Messages.Grid_Edit;
-			var result = new Dictionary<string, object> {
-				["title"] = title,
-				["modal"] = PopUp.Modal,
-				["draggable"] = PopUp.Draggable,
-				["resizable"] = PopUp.ResizingSettings.Enabled,
-				["width"] = PopUp.Width ?? 0,
+        private IDictionary<string, object> SerializePopUp()
+        {
+            var title = PopUp.Title ?? Messages.Grid_Edit;
+            var result = new Dictionary<string, object>
+            {
+                ["title"] = title,
+                ["modal"] = PopUp.Modal,
+                ["draggable"] = PopUp.Draggable,
+                ["resizable"] = PopUp.ResizingSettings.Enabled,
+                ["width"] = PopUp.Width ?? 0,
                 ["height"] = PopUp.Height ?? 0,
                 ["content"] = PopUp.ContentUrl
             };
 
-			var popupPosition = PopUp.Position;
+            var popupPosition = PopUp.Position;
 
-			if (popupPosition.Left.HasValue || popupPosition.Top.HasValue)
-			{
-				var topLeft = new Dictionary<string, double>();
+            if (popupPosition.Left.HasValue || popupPosition.Top.HasValue)
+            {
+                var topLeft = new Dictionary<string, double>();
 
-				if (popupPosition.Top.HasValue)
-				{
-					topLeft.Add("top", popupPosition.Top.Value);
-				}
+                if (popupPosition.Top.HasValue)
+                {
+                    topLeft.Add("top", popupPosition.Top.Value);
+                }
 
-				if (popupPosition.Left.HasValue)
-				{
-					topLeft.Add("left", popupPosition.Left.Value);
-				}
+                if (popupPosition.Left.HasValue)
+                {
+                    topLeft.Add("left", popupPosition.Left.Value);
+                }
 
-				result.Add("position", topLeft);
-			}
+                result.Add("position", topLeft);
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		protected override void Serialize(IDictionary<string, object> json)
+        protected override void Serialize(IDictionary<string, object> json)
         {
             var editorHtml = grid.EditorHtml;
 
@@ -199,21 +201,22 @@ namespace Kendo.Mvc.UI
                 json["confirmation"] = false;
             }
 
-            json.AddRange(new Dictionary<string, object> {
-				["confirmDelete"] = ConfirmDelete,
-				["cancelDelete"] = CancelDelete,
-				["mode"] = Mode.ToString().ToLowerInvariant(),
-				["create"] = IsClientBinding,
-				["update"] = IsClientBinding,
-				["destroy"] = IsClientBinding
-			});
+            json.AddRange(new Dictionary<string, object>
+            {
+                ["confirmDelete"] = ConfirmDelete,
+                ["cancelDelete"] = CancelDelete,
+                ["mode"] = Mode.ToString().ToLowerInvariant(),
+                ["create"] = IsClientBinding,
+                ["update"] = IsClientBinding,
+                ["destroy"] = IsClientBinding
+            });
 
-			json.Add("template", editorHtml, () => Mode != GridEditMode.InLine)
-				.Add("createAt", CreateAt.ToString().ToLower(), () => CreateAt != GridInsertRowPosition.Top)
-				.Add("window", SerializePopUp(), () => Mode == GridEditMode.PopUp && IsClientBinding);
-		}
+            json.Add("template", editorHtml, () => Mode != GridEditMode.InLine)
+                .Add("createAt", CreateAt.ToString().ToLower(), () => CreateAt != GridInsertRowPosition.Top)
+                .Add("window", SerializePopUp(), () => Mode == GridEditMode.PopUp && IsClientBinding);
+        }
 
-		private bool IsClientBinding
+        private bool IsClientBinding
         {
             get
             {

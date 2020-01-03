@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -13,7 +13,8 @@ namespace Mobin.ExpressionJsonSerializer
             var elementType = this.Prop(obj, "ElementType", this.Type);
             var expressions = this.Prop(obj, "Expressions", this.Enumerable(this.Expression));
 
-            switch (nodeType) {
+            switch (nodeType)
+            {
                 case ExpressionType.NewArrayInit:
                     return Expr.NewArrayInit(elementType, expressions);
                 case ExpressionType.NewArrayBounds:

@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
+using System;
 using System.IO;
 using System.Linq;
-using Kendo.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
 
 namespace Kendo.Mvc.UI
 {
@@ -15,11 +15,11 @@ namespace Kendo.Mvc.UI
         private readonly IDirectoryBrowser directoryBrowser;
         private readonly IDirectoryPermission permission;
 
-        protected readonly IHostingEnvironment HostingEnvironment;
-        
-        protected FileBrowserController(IHostingEnvironment hostingEnvironment)
+        protected readonly IWebHostEnvironment HostingEnvironment;
+
+        protected FileBrowserController(IWebHostEnvironment hostingEnvironment)
             : this(DI.Current.Resolve<IDirectoryBrowser>(),
-                  DI.Current.Resolve<IDirectoryPermission>(), 
+                  DI.Current.Resolve<IDirectoryPermission>(),
                   hostingEnvironment)
         {
         }
@@ -27,7 +27,7 @@ namespace Kendo.Mvc.UI
         protected FileBrowserController(
             IDirectoryBrowser directoryBrowser,
             IDirectoryPermission permission,
-            IHostingEnvironment hostingEnvironment)
+            IWebHostEnvironment hostingEnvironment)
         {
             this.directoryBrowser = directoryBrowser;
             this.directoryBrowser.HostingEnvironment = hostingEnvironment;
@@ -128,7 +128,7 @@ namespace Kendo.Mvc.UI
 
         protected virtual bool CanAccess(string path)
         {
-            var rootPath =  Path.GetFullPath(Path.Combine(this.HostingEnvironment.WebRootPath, ContentPath));
+            var rootPath = Path.GetFullPath(Path.Combine(this.HostingEnvironment.WebRootPath, ContentPath));
 
             return permission.CanAccess(rootPath, path);
         }
@@ -202,7 +202,7 @@ namespace Kendo.Mvc.UI
             {
                 throw new Exception("Forbidden");
             }
-            
+
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -215,7 +215,7 @@ namespace Kendo.Mvc.UI
             {
                 throw new Exception("Forbidden");
             }
-            
+
             if (Directory.Exists(path))
             {
                 Directory.Delete(path, true);

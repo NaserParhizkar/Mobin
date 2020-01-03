@@ -1,6 +1,5 @@
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -134,7 +133,7 @@ namespace Kendo.Mvc.UI
         {
             return !string.IsNullOrEmpty(TemplateId) || !string.IsNullOrEmpty(Template) || Checkboxes.Template as string != TreeViewCheckboxesSettings.DefaultTemplate;
         }
-         
+
 
         protected override void WriteHtml(TextWriter writer)
         {
@@ -143,7 +142,7 @@ namespace Kendo.Mvc.UI
             tag.WriteTo(writer, HtmlEncoder);
 
             base.WriteHtml(writer);
-            return;             
+            return;
         }
 
         internal bool isPathHighlighted;
@@ -173,7 +172,7 @@ namespace Kendo.Mvc.UI
             {
                 ExpandAllChildrens(item);
             }
-        }        
+        }
     }
 }
 

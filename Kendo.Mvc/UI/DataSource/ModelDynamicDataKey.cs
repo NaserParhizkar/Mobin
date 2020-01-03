@@ -1,12 +1,12 @@
 namespace Kendo.Mvc.UI
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Linq.Expressions;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     internal class ModelDynamicDataKey : IDataKey<object>
     {
-        public ModelDynamicDataKey(string memberName, Expression<Func<object , object>> expression)
+        public ModelDynamicDataKey(string memberName, Expression<Func<object, object>> expression)
         {
             RouteKey = "id";
             Name = memberName;
@@ -16,7 +16,7 @@ namespace Kendo.Mvc.UI
 
         public string Name
         {
-            get;            
+            get;
         }
 
         public string RouteKey
@@ -27,12 +27,12 @@ namespace Kendo.Mvc.UI
 
         public Func<object, object> Value
         {
-            get;            
+            get;
         }
 
-        public Expression<Func<object , object>> Expression
+        public Expression<Func<object, object>> Expression
         {
-            get;            
+            get;
         }
 
         public object GetValue(object dataItem)

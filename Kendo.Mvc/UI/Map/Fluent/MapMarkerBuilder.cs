@@ -8,7 +8,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring MapMarker
     /// </summary>
     public partial class MapMarkerBuilder
-        
+
     {
         public MapMarkerBuilder(MapMarker container)
         {

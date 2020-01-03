@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Upload for ASP.NET MVC events.
     /// </summary>
-    public class UploadEventBuilder: EventBuilder
+    public class UploadEventBuilder : EventBuilder
     {
         public UploadEventBuilder(IDictionary<string, object> events)
             : base(events)

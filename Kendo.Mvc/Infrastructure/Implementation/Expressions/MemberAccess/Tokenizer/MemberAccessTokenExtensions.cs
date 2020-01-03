@@ -1,13 +1,12 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-
-    using Extensions;
 
     internal static class MemberAccessTokenExtensions
     {
@@ -27,7 +26,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             if (indexerToken != null)
             {
                 var arguments = indexerToken.GetIndexerArguments();
-                return Expression.Call(instance, (MethodInfo) memberInfo, arguments);
+                return Expression.Call(instance, (MethodInfo)memberInfo, arguments);
             }
 
             // Property or field
@@ -49,7 +48,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             {
                 memberType = "indexer with arguments";
 
-                var argumentsAsString = ((IndexerToken) token).Arguments.Where(a => a != null).Select(a => a.ToString());
+                var argumentsAsString = ((IndexerToken)token).Arguments.Where(a => a != null).Select(a => a.ToString());
                 memberName = string.Join(",", argumentsAsString.ToArray());
             }
 
@@ -58,7 +57,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
         private static IEnumerable<Expression> GetIndexerArguments(this IndexerToken indexerToken)
         {
-            return indexerToken.Arguments.Select(a => (Expression) Expression.Constant(a));
+            return indexerToken.Arguments.Select(a => (Expression)Expression.Constant(a));
         }
 
         /// <exception cref="InvalidOperationException"><c>InvalidOperationException</c>.</exception>
@@ -90,7 +89,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             if (indexerPropertyInfo != null)
             {
                 return indexerPropertyInfo.GetGetMethod();
-                
+
             }
 
             return null;

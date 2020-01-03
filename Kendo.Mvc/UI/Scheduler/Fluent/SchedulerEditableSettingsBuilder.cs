@@ -5,7 +5,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="SchedulerEditableSettings{T}"/>.
     /// </summary>
-    public class SchedulerEditableSettingsBuilder<T> 
+    public class SchedulerEditableSettingsBuilder<T>
         where T : class
     {
         private readonly SchedulerEditableSettings<T> container;

@@ -20,7 +20,7 @@
                                                         .DataSource(dataSource =>
                                                         {
                                                             dataSource
-                                                            .Ajax().Filter(t => t.Add(y => y.Customer.Country).Contains("usa"))
+                                                            .WebApi().Filter(t => t.Add(y => y.Customer.Country).Contains("usa"))
                                                             .PageSize(5)
                                                             .Read(read => read.Action<CustomerApiController>(t => t.GetCustomersOrderInfo(null)));
 
@@ -56,12 +56,12 @@
                     .Filterable()
                     .HtmlAttributes(new { style = "height:550px;" })
                     .DataSource(dataSource => dataSource
-                        .Ajax()
+                        .WebApi()
                         .PageSize(20)
                         .Read(read => read.Action("Orders_Read", "Grid"))
                     )
             )*@
 
-        @*@Html.Kendo().DropDownList().Name("Drp").DataSource(ds => ds.Ajax().Read(read => read.Action("Orders_Read", "Grid"))).DataValueField("OrderID").DataTextField("OrderID")*@
+        @*@Html.Kendo().DropDownList().Name("Drp").DataSource(ds => ds.WebApi().Read(read => read.Action("Orders_Read", "Grid"))).DataValueField("OrderID").DataTextField("OrderID")*@
     </div>
 </div>

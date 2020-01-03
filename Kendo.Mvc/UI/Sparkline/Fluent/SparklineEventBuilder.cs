@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Sparkline for ASP.NET MVC events.
     /// </summary>
-    public class SparklineEventBuilder: EventBuilder
+    public class SparklineEventBuilder : EventBuilder
     {
         public SparklineEventBuilder(IDictionary<string, object> events)
             : base(events)

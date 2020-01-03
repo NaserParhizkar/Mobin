@@ -1,10 +1,10 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.Linq.Expressions;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Routing;
+    using System;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="CrudOperation"/> options.
@@ -12,7 +12,7 @@
     public abstract class CrudOperationBuilderBase<TCrudOperationBuilder> : IHideObjectMembers
         where TCrudOperationBuilder : CrudOperationBuilderBase<TCrudOperationBuilder>
     {
-        protected readonly CrudOperation operation;
+        public readonly CrudOperation operation;
         protected readonly ViewContext viewContext;
         protected readonly IUrlGenerator urlGenerator;
 

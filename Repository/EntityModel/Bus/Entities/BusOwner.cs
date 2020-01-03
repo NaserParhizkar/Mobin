@@ -8,7 +8,7 @@ namespace KendoBus.Repository
     [Description("مالک اتوبوس")]
     public class BusOwner : Person
     {
-        [Display(Name="کد مالک اتوبوس")]
+        [Display(Name = "کد مالک اتوبوس")]
         public int BOID { get; set; }
 
         public override string ToString()

@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
+    using Expressions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    using Expressions;
 
     internal class SortDescriptorCollectionExpressionBuilder
     {
@@ -38,7 +38,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
                 else
                 {
                     methodName = descriptor.SortDirection == ListSortDirection.Ascending ?
-                        "ThenBy" : "ThenByDescending"; 
+                        "ThenBy" : "ThenByDescending";
                 }
 
                 query = query.Provider.CreateQuery(

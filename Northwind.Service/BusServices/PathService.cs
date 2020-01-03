@@ -13,7 +13,7 @@ namespace Northwind.Service
 
     public class PathService : CrudService<Path>, IPathService
     {
-        public PathService(Func<Type, IMobinUnitOfWork> unitofwork) :base(unitofwork)
+        public PathService(Func<Type, IMobinUnitOfWork> unitofwork) : base(unitofwork)
         {
         }
 

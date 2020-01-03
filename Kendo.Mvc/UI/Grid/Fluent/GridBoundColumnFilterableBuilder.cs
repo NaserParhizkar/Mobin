@@ -1,7 +1,7 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
 
     /// <summary>
@@ -50,7 +50,7 @@ namespace Kendo.Mvc.UI.Fluent
         public GridBoundColumnFilterableBuilder Cell(Action<GridColumnFilterableCellSettingsBuilder> configurator)
         {
             configurator(new GridColumnFilterableCellSettingsBuilder(settings.CellSettings, this.viewContext, this.urlGenerator));
-            
+
             return this;
         }
 
@@ -88,45 +88,45 @@ namespace Kendo.Mvc.UI.Fluent
             return this;
         }
 
-		/// <summary>
-		/// Sets the template for the checkbox rendering when Multi checkbox filtering is enabled
-		/// </summary>
-		/// <example>
-		/// <code lang="CS">
-		///  &lt;%= Html.Kendo().Grid(Model)
-		///             .Name("Grid")
-		///             .Columns(columns =>
-		///                 columns.Bound(o => o.OrderDate)
-		///                        .Filterable(filterable =>
-		///                             filterable.ItemTemplate("nameOfJavaScriptFunction")
-		///                        )
-		///             )
-		/// %&gt;
-		/// </code>
-		/// </example>
-		public GridBoundColumnFilterableBuilder ItemTemplate(string handler)
-		{
-			settings.ItemTemplate.HandlerName = handler;
-			return this;
-		}
+        /// <summary>
+        /// Sets the template for the checkbox rendering when Multi checkbox filtering is enabled
+        /// </summary>
+        /// <example>
+        /// <code lang="CS">
+        ///  &lt;%= Html.Kendo().Grid(Model)
+        ///             .Name("Grid")
+        ///             .Columns(columns =>
+        ///                 columns.Bound(o => o.OrderDate)
+        ///                        .Filterable(filterable =>
+        ///                             filterable.ItemTemplate("nameOfJavaScriptFunction")
+        ///                        )
+        ///             )
+        /// %&gt;
+        /// </code>
+        /// </example>
+        public GridBoundColumnFilterableBuilder ItemTemplate(string handler)
+        {
+            settings.ItemTemplate.HandlerName = handler;
+            return this;
+        }
 
-		/// <summary>
-		/// Enables / disabled the CheclAll checkboxes when Multi Checkbox filtering is enabled.
-		/// </summary>
-		public GridBoundColumnFilterableBuilder CheckAll(bool value)
-		{
-			settings.CheckAll = value;
-			return this;
-		}
+        /// <summary>
+        /// Enables / disabled the CheclAll checkboxes when Multi Checkbox filtering is enabled.
+        /// </summary>
+        public GridBoundColumnFilterableBuilder CheckAll(bool value)
+        {
+            settings.CheckAll = value;
+            return this;
+        }
 
-		/// <summary>
-		/// Enables / disabled the Multi Checkbox filtering support for this column.
-		/// </summary>
-		public GridBoundColumnFilterableBuilder Multi(bool value)
-		{
-			settings.Multi = value;
-			return this;
-		}
+        /// <summary>
+        /// Enables / disabled the Multi Checkbox filtering support for this column.
+        /// </summary>
+        public GridBoundColumnFilterableBuilder Multi(bool value)
+        {
+            settings.Multi = value;
+            return this;
+        }
 
         /// <summary>
         /// Show / Hide the Search Box in the filter menu when Multi Checkbox filtering is enabled.
@@ -159,8 +159,8 @@ namespace Kendo.Mvc.UI.Fluent
         /// </code>
         /// </example>
         public GridBoundColumnFilterableBuilder DataSource(Action<ReadOnlyDataSourceBuilder> configurator)
-		{
-			configurator(new ReadOnlyDataSourceBuilder(settings.DataSource, this.viewContext, this.urlGenerator));
+        {
+            configurator(new ReadOnlyDataSourceBuilder(settings.DataSource, this.viewContext, this.urlGenerator));
 
             return this;
         }
@@ -175,10 +175,10 @@ namespace Kendo.Mvc.UI.Fluent
         /// Provide IEnumerable that will be used as DataSource for Multi CheckBox filtering on this column
         /// </summary>
         public GridBoundColumnFilterableBuilder BindTo(System.Collections.IEnumerable dataSource)
-		{
-			settings.DataSource.Data = dataSource;
+        {
+            settings.DataSource.Data = dataSource;
 
-			return this;
-		}
-	}
+            return this;
+        }
+    }
 }

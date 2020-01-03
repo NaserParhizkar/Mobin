@@ -1,14 +1,13 @@
 ﻿namespace Kendo.Mvc.UI
 {
+    using Extensions;
+    using Microsoft.AspNetCore.Html;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Threading.Tasks;
-    using Extensions;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
-    using Microsoft.AspNetCore.Html;
     using System.Text.Encodings.Web;
 
     public class HtmlElement : IHtmlNode
@@ -163,7 +162,7 @@
 
             return this;
         }
-        
+
         public IHtmlNode Text(string value)
         {
             Children.Clear();

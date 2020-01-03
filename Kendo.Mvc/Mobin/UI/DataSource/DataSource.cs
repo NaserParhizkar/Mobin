@@ -1,11 +1,9 @@
-﻿using Kendo.Mvc.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Kendo.Mvc.UI
 {
-    public partial class DataSource 
+    public partial class DataSource
     {
         internal Guid WidgetId { get; set; }
         internal bool AutoMakeQueryExpression { get; set; }

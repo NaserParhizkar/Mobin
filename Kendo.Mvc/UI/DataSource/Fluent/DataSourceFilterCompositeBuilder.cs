@@ -15,14 +15,14 @@ namespace Kendo.Mvc.UI.Fluent
             if (previous == null)
             {
                 throw new InvalidCastException();
-            }            
+            }
 
             FilterDescriptor descriptor = new FilterDescriptor { Member = previous.Member };
 
             Descriptor.LogicalOperator = FilterCompositionLogicalOperator.And;
             Descriptor.FilterDescriptors.Add(descriptor);
 
-            TBuilder builder = (TBuilder) Activator.CreateInstance(typeof(TBuilder), new object[] { Descriptor });
+            TBuilder builder = (TBuilder)Activator.CreateInstance(typeof(TBuilder), new object[] { Descriptor });
 
             return builder;
         }
@@ -46,5 +46,5 @@ namespace Kendo.Mvc.UI.Fluent
 
             return builder;
         }
-    }    
+    }
 }

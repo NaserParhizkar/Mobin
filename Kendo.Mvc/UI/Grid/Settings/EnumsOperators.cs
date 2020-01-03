@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Kendo.Mvc.Resources;
 using System.Collections.Generic;
-using System.Linq;
-using Kendo.Mvc.Resources;
 
 namespace Kendo.Mvc.UI
 {
@@ -12,7 +10,7 @@ namespace Kendo.Mvc.UI
             Operators = new Dictionary<string, string>()
             {
                 { "eq", Messages.Filter_EnumIsEqualTo },
-                { "neq", Messages.Filter_EnumIsNotEqualTo },                
+                { "neq", Messages.Filter_EnumIsNotEqualTo },
                 { "isnull", Messages.Filter_EnumIsNull },
                 { "isnotnull", Messages.Filter_EnumIsNotNull }
             };

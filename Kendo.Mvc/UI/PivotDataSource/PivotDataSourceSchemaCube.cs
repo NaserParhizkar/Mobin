@@ -1,9 +1,7 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using Kendo.Mvc.Infrastructure;
-    using System.Collections.Generic;
-    using System.Linq;
     using Kendo.Mvc.Extensions;
+    using System.Collections.Generic;
 
     public class PivotDataSourceSchemaCube : JsonObject
     {
@@ -41,7 +39,7 @@
                     if (prop.AggregateName.HasValue())
                     {
                         measure["aggregate"] = prop.AggregateName;
-                    } 
+                    }
                     else if (prop.Aggregate.HasValue())
                     {
                         measure["aggregate"] = prop.Aggregate;

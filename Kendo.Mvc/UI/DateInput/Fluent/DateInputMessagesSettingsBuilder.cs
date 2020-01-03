@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring DateInputMessagesSettings
     /// </summary>
     public partial class DateInputMessagesSettingsBuilder
-        
+
     {
         public DateInputMessagesSettingsBuilder(DateInputMessagesSettings container)
         {

@@ -7,7 +7,7 @@
     {
         public SignalRDataSourceBuilder(DataSource dataSource)
             : base(dataSource)
-        { 
+        {
         }
 
         /// <summary>

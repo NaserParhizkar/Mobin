@@ -8,7 +8,7 @@
     {
         public SchedulerMonthViewBuilder(TView resource)
             : base(resource)
-        { 
+        {
         }
 
         /// <summary>

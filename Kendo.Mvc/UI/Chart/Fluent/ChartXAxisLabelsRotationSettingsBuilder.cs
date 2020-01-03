@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartXAxisLabelsRotationSettings
     /// </summary>
     public partial class ChartXAxisLabelsRotationSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartXAxisLabelsRotationSettingsBuilder(ChartXAxisLabelsRotationSettings<T> container)
         {

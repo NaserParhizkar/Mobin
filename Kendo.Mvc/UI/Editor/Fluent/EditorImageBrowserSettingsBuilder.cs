@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Routing;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -25,7 +24,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorImageBrowserSettingsBuilder Create(string actionName, string controllerName)
         {
-            return Create(actionName, controllerName, (object) null);
+            return Create(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Create(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -51,7 +50,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorImageBrowserSettingsBuilder Destroy(string actionName, string controllerName)
         {
-            return Destroy(actionName, controllerName, (object) null);
+            return Destroy(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Destroy(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -74,10 +73,10 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-                
+
         public EditorImageBrowserSettingsBuilder Image(string actionName, string controllerName)
         {
-            return Image(actionName, controllerName, (object) null);
+            return Image(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Image(string url)
@@ -109,7 +108,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorImageBrowserSettingsBuilder Read(string actionName, string controllerName)
         {
-            return Read(actionName, controllerName, (object) null);
+            return Read(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Read(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -139,7 +138,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorImageBrowserSettingsBuilder Thumbnail(string actionName, string controllerName)
         {
-            return Thumbnail(actionName, controllerName, (object) null);
+            return Thumbnail(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Thumbnail(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -169,7 +168,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorImageBrowserSettingsBuilder Upload(string actionName, string controllerName)
         {
-            return Upload(actionName, controllerName, (object) null);
+            return Upload(actionName, controllerName, (object)null);
         }
 
         public EditorImageBrowserSettingsBuilder Upload(string actionName, string controllerName, RouteValueDictionary routeValues)

@@ -11,17 +11,17 @@ namespace KendoBus.Repository
         [ScaffoldColumn(false)]
         public int ID { get; set; }
 
-        [Required(ErrorMessage="لطفاً کد خبر را وارد نمایید."),Display(Name="کد")]
+        [Required(ErrorMessage = "لطفاً کد خبر را وارد نمایید."), Display(Name = "کد")]
         public int NewsId { get; set; }
 
-        [Required(ErrorMessage = "لطفاً عنوان خبر را وارد نمایید."), 
+        [Required(ErrorMessage = "لطفاً عنوان خبر را وارد نمایید."),
         Display(Name = "عنوان خبر")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "لطفاً تاریخ خبر را وارد نمایید."), Display(Name = "تاریخ خبر")]
         public DateTime Date { get; set; }
 
-        [Required(ErrorMessage="لطفاً متن خبر را وارد نمایید."),Display(Name = "متن خبر")]
+        [Required(ErrorMessage = "لطفاً متن خبر را وارد نمایید."), Display(Name = "متن خبر")]
         public string Text { get; set; }
 
         [Required]

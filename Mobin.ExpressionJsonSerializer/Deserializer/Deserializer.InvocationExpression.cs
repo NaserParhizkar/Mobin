@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -12,10 +12,12 @@ namespace Mobin.ExpressionJsonSerializer
         {
             var expression = this.Prop(obj, "Expression", this.Expression);
             var arguments = this.Prop(obj, "Arguments", this.Enumerable(this.Expression));
-            
-            switch (nodeType) {
+
+            switch (nodeType)
+            {
                 case ExpressionType.Invoke:
-                    if (arguments == null) {
+                    if (arguments == null)
+                    {
                         return Expr.Invoke(expression);
                     }
                     return Expr.Invoke(expression, arguments);

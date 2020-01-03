@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -32,7 +31,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Align = (ChartSeriesLabelsAlign?) Enum.Parse(typeof(ChartSeriesLabelsAlign), value.ToString());
+                Container.Align = (ChartSeriesLabelsAlign?)Enum.Parse(typeof(ChartSeriesLabelsAlign), value.ToString());
             }
             catch (Exception)
             {
@@ -49,7 +48,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Align = (ChartSeriesLabelsAlign?) Enum.Parse(typeof(ChartSeriesLabelsAlign), value.ToString());
+                Container.Align = (ChartSeriesLabelsAlign?)Enum.Parse(typeof(ChartSeriesLabelsAlign), value.ToString());
             }
             catch (Exception)
             {
@@ -94,7 +93,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Position = (ChartSeriesLabelsPosition?) Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
+                Container.Position = (ChartSeriesLabelsPosition?)Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
             }
             catch (Exception)
             {
@@ -112,7 +111,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Position = (ChartSeriesLabelsPosition?) Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
+                Container.Position = (ChartSeriesLabelsPosition?)Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
             }
             catch (Exception)
             {
@@ -130,7 +129,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Position = (ChartSeriesLabelsPosition?) Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
+                Container.Position = (ChartSeriesLabelsPosition?)Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
             }
             catch (Exception)
             {
@@ -148,7 +147,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             try
             {
-                Container.Position = (ChartSeriesLabelsPosition?) Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
+                Container.Position = (ChartSeriesLabelsPosition?)Enum.Parse(typeof(ChartSeriesLabelsPosition), value.ToString());
             }
             catch (Exception)
             {

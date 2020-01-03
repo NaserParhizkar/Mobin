@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -30,7 +30,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="url">Absolute or relative URL for the operation</param>
         public WebApiDataSourceBuilder<TModel> Update(string url)
         {
-            dataSource.Transport.Update.Url = url; 
+            dataSource.Transport.Update.Url = url;
 
             return this;
         }
@@ -84,7 +84,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="enabled">If true changes will be automatically synced, otherwise false.</param>        
         public virtual WebApiDataSourceBuilder<TModel> AutoSync(bool enabled)
         {
-            dataSource.AutoSync= enabled;
+            dataSource.AutoSync = enabled;
 
             return this;
         }

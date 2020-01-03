@@ -1,16 +1,16 @@
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Resources;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI DatePicker
     /// </summary>
-    public partial class DatePickerBuilder: WidgetBuilderBase<DatePicker, DatePickerBuilder>
-        
+    public partial class DatePickerBuilder : WidgetBuilderBase<DatePicker, DatePickerBuilder>
+
     {
         public DatePickerBuilder(DatePicker component) : base(component)
         {
@@ -144,7 +144,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this as DatePickerBuilder;
         }
-       
+
         /// <summary>
         /// Specifies a list of dates, which will be passed to the month template.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Kendo.Mvc.UI.Fluent
             Component.FooterId = id;
 
             return this;
-        }       
+        }
 
         /// <summary>
         /// Enables/disables footer of the calendar popup.

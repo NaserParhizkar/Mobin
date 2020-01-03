@@ -1,10 +1,9 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System.Linq;
     using System.Linq.Expressions;
 
-    using Extensions;
-    
     internal abstract class GroupDescriptorExpressionBuilderBase : ExpressionBuilderBase
     {
         private IQueryable queryable;

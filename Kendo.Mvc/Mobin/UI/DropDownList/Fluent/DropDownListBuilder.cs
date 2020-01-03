@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Mobin.Common;
+using Mobin.Common.Expressions;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Kendo.Mvc.Extensions;
-using Mobin.Common;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -16,7 +15,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// This function used for auto fetch data and value fields which is shown in dropdownlist from database
         /// </summary>
         /// <param name="function">functions for fetch data and value text field</param>
-        public DropDownListBuilder AutoFetchValueTextFields<TModel>(Func<ValueTextFieldBuilder<TModel>,ValueTextFieldBuilder<TModel>> function)
+        public DropDownListBuilder AutoFetchValueTextFields<TModel>(Func<ValueTextFieldBuilder<TModel>, ValueTextFieldBuilder<TModel>> function)
         {
             var valueTextFieldInstance = new ValueTextFieldBuilder<TModel>();
             var value_text_expression = function(valueTextFieldInstance);
@@ -34,7 +33,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public class ValueTextFieldBuilder<TModel>
         {
-            internal IDictionary<string, Expression> value_text_field = new Dictionary<string,Expression>();
+            internal IDictionary<string, Expression> value_text_field = new Dictionary<string, Expression>();
 
             /// <summary>
             /// This Expression used for auto fetch data and value fields which is shown in dropdownlist
@@ -44,7 +43,7 @@ namespace Kendo.Mvc.UI.Fluent
             {
                 var valueFieldName = nameof(DropDownList.DataValueField);
                 if (!value_text_field.Keys.Contains(valueFieldName))
-                    value_text_field.Add(valueFieldName,valueFieldExpression);
+                    value_text_field.Add(valueFieldName, valueFieldExpression);
                 return this;
             }
 

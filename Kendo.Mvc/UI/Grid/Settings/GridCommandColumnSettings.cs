@@ -2,7 +2,7 @@ namespace Kendo.Mvc.UI
 {
     using System.Collections.Generic;
 
-    public class GridCommandColumnSettings: GridColumnSettings
+    public class GridCommandColumnSettings : GridColumnSettings
     {
         public GridCommandColumnSettings()
         {

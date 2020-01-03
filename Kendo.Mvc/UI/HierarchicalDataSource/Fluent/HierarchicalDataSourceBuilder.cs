@@ -1,14 +1,14 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="HierarchicalDataSource"/>.
     /// </summary>
     public class HierarchicalDataSourceBuilder<TModel> : IHideObjectMembers
-        where TModel: class
+        where TModel : class
     {
         private readonly DataSource dataSource;
         private readonly IUrlGenerator urlGenerator;

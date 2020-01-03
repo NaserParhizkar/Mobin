@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="SchedulerResource{TModel}"/>.

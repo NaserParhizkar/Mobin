@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="SchedulerViewMessages"/>.
     /// </summary>
-    public class SchedulerViewMessagesBuilder: IHideObjectMembers
+    public class SchedulerViewMessagesBuilder : IHideObjectMembers
     {
 
         private readonly SchedulerViewMessages viewMessages;

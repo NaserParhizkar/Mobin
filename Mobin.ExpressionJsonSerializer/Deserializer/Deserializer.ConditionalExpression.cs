@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -14,7 +14,8 @@ namespace Mobin.ExpressionJsonSerializer
             var ifTrue = this.Prop(obj, "IfTrue", this.Expression);
             var ifFalse = this.Prop(obj, "IfFalse", this.Expression);
 
-            switch (nodeType) {
+            switch (nodeType)
+            {
                 case ExpressionType.Conditional:
                     return Expr.Condition(test, ifTrue, ifFalse, type);
                 default:

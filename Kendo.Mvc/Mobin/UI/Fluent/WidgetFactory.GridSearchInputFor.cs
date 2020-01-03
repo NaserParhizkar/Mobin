@@ -13,7 +13,7 @@ namespace Kendo.Mvc.UI.Fluent
         ///  @(Html.Kendo().GridSearchInputFor(m=>m.Property))
         /// </code>
         /// </example>
-        public virtual GridSearchInputBuilder GridSearchInputFor(Expression<Func<TModel,string>> expression,string gridName)
+        public virtual GridSearchInputBuilder GridSearchInputFor(Expression<Func<TModel, string>> expression, string gridName)
         {
             var explorer = GetModelExplorer(expression);
 

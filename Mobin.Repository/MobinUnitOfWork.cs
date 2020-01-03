@@ -1,29 +1,24 @@
-﻿using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 
 namespace Mobin.Repository
 {
     public interface IMobinUnitOfWork : IDisposable
     {
-        CrudRepository<TEntity> Repository<TEntity>() where TEntity: class,new();
+        CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new();
     }
 
     public class MobinUnitOfWork<TDbContext> : IMobinUnitOfWork where TDbContext : DbContext
     {
-        public bool disposed = false;
-        DbContext context { get; }
+        private bool disposed = false;
+        private DbContext context { get; }
 
         public MobinUnitOfWork(TDbContext dbContext)
         {
             context = dbContext;
         }
 
-        public CrudRepository<TEntity> Repository<TEntity>() where TEntity : class,new()
+        public CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new()
         {
             return new CrudRepository<TEntity>(context);
         }
@@ -33,7 +28,7 @@ namespace Mobin.Repository
             context.SaveChanges();
         }
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
                 if (disposing)

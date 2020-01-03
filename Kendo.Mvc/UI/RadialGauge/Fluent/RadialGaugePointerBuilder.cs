@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring RadialGaugePointer
     /// </summary>
-    public partial class RadialGaugePointerBuilder 
+    public partial class RadialGaugePointerBuilder
     {
         public RadialGaugePointerBuilder(RadialGaugePointer container)
         {

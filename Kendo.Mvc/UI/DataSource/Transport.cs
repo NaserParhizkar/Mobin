@@ -1,6 +1,6 @@
+using Kendo.Mvc.Extensions;
 using System.Collections.Generic;
 using System.Linq;
-using Kendo.Mvc.Extensions;
 
 namespace Kendo.Mvc.UI
 {
@@ -29,7 +29,7 @@ namespace Kendo.Mvc.UI
         public ClientHandlerDescriptor ParameterMap { get; set; }
         public bool SerializeEmptyPrefix { get; set; }
         public TransportSignalR SignalR { get; set; }
-        
+
         protected override void Serialize(IDictionary<string, object> json)
         {
             if (CustomRead != null)

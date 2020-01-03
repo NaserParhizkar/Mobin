@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2002
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobin.Common", "Mobin.Infrastructure.Common\Mobin.Common.csproj", "{E6D33893-2F40-4C2D-93F1-1BB999C97EFC}"
 EndProject
@@ -15,6 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kendo.Mvc", "Kendo.Mvc\Kend
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21C05F83-51FE-4971-A6E3-5D518AE710A4}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		global.json = global.json
 	EndProjectSection
 EndProject
@@ -33,6 +34,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.WebReactKendoUI", "Northwind.WebReactKendoUI\Northwind.WebReactKendoUI.csproj", "{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobin.Security", "Mobin.Security\Mobin.Security.csproj", "{F40DC9ED-9548-437F-90B2-761B4711DF26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitMobin", "XUnitMobin\XUnitMobin.csproj", "{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -245,6 +248,24 @@ Global
 		{F40DC9ED-9548-437F-90B2-761B4711DF26}.Release-MVC5-Trial|Any CPU.Build.0 = Release|Any CPU
 		{F40DC9ED-9548-437F-90B2-761B4711DF26}.Release-Trial|Any CPU.ActiveCfg = Release|Any CPU
 		{F40DC9ED-9548-437F-90B2-761B4711DF26}.Release-Trial|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug-MVC3|Any CPU.ActiveCfg = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug-MVC3|Any CPU.Build.0 = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug-MVC5|Any CPU.ActiveCfg = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Debug-MVC5|Any CPU.Build.0 = Debug|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC3|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC3|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC3-Trial|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC3-Trial|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC5|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC5|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC5-Trial|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-MVC5-Trial|Any CPU.Build.0 = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-Trial|Any CPU.ActiveCfg = Release|Any CPU
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0}.Release-Trial|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -261,6 +282,7 @@ Global
 		{D7F09B56-89B3-4C4C-A208-11AF52B38398} = {26EFFFF6-388E-466B-AEDF-2CDEA2D18584}
 		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72} = {26EFFFF6-388E-466B-AEDF-2CDEA2D18584}
 		{F40DC9ED-9548-437F-90B2-761B4711DF26} = {3EA525DD-C3EA-452D-B982-3F32461B4103}
+		{272C7976-89E4-4655-B3B5-5BFC1F79B6F0} = {3EA525DD-C3EA-452D-B982-3F32461B4103}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6F36229-9DE5-4849-B20C-00479287FB84}

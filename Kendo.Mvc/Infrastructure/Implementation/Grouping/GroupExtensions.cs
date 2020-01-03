@@ -1,10 +1,9 @@
 namespace Kendo.Mvc.Infrastructure
 {
+    using Extensions;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    
-    using Extensions;
 
     internal static class GroupExtensions
     {

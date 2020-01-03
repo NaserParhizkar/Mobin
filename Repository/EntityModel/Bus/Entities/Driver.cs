@@ -10,7 +10,7 @@ namespace KendoBus.Repository
     {
         public int DrvID { get; set; }
 
-        [Display(Name="تاریخ استخدام")]
+        [Display(Name = "تاریخ استخدام")]
         [Required(ErrorMessage = "لطفا تاریخ استخدام را وارد نمایید")]
         public DateTime EmploymentDate { get; set; }
 

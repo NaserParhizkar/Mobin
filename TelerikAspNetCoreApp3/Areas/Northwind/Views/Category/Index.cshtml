@@ -19,7 +19,7 @@
                         .DataSource(dataSource =>
                         {
                             dataSource
-                                .Ajax()
+                                .WebApi()
                                 .PageSize(10)
                                 .Read(read => read.Action<CategoryApiController>(t => t.Read(null)));
 

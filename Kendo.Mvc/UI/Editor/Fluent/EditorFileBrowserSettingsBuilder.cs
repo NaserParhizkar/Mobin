@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Routing;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -25,7 +24,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorFileBrowserSettingsBuilder Create(string actionName, string controllerName)
         {
-            return Create(actionName, controllerName, (object) null);
+            return Create(actionName, controllerName, (object)null);
         }
 
         public EditorFileBrowserSettingsBuilder Create(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -51,7 +50,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorFileBrowserSettingsBuilder Destroy(string actionName, string controllerName)
         {
-            return Destroy(actionName, controllerName, (object) null);
+            return Destroy(actionName, controllerName, (object)null);
         }
 
         public EditorFileBrowserSettingsBuilder Destroy(string actionName, string controllerName, RouteValueDictionary routeValues)
@@ -77,7 +76,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorFileBrowserSettingsBuilder File(string actionName, string controllerName)
         {
-            return File(actionName, controllerName, (object) null);
+            return File(actionName, controllerName, (object)null);
         }
 
         public EditorFileBrowserSettingsBuilder File(string url)
@@ -109,7 +108,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         public EditorFileBrowserSettingsBuilder Read(string actionName, string controllerName)
         {
-            return Read(actionName, controllerName, (object) null);
+            return Read(actionName, controllerName, (object)null);
         }
 
         public EditorFileBrowserSettingsBuilder Read(string actionName, string controllerName, object routeValues)
@@ -136,10 +135,10 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         public EditorFileBrowserSettingsBuilder Upload(string actionName, string controllerName)
         {
-            return Upload(actionName, controllerName, (object) null);
+            return Upload(actionName, controllerName, (object)null);
         }
 
         public EditorFileBrowserSettingsBuilder Upload(string actionName, string controllerName, RouteValueDictionary routeValues)

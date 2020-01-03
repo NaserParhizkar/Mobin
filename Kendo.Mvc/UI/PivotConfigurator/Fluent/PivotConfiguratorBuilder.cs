@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI PivotConfigurator
     /// </summary>
-    public partial class PivotConfiguratorBuilder: WidgetBuilderBase<PivotConfigurator, PivotConfiguratorBuilder>
-        
+    public partial class PivotConfiguratorBuilder : WidgetBuilderBase<PivotConfigurator, PivotConfiguratorBuilder>
+
     {
         public PivotConfiguratorBuilder(PivotConfigurator component) : base(component)
         {

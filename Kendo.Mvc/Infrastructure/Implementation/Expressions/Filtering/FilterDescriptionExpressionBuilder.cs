@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Kendo.Mvc.Extensions;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Kendo.Mvc.Extensions;
 
     internal class FilterDescriptionExpressionBuilder : FilterExpressionBuilder
     {
@@ -33,7 +33,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
         protected virtual Expression CreateActiveFilterExpression()
         {
-            return this.CreateSatisfiesFilterExpression();            
+            return this.CreateSatisfiesFilterExpression();
         }
 
         private MethodCallExpression CreateSatisfiesFilterExpression()

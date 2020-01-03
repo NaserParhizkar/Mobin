@@ -1,17 +1,15 @@
 namespace Kendo.Mvc.UI
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
     using System.Text.Encodings.Web;
 
     public interface IGridBoundColumn : IGridColumn
     {
-        string Format 
-        { 
+        string Format
+        {
             get;
-            set; 
+            set;
         }
 
         bool Groupable
@@ -19,12 +17,12 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-        
+
         bool Filterable
         {
             get;
             set;
-        }        
+        }
 
         GridBoundColumnFilterableSettings FilterableSettings
         {
@@ -50,21 +48,21 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        object AdditionalViewData 
-        { 
+        object AdditionalViewData
+        {
             get;
-            set; 
+            set;
         }
 
         string EditorHtml
         {
             get;
-			set;
+            set;
         }
 
         string EditorTemplateName
         {
-            get; 
+            get;
             set;
         }
 
@@ -74,7 +72,7 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-		string GetEditor(IHtmlHelper helper, HtmlEncoder encoder);
+        string GetEditor(IHtmlHelper helper, HtmlEncoder encoder);
 
         ClientHandlerDescriptor Editable
         {

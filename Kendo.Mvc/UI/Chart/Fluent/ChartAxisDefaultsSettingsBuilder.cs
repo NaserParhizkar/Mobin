@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartAxisDefaultsSettings
     /// </summary>
     public partial class ChartAxisDefaultsSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartAxisDefaultsSettingsBuilder(ChartAxisDefaultsSettings<T> container)
         {

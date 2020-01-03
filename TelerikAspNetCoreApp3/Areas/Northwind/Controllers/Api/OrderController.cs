@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Mobin;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Mobin.Controllers;
 using Kendo.Mvc.UI;
-using Microsoft.AspNetCore.Mvc;
 using Mobin.Service;
 using Northwind.Repository;
+using System.Linq;
 
 namespace Northwind.WebUI.Controllers
 {
@@ -27,7 +23,7 @@ namespace Northwind.WebUI.Controllers
 
         public DataSourceResult GetCategories([DataSourceRequest]DataSourceRequest request)
         {
-            var query = this.crudService.GetAllAsQueryable().Select(t => 
+            var query = this.crudService.GetAllAsQueryable().Select(t =>
             new
             {
                 Product = new

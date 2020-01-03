@@ -1,22 +1,19 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq.Expressions;
+    using Kendo.Mvc.Extensions;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Routing;
-    using Kendo.Mvc.Extensions;
-    using Microsoft.AspNetCore.Mvc.Razor;
-    using System.IO;
-    using System.Text.Encodings.Web;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq.Expressions;
     /// <summary>
     /// Defines the fluent interface for configuring navigation items
     /// </summary>
     /// <typeparam name="TItem">The type of the item.</typeparam>
     /// <typeparam name="TBuilder">The type of the builder.</typeparam>
-    public abstract class NavigationItemBuilder<TItem, TBuilder> 
-        where TItem : NavigationItem<TItem> 
+    public abstract class NavigationItemBuilder<TItem, TBuilder>
+        where TItem : NavigationItem<TItem>
         where TBuilder : NavigationItemBuilder<TItem, TBuilder>
     {
         private readonly NavigationItem<TItem> item;

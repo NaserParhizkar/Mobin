@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.Extensions
 {
+    using Infrastructure.Implementation.Expressions;
+    using Kendo.Mvc;
+    using Kendo.Mvc.Infrastructure;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Infrastructure.Implementation.Expressions;
-    using Kendo.Mvc;
-    using Kendo.Mvc.Infrastructure;
 
     /// <summary>
     /// Provides extension methods to process TreeDataSourceRequest.

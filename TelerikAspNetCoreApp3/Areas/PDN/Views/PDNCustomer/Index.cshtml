@@ -1,0 +1,39 @@
+﻿@using Northwind.WebUI.Controllers
+@using PDN.Repository;
+@using Northwind.WebUI.Areas.PDN.Controllers
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout-old.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+        @(Html.Kendo().Grid<PDNCustomer>().Name("grid")
+                .Columns(columns =>
+                {
+                    columns.Bound(x => x.NationalCode).Filterable(x => x.Enabled(false));
+                    columns.Bound(x => x.PDNFirstName).Filterable(x => x.Enabled(false));
+                    columns.Bound(x => x.PDNLastName).Filterable(x => x.Enabled(false));
+                    columns.Bound(x => x.PDNCity).Filterable(x => x.Enabled(false));
+                    columns.Bound(x => x.PDNPostalCode).Filterable(x => x.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+                })
+                .DataSource(source => source.Ajax().PageSize(20).AutoMakeQueryExpression()
+        .Model(model =>
+        {
+        model.Id(x => x.PDNCustomerId);
+        })
+        .Read(read => read.Action<PDNCustomerApiController>
+            (action => action.Read(null)))
+            .Create(create => create.Action<PDNCustomerApiController>
+                (action => action.Insert(null)))
+                .Update(update => update.Action<PDNCustomerApiController>
+                    (action => action.Update(null)))
+                    .Destroy(destroy => destroy.Action<PDNCustomerApiController>
+    (action => action.Delete(null))))
+    .ToolBar(toolbar => toolbar.Create().Text("افزودن"))
+    .Editable(edit => edit.Mode(GridEditMode.PopUp)
+    .TemplateName("PDNCustomerForm")))
+</div>
+    </div>
+
+

@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI LinearGaugeScaleLabelsSettings class
     /// </summary>
-    public partial class LinearGaugeScaleLabelsSettings 
+    public partial class LinearGaugeScaleLabelsSettings
     {
         /// <summary>
         /// Gets or sets the label opacity.

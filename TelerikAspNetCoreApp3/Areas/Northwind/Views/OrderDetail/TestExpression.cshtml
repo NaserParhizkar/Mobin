@@ -22,10 +22,10 @@
                 @Html.LabelFor(t => t.Product.Category.CategoryName, new { @class = "control-label" })
                 <div>
                     @*@(Html.Kendo().GridSearchDropDownListFor(t => t.Product.Category.CategoryId, "grid")
-                        .DataSource(t => t.Ajax().Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
+                        .DataSource(t => t.WebApi().Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
                     @*@(Html.Kendo().DropDownListFor(t => t.Product.Category.CategoryId)
                         .AutoFetchValueTextFields<Category>(fetchFlds => fetchFlds.DataValueField(x => x.CategoryId).DataTextField(x => x.CategoryName))
-                        .DataSource(ds => ds.Ajax().AutoMakeQueryExpression(true).Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
+                        .DataSource(ds => ds.WebApi().AutoMakeQueryExpression(true).Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
 
                 </div>
             </div>
@@ -37,50 +37,10 @@
 <script type="text/javascript">
     function sub(e) {
         var aa = $('#frm').serializeArray();
-        debugger;
 
         e.preventDefault();
     }
 </script>
-
-@(Html.Kendo().Grid<OrderDetail>()
-    .Name("grid").Columns(columns =>
-    {
-        //columns.Bound(x => x.Order.OrderDate);
-        //columns.Bound(x => x.Product.ProductName);
-        columns.Bound(x => x.UnitPrice);
-        //columns.Bound(x => x.Quantity);
-        //columns.Bound(x => x.Discount);
-
-        //columns.Bound(x => x.Order.Employee.FirstName);
-        //columns.Bound(x => x.Order.Employee.LastName);
-        //columns.Bound(x => x.Product.Category.CategoryName);
-        //columns.Bound(x => x.Product.Supplier.CompanyName);
-
-        //columns.Bound(x => x.Product.Supplier.Country);
-        //columns.Bound(x => x.Order.ShipName);
-        //columns.Bound(x => x.Order.ShippedDate);
-
-        //columns.Bound(x => x.Order.Employee.ReportsToNavigation.FirstName).Title("گزارش به شخص");
-        //columns.Bound(x => x.Order.Employee.ReportsToNavigation.LastName).Title("گزارش به شخص");
-    }).ToolBar(t => t.Create().Text("افزودن"))
-    .Editable(t => t.Mode(GridEditMode.PopUp))
-    .DataSource(dataSource =>
-    {
-        dataSource
-.Ajax()
-.AutoMakeQueryExpression(true)
-.PageSize(10)
-.Model(model =>
-{
-    model.Id(x => new { x.ProductId, x.OrderId });
-})
-.Read(read => read.Action<OrderDetailApiController>(t => t.Read(null)));
-
-    }).AutoBind(true)
-    .Pageable(t => t.Input(true))
-    .Sortable()
-)
 
 <br />
 <br />
@@ -114,7 +74,7 @@
                 .DataSource(dataSource =>
                 {
                     dataSource
-                    .Ajax()
+                    .WebApi()
                     .AutoMakeQueryExpression(true)
                     .PageSize(10)
                     .Read(read => read.Action<OrderDetailApiController>(t => t.Read(null)));

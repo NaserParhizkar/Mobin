@@ -1,7 +1,0 @@
-﻿
-
-interface PersianDate extends Date {
-
-}
-
-

@@ -1,7 +1,5 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="SchedulerTimelineView"/>.
     /// </summary>

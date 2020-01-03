@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
@@ -8,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// </summary>
     public partial class TreeListPdfSettingsBuilder<T> : PdfSettingsBuilder<TreeListPdfSettingsBuilder<T>>
 
-	{
-        public TreeListPdfSettingsBuilder(TreeListPdfSettings<T> container) : base (container)
+    {
+        public TreeListPdfSettingsBuilder(TreeListPdfSettings<T> container) : base(container)
         {
             Container = container;
         }

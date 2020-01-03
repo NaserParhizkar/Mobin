@@ -1,8 +1,5 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.Collections.Generic;
-
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="PivotDataSourceSchemaCube"/> Dimensions.
     /// </summary>

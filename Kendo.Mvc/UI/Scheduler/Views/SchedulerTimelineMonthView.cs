@@ -4,7 +4,7 @@
     {
         public SchedulerTimelineMonthView(IScheduler scheduler)
             : base(SchedulerViewType.TimelineMonth, scheduler)
-        {            
+        {
         }
     }
 }

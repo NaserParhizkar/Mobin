@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Mobin.Repository
 {
-    public class CrudRepository<TEntity> : ICrudRepository<TEntity> where TEntity : class,new()
+    public class CrudRepository<TEntity> : ICrudRepository<TEntity> where TEntity : class, new()
     {
-        internal DbContext context;
-        internal DbSet<TEntity> dbset;
+        private DbContext context;
+        private DbSet<TEntity> dbset;
 
         protected internal CrudRepository(DbContext dbContext)
         {
@@ -19,18 +19,20 @@ namespace Mobin.Repository
 
         public virtual IQueryable<TEntity> GetAll()
         {
-            return dbset.AsQueryable();   
+            return dbset.AsQueryable();
         }
 
-        public virtual void Insert(TEntity entity)
+        public virtual EntityEntry<TEntity> Insert(TEntity entity)
         {
-            dbset.Add(entity);
+            var entityEntry = dbset.Add(entity);
+            return entityEntry;
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual EntityEntry<TEntity> Update(TEntity entity)
         {
-            dbset.Update(entity);
+            var entityEntry = dbset.Update(entity);
             context.Entry(entity).State = EntityState.Modified;
+            return entityEntry;
         }
 
         public virtual void Delete(TEntity entity)
@@ -47,7 +49,7 @@ namespace Mobin.Repository
 
         public virtual TEntity GetEntityByKey<TKey>(TKey key)
         {
-            return  dbset.Find(key);
+            return dbset.Find(key);
         }
 
         public virtual bool ExistsPropertyValue(Expression<Func<TEntity, bool>> exp)

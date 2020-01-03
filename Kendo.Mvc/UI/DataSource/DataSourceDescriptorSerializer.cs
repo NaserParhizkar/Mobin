@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.UI
 {
+    using Kendo.Mvc.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Kendo.Mvc.Extensions;
 
     public class DataSourceDescriptorSerializer
     {
         private const string ColumnDelimiter = "~";
-        
+
         public static string Serialize<T>(IEnumerable<T> descriptors)
             where T : IDescriptor
         {

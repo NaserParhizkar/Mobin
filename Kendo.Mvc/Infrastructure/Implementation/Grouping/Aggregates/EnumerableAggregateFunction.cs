@@ -1,9 +1,8 @@
 namespace Kendo.Mvc
 {
-    using System.Linq;
-    using System.Linq.Expressions;
     using Infrastructure.Implementation;
     using Infrastructure.Implementation.Expressions;
+    using System.Linq.Expressions;
 
     public abstract class EnumerableAggregateFunction : EnumerableAggregateFunctionBase
     {

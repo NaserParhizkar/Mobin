@@ -6,11 +6,11 @@
     public class SchedulerMonthView : SchedulerViewBase
     {
         public SchedulerMonthView(IScheduler scheduler) : base(SchedulerViewType.Month, scheduler)
-        {            
+        {
         }
 
-        public string DayTemplate 
-        { 
+        public string DayTemplate
+        {
             get;
             set;
         }
@@ -21,10 +21,10 @@
             set;
         }
 
-        public int? EventHeight 
-        { 
-            get; 
-            set; 
+        public int? EventHeight
+        {
+            get;
+            set;
         }
 
         protected override void Serialize(IDictionary<string, object> json)

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring LinearGaugePointerTrackSettings
     /// </summary>
     public partial class LinearGaugePointerTrackSettingsBuilder
-        
+
     {
         public LinearGaugePointerTrackSettingsBuilder(LinearGaugePointerTrackSettings container)
         {

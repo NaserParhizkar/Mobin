@@ -1,27 +1,26 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-	using System.Reflection;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.UI;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
 
     /// <summary>
     /// Creates columns for the <see cref="Grid{TModel}" />.
     /// </summary>
     /// <typeparam name="TModel">The type of the data item to which the grid is bound to</typeparam>
-    public class GridColumnFactory<TModel> : IHideObjectMembers 
+    public class GridColumnFactory<TModel> : IHideObjectMembers
         where TModel : class
     {
         private bool hasGeneratedColumn;
         private IUrlGenerator urlGenerator;
         private ViewContext viewContext;
 
-        public GridColumnFactory(Grid<TModel> container, ViewContext viewContext, IUrlGenerator urlGenerator) 
+        public GridColumnFactory(Grid<TModel> container, ViewContext viewContext, IUrlGenerator urlGenerator)
             : this(container, viewContext, urlGenerator, container)
         { }
 
@@ -82,22 +81,22 @@ namespace Kendo.Mvc.UI.Fluent
             return Bound(null, memberName);
         }
 
-		public GridColumnFactory<TModel> Group(Action<GridColumnGroupBuilder<TModel>> configurator)
-		{
-			var group = new GridColumnGroup<TModel>(Container);
-			ColumnsContainer.Columns.Add(group);
+        public GridColumnFactory<TModel> Group(Action<GridColumnGroupBuilder<TModel>> configurator)
+        {
+            var group = new GridColumnGroup<TModel>(Container);
+            ColumnsContainer.Columns.Add(group);
 
-			var factory = new GridColumnGroupBuilder<TModel>(group, Container, viewContext, urlGenerator);
+            var factory = new GridColumnGroupBuilder<TModel>(group, Container, viewContext, urlGenerator);
 
-			configurator(factory);
+            configurator(factory);
 
-			return this;
-		}
+            return this;
+        }
 
-		/// <summary>
-		/// Defines a bound column.
-		/// </summary>
-		public virtual GridBoundColumnBuilder<TModel> Bound(Type memberType, string memberName)
+        /// <summary>
+        /// Defines a bound column.
+        /// </summary>
+        public virtual GridBoundColumnBuilder<TModel> Bound(Type memberType, string memberName)
         {
             const bool liftMemberAccess = false;
 
@@ -112,14 +111,14 @@ namespace Kendo.Mvc.UI.Fluent
             var constructor = columnType.GetConstructor(new[] { Container.GetType(), lambdaExpression.GetType() });
 
             var column = (IGridBoundColumn)constructor.Invoke(new object[] { Container, lambdaExpression });
-            
+
             column.Member = memberName;
 
             if (!column.Title.HasValue())
             {
                 column.Title = memberName.AsTitle();
             }
-            
+
             if (memberType != null)
             {
                 column.MemberType = memberType;
@@ -130,91 +129,91 @@ namespace Kendo.Mvc.UI.Fluent
             return new GridBoundColumnBuilder<TModel>(column, this.viewContext, this.urlGenerator);
         }
 
-		/// <summary>
-		/// Defines a foreign key column.
-		/// </summary>
-		/// <typeparam name="TValue">Member type</typeparam>
-		/// <param name="expression">The member which matches the selected item</param>
-		/// <param name="data">The foreign data</param>
-		/// <param name="dataFieldValue">The data value field</param>
-		/// <param name="dataFieldText">The data text field</param>
-		/// <returns></returns>
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey<TValue>(Expression<Func<TModel, TValue>> expression, IEnumerable data,
-			string dataFieldValue, string dataFieldText)
-		{
-			return ForeignKey(expression, new SelectList(data, dataFieldValue, dataFieldText));
-		}
+        /// <summary>
+        /// Defines a foreign key column.
+        /// </summary>
+        /// <typeparam name="TValue">Member type</typeparam>
+        /// <param name="expression">The member which matches the selected item</param>
+        /// <param name="data">The foreign data</param>
+        /// <param name="dataFieldValue">The data value field</param>
+        /// <param name="dataFieldText">The data text field</param>
+        /// <returns></returns>
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey<TValue>(Expression<Func<TModel, TValue>> expression, IEnumerable data,
+            string dataFieldValue, string dataFieldText)
+        {
+            return ForeignKey(expression, new SelectList(data, dataFieldValue, dataFieldText));
+        }
 
-		/// <summary>
-		/// Defines a foreign key column.
-		/// </summary>
-		/// <typeparam name="TValue">Member type</typeparam>
-		/// <param name="expression">The member which matches the selected item</param>
-		/// <param name="data">The foreign data</param>
-		/// <returns></returns>
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey<TValue>(Expression<Func<TModel, TValue>> expression, SelectList data)
-		{
-			GridForeignKeyColumn<TModel, TValue> column = new GridForeignKeyColumn<TModel, TValue>(Container, expression, data);
+        /// <summary>
+        /// Defines a foreign key column.
+        /// </summary>
+        /// <typeparam name="TValue">Member type</typeparam>
+        /// <param name="expression">The member which matches the selected item</param>
+        /// <param name="data">The foreign data</param>
+        /// <returns></returns>
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey<TValue>(Expression<Func<TModel, TValue>> expression, SelectList data)
+        {
+            GridForeignKeyColumn<TModel, TValue> column = new GridForeignKeyColumn<TModel, TValue>(Container, expression, data);
 
-			column.Data = data;
+            column.Data = data;
 
-			ColumnsContainer.Columns.Add(column);
+            ColumnsContainer.Columns.Add(column);
 
-			return new GridBoundColumnBuilder<TModel>(column, this.viewContext, this.urlGenerator);
-		}
+            return new GridBoundColumnBuilder<TModel>(column, this.viewContext, this.urlGenerator);
+        }
 
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey(string memberName, IEnumerable data,
-			string dataFieldValue, string dataFieldText)
-		{
-			return ForeignKey(null, memberName, new SelectList(data, dataFieldValue, dataFieldText));
-		}
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey(string memberName, IEnumerable data,
+            string dataFieldValue, string dataFieldText)
+        {
+            return ForeignKey(null, memberName, new SelectList(data, dataFieldValue, dataFieldText));
+        }
 
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey(string memberName, SelectList data)
-		{
-			return ForeignKey(null, memberName, data);
-		}
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey(string memberName, SelectList data)
+        {
+            return ForeignKey(null, memberName, data);
+        }
 
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey(Type memberType, string memberName, IEnumerable data,
-			string dataFieldValue, string dataFieldText)
-		{
-			return ForeignKey(memberType, memberName, new SelectList(data, dataFieldValue, dataFieldText));
-		}
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey(Type memberType, string memberName, IEnumerable data,
+            string dataFieldValue, string dataFieldText)
+        {
+            return ForeignKey(memberType, memberName, new SelectList(data, dataFieldValue, dataFieldText));
+        }
 
-		public virtual GridBoundColumnBuilder<TModel> ForeignKey(Type memberType, string memberName, SelectList data)
-		{
-			const bool liftMemberAccess = false;
+        public virtual GridBoundColumnBuilder<TModel> ForeignKey(Type memberType, string memberName, SelectList data)
+        {
+            const bool liftMemberAccess = false;
 
-			var lambdaExpression = ExpressionBuilder.Lambda<TModel>(memberType, memberName, liftMemberAccess);
+            var lambdaExpression = ExpressionBuilder.Lambda<TModel>(memberType, memberName, liftMemberAccess);
 
-			if (typeof(TModel).IsDynamicObject() && memberType != null && lambdaExpression.Body.Type.GetNonNullableType() != memberType.GetNonNullableType())
-			{
-				lambdaExpression = Expression.Lambda(Expression.Convert(lambdaExpression.Body, memberType), lambdaExpression.Parameters);
-			}
+            if (typeof(TModel).IsDynamicObject() && memberType != null && lambdaExpression.Body.Type.GetNonNullableType() != memberType.GetNonNullableType())
+            {
+                lambdaExpression = Expression.Lambda(Expression.Convert(lambdaExpression.Body, memberType), lambdaExpression.Parameters);
+            }
 
-			var columnType = typeof(GridForeignKeyColumn<,>).MakeGenericType(new[] { typeof(TModel), lambdaExpression.Body.Type });
+            var columnType = typeof(GridForeignKeyColumn<,>).MakeGenericType(new[] { typeof(TModel), lambdaExpression.Body.Type });
 
-			var constructor = columnType.GetConstructor(new[] { Container.GetType(), lambdaExpression.GetType(), data.GetType() });
+            var constructor = columnType.GetConstructor(new[] { Container.GetType(), lambdaExpression.GetType(), data.GetType() });
 
-			var column = (IGridBoundColumn)constructor.Invoke(new object[] { Container, lambdaExpression, data });
+            var column = (IGridBoundColumn)constructor.Invoke(new object[] { Container, lambdaExpression, data });
 
-			column.Member = memberName;
+            column.Member = memberName;
 
-			if (!column.Title.HasValue())
-			{
-				column.Title = memberName.AsTitle();
-			}
+            if (!column.Title.HasValue())
+            {
+                column.Title = memberName.AsTitle();
+            }
 
-			if (memberType != null)
-			{
-				column.MemberType = memberType;
-			}
+            if (memberType != null)
+            {
+                column.MemberType = memberType;
+            }
 
-			ColumnsContainer.Columns.Add((GridColumnBase<TModel>)column);
+            ColumnsContainer.Columns.Add((GridColumnBase<TModel>)column);
 
-			return new GridBoundColumnBuilder<TModel>(column, this.viewContext, this.urlGenerator);
-		}
+            return new GridBoundColumnBuilder<TModel>(column, this.viewContext, this.urlGenerator);
+        }
 
-		protected virtual void AutoGenerate(bool shouldGenerate, Action<GridColumnBase<TModel>> columnAction)
+        protected virtual void AutoGenerate(bool shouldGenerate, Action<GridColumnBase<TModel>> columnAction)
         {
             if (hasGeneratedColumn) return;
 
@@ -251,32 +250,32 @@ namespace Kendo.Mvc.UI.Fluent
         public virtual void AutoGenerate(Action<GridColumnBase<TModel>> columnAction)
         {
             AutoGenerate(true, columnAction);
-        }		
+        }
 
-		public virtual GridTemplateColumnBuilder<TModel> Template(string template)
-		{
-			GridTemplateColumn<TModel> column = new GridTemplateColumn<TModel>(Container);
-			ColumnsContainer.Columns.Add(column);
+        public virtual GridTemplateColumnBuilder<TModel> Template(string template)
+        {
+            GridTemplateColumn<TModel> column = new GridTemplateColumn<TModel>(Container);
+            ColumnsContainer.Columns.Add(column);
 
-			column.ClientTemplate = template;
+            column.ClientTemplate = template;
 
-			return new GridTemplateColumnBuilder<TModel>(column);
-		}
+            return new GridTemplateColumnBuilder<TModel>(column);
+        }
 
-		/// <summary>
-		/// Defines a command column.
-		/// </summary>
-		/// <param name="commandAction"></param>
-		/// <returns></returns>
-		public virtual GridActionColumnBuilder Command(Action<GridActionCommandFactory<TModel>> commandAction)
-		{
-			GridActionColumn<TModel> column = new GridActionColumn<TModel>(Container);
+        /// <summary>
+        /// Defines a command column.
+        /// </summary>
+        /// <param name="commandAction"></param>
+        /// <returns></returns>
+        public virtual GridActionColumnBuilder Command(Action<GridActionCommandFactory<TModel>> commandAction)
+        {
+            GridActionColumn<TModel> column = new GridActionColumn<TModel>(Container);
 
-			commandAction(new GridActionCommandFactory<TModel>(column));
+            commandAction(new GridActionCommandFactory<TModel>(column));
 
-			ColumnsContainer.Columns.Add(column);
+            ColumnsContainer.Columns.Add(column);
 
-			return new GridActionColumnBuilder(column);
-		}
-	}
+            return new GridActionColumnBuilder(column);
+        }
+    }
 }

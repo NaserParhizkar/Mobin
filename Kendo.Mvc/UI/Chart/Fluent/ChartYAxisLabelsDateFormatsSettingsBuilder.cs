@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxisLabelsDateFormatsSettings
     /// </summary>
     public partial class ChartYAxisLabelsDateFormatsSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisLabelsDateFormatsSettingsBuilder(ChartYAxisLabelsDateFormatsSettings<T> container)
         {

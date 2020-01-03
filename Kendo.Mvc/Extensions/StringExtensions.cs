@@ -119,7 +119,7 @@ namespace Kendo.Mvc.Extensions
                 return string.Empty;
             }
 
-            StringBuilder stringBuilder = null; 
+            StringBuilder stringBuilder = null;
             int num = 0;
             int num1 = 0;
             for (int i = 0; i < value.Length; i++)

@@ -25,5 +25,5 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-    }       
+    }
 }

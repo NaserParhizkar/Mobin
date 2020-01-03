@@ -1,12 +1,9 @@
-﻿using Kendo.Mvc.Mobin;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Mobin.Controllers;
 using Kendo.Mvc.UI;
-using Microsoft.Extensions.DependencyInjection;
 using Northwind.Repository;
-using Kendo.Mvc.Extensions;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Mobin.Service;
 using Northwind.Service;
+using System.Linq;
 
 namespace Northwind.WebUI.Controllers
 {
@@ -26,7 +23,7 @@ namespace Northwind.WebUI.Controllers
 
         public DataSourceResult GetCustomersOrderInfo([DataSourceRequest] DataSourceRequest request)
         {
-            var query  = customerService.GetAllAsQueryable().Where(request.Filters).Cast<Order>();
+            var query = customerService.GetAllAsQueryable().Where(request.Filters).Cast<Order>();
             request.Filters.Clear();
             var finalQuery = query.Select(t => new { OrderDate = t.OrderDate });
             var dataSourceResult = finalQuery.ToDataSourceResult(request);

@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Northwind.Repository</RootNamespace>
     <AssemblyName>Northwind.Repository</AssemblyName>
     <PackageId>Northwind.Repository</PackageId>
@@ -9,6 +9,11 @@
     <Company>Northwind.Repository</Company>
     <Authors>Northwind.Repository</Authors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />

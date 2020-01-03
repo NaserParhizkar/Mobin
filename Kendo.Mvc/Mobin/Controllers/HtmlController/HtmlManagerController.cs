@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Kendo.Mvc.Mobin.Controllers.HtmlController
+namespace Kendo.Mvc.Mobin.Controllers
 {
     public class HtmlManagerController<TModel> : Controller
     {
-        public virtual PartialViewResult ParentInsertForm()
+        public virtual PartialViewResult EntryForm()
         {
             return PartialView();
         }

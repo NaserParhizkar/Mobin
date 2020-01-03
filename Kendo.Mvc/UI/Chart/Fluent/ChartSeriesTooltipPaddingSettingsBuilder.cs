@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartSeriesTooltipPaddingSettings
     /// </summary>
     public partial class ChartSeriesTooltipPaddingSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesTooltipPaddingSettingsBuilder(ChartSeriesTooltipPaddingSettings<T> container)
         {

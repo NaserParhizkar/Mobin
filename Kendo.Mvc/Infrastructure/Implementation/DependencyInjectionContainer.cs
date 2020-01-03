@@ -18,7 +18,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
 
             if (factories.TryGetValue(typeof(TService), out factory))
             {
-                return ((Func<TService>) factory)();
+                return ((Func<TService>)factory)();
             }
 
             return default(TService);

@@ -4,7 +4,7 @@
     {
         public SchedulerTimelineView(IScheduler scheduler)
             : base(SchedulerViewType.Timeline, scheduler)
-        {            
+        {
         }
     }
 }

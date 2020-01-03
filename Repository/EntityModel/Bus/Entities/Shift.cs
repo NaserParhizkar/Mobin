@@ -13,13 +13,13 @@ namespace KendoBus.Repository
         public int ID { get; set; }
 
         [DisplayName("کد شیفت")]
-        [Required(ErrorMessage="لطفاً کد شیفت را وارد نمایید")]
+        [Required(ErrorMessage = "لطفاً کد شیفت را وارد نمایید")]
         public int ShiftId { get; set; }
 
         [DisplayName("ساعت شروع")]
         [Required(ErrorMessage = "لطفاً ساعت شروع را وارد نمایید")]
         public DateTime BeginTime { get; set; }
-        
+
         [DisplayName("ساعت پایان")]
         [Required(ErrorMessage = "لطفاً ساعت پایان را وارد نمایید")]
         public DateTime EndTime { get; set; }

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartAxisDefaultsCrosshairTooltipBorderSettings
     /// </summary>
     public partial class ChartAxisDefaultsCrosshairTooltipBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartAxisDefaultsCrosshairTooltipBorderSettingsBuilder(ChartAxisDefaultsCrosshairTooltipBorderSettings<T> container)
         {

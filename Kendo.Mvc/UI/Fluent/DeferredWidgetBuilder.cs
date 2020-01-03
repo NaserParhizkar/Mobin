@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Html;
-using System.Text.Encodings.Web;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Razor;
 using System.IO;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -55,5 +55,5 @@ namespace Kendo.Mvc.UI.Fluent
         {
             return ToComponent().ToClientTemplate();
         }
-    }   
+    }
 }

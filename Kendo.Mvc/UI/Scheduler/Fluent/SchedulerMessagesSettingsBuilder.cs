@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring SchedulerMessagesSettings
     /// </summary>
     public partial class SchedulerMessagesSettingsBuilder<T>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
         public SchedulerMessagesSettingsBuilder(SchedulerMessagesSettings<T> container)
         {

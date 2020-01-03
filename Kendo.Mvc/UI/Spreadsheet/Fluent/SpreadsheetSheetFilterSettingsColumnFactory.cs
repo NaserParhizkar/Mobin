@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<SpreadsheetSheetFilterSettingsColumn>
     /// </summary>
     public partial class SpreadsheetSheetFilterSettingsColumnFactory
-        
+
     {
         public SpreadsheetSheetFilterSettingsColumnFactory(List<SpreadsheetSheetFilterSettingsColumn> container)
         {

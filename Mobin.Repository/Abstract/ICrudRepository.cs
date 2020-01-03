@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Mobin.Repository
 {
-    public interface ICrudRepository<TEntity>
+    public interface ICrudRepository<TEntity> where TEntity :class
     {
         TEntity GetEntityByKey<TKey>(TKey key);
         IQueryable<TEntity> GetAll();
 
-        void Insert(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);     
+        EntityEntry<TEntity> Insert(TEntity entity);
+        EntityEntry<TEntity> Update(TEntity entity);
+        void Delete(TEntity entity);
         void Delete<TKey>(TKey key);
 
         bool ExistsPropertyValue(Expression<Func<TEntity, bool>> exp);

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-
-namespace Kendo.Mvc.UI.Fluent
+﻿namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="DataSource"/> component.

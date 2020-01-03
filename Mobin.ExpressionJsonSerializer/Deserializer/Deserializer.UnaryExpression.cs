@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -12,8 +12,9 @@ namespace Mobin.ExpressionJsonSerializer
         {
             var operand = this.Prop(obj, "operand", this.Expression);
             var method = this.Prop(obj, "method", this.Method);
-            
-            switch (nodeType) {
+
+            switch (nodeType)
+            {
                 case ExpressionType.ArrayLength: return Expr.ArrayLength(operand);
                 case ExpressionType.Convert: return Expr.Convert(operand, type, method);
                 case ExpressionType.ConvertChecked: return Expr.ConvertChecked(operand, type, method);
