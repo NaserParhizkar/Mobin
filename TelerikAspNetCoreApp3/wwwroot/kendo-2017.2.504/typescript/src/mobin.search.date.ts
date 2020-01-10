@@ -46,22 +46,33 @@
 
 module KendoWidgets {
     // (Optional) Extend the default widget options.
-    export interface MyDatePickerOptions extends kendo.ui.DatePickerOptions {
+    export interface IGridDatePickerOptions extends kendo.ui.DatePickerOptions {
         gridname: '',
     }
 
     // Create a class which inherits from the Kendo UI widget.
     export class GridSearchFromDatePicker extends kendo.ui.DatePicker {
-        constructor(element: Element, options?: MyDatePickerOptions) {
+        constructor(element: Element, options?: IGridDatePickerOptions) {
             super(element, options);
         }
+
+        checkGridState(gridname: string): boolean {
+            if (gridname === undefined || gridname === '')
+                throw new Error('You must specify grid name which this search is for it');
+
+            return true;
+        }
     }
+
     // Create an alias of the prototype (required by kendo.ui.plugin).
     GridSearchFromDatePicker.fn = GridSearchFromDatePicker.prototype;
 
     // Deep clone the widget default options.
     GridSearchFromDatePicker.fn.options = $.extend(true, {
-        change(e) {
+        change(e: kendo.ui.DatePickerEvent) {
+            const sender = <GridSearchFromDatePicker>e.sender;
+            const options = <IGridDatePickerOptions>sender.options;
+
             console.log("change has been called");
         }
     }, kendo.ui.DatePicker.fn.options);
