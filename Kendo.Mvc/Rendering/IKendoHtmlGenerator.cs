@@ -78,6 +78,17 @@ namespace Kendo.Mvc.Rendering
             string format,
             IDictionary<string, object> htmlAttributes);
 
+        //Added by Naser Parhhizkar
+        TagBuilder GenerateGridSearchDate(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes);
+
+
         TagBuilder GenerateTextInput(
             ViewContext viewContext,
             ModelExplorer modelExplorer,

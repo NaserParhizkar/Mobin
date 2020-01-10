@@ -22,6 +22,7 @@
 /// <reference path="kendo-2017.2.504/js/kendo.combobox.js" />
 /// <reference path="kendo-2017.2.504/js/kendo.columnsorter.js" />
 /// <reference path="lib/mobin.search.input.js" />
+/// <reference path="lib/mobin.search.Date.js" />
 /// <reference path="kendo-2017.2.504/js/kendo.numerictextbox.js" />
 /// <reference path="kendo-2017.2.504/js/kendo.validator.js" />
 /// <reference path="kendo-2017.2.504/js/kendo.binder.js" />

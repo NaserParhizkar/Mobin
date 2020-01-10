@@ -34,29 +34,49 @@
                     @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
                 </div>
             </div>
-    </div>
+
+
+            <div class="form-group row">
+                @Html.LabelFor(t => t.OrderDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().GridSearchFromDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
+                                                                                  .Format("yyyy/MM/dd")
+                                                                                  .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+
+            @(Html.Kendo().DatePickerFor(t => t.ShippedDate)
+                                                                                  .Culture("fa-IR")
+                                                                                  .Format("yyyy/MM/dd")
+                                                                                  .HtmlAttributes(new { style = "direction:ltr" }))
+
+            @*<input type="text" id="datepicker" />*@
+
+        </div>
 </div>
 
 @(Html.Kendo().Grid<Order>()
-                                .Name("grid").Columns(columns =>
-                                {
-                                    columns.Bound(x => x.Customer.CustomerId);
-                                    columns.Bound(x => x.Customer.CompanyName);
-                                    columns.Bound(x => x.Customer.Country);
-                                    columns.Bound(x => x.Customer.City);
-                                    columns.Bound(x => x.OrderDate).ClientTemplate("#=persianDate(OrderDate)#");
-                                })
-                                .DataSource(dataSource =>
-                                {
-                                    dataSource
-                                    .WebApi()
-                                    .AutoMakeQueryExpression(true)
-                                    .PageSize(10)
-                                    .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
+.Name("grid").Columns(columns =>
+{
+    columns.Bound(x => x.Customer.CustomerId);
+    columns.Bound(x => x.Customer.CompanyName);
+    columns.Bound(x => x.Customer.Country);
+    columns.Bound(x => x.Customer.City);
+    columns.Bound(x => x.OrderDate).ClientTemplate("#=persianDate(OrderDate)#")
+    .Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+})
+.DataSource(dataSource =>
+{
+    dataSource
+    .WebApi()
+    .AutoMakeQueryExpression(true)
+    .PageSize(10)
+    .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
 
-                                }).AutoBind(true)
-                                .Pageable()
-                                .Sortable()
+}).AutoBind(true)
+.Pageable()
+.Sortable()
+ .Filterable(t => t.Mode(GridFilterMode.Menu).Enabled(true))
 )
 
 <script>
