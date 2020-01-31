@@ -32,8 +32,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Repository", "Nor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Service", "Northwind.Service\Northwind.Service.csproj", "{D7F09B56-89B3-4C4C-A208-11AF52B38398}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.WebReactKendoUI", "Northwind.WebReactKendoUI\Northwind.WebReactKendoUI.csproj", "{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,24 +225,6 @@ Global
 		{D7F09B56-89B3-4C4C-A208-11AF52B38398}.Release-MVC5-Trial|Any CPU.Build.0 = Release|Any CPU
 		{D7F09B56-89B3-4C4C-A208-11AF52B38398}.Release-Trial|Any CPU.ActiveCfg = Release|Any CPU
 		{D7F09B56-89B3-4C4C-A208-11AF52B38398}.Release-Trial|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug-MVC3|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug-MVC3|Any CPU.Build.0 = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug-MVC5|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Debug-MVC5|Any CPU.Build.0 = Debug|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC3|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC3|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC3-Trial|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC3-Trial|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC5|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC5|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC5-Trial|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-MVC5-Trial|Any CPU.Build.0 = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-Trial|Any CPU.ActiveCfg = Release|Any CPU
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72}.Release-Trial|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -260,7 +240,6 @@ Global
 		{7BE2E0D7-5C40-4861-B6DE-D2C8EEF96EFD} = {3EA525DD-C3EA-452D-B982-3F32461B4103}
 		{087EFF0D-2598-4CA4-8495-296018746F9F} = {26EFFFF6-388E-466B-AEDF-2CDEA2D18584}
 		{D7F09B56-89B3-4C4C-A208-11AF52B38398} = {26EFFFF6-388E-466B-AEDF-2CDEA2D18584}
-		{4F1E5131-5870-40EE-A3BA-DD23F3D5CC72} = {26EFFFF6-388E-466B-AEDF-2CDEA2D18584}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6F36229-9DE5-4849-B20C-00479287FB84}
