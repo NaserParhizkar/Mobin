@@ -5,7 +5,7 @@
     <AssemblyTitle>Telerik UI for ASP.NET MVC Core 2.2.0</AssemblyTitle>
     <VersionPrefix>2017.2.504</VersionPrefix>
     <Authors>Telerik</Authors>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Kendo.Mvc</AssemblyName>
     <AssemblyOriginatorKeyFile>Kendo.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>

@@ -6,6 +6,8 @@ namespace Mobin.Repository
     public interface IMobinUnitOfWork : IDisposable
     {
         CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new();
+
+        void Save();
     }
 
     public class MobinUnitOfWork<TDbContext> : IMobinUnitOfWork where TDbContext : DbContext
@@ -23,9 +25,10 @@ namespace Mobin.Repository
             return new CrudRepository<TEntity>(context);
         }
 
-        protected virtual void Save()
+        public virtual void Save()
         {
-            context.SaveChanges();
+            if (context.SaveChanges() <= 0)
+                throw new Exception("Could not save entity");
         }
 
         protected virtual void Dispose(bool disposing)

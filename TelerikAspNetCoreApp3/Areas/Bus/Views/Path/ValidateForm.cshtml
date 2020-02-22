@@ -1,5 +1,5 @@
 ﻿
-@model KendoBus.Repository.Driver
+
 
 @{
     ViewData["Title"] = "ValidateForm";
@@ -17,9 +17,86 @@
     }
 </script>
 
-<div class="k-edit-form-container" id="a">
-    <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
-    
+
+@model Path
+
+
+<form method="post" id="dataEntryPartialForm">
+    <div class="k-edit-form-container" id="a">
+        <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.PathId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().IntegerTextBoxFor(t => t.PathId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Name, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Distance, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().IntegerTextBoxFor(t => t.Distance).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Rent, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().CurrencyTextBoxFor(t => t.Rent).Culture("fa-IR").Decimals(0).HtmlAttributes(new { style = "direction:ltr" })
+
+                </div>
+            </div>
+        </div>
+        <div class="k-edit-buttons k-state-default">
+
+            <a class="k-button k-button-icontext k-primary k-grid-update" onclick="dataEntryPartialFormSubmit(this)" href="#"><span class="k-icon k-update"></span>بروزرسانی</a>
+            <a class="k-button k-button-icontext k-grid-cancel" href="#"><span class="k-icon k-cancel"></span>انصراف</a>
+        </div>
+    </div>
+</form>
+<script src="~/kendo-2017.2.504/js/mobin-kendo-dist/config-kendo.js"></script>
+<script type="text/javascript">
+    //$("input").focusout(function () {
+    //    //debugger;
+    //});
+
+
+
+    //function formSubmit(e) {
+    //    // Initialize the Kendo UI Validator on your "form" container
+    //    // (NOTE: Does NOT have to be a HTML form tag)
+
+    //    var validator = $("#a").kendoValidator({
+    //        validate: function () {
+    //            $(".k-invalid:first").focus();
+    //        }
+    //    }).data("kendoValidator");
+
+
+    //    // Validate the input when the Save button is clicked
+    //    if (validator.validate()) {
+    //        // If the form is valid, the Validator will return true
+    //        //save();
+    //    }
+    //    else {
+    //        return false;
+    //    }
+    //}
+</script>
+
+
+
+
+
+
+
+@*@model KendoBus.Repository.Driver
+    <div class="k-edit-form-container">
+        <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+
             <div class="form-group">
                 @Html.LabelFor(t => t.NationalCode, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
                 <div class="col-xs-12 col-sm-8 col-md-8">
@@ -77,81 +154,7 @@
                 </div>
             </div>
         </div>
-        <div class="k-edit-buttons k-state-default">
-
-            <a class="k-button k-button-icontext k-primary k-grid-update" onclick="formSubmit(this)" href="#"><span class="k-icon k-update"></span>بروزرسانی</a>
-            <a class="k-button k-button-icontext k-grid-cancel" href="#"><span class="k-icon k-cancel"></span>انصراف</a>
-        </div>
- 
-</div>
-
-<script type="text/javascript">
-    $("input").focusout(function () {
-        //debugger;
-    });
+    </div>*@
 
 
-
-    function formSubmit(e) {
-        // Initialize the Kendo UI Validator on your "form" container
-        // (NOTE: Does NOT have to be a HTML form tag)
-
-        var validator = $("#a").kendoValidator({
-            validate: function () {
-                $(".k-invalid:first").focus();
-            }
-        }).data("kendoValidator");
-
-
-        // Validate the input when the Save button is clicked
-        if (validator.validate()) {
-            // If the form is valid, the Validator will return true
-            //save();
-        }
-        else {
-            return false;
-        }
-    }
-</script>
-
-
-
-
-
-@*@model Path
-
-<div class="k-edit-form-container">
-    <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
-        <div class="container">
-            <div class="form-group">
-                @Html.LabelFor(t => t.PathId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @Html.Kendo().IntegerTextBoxFor(t => t.PathId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(t => t.Name, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @Html.Kendo().TextBoxFor(t => t.Name)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(t => t.Distance, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @Html.Kendo().IntegerTextBoxFor(t => t.Distance).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(t => t.Rent, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @Html.Kendo().CurrencyTextBoxFor(t => t.Rent).Culture("fa-IR").Decimals(0).HtmlAttributes(new { style = "direction:ltr" })
-                </div>
-            </div>
-        </div>
-        <div class="k-edit-buttons k-state-default">
-            <a class="k-button k-button-icontext k-primary k-grid-update" href="#"><span class="k-icon k-update"></span>ویرایش</a>
-            <a class="k-button k-button-icontext k-grid-cancel" href="#"><span class="k-icon k-cancel"></span>انصراف</a>
-        </div>
-    </div>
-</div>*@
 
