@@ -70,7 +70,7 @@ namespace Kendo.Mvc.Mobin.Controllers
         public virtual void Update(TEntity entity)
         {
             crudService.Update(entity);
-
+          
             throw new MobinException("asdasdasd");
         }
 

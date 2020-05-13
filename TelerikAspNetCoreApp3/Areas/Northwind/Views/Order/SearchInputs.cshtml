@@ -1,6 +1,5 @@
 ﻿@using Northwind.WebUI.Controllers
 @using Northwind.Repository;
-@using Mobin.Common;
 
 @model Order
 
@@ -10,13 +9,6 @@
 }
 
 <link href="~/Content/951114.css" rel="stylesheet" />
-<script type="text/javascript">
-    //kendo.culture('fa-IR');
-    function Format(distance) {
-        return (distance + " متر ");
-    }
-</script>
-
 
 <div class="container">
         <div class="panel-heading"> <h3 class="panel-title">پارامترهای جستجو</h3></div>
@@ -34,33 +26,53 @@
                     @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
                 </div>
             </div>
-    </div>
+            <div class="form-group row">
+                @Html.LabelFor(t => t.OrderDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().GridSearchFromDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
+                                                                                  .Format("yyyy/MM/dd")
+                                                                                  .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(t => t.OrderDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().GridSearchToDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
+                                                                                  .Format("yyyy/MM/dd")
+                                                                                  .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+        </div>
 </div>
 
 @(Html.Kendo().Grid<Order>()
-                                .Name("grid").Columns(columns =>
-                                {
-                                    columns.Bound(x => x.Customer.CustomerId);
-                                    columns.Bound(x => x.Customer.CompanyName);
-                                    columns.Bound(x => x.Customer.Country);
-                                    columns.Bound(x => x.Customer.City);
-                                    columns.Bound(x => x.OrderDate).ClientTemplate("#=persianDate(OrderDate)#");
-                                })
-                                .DataSource(dataSource =>
-                                {
-                                    dataSource
-                                    .WebApi()
-                                    .AutoMakeQueryExpression(true)
-                                    .PageSize(10)
-                                    .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
+.Name("grid").Columns(columns =>
+{
+    columns.Bound(x => x.Customer.CustomerId);
+    columns.Bound(x => x.Customer.CompanyName);
+    columns.Bound(x => x.Customer.Country);
+    columns.Bound(x => x.Customer.City);
+    columns.Bound(x => x.OrderDate).ClientTemplate("#=persianDate(OrderDate)#");
+})
+.DataSource(dataSource =>
+{
+    dataSource
+    .WebApi()
+    .AutoMakeQueryExpression(true)
+    .PageSize(10)
+    .Read(read => read.Action<OrderApiController>(t => t.Read(null)));
 
-                                }).AutoBind(true)
-                                .Pageable()
-                                .Sortable()
+}).AutoBind(true)
+.Pageable()
+.Sortable()
 )
 
 <script>
     function persianDate(date) {
         return (new pDate(+date)).persianFormat();
+    }
+
+    function Format(distance) {
+        return (distance + " متر ");
     }
 </script>

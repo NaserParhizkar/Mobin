@@ -157,8 +157,6 @@
 //}
 
 
-
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -166,6 +164,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
+using System;
 
 namespace Northwind.WebUI
 {
@@ -184,17 +183,29 @@ namespace Northwind.WebUI
 
             // Add framework services.
             services
-                .AddMvc(options => options.EnableEndpointRouting = false)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddRazorPages()
                 // Maintain property names during serialization. See:
                 // https://github.com/aspnet/Announcements/issues/194
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             //services.AddControllersWithViews();
 
+            services.AddServerSideBlazor();
+
+
             // Add connectionstring -
             services.AddSingleton(_ => Configuration);
 
             services.AddProjectService();
+
+            services.AddHttpClient("github", c =>
+            {
+                c.BaseAddress = new Uri("https://api.github.com/");
+                // Github API versioning
+                c.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+                // Github requires a user-agent
+                c.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
+            });
+
 
             // Add Kendo UI services to the services container
             services.AddKendo();
@@ -212,7 +223,7 @@ namespace Northwind.WebUI
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -224,41 +235,50 @@ namespace Northwind.WebUI
 
             app.UseAuthorization();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapAreaRoute("northwind", "Northwind", "Northwind/{controller}/{action}/{id?}",
-                    defaults: new { area = "Northwind" }, constraints: new { area = "Northwind" });
-
-                routes.MapAreaRoute("bus", "Bus", "Bus/{controller}/{action}/{id?}",
-                    defaults: new { area = "Bus" }, constraints: new { area = "Bus" });
-
-                routes.MapRoute("default", "{controller}/{action}/{id?}",
-                    defaults: new { controller = "PersianDate", action = "Index" });
-
-                routes.MapRoute(
-                   name: "api",
-                   template: "api/{controller}/{action}/{id?}",
-                   defaults: new { Controller = "Messages", action = "My" });
-            });
-
-
-
-            //app.UseEndpoints(endpoints =>
+            //app.UseMvc(routes =>
             //{
-            //    endpoints.MapAreaControllerRoute("northwind", "Northwind", "Northwind/{controller}/{action}/{id?}",
+            //    routes.MapAreaRoute("northwind", "Northwind", "Northwind/{controller}/{action}/{id?}",
             //        defaults: new { area = "Northwind" }, constraints: new { area = "Northwind" });
 
-            //    endpoints.MapAreaControllerRoute("bus", "Bus", "Bus/{controller}/{action}/{id?}",
+            //    routes.MapAreaRoute("bus", "Bus", "Bus/{controller}/{action}/{id?}",
             //        defaults: new { area = "Bus" }, constraints: new { area = "Bus" });
 
-            //    endpoints.MapAreaControllerRoute("pdn", "PDN", "PDN/{controller}/{action}/{id?}",
-            //        defaults: new { area = "PDN" }, constraints: new { area = "PDN" });
+            //    routes.MapRoute("default", "{controller}/{action}/{id?}",
+            //        defaults: new { controller = "PersianDate", action = "Index" });
 
-
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=PersianDate}/{action=Index}/{id?}");
+            //    routes.MapRoute(
+            //       name: "api",
+            //       template: "api/{controller}/{action}/{id?}",
+            //       defaults: new { Controller = "Messages", action = "My" });
             //});
+
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapAreaControllerRoute("northwind", "Northwind", "Northwind/{controller}/{action}/{id?}",
+                    defaults: new { area = "Northwind" }, constraints: new { area = "Northwind" });
+
+                endpoints.MapAreaControllerRoute("bus", "Bus", "Bus/{controller}/{action}/{id?}",
+                    defaults: new { area = "Bus" }, constraints: new { area = "Bus" });
+
+                //endpoints.MapAreaControllerRoute("pdn", "PDN", "PDN/{controller}/{action}/{id?}",
+                //    defaults: new { area = "PDN" }, constraints: new { area = "PDN" });
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=PersianDate}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages();
+
+                endpoints.MapControllerRoute(
+                   name: "api",
+                   pattern: "api/{controller}/{action}/{id?}",
+                   defaults: new { Controller = "Messages", action = "My" });
+
+                endpoints.MapBlazorHub();
+
+                //endpoints.MapFallbackToPage("/_Host");
+            });
         }
     }
 }

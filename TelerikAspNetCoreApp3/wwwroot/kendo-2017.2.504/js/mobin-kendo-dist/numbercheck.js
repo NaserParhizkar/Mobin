@@ -231,7 +231,7 @@ var Shipping;
         return PrivateShip;
     }());
     var ferry = new Shipping.Ferry('Assurance', 'London', 3220);
-})(Shipping || (Shipping = {}));
+})(Shipping = exports.Shipping || (exports.Shipping = {}));
 var Docking;
 (function (Docking) {
     var Dock = (function () {

@@ -45,6 +45,9 @@
     <script src="~/kendo-2017.2.504/js/kendo.columnsorter.js"></script>
 
     <script src="~/lib/mobin.search.input.js"></script>
+    @*<script src="~/lib/mobin.search.date.js"></script>*@
+    <script src="~/kendo-2017.2.504/js/mobin-kendo-dist/mobin.search.date.js"></script>
+
     <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.binder.js"></script>
@@ -152,31 +155,31 @@
         <div class="container menu-content">
             <div id="responsive-panel">
                 @*@(Html.Kendo().Menu()
-                        .Name("Menu")
-                        .Items(items =>
-                        {
-                            items.Add()
-                          .Text("اصلی")
-                          .Action("Index", "Home", new { area = "" });
+                                    .Name("Menu")
+                                    .Items(items =>
+                                    {
+                                        items.Add()
+                                      .Text("اصلی")
+                                      .Action("Index", "Home", new { area = "" });
 
-                            items.Add()
-                                .Text("مشتری")
-                               .Action("Index", "PDNCustomer", new { area = "pdn" });
+                                        items.Add()
+                                            .Text("مشتری")
+                                           .Action("Index", "PDNCustomer", new { area = "pdn" });
 
-                            items.Add()
-                                .Text("سفارش")
-                               .Action("Index", "PDNOrderItem", new { area = "pdn" });
+                                        items.Add()
+                                            .Text("سفارش")
+                                           .Action("Index", "PDNOrderItem", new { area = "pdn" });
 
-                            items.Add()
-                                .Text("محصول")
-                                .Action("Index", "PDNProduct", new { area = "pdn" });
-                              items.Add()
-                    .Text("Path_PathView")
-                   .Action("PathView", "Path", new { area = "bus" });
+                                        items.Add()
+                                            .Text("محصول")
+                                            .Action("Index", "PDNProduct", new { area = "pdn" });
+                                          items.Add()
+                                .Text("Path_PathView")
+                               .Action("PathView", "Path", new { area = "bus" });
 
 
-                        })
-        )*@
+                                    })
+                    )*@
 
                 @(Html.Kendo().Menu()
                         .Name("Menu")

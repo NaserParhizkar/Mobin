@@ -316,7 +316,7 @@ const second = new Second.Example();
 second.log();
 
 
-namespace Shipping {
+export namespace Shipping {
     // Available as Shipping.Ship
     export interface Ship {
         name: string;

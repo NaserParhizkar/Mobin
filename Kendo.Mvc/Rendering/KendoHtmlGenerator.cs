@@ -203,6 +203,19 @@ namespace Kendo.Mvc.Rendering
             return GenerateInput(viewContext, modelExplorer, id, name, value, format, "text", htmlAttributes);
         }
 
+        //Added By Naser Parhizkar
+        public virtual TagBuilder GenerateGridSearchDate(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes)
+        {
+            return GenerateDateInput(viewContext, modelExplorer, id, name, value, format, htmlAttributes);
+        }
+
         public virtual TagBuilder GenerateTag(
             string tagName,
             IDictionary<string, object> htmlAttributes)

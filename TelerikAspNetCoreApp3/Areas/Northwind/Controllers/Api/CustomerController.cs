@@ -23,6 +23,8 @@ namespace Northwind.WebUI.Controllers
 
         public DataSourceResult GetCustomersOrderInfo([DataSourceRequest] DataSourceRequest request)
         {
+            var asasd = customerService.GetCustomersOrderInfo();
+
             var query = customerService.GetAllAsQueryable().Where(request.Filters).Cast<Order>();
             request.Filters.Clear();
             var finalQuery = query.Select(t => new { OrderDate = t.OrderDate });

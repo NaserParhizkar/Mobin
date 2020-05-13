@@ -156,3 +156,44 @@ kendo.syncReady(function() {
   }
   );
 });</script>
+
+
+
+
+
+<input type="text" id="datePickerFA" style="direction:ltr" name="datePickerFA" />
+
+<script>
+    $(function () {
+        jQuery("#datePickerFA").kendoDatePicker({
+            value: new pDate(),
+            culture: "fa-IR",
+            format: "yyyy/MM/dd",
+            min: new pDate(),
+            max: new pDate(1450, 11, 29, 0, 0, 0, 0),
+            disableDates: ["fr"]
+        });
+    });
+</script>
+
+<br />
+<br />
+<br />
+<br />
+
+
+<input type="text" id="datePicker" name="datePicker" />
+<script>
+    $(function () {
+        jQuery("#datePicker").kendoDatePicker({
+            value: new Date(),
+            format: "yyyy/MM/dd",
+            culture: "en-US",
+            min: new Date(),
+            max: new Date(2050, 11, 31, 0, 0, 0, 0),
+            disableDates: ["sa", "su"]
+
+        });
+    });
+</script>
+

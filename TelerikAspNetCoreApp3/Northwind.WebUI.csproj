@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Northwind.WebUI</AssemblyName>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
@@ -22,6 +22,15 @@
     <None Remove="wwwroot\Scripts\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+  </ItemGroup>
+
+
 
   <ItemGroup>
     <Content Remove="wwwroot\kendo-2017.2.504\typescript\src\mobin.common.ts" />
@@ -37,7 +46,7 @@
     <Content Include="Areas\Northwind\Controllers\KendoGridHelperController.cs" />
     <Content Include="Controllers\PersianDateController.cs" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Folder Include="Areas\Bus\Data\" />
     <Folder Include="Areas\Bus\Models\" />
@@ -45,7 +54,6 @@
     <Folder Include="Areas\Northwind\Data\" />
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\" />
   </ItemGroup>
 
@@ -534,6 +542,11 @@
     <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\.png" />
     <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\home.png" />
     <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\mobile.png" />
+    <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+    <None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+    <None Include="wwwroot\css\open-iconic\ICON-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\README.md" />
     <None Include="wwwroot\lib\bootstrap__\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap__\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap__\css\bootstrap-reboot.css.map" />
@@ -570,13 +583,10 @@
     <None Include="wwwroot\lib\jquery\jQuery.3.3.1\Tools\jquery-3.3.1.intellisense.js" />
     <None Include="wwwroot\lib\jquery\jQuery.3.3.1\Tools\uninstall.ps1" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Kendo.Mvc\Kendo.Mvc.csproj" />
+    <ProjectReference Include="..\Mobin.Blazor\Mobin.Blazor.csproj" />
     <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
     <ProjectReference Include="..\Mobin.Service\Mobin.Service.csproj" />
     <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />

@@ -5,7 +5,7 @@
     <AssemblyTitle>Telerik UI for ASP.NET MVC Core 2.2.0</AssemblyTitle>
     <VersionPrefix>2017.2.504</VersionPrefix>
     <Authors>Telerik</Authors>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Kendo.Mvc</AssemblyName>
     <AssemblyOriginatorKeyFile>Kendo.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -38,11 +38,18 @@
     <Compile Include="Mobin\UI\DataSource\Fluent\DataSourceBuilder.cs" />
     <Compile Include="Mobin\UI\DropDownList\DropDownList.cs" />
     <Compile Include="Mobin\UI\DropDownList\Fluent\DropDownListBuilder.cs" />
+    <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchDate.cs" />
+    <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchDateFor.cs" />
     <Compile Include="Mobin\UI\Fluent\WidgetFactory.DropDownListFor.cs" />
     <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchDropDownList.cs" />
     <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchDropDownListFor.cs" />
     <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchInput.cs" />
     <Compile Include="Mobin\UI\Fluent\WidgetFactory.GridSearchInputFor.cs" />
+    <Compile Include="Mobin\UI\GridSearchDatePicker\Fluent\GridSearchDateBuilder.cs" />
+    <Compile Include="Mobin\UI\GridSearchDatePicker\Fluent\GridSearchDateBuilder.Generated.cs" />
+    <Compile Include="Mobin\UI\GridSearchDatePicker\Fluent\GridSearchDateEventBuilder.cs" />
+    <Compile Include="Mobin\UI\GridSearchDatePicker\GridSearchDate.cs" />
+    <Compile Include="Mobin\UI\GridSearchDatePicker\GridSearchDate.Generated.cs" />
     <Compile Include="Mobin\UI\Grid\Grid.cs" />
     <Compile Include="Mobin\UI\GridSearchDropDownList\Fluent\GridSearchDropDownListBuilder.cs" />
     <Compile Include="Mobin\UI\GridSearchDropDownList\GridSearchDropDownList.cs" />

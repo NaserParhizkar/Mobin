@@ -72,7 +72,9 @@ function pDate() {
                 pMilliseconds = Number(arguments[6]);
             }
         }
-        else if (typeof arguments[0] !== "undefined" && typeof arguments[1] !== "undefined" && typeof arguments[2] !== "undefined") {
+        else if ((typeof arguments[0] !== "undefined" && !isNaN(arguments[0]))
+            && (typeof arguments[1] !== "undefined" && !isNaN(arguments[1]))
+            && (typeof arguments[2] !== "undefined" && !isNaN(arguments[2]))) {
             pYear = Number(arguments[0]); pMonth = Number(arguments[1]); pDate = Number(arguments[2]);
 
             if (pDate <= 0) {
