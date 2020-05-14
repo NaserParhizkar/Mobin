@@ -1,9 +1,9 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
+    using Kendo.Mvc.Extensions;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Kendo.Mvc.Extensions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="PivotTransport"/> component.

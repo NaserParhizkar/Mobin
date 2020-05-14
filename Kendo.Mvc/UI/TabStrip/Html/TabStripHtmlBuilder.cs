@@ -1,6 +1,6 @@
 namespace Kendo.Mvc.UI
 {
-    public class TabStripHtmlBuilder: NavigationHtmlBuilderBase<TabStrip, TabStripItem>
+    public class TabStripHtmlBuilder : NavigationHtmlBuilderBase<TabStrip, TabStripItem>
     {
         public TabStripHtmlBuilder(TabStrip tabStrip)
             : base(tabStrip)
@@ -36,7 +36,7 @@ namespace Kendo.Mvc.UI
                 {
                     li.AddClass(UIPrimitives.DisabledState);
                 }
-                
+
                 li.PrependClass(UIPrimitives.DefaultState);
             });
         }

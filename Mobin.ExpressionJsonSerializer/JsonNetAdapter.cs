@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Mobin.Common;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Mobin.ExpressionJsonSerializer
 {
@@ -45,12 +44,15 @@ namespace Mobin.ExpressionJsonSerializer
             return JsonConvert.DeserializeObject<T>(json, _settings);
         }
 
-        public static Expression ReadDeserializedExpression<T>(Guid callerKey)
+        public static Expression ReadDeserializedExpression<T>(Guid widgetId)
         {
-            string path = string.Empty,
-                json = string.Empty;
+            string filePath_Name = string.Empty;
+            if (!ExpressionPathKeeper.ExpKeyPath.TryGetValue(widgetId, out filePath_Name))
+                throw new MobinException($"There is not any file path with key = {widgetId}");
 
-            using (var stream = File.OpenRead(path))
+            string json = string.Empty;
+
+            using (var stream = File.OpenRead(filePath_Name))
             using (var reader = new StreamReader(stream))
             {
                 json = reader.ReadToEnd();
@@ -60,12 +62,15 @@ namespace Mobin.ExpressionJsonSerializer
             return serializedLambda;
         }
 
-        public static LambdaExpression ReadDeserializedLambdaExpression<T>(Guid callerKey)
+        public static LambdaExpression ReadDeserializedLambdaExpression<T>(Guid widgetId)
         {
-            string path = string.Empty,
-                json = string.Empty;
+            string filePath_Name = string.Empty;
+            if (!ExpressionPathKeeper.ExpKeyPath.TryGetValue(widgetId, out filePath_Name))
+                throw new MobinException($"There is not any file path with key = {widgetId}");
 
-            using (var stream = File.OpenRead(path))
+            string json = string.Empty;
+
+            using (var stream = File.OpenRead(filePath_Name))
             using (var reader = new StreamReader(stream))
             {
                 json = reader.ReadToEnd();

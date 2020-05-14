@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI MediaPlayer for ASP.NET MVC events.
     /// </summary>
-    public class MediaPlayerEventBuilder: EventBuilder
+    public class MediaPlayerEventBuilder : EventBuilder
     {
         public MediaPlayerEventBuilder(IDictionary<string, object> events)
             : base(events)

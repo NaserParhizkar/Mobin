@@ -1,10 +1,8 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Extensions;
+    using System;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="PivotDataSourceSchemaCube"/> Measures.
@@ -27,7 +25,7 @@
         public PivotAjaxDataSourceSchemaCubeMeasureBuilder<TModel> Field<TValue>(Expression<Func<TModel, TValue>> expression)
         {
             measure.Field = expression.MemberWithoutInstance();
-            
+
             return this;
         }
 

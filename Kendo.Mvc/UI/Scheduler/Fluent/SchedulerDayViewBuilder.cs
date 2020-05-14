@@ -8,7 +8,7 @@
     {
         public SchedulerDayViewBuilder(T resource)
             : base(resource)
-        { 
+        {
         }
     }
 }

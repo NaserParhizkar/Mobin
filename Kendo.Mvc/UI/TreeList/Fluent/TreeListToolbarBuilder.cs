@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TreeListToolbar
     /// </summary>
     public partial class TreeListToolbarBuilder<T>
-        
+
     {
         public TreeListToolbarBuilder(TreeListToolbar<T> container)
         {

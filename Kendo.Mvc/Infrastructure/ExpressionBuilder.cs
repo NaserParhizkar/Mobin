@@ -1,10 +1,9 @@
 namespace Kendo.Mvc
 {
+    using Infrastructure.Implementation.Expressions;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-
-    using Infrastructure.Implementation.Expressions;
 
     public static class ExpressionBuilder
     {
@@ -27,7 +26,7 @@ namespace Kendo.Mvc
 
         public static LambdaExpression Lambda<T>(string memberName, bool checkForNull)
         {
-            MemberAccessExpressionBuilderBase expressionBuilder = ExpressionBuilderFactory.MemberAccess(typeof(T),  memberName, checkForNull);
+            MemberAccessExpressionBuilderBase expressionBuilder = ExpressionBuilderFactory.MemberAccess(typeof(T), memberName, checkForNull);
 
             return expressionBuilder.CreateLambdaExpression();
         }
@@ -45,7 +44,7 @@ namespace Kendo.Mvc
 
             builder.Options.LiftMemberAccessToNull = checkForNull;
 
-            return (Expression<Func<T, bool>>) builder.CreateFilterExpression();
+            return (Expression<Func<T, bool>>)builder.CreateFilterExpression();
         }
     }
 }

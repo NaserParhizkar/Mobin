@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
+    using Extensions;
     using System;
     using System.Globalization;
     using System.Linq;
-    using Extensions;
 
     public abstract class EnumerableAggregateFunctionBase : AggregateFunction
     {

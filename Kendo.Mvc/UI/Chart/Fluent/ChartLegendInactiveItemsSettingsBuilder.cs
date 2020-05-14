@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartLegendInactiveItemsSettings
     /// </summary>
     public partial class ChartLegendInactiveItemsSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartLegendInactiveItemsSettingsBuilder(ChartLegendInactiveItemsSettings<T> container)
         {

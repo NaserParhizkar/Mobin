@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.UI
 {
-	using System;
-	using System.Collections.Generic;
-	using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Collections.Generic;
 
-	public interface IGridForeignKeyColumn : IGridBoundColumn
+    public interface IGridForeignKeyColumn : IGridBoundColumn
     {
         SelectList Data
         {

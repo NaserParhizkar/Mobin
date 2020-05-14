@@ -2,7 +2,6 @@ namespace Kendo.Mvc.UI.Fluent
 {
     using System;
     using System.Collections.Generic;
-    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the NumericTextBox events.

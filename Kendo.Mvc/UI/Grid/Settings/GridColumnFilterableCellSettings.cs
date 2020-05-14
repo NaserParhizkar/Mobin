@@ -2,14 +2,14 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI
 {
-	public class GridColumnFilterableCellSettings : JsonObject
+    public class GridColumnFilterableCellSettings : JsonObject
     {
         public GridColumnFilterableCellSettings(IModelMetadataProvider modelMetadataProvider)
         {
             Enabled = true;
             ShowOperators = true;
             Delay = 200;
-            MinLength = 1;            
+            MinLength = 1;
             SuggestionOperator = FilterType.StartsWith;
             Operator = "eq";
             Template = new ClientHandlerDescriptor();
@@ -30,13 +30,13 @@ namespace Kendo.Mvc.UI
         public bool Enabled { get; set; }
         public bool ShowOperators { get; set; }
         public ClientHandlerDescriptor Template { get; set; }
-		public DataSource DataSource { get; }
+        public DataSource DataSource { get; }
 
-		protected override void Serialize(System.Collections.Generic.IDictionary<string, object> json)
-        {            
+        protected override void Serialize(System.Collections.Generic.IDictionary<string, object> json)
+        {
             if (!Enabled)
             {
-                json["enabled"] = Enabled;                
+                json["enabled"] = Enabled;
             }
             if (Template.HasValue())
             {
@@ -73,11 +73,12 @@ namespace Kendo.Mvc.UI
             if (!string.IsNullOrEmpty(DataSource.Transport.Read.Url))
             {
                 json["dataSource"] = DataSource.ToJson();
-            } else if (DataSource.Data != null)
+            }
+            else if (DataSource.Data != null)
             {
                 json["dataSource"] = DataSource.Data;
             }
         }
-        
+
     }
 }

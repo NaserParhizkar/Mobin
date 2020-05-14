@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -21,7 +20,7 @@ namespace Kendo.Mvc.UI.Fluent
         }
 
         // Place custom settings here
-        
+
         /// <summary>
         /// Adds an item to the collection
         /// </summary>

@@ -1,15 +1,12 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI DatePickerMonthTemplateSettings class
     /// </summary>
-    public partial class DatePickerMonthTemplateSettings 
+    public partial class DatePickerMonthTemplateSettings
     {
         public Dictionary<string, object> Serialize()
         {

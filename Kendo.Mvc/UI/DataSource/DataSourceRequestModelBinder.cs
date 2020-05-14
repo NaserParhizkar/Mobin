@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Kendo.Mvc.Extensions;
+﻿using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
+using System.Threading.Tasks;
 
 namespace Kendo.Mvc.UI
 {
@@ -48,6 +48,11 @@ namespace Kendo.Mvc.UI
 
             TryGetValue(modelMetadata, valueProvider, modelName, DataSourceRequestUrlParameters.PageSize, (int pageSize) => request.PageSize = pageSize);
 
+            TryGetValue(modelMetadata, valueProvider, modelName, nameof(DataSourceRequest.WidgetId), (Guid widgetId) => request.WidgetId = widgetId);
+
+            TryGetValue(modelMetadata, valueProvider, modelName, nameof(DataSourceRequest.AutoMakeQueryExpression),
+                (bool autoMakeQueryExpression) => request.AutoMakeQueryExpression = autoMakeQueryExpression);
+
             TryGetValue(modelMetadata, valueProvider, modelName, DataSourceRequestUrlParameters.Filter, (string filter) =>
                 request.Filters = FilterDescriptorFactory.Create(filter)
             );
@@ -62,7 +67,5 @@ namespace Kendo.Mvc.UI
 
             return request;
         }
-
     }
-    
 }

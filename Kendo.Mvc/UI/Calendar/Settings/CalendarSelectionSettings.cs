@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
-    using System.Collections.Generic;    
     using Microsoft.AspNetCore.Routing;
+    using System;
+    using System.Collections.Generic;
 
     public class CalendarSelectionSettings : INavigatable
     {
@@ -17,9 +17,9 @@
         }
 
         public IList<DateTime> Dates
-        { 
-            get; 
-            set; 
+        {
+            get;
+            set;
         }
 
         public string ActionName

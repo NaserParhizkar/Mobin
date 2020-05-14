@@ -1,0 +1,199 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout-old.cshtml";
+    ViewData["Title"] = "Contact";
+}
+<script>
+kendo.syncReady(function() {
+  jQuery("#AddressGrid").kendoGrid( {
+    "sortable": true,
+    "columns": [
+      {
+        "title": "Address Id",
+        "width": "300px",
+        "field": "AddressId",
+        "filterable": {
+          "mode": "row",
+          "messages": { "selectedItemsFormat": "{0} selected items" },
+          "operators": {
+            "date": {
+              "eq": "Is equal to",
+              "neq": "Is not equal to",
+              "gte": "Is after or equal to",
+              "gt": "Is after",
+              "lte": "Is before or equal to",
+              "lt": "Is before",
+              "isnotnull": "Is not null"
+            }
+          },
+          "checkAll": false
+        },
+        "encoded": true,
+        "editor": null
+      },
+      {
+        "title": "Country",
+        "width": "300px",
+        "field": "Country",
+        "filterable": {
+          "messages": { "selectedItemsFormat": "{0} selected items" },
+          "operators": {
+            "date": {
+              "eq": "Is equal to",
+              "neq": "Is not equal to",
+              "gte": "Is after or equal to",
+              "gt": "Is after",
+              "lte": "Is before or equal to",
+              "lt": "Is before",
+              "isnotnull": "Is not null"
+            }
+          },
+          "checkAll": false
+        },
+        "encoded": true,
+        "editor": null
+      },
+      {
+        "title": "ویرایش/حدف",
+        "width": "255px",
+        "command": [
+          {
+            "text": {
+              "cancel": "انصراف",
+              "update": "بروزرسانی",
+              "edit": "ویرایش"
+            },
+            "name": "edit"
+          },
+          {
+            "text": "حذف",
+            "name": "destroy"
+          }
+        ]
+      }
+    ],
+    "pageable": {
+      "input": true,
+      "refresh": true,
+      "pageSizes": [ 5, 10, 20 ],
+      "buttonCount": 10,
+      "messages": {
+        "display": "نمایش {0} تا {1} از {2} سطر",
+        "empty": "هیچ رکوردی موجود نیست",
+        "page": "صفحه ی ",
+        "of": "از {0} صفحه",
+        "itemsPerPage": "سطر در جدول"
+      }
+    },
+    "selectable": "Single, Row",
+    "scrollable": false,
+    "editable": {
+      "confirmation": "آیا با حذف این رکورد موافقید",
+      "confirmDelete": "Delete",
+      "cancelDelete": "Cancel",
+      "mode": "popup",
+      "create": true,
+      "update": true,
+      "destroy": true,
+      "template": "\u003cdiv class=\"editor-label\"\u003e\u003clabel for=\"AddressId\"\u003eAddressId\u003c/label\u003e\u003c/div\u003e\u003cdiv class=\"editor-field\"\u003e\u003cinput class=\"text-box single-line\" data-val=\"true\" data-val-required=\"The AddressId field is required.\" id=\"AddressId\" name=\"AddressId\" type=\"number\" value=\"\" /\u003e \u003cspan class=\"field-validation-valid\" data-valmsg-for=\"AddressId\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"editor-label\"\u003e\u003clabel for=\"Country\"\u003eCountry\u003c/label\u003e\u003c/div\u003e\u003cdiv class=\"editor-field\"\u003e\u003cinput class=\"k-textbox\" id=\"Country\" name=\"Country\" value=\"\" /\u003e \u003cspan class=\"field-validation-valid\" data-valmsg-for=\"Country\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"editor-label\"\u003e\u003clabel for=\"City\"\u003eCity\u003c/label\u003e\u003c/div\u003e\u003cdiv class=\"editor-field\"\u003e\u003cinput class=\"k-textbox\" id=\"City\" name=\"City\" value=\"\" /\u003e \u003cspan class=\"field-validation-valid\" data-valmsg-for=\"City\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"editor-label\"\u003e\u003clabel for=\"PostalCode\"\u003ePostalCode\u003c/label\u003e\u003c/div\u003e\u003cdiv class=\"editor-field\"\u003e\u003cinput class=\"k-textbox\" id=\"PostalCode\" name=\"PostalCode\" value=\"\" /\u003e \u003cspan class=\"field-validation-valid\" data-valmsg-for=\"PostalCode\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"editor-label\"\u003e\u003clabel for=\"AddressDetails\"\u003eAddressDetails\u003c/label\u003e\u003c/div\u003e\u003cdiv class=\"editor-field\"\u003e\u003cinput class=\"k-textbox\" id=\"AddressDetails\" name=\"AddressDetails\" value=\"\" /\u003e \u003cspan class=\"field-validation-valid\" data-valmsg-for=\"AddressDetails\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e\u003c/div\u003e",
+      "window": {
+        "title": "مسیر",
+        "modal": true,
+        "draggable": true,
+        "resizable": true,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "toolbar": [
+      {
+        "text": "افزودن",
+        "name": "create"
+      }
+    ],
+    "dataSource": {
+      "type": (function()
+      {
+        if(kendo.data.transports [ 'aspnetmvc-ajax' ]
+        ) { return 'aspnetmvc-ajax'; }
+        else {
+          throw new
+          Error('The kendo.aspnetmvc.min.js script is not included.');
+        }
+      }
+      )(),
+      "transport": {
+        "read": { "url": "" },
+        "prefix": ""
+      },
+      "pageSize": 20,
+      "page": 1,
+      "total": 0,
+      "serverPaging": true,
+      "serverSorting": true,
+      "serverFiltering": true,
+      "serverGrouping": true,
+      "serverAggregates": true,
+      "filter": [],
+      "schema": {
+        "data": "Data",
+        "total": "Total",
+        "errors": "Errors",
+        "model": {
+          "id": "ID",
+          "fields": {
+            "ID": { "type": "number" },
+            "AddressId": { "type": "number" },
+            "PersonID": { "type": "number" },
+            "Country": { "type": "string" },
+            "City": { "type": "string" },
+            "PostalCode": { "type": "string" },
+            "AddressDetails": { "type": "string" },
+            "Person": { "type": "object" }
+          }
+        }
+      }
+    }
+  }
+  );
+});</script>
+
+
+
+
+
+<input type="text" id="datePickerFA" style="direction:ltr" name="datePickerFA" />
+
+<script>
+    $(function () {
+        jQuery("#datePickerFA").kendoDatePicker({
+            value: new pDate(),
+            culture: "fa-IR",
+            format: "yyyy/MM/dd",
+            min: new pDate(),
+            max: new pDate(1450, 11, 29, 0, 0, 0, 0),
+            disableDates: ["fr"]
+        });
+    });
+</script>
+
+<br />
+<br />
+<br />
+<br />
+
+
+<input type="text" id="datePicker" name="datePicker" />
+<script>
+    $(function () {
+        jQuery("#datePicker").kendoDatePicker({
+            value: new Date(),
+            format: "yyyy/MM/dd",
+            culture: "en-US",
+            min: new Date(),
+            max: new Date(2050, 11, 31, 0, 0, 0, 0),
+            disableDates: ["sa", "su"]
+
+        });
+    });
+</script>
+

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring GanttMessagesEditorSettings
     /// </summary>
     public partial class GanttMessagesEditorSettingsBuilder<TTaskModel, TDependenciesModel>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttMessagesEditorSettingsBuilder(GanttMessagesEditorSettings<TTaskModel, TDependenciesModel> container)
         {

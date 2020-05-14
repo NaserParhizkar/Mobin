@@ -8,7 +8,7 @@
     {
         public SchedulerWeekViewBuilder(T resource)
             : base(resource)
-        { 
+        {
         }
     }
 }

@@ -1,39 +1,37 @@
-﻿using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 
 namespace Mobin.Repository
 {
     public interface IMobinUnitOfWork : IDisposable
     {
-        CrudRepository<TEntity> Repository<TEntity>() where TEntity: class,new();
+        CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new();
+
+        void Save();
     }
 
     public class MobinUnitOfWork<TDbContext> : IMobinUnitOfWork where TDbContext : DbContext
     {
-        public bool disposed = false;
-        DbContext context { get; }
+        private bool disposed = false;
+        private DbContext context { get; }
 
         public MobinUnitOfWork(TDbContext dbContext)
         {
             context = dbContext;
         }
 
-        public CrudRepository<TEntity> Repository<TEntity>() where TEntity : class,new()
+        public CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new()
         {
             return new CrudRepository<TEntity>(context);
         }
 
-        protected virtual void Save()
+        public virtual void Save()
         {
-            context.SaveChanges();
+            if (context.SaveChanges() <= 0)
+                throw new Exception("Could not save entity");
         }
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
                 if (disposing)
@@ -45,41 +43,6 @@ namespace Mobin.Repository
         {
             this.Dispose(true);
             GC.SuppressFinalize(this);
-        }
-    }
-
-    public static class FactoryContextGenerator<TDbContext> where TDbContext : DbContext
-    {
-        //public static MobinUnitOfWork<TDbContext> CreateContext()
-        //{
-        //    IServiceCollection serviceCollection = new ServiceDescriptor(null, null, new ServiceLifetime());
-        //    serviceCollection.AddTransient()
-        //}
-    }
-
-
-    //class MyFactory<TDbContext> : Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory<TDbContext>
-    //    where TDbContext : DbContext
-    //{
-    //    //public TDbContext CreateDbContext(string[] args)
-    //    //{
-    //    //    Microsoft.EntityFrameworkCore.Internal.DbContextDependencies dbContextDependencies =
-    //    //        new Microsoft.EntityFrameworkCore.Internal.DbContextDependencies();
-
-
-    //    //}
-    //}
-
-    class M<T> : Microsoft.EntityFrameworkCore.Infrastructure.ISingletonOptions
-    {
-        public void Initialize(IDbContextOptions options)
-        {
-            
-        }
-
-        public void Validate(IDbContextOptions options)
-        {
-            throw new NotImplementedException();
         }
     }
 }

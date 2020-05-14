@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using Kendo.Mvc.UI;
+    using Kendo.Mvc.UI;
 
-	public class NotificationTemplateBuilder : IHideObjectMembers
+    public class NotificationTemplateBuilder : IHideObjectMembers
     {
-        private readonly NotificationTemplateSettings templateSettings;        
+        private readonly NotificationTemplateSettings templateSettings;
 
         public NotificationTemplateBuilder(NotificationTemplateSettings templateSettings)
         {
-            this.templateSettings = templateSettings;            
+            this.templateSettings = templateSettings;
         }
 
         /// <summary>

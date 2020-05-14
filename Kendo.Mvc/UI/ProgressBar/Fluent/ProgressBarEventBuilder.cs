@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ProgressBar for ASP.NET MVC events.
     /// </summary>
-    public class ProgressBarEventBuilder: EventBuilder
+    public class ProgressBarEventBuilder : EventBuilder
     {
         public ProgressBarEventBuilder(IDictionary<string, object> events)
             : base(events)

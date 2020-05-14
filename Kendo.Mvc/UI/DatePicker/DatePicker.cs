@@ -1,13 +1,12 @@
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Infrastructure;
+using Kendo.Mvc.Resources;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Resources;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace Kendo.Mvc.UI
 {
@@ -15,7 +14,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI DatePicker component
     /// </summary>
     public partial class DatePicker : WidgetBase
-        
+
     {
         public DatePicker(ViewContext viewContext) : base(viewContext)
         {
@@ -80,7 +79,7 @@ namespace Kendo.Mvc.UI
         }
 
         protected override void WriteHtml(TextWriter writer)
-        {        
+        {
             var explorer = ExpressionMetadataProvider.FromStringExpression(Name, HtmlHelper.ViewData, HtmlHelper.MetadataProvider);
             var tag = Generator.GenerateDateInput(ViewContext, explorer, Id, Name, Value, Format, HtmlAttributes);
 

@@ -8,7 +8,7 @@ namespace Kendo.Mvc.TagHelpers
         protected IList<T> InternalRef { get; set; }
 
         public TagHelperCollectionBase(IList<T> collection)
-            :  base()
+            : base()
         {
             InternalRef = collection;
         }

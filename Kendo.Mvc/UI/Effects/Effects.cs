@@ -3,7 +3,7 @@ namespace Kendo.Mvc.UI
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Effects: JsonObject
+    public class Effects : JsonObject
     {
         public Effects(string name)
         {
@@ -14,10 +14,10 @@ namespace Kendo.Mvc.UI
             Duration = (int)AnimationDuration.Normal;
         }
 
-        protected string Name 
-        { 
+        protected string Name
+        {
             get;
-            set; 
+            set;
         }
 
         public IList<string> Container
@@ -32,10 +32,10 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        public bool Reverse 
+        public bool Reverse
         {
-            get; 
-            set; 
+            get;
+            set;
         }
 
         protected override void Serialize(IDictionary<string, object> json)
@@ -50,7 +50,7 @@ namespace Kendo.Mvc.UI
                 {
                     options["reverse"] = Reverse;
                 }
-                
+
                 json[Name] = options;
             }
         }

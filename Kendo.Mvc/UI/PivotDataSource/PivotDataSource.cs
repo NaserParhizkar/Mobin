@@ -1,15 +1,15 @@
 ﻿namespace Kendo.Mvc.UI
 {
     using Kendo.Mvc.Extensions;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class PivotDataSource : JsonObject
     {
-        public PivotDataSource(IModelMetadataProvider modelMetaDataProvider)            
+        public PivotDataSource(IModelMetadataProvider modelMetaDataProvider)
         {
             Transport = new PivotTransport();
 

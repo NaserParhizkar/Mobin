@@ -7,14 +7,14 @@ namespace Kendo.Mvc.Extensions
         public static bool IsEntityFrameworkProvider(this IQueryProvider provider)
         {
             var name = provider.GetType().FullName;
-            return  name == "System.Data.Objects.ELinq.ObjectQueryProvider" || 
+            return name == "System.Data.Objects.ELinq.ObjectQueryProvider" ||
                     name == "System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider" ||
                     name.StartsWith("LinqKit.ExpandableQueryProvider") ||
-					name.StartsWith("Microsoft.Data.Entity.Query.EntityQueryProvider") ||
-					name.StartsWith("System.Data.Entity.Internal.Linq");			
-		}
+                    name.StartsWith("Microsoft.Data.Entity.Query.EntityQueryProvider") ||
+                    name.StartsWith("System.Data.Entity.Internal.Linq");
+        }
 
-		public static bool IsLinqToObjectsProvider(this IQueryProvider provider)
+        public static bool IsLinqToObjectsProvider(this IQueryProvider provider)
         {
             return provider.GetType().FullName.Contains("EnumerableQuery");
         }

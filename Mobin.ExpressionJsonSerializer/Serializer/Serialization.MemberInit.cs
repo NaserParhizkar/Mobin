@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace Mobin.ExpressionJsonSerializer
 {
@@ -22,7 +17,7 @@ namespace Mobin.ExpressionJsonSerializer
 
             this.Prop("TypeName", "MemberInit");
             this.Prop("Expression", this.Expression(expression.NewExpression));
-            
+
             this.Prop("Bindings", this.Enumerable(expression.Bindings, this.MemberBinding));
             return true;
         }

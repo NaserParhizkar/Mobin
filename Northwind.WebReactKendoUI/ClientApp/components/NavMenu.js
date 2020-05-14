@@ -27,7 +27,12 @@ export class NavMenu extends React.Component{
                 <NavLink to={"/gridexample"} activeClassName="active">
                   <span className="glyphicon glyphicon-th-list"/> Grid
                 </NavLink>
-              </li>
+                        </li>
+                        <li>
+                            <NavLink to={"/drpexample"} activeClassName="active">
+                                <span className="glyphicon glyphicon-th-list" /> Drp
+                </NavLink>
+                        </li>
             </ul>
           </div>
         </div>

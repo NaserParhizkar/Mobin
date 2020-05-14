@@ -1,7 +1,6 @@
 ﻿namespace Kendo.Mvc.UI
 {
     using System.Collections.Generic;
-    using Kendo.Mvc.Extensions;
 
     public class ListBoxSettingsSerializer
     {
@@ -20,7 +19,7 @@
             }
             else
             {
-                if (!string.IsNullOrEmpty(listBox.DataSource.Transport.Read.Url) || 
+                if (!string.IsNullOrEmpty(listBox.DataSource.Transport.Read.Url) ||
                     listBox.DataSource.Type == DataSourceType.Custom)
                 {
                     options["dataSource"] = listBox.DataSource.ToJson();

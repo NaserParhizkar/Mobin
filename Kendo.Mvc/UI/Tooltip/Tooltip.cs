@@ -1,13 +1,13 @@
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Text;
-using Kendo.Mvc.Resources;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Kendo.Mvc.UI
 {
@@ -15,10 +15,10 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Tooltip component
     /// </summary>
     public partial class Tooltip : WidgetBase
-        
+
     {
         public Tooltip(ViewContext viewContext) : base(viewContext)
-        {            
+        {
         }
 
         public PopupAnimation Animation { get; } = new PopupAnimation();

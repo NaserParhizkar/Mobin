@@ -21,7 +21,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             return new ChartBuilder<object>(new Chart<object>(HtmlHelper.ViewContext));
         }
-        
+
         /// <summary>
         /// Creates a <see cref="Kendo.Mvc.UI.Chart{T}"/> bound to the specified data item type.
         /// </summary>

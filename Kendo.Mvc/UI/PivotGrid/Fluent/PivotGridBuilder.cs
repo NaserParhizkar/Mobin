@@ -6,8 +6,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI PivotGrid
     /// </summary>
-    public partial class PivotGridBuilder<T>: WidgetBuilderBase<PivotGrid<T>, PivotGridBuilder<T>>
-        where T : class 
+    public partial class PivotGridBuilder<T> : WidgetBuilderBase<PivotGrid<T>, PivotGridBuilder<T>>
+        where T : class
     {
         public PivotGridBuilder(PivotGrid<T> component) : base(component)
         {

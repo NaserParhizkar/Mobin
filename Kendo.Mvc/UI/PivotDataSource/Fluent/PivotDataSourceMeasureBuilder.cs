@@ -9,7 +9,7 @@
     /// </summary>
     public class PivotDataSourceMeasureBuilder : IHideObjectMembers
     {
-         private readonly PivotDataSourceMeasure measure;
+        private readonly PivotDataSourceMeasure measure;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PivotDataSourceMeasureBuilder"/> class.

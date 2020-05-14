@@ -57,7 +57,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Sets the CSS files that will be registered in the Editor's iframe
         /// </summary>

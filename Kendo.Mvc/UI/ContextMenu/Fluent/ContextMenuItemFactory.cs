@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<ContextMenuItem>
     /// </summary>
     public partial class ContextMenuItemFactory : IHideObjectMembers
-        
+
     {
         private readonly ViewContext viewContext;
 

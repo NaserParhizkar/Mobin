@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System;
-	using System.Collections;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Collections;
 
-    public class GridColumnFilterableCellSettingsBuilder : IHideObjectMembers        
+    public class GridColumnFilterableCellSettingsBuilder : IHideObjectMembers
     {
         private readonly GridColumnFilterableCellSettings settings;
         private ViewContext viewContext;
@@ -158,9 +158,9 @@ namespace Kendo.Mvc.UI.Fluent
 
         public GridColumnFilterableCellSettingsBuilder BindTo(IEnumerable dataSource)
         {
-            settings.DataSource.Data = dataSource;            
+            settings.DataSource.Data = dataSource;
 
             return this;
         }
-    }    
+    }
 }

@@ -3,7 +3,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the map marker tooltip settings.
     /// </summary>
-    public class MapMarkerTooltipBuilder: TooltipBuilderBase<MapMarkerTooltipBuilder>
+    public class MapMarkerTooltipBuilder : TooltipBuilderBase<MapMarkerTooltipBuilder>
     {
         public MapMarkerTooltipBuilder(MapMarkerTooltip tooltip) :
             base(tooltip)

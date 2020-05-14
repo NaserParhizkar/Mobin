@@ -1,12 +1,10 @@
-using System;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI QRCode
     /// </summary>
-    public partial class QRCodeBuilder: WidgetBuilderBase<QRCode, QRCodeBuilder>
-        
+    public partial class QRCodeBuilder : WidgetBuilderBase<QRCode, QRCodeBuilder>
+
     {
         public QRCodeBuilder(QRCode component) : base(component)
         {

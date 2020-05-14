@@ -1,10 +1,9 @@
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace Kendo.Mvc.UI
 {
@@ -12,7 +11,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI RangeSlider component
     /// </summary>
     public partial class RangeSlider<T> : WidgetBase, IWidget
-        where T : struct, IComparable 
+        where T : struct, IComparable
     {
         public RangeSlider(ViewContext viewContext) : base(viewContext)
         {
@@ -49,7 +48,7 @@ namespace Kendo.Mvc.UI
             // TODO RC2
             //wrapper.MergeAttributes(Generator.GetValidationAttributes(ViewContext, metadata, Name));
 
-            var firstInput = Generator.GenerateTag("input", ViewContext, Id, 
+            var firstInput = Generator.GenerateTag("input", ViewContext, Id,
                              string.Format("{0}[0]", Name), HtmlAttributes);
             firstInput.Attributes.Remove(Id);
 
@@ -90,13 +89,13 @@ namespace Kendo.Mvc.UI
 
             wrapper.TagRenderMode = TagRenderMode.StartTag;
             wrapper.WriteTo(writer, HtmlEncoder);
-            
+
             firstInput.TagRenderMode = TagRenderMode.SelfClosing;
             firstInput.WriteTo(writer, HtmlEncoder);
 
             secondInput.TagRenderMode = TagRenderMode.SelfClosing;
             secondInput.WriteTo(writer, HtmlEncoder);
-            
+
             wrapper.TagRenderMode = TagRenderMode.EndTag;
             wrapper.WriteTo(writer, HtmlEncoder);
 

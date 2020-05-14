@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI FlatColorPicker for ASP.NET MVC events.
     /// </summary>
-    public class FlatColorPickerEventBuilder: EventBuilder
+    public class FlatColorPickerEventBuilder : EventBuilder
     {
         public FlatColorPickerEventBuilder(IDictionary<string, object> events)
             : base(events)

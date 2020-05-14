@@ -13,7 +13,7 @@
         private const string DefaultRowsLabel = "Rows";
         private const string DefaultFieldsLabel = "Fields";
 
-        public PivotConfiguratorMessages() 
+        public PivotConfiguratorMessages()
         {
             Measures = Messages.PivotConfigurator_Measures;
             Columns = Messages.PivotConfigurator_Columns;

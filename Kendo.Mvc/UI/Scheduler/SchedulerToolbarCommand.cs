@@ -1,6 +1,5 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
     using System.Collections.Generic;
 
     public class SchedulerToolbarCommand : JsonObject

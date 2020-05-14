@@ -28,7 +28,7 @@ namespace Kendo.Mvc.Extensions
 
         public static string GetAttemptedValue<T>(this IInputComponent<T> instance) where T : struct
         {
-            return (string) instance.GetModelStateValue(instance.Name, typeof(string));
+            return (string)instance.GetModelStateValue(instance.Name, typeof(string));
         }
 
         internal static object GetModelStateValue<T>(this IInputComponent<T> instance, string key, Type destinationType) where T : struct

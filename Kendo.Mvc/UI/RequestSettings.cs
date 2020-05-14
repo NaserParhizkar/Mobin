@@ -1,72 +1,72 @@
 ﻿namespace Kendo.Mvc.UI
 {
-	using Microsoft.AspNetCore.Routing;
+    using Microsoft.AspNetCore.Routing;
 
-	public class RequestSettings : INavigatable
-	{
-		private string routeName;
-		private string controllerName;
-		private string actionName;
+    public class RequestSettings : INavigatable
+    {
+        private string routeName;
+        private string controllerName;
+        private string actionName;
 
-		public RequestSettings()
-		{
-			RouteValues = new RouteValueDictionary();
-		}
+        public RequestSettings()
+        {
+            RouteValues = new RouteValueDictionary();
+        }
 
-		public string ActionName
-		{
-			get
-			{
-				return actionName;
-			}
-			set
-			{
+        public string ActionName
+        {
+            get
+            {
+                return actionName;
+            }
+            set
+            {
 
-				actionName = value;
+                actionName = value;
 
-				routeName = null;
-			}
-		}
+                routeName = null;
+            }
+        }
 
-		public string ControllerName
-		{
-			get
-			{
-				return controllerName;
-			}
-			set
-			{
+        public string ControllerName
+        {
+            get
+            {
+                return controllerName;
+            }
+            set
+            {
 
-				controllerName = value;
+                controllerName = value;
 
-				routeName = null;
-			}
-		}
+                routeName = null;
+            }
+        }
 
-		public RouteValueDictionary RouteValues
-		{
-			get;
-			set;
-		}
+        public RouteValueDictionary RouteValues
+        {
+            get;
+            set;
+        }
 
-		public string RouteName
-		{
-			get
-			{
-				return routeName;
-			}
-			set
-			{
+        public string RouteName
+        {
+            get
+            {
+                return routeName;
+            }
+            set
+            {
 
-				routeName = value;
-				controllerName = actionName = null;
-			}
-		}
+                routeName = value;
+                controllerName = actionName = null;
+            }
+        }
 
-		public string Url
-		{
-			get;
-			set;
-		}
-	}
+        public string Url
+        {
+            get;
+            set;
+        }
+    }
 }

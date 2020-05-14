@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TreeList for ASP.NET MVC events.
     /// </summary>
-    public class TreeListEventBuilder: EventBuilder
+    public class TreeListEventBuilder : EventBuilder
     {
         public TreeListEventBuilder(IDictionary<string, object> events)
             : base(events)

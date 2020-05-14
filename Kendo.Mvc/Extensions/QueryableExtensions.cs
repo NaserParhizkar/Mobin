@@ -1,16 +1,16 @@
 namespace Kendo.Mvc.Extensions
 {
+    using Infrastructure.Implementation.Expressions;
+    using Kendo.Mvc;
+    using Kendo.Mvc.Infrastructure;
+    using Kendo.Mvc.Infrastructure.Implementation;
+    using Kendo.Mvc.UI;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    using Kendo.Mvc;
-    using Kendo.Mvc.Infrastructure;
-    using Kendo.Mvc.Infrastructure.Implementation;
-    using Infrastructure.Implementation.Expressions;
-    using Kendo.Mvc.UI;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -691,7 +691,7 @@ namespace Kendo.Mvc.Extensions
             return enumerable.ToTreeDataSourceResult<TModel, object, object, TResult>(request, null, null, selector);
         }
 
-        public static Task<TreeDataSourceResult> ToTreeDataSourceResultAsync<TModel, TResult>( this IQueryable<TModel> queryable,
+        public static Task<TreeDataSourceResult> ToTreeDataSourceResultAsync<TModel, TResult>(this IQueryable<TModel> queryable,
             DataSourceRequest request, Func<TModel, TResult> selector)
         {
             return CreateTreeDataSourceResultAsync(() => QueryableExtensions.ToTreeDataSourceResult(queryable, request, selector));

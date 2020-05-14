@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
-    using System;
-    using Extensions;
     using Expressions;
+    using Extensions;
+    using System;
 
     internal static class BindingHelper
     {

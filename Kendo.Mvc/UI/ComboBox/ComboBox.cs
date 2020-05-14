@@ -1,8 +1,8 @@
+using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
-using Kendo.Mvc.Extensions;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Kendo.Mvc.UI
 {

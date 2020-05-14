@@ -5,7 +5,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI RadialGauge
     /// </summary>
-    public partial class RadialGaugeBuilder: WidgetBuilderBase<RadialGauge, RadialGaugeBuilder>, IHideObjectMembers
+    public partial class RadialGaugeBuilder : WidgetBuilderBase<RadialGauge, RadialGaugeBuilder>, IHideObjectMembers
 
     {
         public RadialGaugeBuilder(RadialGauge component) : base(component)

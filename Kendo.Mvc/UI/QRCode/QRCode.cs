@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI QRCode component
     /// </summary>
     public partial class QRCode : WidgetBase
-        
+
     {
         private const QRErrorCorrectionLevel DefaultErrorCorrection = QRErrorCorrectionLevel.L;
         private const QREncoding DefaultEncoding = QREncoding.ISO_8859_1;

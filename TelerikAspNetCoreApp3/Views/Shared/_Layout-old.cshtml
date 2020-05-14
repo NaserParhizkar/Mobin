@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@ViewData["Title"] - Northwind.WebUI</title>
+
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*-----------------Style Sheet liberaries include kendo libs-----------------*@
+
+    <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
+    <link href="~/Content/mobin.kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*------------------------Javascript liberaries include kendo, mobin and jquery libs------------------------*@
+
+    <script src="~/kendo-2017.2.504/js/jquery.js"></script>
+    <script src="~/kendo-2017.2.504/js/mobin.common.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.core.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.calendar.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.popup.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.datepicker.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.data.xml.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.data.odata.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.data.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.userevents.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.draganddrop.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.fx.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.list.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.combobox.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.columnsorter.js"></script>
+
+    <script src="~/lib/mobin.search.input.js"></script>
+    @*<script src="~/lib/mobin.search.date.js"></script>*@
+    <script src="~/kendo-2017.2.504/js/mobin-kendo-dist/mobin.search.date.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.binder.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.window.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.editable.js"></script>
+
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.dropdownlist.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtermenu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtercell.js"></script>
+
+    <script src="~/lib/mobin.search.dropdownlist.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.upload.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.menu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.columnmenu.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.groupable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.pager.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.selectable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.sortable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.reorderable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.resizable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.pane.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.shim.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.popover.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.actionsheet.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.ooxml.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.excel.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.progressbar.js"></script>
+
+    @*//this lib needs "util/text-metrics"*@
+    <script src="~/kendo-2017.2.504/js/kendo.pdf.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.grid.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.multiselect.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>
+    <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
+
+    <style type="text/css">
+        .k-widget.k-tooltip-validation {
+            width: 80%;
+        }
+
+        .control-label {
+            float: right;
+            padding-bottom: 5px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            kendo.culture('fa-IR');
+        });
+    </script>
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link type="text/javascript" href="~/js/config-kendo.min.js" />*@
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body style="font-family:Tahoma;font-size:14px;">
+    <div id="errorTree" style="word-wrap:break-word;overflow-wrap:break-word;overflow-x:auto;width:500px;"></div>
+    <div class="k-rtl">
+
+
+        <div class="k-header">
+            <div class="container">
+                <div class="row">
+                    <h1><a asp-controller="Home" asp-action="Index">Your .NET Core Application</a></h1>
+                </div>
+            </div>
+        </div>
+        <div class="container menu-content">
+            <div id="responsive-panel">
+
+            </div>
+            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+        </div>
+        <div class="container menu-content">
+            <div id="responsive-panel">
+                @*@(Html.Kendo().Menu()
+                                    .Name("Menu")
+                                    .Items(items =>
+                                    {
+                                        items.Add()
+                                      .Text("اصلی")
+                                      .Action("Index", "Home", new { area = "" });
+
+                                        items.Add()
+                                            .Text("مشتری")
+                                           .Action("Index", "PDNCustomer", new { area = "pdn" });
+
+                                        items.Add()
+                                            .Text("سفارش")
+                                           .Action("Index", "PDNOrderItem", new { area = "pdn" });
+
+                                        items.Add()
+                                            .Text("محصول")
+                                            .Action("Index", "PDNProduct", new { area = "pdn" });
+                                          items.Add()
+                                .Text("Path_PathView")
+                               .Action("PathView", "Path", new { area = "bus" });
+
+
+                                    })
+                    )*@
+
+                @(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            items.Add()
+                          .Text("Home")
+                          .Action("Index", "Home", new { area = "" });
+
+                            items.Add()
+                                .Text("Order_Index")
+                               .Action("Index", "Order", new { area = "northwind" });
+
+                            items.Add()
+                                .Text("SearchInputs")
+                               .Action("SearchInputs", "Order", new { area = "northwind" });
+
+                            items.Add()
+                                .Text("TestExpression")
+                                .Action("TestExpression", "OrderDetail", new { area = "northwind" });
+
+                            items.Add()
+                                .Text("BothDates")
+                                .Action("Index", "PersianDate", new { area = "" });
+
+                            items.Add()
+                                .Text("Path_PathView")
+                               .Action("PathView", "Path", new { area = "bus" });
+
+                            items.Add()
+                                .Text("ValidateForm")
+                               .Action("ValidateForm", "Path", new { area = "bus" });
+
+                            items.Add()
+                                .Text("Customer")
+                               .Action("Index", "Customer", new { area = "northwind" });
+
+
+                            items.Add()
+                                .Text("Category")
+                               .Action("Index", "Category", new { area = "northwind" });
+
+                        })
+                )
+            </div>
+            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <footer class="footer">
+                <span class="text-muted">Copyright © @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates.</span>
+                <span class="text-muted">All rights reserved.</span>
+            </footer>
+        </div>
+
+        @RenderSection("scripts", required: false)
+    </div>
+
+</body>
+</html>

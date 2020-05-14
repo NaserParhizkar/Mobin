@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Kendo.Mvc.Rendering;
+﻿using Kendo.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.IO;
 using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace Kendo.Mvc.UI
 {
@@ -50,7 +44,7 @@ namespace Kendo.Mvc.UI
 
             return tag;
         }
-        
+
         protected virtual IHtmlNode BuildLabel()
         {
             var metadata = GetModelMetaData();

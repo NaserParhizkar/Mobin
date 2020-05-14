@@ -1,6 +1,5 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -10,7 +9,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Spreadsheet component
     /// </summary>
     public partial class Spreadsheet : WidgetBase
-        
+
     {
         internal Dictionary<string, object> DplSettings { get; set; }
 

@@ -1,12 +1,7 @@
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Kendo.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Kendo.Mvc.TagHelpers
 {

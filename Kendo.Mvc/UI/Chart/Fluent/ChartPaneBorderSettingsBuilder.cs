@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartPaneBorderSettings
     /// </summary>
     public partial class ChartPaneBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartPaneBorderSettingsBuilder(ChartPaneBorderSettings<T> container)
         {

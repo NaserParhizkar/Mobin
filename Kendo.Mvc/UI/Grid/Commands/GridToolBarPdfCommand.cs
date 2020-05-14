@@ -1,5 +1,5 @@
 namespace Kendo.Mvc.UI
-{    
+{
     using Kendo.Mvc.Resources;
 
     public class GridToolBarPdfCommand : GridActionCommandBase
@@ -9,12 +9,12 @@ namespace Kendo.Mvc.UI
             Text = Messages.Grid_Pdf;
         }
 
-		public override string Name
-		{
-			get
-			{
-				return "pdf";
-			}
-		}
-	}
+        public override string Name
+        {
+            get
+            {
+                return "pdf";
+            }
+        }
+    }
 }

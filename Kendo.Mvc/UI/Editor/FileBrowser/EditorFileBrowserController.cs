@@ -15,7 +15,7 @@ namespace Kendo.Mvc.UI
             }
         }
 
-        public EditorFileBrowserController(IHostingEnvironment hostingEnvironment)
+        public EditorFileBrowserController(IWebHostEnvironment hostingEnvironment)
             : base(hostingEnvironment)
         {
 

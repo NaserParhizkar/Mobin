@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Gantt
     /// </summary>
-    public partial class GanttBuilder<TTaskModel, TDependenciesModel>: WidgetBuilderBase<Gantt<TTaskModel, TDependenciesModel>, GanttBuilder<TTaskModel, TDependenciesModel>>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+    public partial class GanttBuilder<TTaskModel, TDependenciesModel> : WidgetBuilderBase<Gantt<TTaskModel, TDependenciesModel>, GanttBuilder<TTaskModel, TDependenciesModel>>
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttBuilder(Gantt<TTaskModel, TDependenciesModel> component) : base(component)
         {
@@ -30,7 +30,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// )
         /// </code>
         /// </example>
-        public GanttBuilder<TTaskModel, TDependenciesModel>  DataSource(Action<GanttDataSourceBuilder<TTaskModel>> configurator)
+        public GanttBuilder<TTaskModel, TDependenciesModel> DataSource(Action<GanttDataSourceBuilder<TTaskModel>> configurator)
         {
             configurator(new GanttDataSourceBuilder<TTaskModel>(Component.DataSource, Component.ViewContext, Component.UrlGenerator));
 

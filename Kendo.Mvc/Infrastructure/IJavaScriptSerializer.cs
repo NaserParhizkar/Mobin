@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Kendo.Mvc.Infrastructure
+﻿namespace Kendo.Mvc.Infrastructure
 {
     public interface IJavaScriptSerializer
     {

@@ -8,12 +8,12 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             set;
         }
 
-        public IFilterNode Second 
-        { 
-            get; 
-            set; 
+        public IFilterNode Second
+        {
+            get;
+            set;
         }
-        
+
         public FilterCompositionLogicalOperator LogicalOperator
         {
             get

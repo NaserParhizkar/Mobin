@@ -1,4 +1,3 @@
-using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +33,7 @@ namespace Kendo.Mvc.UI
             {
                 settings["attributes"] = HtmlAttributes;
             }
-            
+
             SerializeTooltip(settings);
             this.SerializeShape(settings);
 

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-
-namespace Repository.Configurations
+﻿namespace Repository.Configurations
 {
     ///// <summary>
     ///// This class used for singleton instantiation of dbcontext object per httpcontext life time

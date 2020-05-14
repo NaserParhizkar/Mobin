@@ -1,7 +1,7 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System.Collections.Generic;
     using Kendo.Mvc.Extensions;
+    using System.Collections.Generic;
 
     public class ListViewSettingsSerializer<T> where T : class
     {

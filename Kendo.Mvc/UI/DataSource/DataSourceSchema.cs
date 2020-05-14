@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Kendo.Mvc.Extensions;
+﻿using Kendo.Mvc.Extensions;
+using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
 {
-	public class DataSourceSchema : JsonObject
+    public class DataSourceSchema : JsonObject
     {
         public string Data { get; set; }
 
@@ -40,7 +40,7 @@ namespace Kendo.Mvc.UI
         public DataSourceSchema()
         {
             Data = "Data";
-            Total = "Total"; 
+            Total = "Total";
             Errors = "Errors";
 
             FunctionData = new ClientHandlerDescriptor();
@@ -50,8 +50,8 @@ namespace Kendo.Mvc.UI
             FunctionGroups = new ClientHandlerDescriptor();
             Parse = new ClientHandlerDescriptor();
         }
-		
-		protected override void Serialize(IDictionary<string, object> json)
+
+        protected override void Serialize(IDictionary<string, object> json)
         {
             if (FunctionData.HasValue())
             {

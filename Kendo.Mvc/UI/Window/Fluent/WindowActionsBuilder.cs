@@ -1,7 +1,5 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-    using Infrastructure;
-
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="Window.Actions"/>.
     /// </summary>

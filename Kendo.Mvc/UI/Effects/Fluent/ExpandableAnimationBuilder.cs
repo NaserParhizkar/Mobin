@@ -13,9 +13,9 @@
         }
 
         protected ExpandableAnimation Animation
-        { 
-            get; 
-            private set; 
+        {
+            get;
+            private set;
         }
 
         public void Enable(bool enable)

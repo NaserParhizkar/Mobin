@@ -14,16 +14,16 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        string Title 
-        { 
-            get; 
-            set; 
+        string Title
+        {
+            get;
+            set;
         }
 
-        string Width 
-        { 
-            get; 
-            set; 
+        string Width
+        {
+            get;
+            set;
         }
 
         bool? Editable

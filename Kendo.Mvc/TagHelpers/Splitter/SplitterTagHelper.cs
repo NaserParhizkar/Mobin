@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
-using Kendo.Mvc.UI;
-using Kendo.Mvc.Rendering;
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Rendering;
+using Kendo.Mvc.UI;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Kendo.Mvc.TagHelpers
 {

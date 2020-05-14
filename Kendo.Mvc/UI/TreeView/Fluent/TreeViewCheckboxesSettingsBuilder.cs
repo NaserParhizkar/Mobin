@@ -4,7 +4,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring TreeViewCheckboxesSettings
     /// </summary>
     public partial class TreeViewCheckboxesSettingsBuilder
-        
+
     {
         public TreeViewCheckboxesSettingsBuilder(TreeViewCheckboxesSettings container)
         {

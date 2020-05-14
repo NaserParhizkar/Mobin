@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System;
-	using Kendo.Mvc.UI;	
+    using Kendo.Mvc.UI;
+    using System;
 
-	public class GridCustomActionCommandBuilder<T> : GridActionCommandBuilderBase<GridCustomActionCommand, GridCustomActionCommandBuilder<T>>
+    public class GridCustomActionCommandBuilder<T> : GridActionCommandBuilderBase<GridCustomActionCommand, GridCustomActionCommandBuilder<T>>
         where T : class
     {
         public GridCustomActionCommandBuilder(GridCustomActionCommand command) : base(command)
@@ -11,7 +11,7 @@ namespace Kendo.Mvc.UI.Fluent
         }
 
         public GridCustomActionCommandBuilder<T> Click(Func<object, object> handler)
-        {            
+        {
             Command.Click.TemplateDelegate = handler;
 
             return this;

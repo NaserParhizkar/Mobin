@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
 
 
@@ -14,13 +14,13 @@
          where TModel : class
     {
         private readonly IUrlGenerator urlGenerator;
-        private readonly ViewContext viewContext;        
+        private readonly ViewContext viewContext;
 
         public HierarchicalModelDescriptorBuilder(ModelDescriptor model, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(model)
         {
             this.urlGenerator = urlGenerator;
-            this.viewContext = viewContext;            
+            this.viewContext = viewContext;
         }
 
         /// <summary>

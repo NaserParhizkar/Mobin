@@ -1,7 +1,6 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {

@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// Configures the Kendo UI services.
         /// </summary>
-        public static void UseKendo(this IApplicationBuilder app, IHostingEnvironment env)
+        public static void UseKendo(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             ClassFactory.Create(env);
         }

@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI DropDownListVirtualSettings class
     /// </summary>
-    public partial class DropDownListVirtualSettings 
+    public partial class DropDownListVirtualSettings
     {
         public Dictionary<string, object> Serialize()
         {

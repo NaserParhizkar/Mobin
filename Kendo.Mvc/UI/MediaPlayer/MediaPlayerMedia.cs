@@ -1,6 +1,3 @@
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI.Fluent;
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
@@ -8,11 +5,11 @@ namespace Kendo.Mvc.UI
     /// <summary>
     /// Specifies the object which holds the information about the media that will be played
     /// </summary>
-    public class MediaPlayerMedia: JsonObject
+    public class MediaPlayerMedia : JsonObject
     {
         public MediaPlayerMedia()
         {
-           
+
         }
 
         /// <summary>

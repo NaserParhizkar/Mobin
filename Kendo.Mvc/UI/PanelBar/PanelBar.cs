@@ -16,7 +16,7 @@ namespace Kendo.Mvc.UI
         internal bool isPathHighlighted;
         internal bool isExpanded;
 
-        public PanelBar(ViewContext viewContext) 
+        public PanelBar(ViewContext viewContext)
             : base(viewContext)
         {
             Animation = new ExpandableAnimation();
@@ -148,11 +148,11 @@ namespace Kendo.Mvc.UI
                     if (item.Parent != null && item.Parent.Expanded)
                     {
                         item.Expanded = true;
-                    }   
+                    }
                     else
                     {
                         item.Expanded = false;
-                    }  
+                    }
                 }
             }
             else

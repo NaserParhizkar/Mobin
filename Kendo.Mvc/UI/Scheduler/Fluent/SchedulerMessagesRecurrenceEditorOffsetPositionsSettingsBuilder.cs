@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring SchedulerMessagesRecurrenceEditorOffsetPositionsSettings
     /// </summary>
     public partial class SchedulerMessagesRecurrenceEditorOffsetPositionsSettingsBuilder<T>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
         public SchedulerMessagesRecurrenceEditorOffsetPositionsSettingsBuilder(SchedulerMessagesRecurrenceEditorOffsetPositionsSettings<T> container)
         {

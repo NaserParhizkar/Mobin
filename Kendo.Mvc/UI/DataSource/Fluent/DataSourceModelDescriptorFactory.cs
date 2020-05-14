@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Extensions;
     using System;
     using System.Linq.Expressions;
-    using Extensions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="DataSource"/> Model definition.
@@ -71,10 +71,10 @@ namespace Kendo.Mvc.UI.Fluent
         protected DataSourceModelFieldDescriptorBuilder<TValue> AddFieldDescriptor<TValue>(string memberName, Type memberType)
         {
             var descriptor = model.AddDescriptor(memberName);
-            
-            descriptor.MemberType = memberType;            
 
-            return new DataSourceModelFieldDescriptorBuilder<TValue>(descriptor);            
+            descriptor.MemberType = memberType;
+
+            return new DataSourceModelFieldDescriptorBuilder<TValue>(descriptor);
         }
     }
 }

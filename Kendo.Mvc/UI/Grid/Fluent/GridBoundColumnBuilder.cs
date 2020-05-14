@@ -1,15 +1,15 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System;
-	using System.Net;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Net;
 
 
     /// <summary>
     /// Defines the fluent interface for configuring bound columns
     /// </summary>
     /// <typeparam name="T">The type of the data item</typeparam>
-    public class GridBoundColumnBuilder<T> : GridColumnBuilderBase<IGridBoundColumn, GridBoundColumnBuilder<T>>
+    public partial class GridBoundColumnBuilder<T> : GridColumnBuilderBase<IGridBoundColumn, GridBoundColumnBuilder<T>>
         where T : class
     {
         private ViewContext viewContext;
@@ -68,7 +68,7 @@ namespace Kendo.Mvc.UI.Fluent
             Column.AdditionalViewData = additionalViewData;
 
             return this;
-        }       
+        }
 
         /// <summary>
         /// Specify which editor template should be used for the column
@@ -137,8 +137,8 @@ namespace Kendo.Mvc.UI.Fluent
         {
             configurator(new GridBoundColumnFilterableBuilder(Column.FilterableSettings, this.viewContext, this.urlGenerator));
             return this;
-        }  
-        
+        }
+
         /// <summary>
         /// Enables or disables HTML encoding the data of the column. All bound columns are encoded by default.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-		
+
         /// <summary>
         /// Sets the client template for the column.
         /// </summary>

@@ -1,12 +1,12 @@
 ﻿namespace Kendo.Mvc.UI
 {
+    using Microsoft.AspNetCore.Html;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System.Text.Encodings.Web;
-    using Microsoft.AspNetCore.Html;
 
     public interface IHtmlNode
     {

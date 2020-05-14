@@ -1,15 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Kendo.Mvc.Extensions;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Menu
     /// </summary>
-    public partial class MenuBuilder: WidgetBuilderBase<Menu, MenuBuilder>
-        
+    public partial class MenuBuilder : WidgetBuilderBase<Menu, MenuBuilder>
+
     {
         public MenuBuilder(Menu component) : base(component)
         {

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartTooltipBorderSettings
     /// </summary>
     public partial class ChartTooltipBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartTooltipBorderSettingsBuilder(ChartTooltipBorderSettings<T> container)
         {

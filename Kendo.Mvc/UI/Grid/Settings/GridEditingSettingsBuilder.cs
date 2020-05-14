@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
-    using Extensions;    
 
     /// <summary>
     /// Defines the fluent interface for configuring grid editing.
@@ -38,36 +38,36 @@ namespace Kendo.Mvc.UI.Fluent
         /// </remarks>
         public GridEditingSettingsBuilder<T> Enabled(bool value)
         {
-            settings.Enabled = value;            
+            settings.Enabled = value;
             return this;
         }
-    
+
         public GridEditingSettingsBuilder<T> Mode(GridEditMode mode)
         {
             settings.Mode = mode;
             return this;
         }
 
-		public GridEditingSettingsBuilder<T> Window(Action<WindowBuilder> configurator)
-		{
+        public GridEditingSettingsBuilder<T> Window(Action<WindowBuilder> configurator)
+        {
 
-			configurator(new WindowBuilder(settings.PopUp));
+            configurator(new WindowBuilder(settings.PopUp));
 
-			return this;
-		}
+            return this;
+        }
 
-		/// <summary>
-		/// Specify an editor template to be used in PopUp edit mode
-		/// </summary>
-		/// <param name="templateName">name of the editor template</param>
-		/// <remarks>This settings is applicable only when Mode is
-		/// <see cref="GridEditMode.PopUp"/></remarks>
-		public GridEditingSettingsBuilder<T> TemplateName(string templateName)
-		{
+        /// <summary>
+        /// Specify an editor template to be used in PopUp edit mode
+        /// </summary>
+        /// <param name="templateName">name of the editor template</param>
+        /// <remarks>This settings is applicable only when Mode is
+        /// <see cref="GridEditMode.PopUp"/></remarks>
+        public GridEditingSettingsBuilder<T> TemplateName(string templateName)
+        {
 
-			settings.TemplateName = templateName;
-			return this;
-		}
+            settings.TemplateName = templateName;
+            return this;
+        }
 
         /// <summary>
         /// Provides additional view data in the editor template.
@@ -105,7 +105,7 @@ namespace Kendo.Mvc.UI.Fluent
         public GridEditingSettingsBuilder<T> DisplayDeleteConfirmation(bool value)
         {
             settings.DisplayDeleteConfirmation = value;
-            
+
             return this;
         }
 
@@ -120,9 +120,9 @@ namespace Kendo.Mvc.UI.Fluent
         public GridEditingSettingsBuilder<T> DisplayDeleteConfirmation(Func<object, object> handler)
         {
             settings.ConfirmationHandler = new ClientHandlerDescriptor()
-                {
-                     TemplateDelegate = handler
-                };
+            {
+                TemplateDelegate = handler
+            };
             settings.DisplayDeleteConfirmation = true;
 
             return this;
@@ -144,7 +144,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// </example>
         public GridEditingSettingsBuilder<T> ConfirmDelete(string text)
         {
-            settings.ConfirmDelete = text;            
+            settings.ConfirmDelete = text;
             return this;
         }
 
@@ -166,8 +166,8 @@ namespace Kendo.Mvc.UI.Fluent
         {
             settings.CancelDelete = text;
             return this;
-        }		
-        
+        }
+
         private static void MergeAttributes(IDictionary<string, object> target, IDictionary<string, object> attributes)
         {
             target.Clear();

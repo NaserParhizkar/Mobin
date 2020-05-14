@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartValueAxisNotesSettings
     /// </summary>
     public partial class ChartValueAxisNotesSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartValueAxisNotesSettingsBuilder(ChartValueAxisNotesSettings<T> container)
         {

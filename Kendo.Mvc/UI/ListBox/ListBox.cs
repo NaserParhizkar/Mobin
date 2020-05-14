@@ -1,7 +1,7 @@
-using System;
-using System.IO;
 using Kendo.Mvc.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.IO;
 
 namespace Kendo.Mvc.UI
 {
@@ -59,7 +59,7 @@ namespace Kendo.Mvc.UI
         {
             get
             {
-               return DataSource.Type == DataSourceType.Ajax || DataSource.Type == DataSourceType.WebApi || DataSource.Type == DataSourceType.Custom;
+                return DataSource.Type == DataSourceType.Ajax || DataSource.Type == DataSourceType.WebApi || DataSource.Type == DataSourceType.Custom;
             }
         }
     }

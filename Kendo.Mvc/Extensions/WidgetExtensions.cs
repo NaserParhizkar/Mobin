@@ -1,7 +1,6 @@
 ﻿using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System.Threading;
 using System;
 
 namespace Kendo.Mvc.Extensions

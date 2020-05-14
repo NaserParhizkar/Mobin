@@ -8,7 +8,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             get;
             set;
         }
-        
+
         public void Accept(IFilterNodeVisitor visitor)
         {
             visitor.Visit(this);

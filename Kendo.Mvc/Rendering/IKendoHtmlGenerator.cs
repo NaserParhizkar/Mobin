@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Kendo.Mvc.Rendering
 {
@@ -18,12 +17,12 @@ namespace Kendo.Mvc.Rendering
             IDictionary<string, object> htmlAttributes);
 
         TagBuilder GenerateColorInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer,
-			string id,
-			string name,
-			object value,
-			IDictionary<string, object> htmlAttributes);
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            IDictionary<string, object> htmlAttributes);
 
         TagBuilder GenerateRangeInput(
             ViewContext viewContext,
@@ -61,22 +60,43 @@ namespace Kendo.Mvc.Rendering
             IDictionary<string, object> htmlAttributes);
 
         TagBuilder GenerateNumericInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer,
-			string id,
-			string name,
-			object value,
-			string format,
-			IDictionary<string, object> htmlAttributes);
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes);
 
-		TagBuilder GenerateTextInput(
-			ViewContext viewContext,
-			ModelExplorer modelExplorer,
-			string id,
-			string name,
-			object value,
-			string format,
-			IDictionary<string, object> htmlAttributes);
+        //Added by Naser Parhhizkar
+        TagBuilder GenerateGridSearchInput(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes);
+
+        //Added by Naser Parhhizkar
+        TagBuilder GenerateGridSearchDate(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes);
+
+
+        TagBuilder GenerateTextInput(
+            ViewContext viewContext,
+            ModelExplorer modelExplorer,
+            string id,
+            string name,
+            object value,
+            string format,
+            IDictionary<string, object> htmlAttributes);
 
         TagBuilder GenerateMultiSelect(
             ViewContext viewContext,

@@ -2,8 +2,8 @@
 {
     public class SchedulerCustomView : SchedulerViewBase
     {
-        public SchedulerCustomView(string typeName, IScheduler scheduler) 
-            : base(SchedulerViewType.Custom, scheduler) 
+        public SchedulerCustomView(string typeName, IScheduler scheduler)
+            : base(SchedulerViewType.Custom, scheduler)
         {
             TypeName = typeName;
         }

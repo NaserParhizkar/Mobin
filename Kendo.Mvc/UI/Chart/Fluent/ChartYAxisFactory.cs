@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<ChartYAxis<T>>
     /// </summary>
     public partial class ChartYAxisFactory<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisFactory(List<ChartYAxis<T>> container)
         {

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring GridGroupableSettings
     /// </summary>
     public partial class GridGroupableSettingsBuilder<T>
-        
+
     {
         public GridGroupableSettingsBuilder(GridGroupableSettings<T> container)
         {
@@ -20,15 +19,15 @@ namespace Kendo.Mvc.UI.Fluent
             private set;
         }
 
-		/// <summary>
-		/// Configures messages.
-		/// </summary>        
-		/// <returns></returns>
-		public GridGroupableSettingsBuilder<T> Messages(Action<GridGroupableMessagesBuilder> configurator)
-		{
-			configurator(new GridGroupableMessagesBuilder(Container.Messages));
+        /// <summary>
+        /// Configures messages.
+        /// </summary>        
+        /// <returns></returns>
+        public GridGroupableSettingsBuilder<T> Messages(Action<GridGroupableMessagesBuilder> configurator)
+        {
+            configurator(new GridGroupableMessagesBuilder(Container.Messages));
 
-			return this;
-		}
-	}
+            return this;
+        }
+    }
 }

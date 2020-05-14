@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring StockChartNavigatorCategoryAxisTitleSettings
     /// </summary>
     public partial class StockChartNavigatorCategoryAxisTitleSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public StockChartNavigatorCategoryAxisTitleSettingsBuilder(StockChartNavigatorCategoryAxisTitleSettings<T> container)
         {

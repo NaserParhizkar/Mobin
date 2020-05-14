@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.UI
 {
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.Resources;
     using System.Collections.Generic;
-    using Kendo.Mvc.Extensions;    
-    using Kendo.Mvc.Resources;    
     using System.Linq;
 
     public class GridEditActionCommand : GridActionCommandBase
     {
         public GridEditActionCommand()
-        {            
+        {
             UpdateText = Messages.Grid_Update;
             Text = Messages.Grid_Edit;
             CancelText = Messages.Grid_Cancel;
@@ -20,7 +20,7 @@ namespace Kendo.Mvc.UI
 
         public string UpdateText { get; set; }
 
-        public string CancelText { get; set; }        
+        public string CancelText { get; set; }
 
         public override string Name
         {
@@ -38,10 +38,10 @@ namespace Kendo.Mvc.UI
                 .Add("edit", Text, () => Text.HasValue() && Text != DefaultEditText);
 
             if (texts.Any())
-	        {
-		        result["text"] = texts;
+            {
+                result["text"] = texts;
             }
             return result;
-        }		
+        }
     }
 }

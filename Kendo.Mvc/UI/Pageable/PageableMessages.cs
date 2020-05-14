@@ -1,11 +1,10 @@
 namespace Kendo.Mvc.UI
 {
-    using System;
-    using System.Collections.Generic;
     using Kendo.Mvc.Resources;
+    using System.Collections.Generic;
 
     public class PageableMessages : JsonObject
-    { 
+    {
         private const string DefaultDisplay = "{0} - {1} of {2} items";
 
         private const string DefaultEmpty = "No items to display";
@@ -121,7 +120,7 @@ namespace Kendo.Mvc.UI
             {
                 json["morePages"] = MorePages;
             }
-        
+
         }
     }
 }

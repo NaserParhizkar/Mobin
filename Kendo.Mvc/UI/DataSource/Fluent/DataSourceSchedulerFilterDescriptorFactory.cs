@@ -4,15 +4,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using System.Reflection;
 
-    public class DataSourceSchedulerFilterDescriptorFactory<TModel> : DataSourceFilterDescriptorFactory<TModel>, IHideObjectMembers 
+    public class DataSourceSchedulerFilterDescriptorFactory<TModel> : DataSourceFilterDescriptorFactory<TModel>, IHideObjectMembers
         where TModel : class
     {
         public DataSourceSchedulerFilterDescriptorFactory(IList<IFilterDescriptor> filters)
             : base(filters)
-        { 
-            
+        {
+
         }
 
         protected override CompositeFilterDescriptor CreateFilter<TValue>(Expression<Func<TModel, TValue>> expression)

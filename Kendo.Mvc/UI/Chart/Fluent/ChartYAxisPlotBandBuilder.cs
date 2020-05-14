@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxisPlotBand
     /// </summary>
     public partial class ChartYAxisPlotBandBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisPlotBandBuilder(ChartYAxisPlotBand<T> container)
         {

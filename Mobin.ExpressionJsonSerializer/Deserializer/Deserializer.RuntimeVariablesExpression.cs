@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -12,7 +12,8 @@ namespace Mobin.ExpressionJsonSerializer
         {
             var variables = this.Prop(obj, "variables", this.Enumerable(this.ParameterExpression));
 
-            switch (nodeType) {
+            switch (nodeType)
+            {
                 case ExpressionType.RuntimeVariables:
                     return Expr.RuntimeVariables(variables);
                 default:

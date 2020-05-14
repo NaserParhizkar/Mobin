@@ -1,9 +1,6 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {

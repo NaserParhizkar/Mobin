@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq.Expressions;
-using Newtonsoft.Json.Linq;
 using Expr = System.Linq.Expressions.Expression;
 
 namespace Mobin.ExpressionJsonSerializer
@@ -13,7 +13,8 @@ namespace Mobin.ExpressionJsonSerializer
             var expression = this.Prop(obj, "Expression", this.Expression);
             var member = this.Prop(obj, "Member", this.Member);
 
-            switch (nodeType) {
+            switch (nodeType)
+            {
                 case ExpressionType.MemberAccess:
                     return Expr.MakeMemberAccess(expression, member);
                 default:

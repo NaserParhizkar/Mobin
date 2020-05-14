@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring LinearGaugeGaugeAreaMarginSettings
     /// </summary>
     public partial class LinearGaugeGaugeAreaMarginSettingsBuilder
-        
+
     {
         public LinearGaugeGaugeAreaMarginSettingsBuilder(LinearGaugeGaugeAreaMarginSettings container)
         {

@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.Extensions
 {
-    using System.Collections.Generic;
     using Kendo.Mvc.Infrastructure.Implementation;
-    
+    using System.Collections.Generic;
+
     public static class FilterTokenExtensions
     {
         private static readonly IDictionary<string, FilterOperator> tokenToOperator = new Dictionary<string, FilterOperator>

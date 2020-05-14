@@ -3,7 +3,7 @@ namespace Kendo.Mvc.UI.Fluent
     using System;
     using System.Collections;
 
-    public class NavigationBindingBuilder<TNavigationItem, TParent> 
+    public class NavigationBindingBuilder<TNavigationItem, TParent>
         where TNavigationItem : NavigationItem<TNavigationItem>
         where TParent : class
     {
@@ -14,14 +14,14 @@ namespace Kendo.Mvc.UI.Fluent
             this.item = item;
         }
 
-        public NavigationBindingBuilder<TNavigationItem, TParent> Children(Func<TParent, IEnumerable> children) 
+        public NavigationBindingBuilder<TNavigationItem, TParent> Children(Func<TParent, IEnumerable> children)
         {
             item.Children = children;
 
             return this;
         }
 
-        public NavigationBindingBuilder<TNavigationItem, TParent> ItemDataBound(Action<TNavigationItem, TParent> itemDataBound) 
+        public NavigationBindingBuilder<TNavigationItem, TParent> ItemDataBound(Action<TNavigationItem, TParent> itemDataBound)
         {
             item.ItemDataBound = itemDataBound;
 

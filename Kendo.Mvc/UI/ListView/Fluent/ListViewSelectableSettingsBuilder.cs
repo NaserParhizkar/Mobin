@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ListViewSelectableSettings
     /// </summary>
     public partial class ListViewSelectableSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ListViewSelectableSettingsBuilder(ListViewSelectableSettings<T> container)
         {

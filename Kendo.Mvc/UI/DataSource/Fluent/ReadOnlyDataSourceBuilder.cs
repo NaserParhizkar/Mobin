@@ -1,7 +1,7 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
 
     /// <summary>
@@ -57,7 +57,7 @@
 
             return this;
         }
-        
+
         /// <summary>
         /// Specifies if filtering should be handled by the server.
         /// </summary>        

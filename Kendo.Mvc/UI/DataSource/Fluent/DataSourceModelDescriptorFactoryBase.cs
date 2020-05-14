@@ -1,13 +1,12 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-	using System.Reflection;
-	using Extensions;
+    using Extensions;
 
-	/// <summary>
-	/// Defines the fluent interface for configuring the <see cref="DataSource"/> Model definition.
-	/// </summary>
-	/// <typeparam name="TModel">Type of the model</typeparam>
-	public abstract class DataSourceModelDescriptorFactoryBase<TModel> : IHideObjectMembers
+    /// <summary>
+    /// Defines the fluent interface for configuring the <see cref="DataSource"/> Model definition.
+    /// </summary>
+    /// <typeparam name="TModel">Type of the model</typeparam>
+    public abstract class DataSourceModelDescriptorFactoryBase<TModel> : IHideObjectMembers
         where TModel : class
     {
         protected readonly ModelDescriptor model;
@@ -42,8 +41,8 @@
         protected IDataKey<TModel> GetDataKeyForField(string fieldName)
         {
             var lambdaExpression = ExpressionBuilder.Lambda<TModel>(fieldName);
-            var fieldType = typeof(ModelDataKey<,>).MakeGenericType(new[] { typeof(TModel), lambdaExpression.Body.Type });   
-                                 
+            var fieldType = typeof(ModelDataKey<,>).MakeGenericType(new[] { typeof(TModel), lambdaExpression.Body.Type });
+
             var constructor = fieldType.GetConstructor(new[] { lambdaExpression.GetType() });
 
             return (IDataKey<TModel>)constructor.Invoke(new object[] { lambdaExpression });

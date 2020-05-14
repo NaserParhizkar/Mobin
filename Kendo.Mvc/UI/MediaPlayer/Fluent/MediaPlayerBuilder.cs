@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -8,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring the Kendo UI MediaPlayer
     /// </summary>
     public partial class MediaPlayerBuilder : WidgetBuilderBase<MediaPlayer, MediaPlayerBuilder>
-       
+
     {
         public MediaPlayerBuilder(MediaPlayer component) : base(component)
         {

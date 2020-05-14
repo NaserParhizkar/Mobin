@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring PivotGridSortableSettings
     /// </summary>
     public partial class PivotGridSortableSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public PivotGridSortableSettingsBuilder(PivotGridSortableSettings<T> container)
         {

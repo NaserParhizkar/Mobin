@@ -10,7 +10,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         {
             get
             {
-                return (EnumerableAggregateFunction) base.Function;
+                return (EnumerableAggregateFunction)base.Function;
             }
         }
 

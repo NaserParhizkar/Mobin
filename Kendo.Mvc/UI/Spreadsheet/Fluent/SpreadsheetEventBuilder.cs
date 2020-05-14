@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Spreadsheet for ASP.NET MVC events.
     /// </summary>
-    public class SpreadsheetEventBuilder: EventBuilder
+    public class SpreadsheetEventBuilder : EventBuilder
     {
         public SpreadsheetEventBuilder(IDictionary<string, object> events)
             : base(events)

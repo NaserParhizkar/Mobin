@@ -21,7 +21,7 @@ namespace Kendo.Mvc.UI.Fluent
             var widget = TimePicker()
                     .Expression(GetExpressionName(expression))
                     .Format(ExtractEditFormat(explorer.Metadata.EditFormatString))
-                    .Value(explorer.Model as TimeSpan?);           
+                    .Value(explorer.Model as TimeSpan?);
 
             return widget;
         }

@@ -1,12 +1,12 @@
+using Kendo.Mvc.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -14,7 +14,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring SplitterPane
     /// </summary>
     public partial class SplitterPaneBuilder
-        
+
     {
         private readonly Regex sizeValueRegex = new Regex(@"^\d+(px|%)$", RegexOptions.IgnoreCase);
 
@@ -251,7 +251,7 @@ namespace Kendo.Mvc.UI.Fluent
         }
 
         public SplitterPaneBuilder LoadContentFrom(string actionName, string controllerName, RouteValueDictionary routeValues)
-        {            
+        {
             var urlHelper = GetUrlHelper(Container.Splitter.ViewContext);
 
             return LoadContentFrom(urlHelper.Action(actionName, controllerName, routeValues));

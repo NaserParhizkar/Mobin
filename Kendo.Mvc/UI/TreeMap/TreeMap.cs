@@ -1,6 +1,4 @@
-using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,13 +16,13 @@ namespace Kendo.Mvc.UI
             DataSource = new DataSource(ModelMetadataProvider);
             DataSource.ModelType(typeof(object));
         }
-        
+
         public DataSource DataSource
         {
             get;
             private set;
         }
-                
+
         public List<string[]> ColorRanges { get; set; } = new List<string[]>();
 
         protected override void WriteHtml(TextWriter writer)

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring StockChartNavigatorCategoryAxisCrosshairTooltipSettings
     /// </summary>
     public partial class StockChartNavigatorCategoryAxisCrosshairTooltipSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public StockChartNavigatorCategoryAxisCrosshairTooltipSettingsBuilder(StockChartNavigatorCategoryAxisCrosshairTooltipSettings<T> container)
         {

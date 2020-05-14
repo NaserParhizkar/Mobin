@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TreeViewMessagesSettings
     /// </summary>
     public partial class TreeViewMessagesSettingsBuilder
-        
+
     {
         public TreeViewMessagesSettingsBuilder(TreeViewMessagesSettings container)
         {
@@ -18,6 +15,6 @@ namespace Kendo.Mvc.UI.Fluent
         {
             get;
             private set;
-        }        
+        }
     }
 }

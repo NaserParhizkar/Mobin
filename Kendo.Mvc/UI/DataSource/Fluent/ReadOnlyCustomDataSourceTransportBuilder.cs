@@ -6,7 +6,7 @@
     {
         public ReadOnlyCustomDataSourceTransportBuilder(Transport transport, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(transport, viewContext, urlGenerator)
-        { 
+        {
         }
     }
 }

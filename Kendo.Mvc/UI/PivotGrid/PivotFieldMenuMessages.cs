@@ -15,7 +15,7 @@
         private const string DefaultCancel = "Cancel";
 
         public PivotFieldMenuMessages()
-        { 
+        {
             Info = Messages.PivotFieldMenu_Info;
             FilterFields = Messages.PivotFieldMenu_FilterFields;
             Filter = Messages.PivotFieldMenu_Filter;

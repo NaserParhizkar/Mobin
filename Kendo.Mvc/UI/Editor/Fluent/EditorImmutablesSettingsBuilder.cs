@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring EditorImmutablesSettings
     /// </summary>
     public partial class EditorImmutablesSettingsBuilder
-        
+
     {
         public EditorImmutablesSettingsBuilder(EditorImmutablesSettings container)
         {

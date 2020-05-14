@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring GanttTooltipSettings
     /// </summary>
     public partial class GanttTooltipSettingsBuilder<TTaskModel, TDependenciesModel>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttTooltipSettingsBuilder(GanttTooltipSettings<TTaskModel, TDependenciesModel> container)
         {

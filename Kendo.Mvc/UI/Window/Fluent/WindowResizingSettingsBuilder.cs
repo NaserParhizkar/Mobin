@@ -12,7 +12,7 @@ namespace Kendo.Mvc.UI.Fluent
             this.settings = settings;
         }
 
-        public WindowResizingSettingsBuilder Enabled(bool enable) 
+        public WindowResizingSettingsBuilder Enabled(bool enable)
         {
             settings.Enabled = enable;
 

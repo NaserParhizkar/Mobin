@@ -8,6 +8,6 @@ namespace Kendo.Mvc.UI
         {
             BinderType = typeof(DataSourceRequestModelBinder);
         }
-        
+
     }
 }

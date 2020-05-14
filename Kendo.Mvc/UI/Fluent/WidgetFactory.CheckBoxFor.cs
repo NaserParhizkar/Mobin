@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Kendo.Mvc.Extensions;
+using System;
 using System.Linq.Expressions;
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -18,7 +17,7 @@ namespace Kendo.Mvc.UI.Fluent
         public virtual CheckBoxBuilder CheckBoxFor<TProperty>(Expression<Func<TModel, TProperty>> expression)
         {
             var explorer = GetModelExplorer(expression);
-            var model = explorer.Model;            
+            var model = explorer.Model;
             bool checkedValue = false;
 
             if (model != null && model.GetType().IsPredefinedType())

@@ -99,42 +99,42 @@ namespace Kendo.Mvc.Extensions
             Merge(instance, values, true);
         }
 
-		public static IDictionary<string, object> Add<T>(this IDictionary<string, object> instance, string key, T value, T defaultValue)
-			where T : IComparable
-		{
-			if (value != null && value.CompareTo(defaultValue) != 0)
-			{
-				instance[key] = value;
-			}
-			return instance;
-		}
+        public static IDictionary<string, object> Add<T>(this IDictionary<string, object> instance, string key, T value, T defaultValue)
+            where T : IComparable
+        {
+            if (value != null && value.CompareTo(defaultValue) != 0)
+            {
+                instance[key] = value;
+            }
+            return instance;
+        }
 
-		public static IDictionary<string, object> Add<T>(this IDictionary<string, object> instance, string key, T value, Func<bool> condition)
-		{
-			if (condition())
-			{
-				instance[key] = value;
-			}
-			return instance;
-		}        
+        public static IDictionary<string, object> Add<T>(this IDictionary<string, object> instance, string key, T value, Func<bool> condition)
+        {
+            if (condition())
+            {
+                instance[key] = value;
+            }
+            return instance;
+        }
 
-		/// <summary>
-		/// Toes the attribute string.
-		/// </summary>
-		/// <param name="instance">The instance.</param>
-		/// <returns></returns>
-		public static string ToAttributeString(this IDictionary<string, object> instance)
-		{
-			var attributes = new StringBuilder();
+        /// <summary>
+        /// Toes the attribute string.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <returns></returns>
+        public static string ToAttributeString(this IDictionary<string, object> instance)
+        {
+            var attributes = new StringBuilder();
 
             var encoder = HtmlEncoder.Default;
 
             foreach (KeyValuePair<string, object> attribute in instance)
-			{
-				attributes.Append(" {0}=\"{1}\"".FormatWith(encoder.Encode(attribute.Key), encoder.Encode(attribute.Value.ToString())));
-			}
+            {
+                attributes.Append(" {0}=\"{1}\"".FormatWith(encoder.Encode(attribute.Key), encoder.Encode(attribute.Value.ToString())));
+            }
 
-			return attributes.ToString();
-		}
-	}
+            return attributes.ToString();
+        }
+    }
 }

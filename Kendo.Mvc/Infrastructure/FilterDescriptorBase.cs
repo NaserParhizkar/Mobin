@@ -1,8 +1,8 @@
 namespace Kendo.Mvc
 {
+    using Kendo.Mvc.Infrastructure.Implementation.Expressions;
     using System;
     using System.Linq.Expressions;
-    using Kendo.Mvc.Infrastructure.Implementation.Expressions;    
 
     /// <summary>
     /// Base class for all <see cref="IFilterDescriptor"/> used for 

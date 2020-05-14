@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Microsoft.CSharp.RuntimeBinder;
     using System;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
-    using Microsoft.CSharp.RuntimeBinder;
 
     public class DynamicPropertyAccessExpressionBuilder : MemberAccessExpressionBuilderBase
     {
@@ -49,11 +49,11 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
                                                                 CSharpArgumentInfoFlags.Constant |
                                                                 CSharpArgumentInfoFlags.UseCompileTimeType, null)
                                                         });
-            return DynamicExpression.Dynamic(binder, typeof(object), new[] { instance, indexerToken.Arguments.Select(Expression.Constant).First() });         
+            return DynamicExpression.Dynamic(binder, typeof(object), new[] { instance, indexerToken.Arguments.Select(Expression.Constant).First() });
         }
 
         private Expression CreatePropertyAccessExpression(Expression instance, string propertyName)
-        {            
+        {
             CallSiteBinder binder = Binder.GetMember(CSharpBinderFlags.None, propertyName,
                 typeof(DynamicPropertyAccessExpressionBuilder), new[] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) });
 

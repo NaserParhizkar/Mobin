@@ -1,5 +1,5 @@
 namespace Kendo.Mvc.UI
-{    
+{
     public enum GridFilterUIRole
     {
         Default = 0,

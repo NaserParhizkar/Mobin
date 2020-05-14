@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
+    using Kendo.Mvc.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using Kendo.Mvc.Extensions;
 
     public class FilterParser
     {
@@ -41,7 +41,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
                 return ParseOrExpression(firstArgument);
             }
 
-            if (Is(FilterTokenType.And)) 
+            if (Is(FilterTokenType.And))
             {
                 Expect(FilterTokenType.And);
 
@@ -131,10 +131,10 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             IFilterNode secondArgument = OrExpression();
 
             return new OrNode
-                       {
-                           First = firstArgument,
-                           Second = secondArgument
-                       };
+            {
+                First = firstArgument,
+                Second = secondArgument
+            };
         }
 
         private IFilterNode ParseComparisonExpression(IFilterNode firstArgument)
@@ -146,11 +146,11 @@ namespace Kendo.Mvc.Infrastructure.Implementation
                 IFilterNode secondArgument = PrimaryExpression();
 
                 return new ComparisonNode
-                           {
-                               First = firstArgument,
-                               FilterOperator = comparison.ToFilterOperator(),
-                               Second = secondArgument
-                           };
+                {
+                    First = firstArgument,
+                    FilterOperator = comparison.ToFilterOperator(),
+                    Second = secondArgument
+                };
             }
 
             FilterToken function = Expect(FilterTokenType.Function);
@@ -162,7 +162,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
 
             functionNode.Arguments.Add(firstArgument);
             functionNode.Arguments.Add(PrimaryExpression());
-                
+
             return functionNode;
         }
 
@@ -173,10 +173,10 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             IFilterNode secondArgument = ComparisonExpression();
 
             return new AndNode
-                       {
-                           First = firstArgument,
-                           Second = secondArgument
-                       };
+            {
+                First = firstArgument,
+                Second = secondArgument
+            };
         }
 
         private IFilterNode ParseNullExpression()
@@ -194,9 +194,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken stringToken = Expect(FilterTokenType.String);
 
             return new StringNode
-                       {
-                           Value = stringToken.Value
-                       };
+            {
+                Value = stringToken.Value
+            };
         }
 
         private IFilterNode ParseBoolean()
@@ -204,9 +204,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken stringToken = Expect(FilterTokenType.Boolean);
 
             return new BooleanNode
-                       {
-                           Value = Convert.ToBoolean(stringToken.Value)
-                       };
+            {
+                Value = Convert.ToBoolean(stringToken.Value)
+            };
         }
 
         private IFilterNode ParseNumberExpression()
@@ -214,10 +214,10 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken number = Expect(FilterTokenType.Number);
 
             return new NumberNode
-                       {
-                           // Always expect the decimal separator to be "." no matter what the current culture is
-                           Value = Convert.ToDouble(number.Value, CultureInfo.InvariantCulture)
-                       };
+            {
+                // Always expect the decimal separator to be "." no matter what the current culture is
+                Value = Convert.ToDouble(number.Value, CultureInfo.InvariantCulture)
+            };
         }
 
         private IFilterNode ParsePropertyExpression()
@@ -225,9 +225,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken property = Expect(FilterTokenType.Property);
 
             return new PropertyNode
-                       {
-                           Name = property.Value
-                       };
+            {
+                Name = property.Value
+            };
         }
 
         private IFilterNode ParseDateTimeExpression()
@@ -235,11 +235,11 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken dateTime = Expect(FilterTokenType.DateTime);
 
             return new DateTimeNode
-                       {
-                           //The actual XSD date format is yyyy-MM-ddTHH:mm:ss but ":" generates BAD REQUEST HTTP code when send via GET.
-                           //That's why we are using yyyy-MM-ddThh-mm-ss
-                           Value = DateTime.ParseExact(dateTime.Value, "yyyy-MM-ddTHH-mm-ss", null)
-                       };
+            {
+                //The actual XSD date format is yyyy-MM-ddTHH:mm:ss but ":" generates BAD REQUEST HTTP code when send via GET.
+                //That's why we are using yyyy-MM-ddThh-mm-ss
+                Value = DateTime.ParseExact(dateTime.Value, "yyyy-MM-ddTHH-mm-ss", null)
+            };
         }
 
         private IFilterNode ParseNestedExpression()
@@ -255,9 +255,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             FilterToken function = Expect(FilterTokenType.Function);
 
             var functionNode = new FunctionNode
-                                   {
-                                       FilterOperator = function.ToFilterOperator()
-                                   };
+            {
+                FilterOperator = function.ToFilterOperator()
+            };
 
             Expect(FilterTokenType.LeftParenthesis);
 

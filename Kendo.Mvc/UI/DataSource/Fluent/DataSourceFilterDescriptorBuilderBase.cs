@@ -2,8 +2,6 @@ namespace Kendo.Mvc.UI.Fluent
 {
     using System;
 
-    using Infrastructure;
-
     public abstract class DataSourceFilterDescriptorBuilderBase : IHideObjectMembers
     {
         protected DataSourceFilterDescriptorBuilderBase(CompositeFilterDescriptor descriptor)

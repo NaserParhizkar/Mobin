@@ -4,7 +4,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent interface for configuring toolbar save command.
     /// </summary>
     /// <typeparam name="T">The type of the model</typeparam>
-    public class GridToolBarSaveCommandBuilder: GridToolBarCommandBuilderBase< GridToolBarSaveCommand, GridToolBarSaveCommandBuilder>
+    public class GridToolBarSaveCommandBuilder : GridToolBarCommandBuilderBase<GridToolBarSaveCommand, GridToolBarSaveCommandBuilder>
     {
         public GridToolBarSaveCommandBuilder(GridToolBarSaveCommand command)
             : base(command)

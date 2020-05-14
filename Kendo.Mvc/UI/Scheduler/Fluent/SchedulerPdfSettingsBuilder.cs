@@ -4,9 +4,9 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring SchedulerPdfSettings
     /// </summary>
     public partial class SchedulerPdfSettingsBuilder<T> : PdfSettingsBuilder<SchedulerPdfSettingsBuilder<T>>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
-        public SchedulerPdfSettingsBuilder(SchedulerPdfSettings<T> container) : base (container)
+        public SchedulerPdfSettingsBuilder(SchedulerPdfSettings<T> container) : base(container)
         {
             Container = container;
         }

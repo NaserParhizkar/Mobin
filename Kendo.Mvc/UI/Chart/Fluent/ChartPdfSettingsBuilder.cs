@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartPdfSettings
     /// </summary>
     public partial class ChartPdfSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartPdfSettingsBuilder(ChartPdfSettings<T> container)
         {

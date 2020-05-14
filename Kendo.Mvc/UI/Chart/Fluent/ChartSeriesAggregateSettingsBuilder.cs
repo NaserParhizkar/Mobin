@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring ChartSeriesAggregateSettings
     /// </summary>
     public partial class ChartSeriesAggregateSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesAggregateSettingsBuilder(ChartSeriesAggregateSettings<T> container)
         {

@@ -1,0 +1,160 @@
+﻿
+
+
+@{
+    ViewData["Title"] = "ValidateForm";
+    Layout = "~/Views/Shared/_Layout-old.cshtml";
+}
+
+<h1>ValidateForm</h1>
+
+
+<link href="~/Content/951114.css" rel="stylesheet" />
+<script type="text/javascript">
+    //kendo.culture('fa-IR');
+    function Format(distance) {
+        return (distance + " متر ");
+    }
+</script>
+
+
+@model Path
+
+
+<form method="post" id="dataEntryPartialForm">
+    <div class="k-edit-form-container" id="a">
+        <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.PathId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().IntegerTextBoxFor(t => t.PathId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Name, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Distance, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().IntegerTextBoxFor(t => t.Distance).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Rent, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().CurrencyTextBoxFor(t => t.Rent).Culture("fa-IR").Decimals(0).HtmlAttributes(new { style = "direction:ltr" })
+
+                </div>
+            </div>
+        </div>
+        <div class="k-edit-buttons k-state-default">
+
+            <a class="k-button k-button-icontext k-primary k-grid-update" onclick="dataEntryPartialFormSubmit(this)" href="#"><span class="k-icon k-update"></span>بروزرسانی</a>
+            <a class="k-button k-button-icontext k-grid-cancel" href="#"><span class="k-icon k-cancel"></span>انصراف</a>
+        </div>
+    </div>
+</form>
+<script src="~/kendo-2017.2.504/js/mobin-kendo-dist/config-kendo.js"></script>
+<script type="text/javascript">
+    //$("input").focusout(function () {
+    //    //debugger;
+    //});
+
+
+
+    //function formSubmit(e) {
+    //    // Initialize the Kendo UI Validator on your "form" container
+    //    // (NOTE: Does NOT have to be a HTML form tag)
+
+    //    var validator = $("#a").kendoValidator({
+    //        validate: function () {
+    //            $(".k-invalid:first").focus();
+    //        }
+    //    }).data("kendoValidator");
+
+
+    //    // Validate the input when the Save button is clicked
+    //    if (validator.validate()) {
+    //        // If the form is valid, the Validator will return true
+    //        //save();
+    //    }
+    //    else {
+    //        return false;
+    //    }
+    //}
+</script>
+
+
+
+
+
+
+
+@*@model KendoBus.Repository.Driver
+    <div class="k-edit-form-container">
+        <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+
+            <div class="form-group">
+                @Html.LabelFor(t => t.NationalCode, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().TextBoxFor(t => t.NationalCode).Format("n0")
+                                                                                        .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.FirstName, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.FirstName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.LastName, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.LastName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.BirthDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().DatePickerFor(t => t.BirthDate)
+                                                                                        .Culture("fa-IR")
+                                                                                        .Format("yyyy/MM/dd")
+                                                                                        .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Salary, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().CurrencyTextBoxFor(t => t.Salary).Culture("fa-IR").Decimals(0)
+                                                                                        .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.EmploymentDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @(Html.Kendo().DatePickerFor(t => t.EmploymentDate)
+                                                                                        .Culture("fa-IR")
+                                                                                        .Format("yyyy/MM/dd")
+                                                                                        .HtmlAttributes(new { style = "direction:ltr" }))
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.PhoneNumber, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.PhoneNumber).HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(t => t.Email, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    @Html.Kendo().TextBoxFor(t => t.Email).HtmlAttributes(new { style = "direction:ltr" })
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+

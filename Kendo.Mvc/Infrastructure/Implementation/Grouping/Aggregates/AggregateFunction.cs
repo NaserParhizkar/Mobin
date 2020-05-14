@@ -1,8 +1,8 @@
 namespace Kendo.Mvc
 {
+    using System;
     using System.Globalization;
     using System.Linq.Expressions;
-    using System;
 
     ///<summary>
     /// Represents an aggregate function.

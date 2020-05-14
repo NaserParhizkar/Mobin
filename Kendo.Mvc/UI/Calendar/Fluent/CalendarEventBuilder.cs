@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Calendar for ASP.NET MVC events.
     /// </summary>
-    public class CalendarEventBuilder: EventBuilder
+    public class CalendarEventBuilder : EventBuilder
     {
         public CalendarEventBuilder(IDictionary<string, object> events)
             : base(events)

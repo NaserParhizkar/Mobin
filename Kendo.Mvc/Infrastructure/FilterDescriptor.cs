@@ -1,10 +1,9 @@
 namespace Kendo.Mvc
 {
+    using Extensions;
+    using Infrastructure.Implementation.Expressions;
     using System;
     using System.Linq.Expressions;
-
-    using Infrastructure.Implementation.Expressions;
-    using Extensions;
 
     /// <summary>
     /// Represents declarative filtering.
@@ -90,7 +89,7 @@ namespace Kendo.Mvc
 
             return builder.CreateBodyExpression();
         }
-        
+
         /// <summary>
         /// Determines whether the specified <paramref name="other"/> descriptor 
         /// is equal to the current one.
@@ -111,9 +110,9 @@ namespace Kendo.Mvc
                 return true;
             }
 
-            return 
-                Equals(other.Operator, this.Operator) && 
-                Equals(other.Member, this.Member) && 
+            return
+                Equals(other.Operator, this.Operator) &&
+                Equals(other.Member, this.Member) &&
                 Equals(other.Value, this.Value);
         }
 
@@ -124,7 +123,7 @@ namespace Kendo.Mvc
         public override bool Equals(object obj)
         {
             var other = obj as FilterDescriptor;
-            if ( other == null )
+            if (other == null)
             {
                 return false;
             }

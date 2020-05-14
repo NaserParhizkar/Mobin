@@ -1,15 +1,15 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System.Collections.Generic;
-	using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.Extensions;
+    using System.Collections.Generic;
 
-	/// <summary>
-	/// Defines the fluent interface for configuring toolbar command.
-	/// </summary>
-	/// <typeparam name="TModel">The type of the model</typeparam>
-	/// <typeparam name="TCommand">The type of the command.</typeparam>
-	/// <typeparam name="TBuilder">The type of the builder.</typeparam>
-	public abstract class GridToolBarCommandBuilderBase<TCommand, TBuilder> : IHideObjectMembers        
+    /// <summary>
+    /// Defines the fluent interface for configuring toolbar command.
+    /// </summary>
+    /// <typeparam name="TModel">The type of the model</typeparam>
+    /// <typeparam name="TCommand">The type of the command.</typeparam>
+    /// <typeparam name="TBuilder">The type of the builder.</typeparam>
+    public abstract class GridToolBarCommandBuilderBase<TCommand, TBuilder> : IHideObjectMembers
         where TCommand : GridActionCommandBase
         where TBuilder : GridToolBarCommandBuilderBase<TCommand, TBuilder>
     {
@@ -17,14 +17,14 @@ namespace Kendo.Mvc.UI.Fluent
         {
             Command = command;
         }
-    
+
         public TBuilder Text(string text)
         {
             Command.Text = text;
 
             return this as TBuilder;
         }
-        
+
         /// <summary>
         /// Sets the HTML attributes.
         /// </summary>

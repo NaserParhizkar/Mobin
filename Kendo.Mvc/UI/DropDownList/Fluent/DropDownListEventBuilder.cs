@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI DropDownList for ASP.NET MVC events.
     /// </summary>
-    public class DropDownListEventBuilder: EventBuilder
+    public class DropDownListEventBuilder : EventBuilder
     {
         public DropDownListEventBuilder(IDictionary<string, object> events)
             : base(events)

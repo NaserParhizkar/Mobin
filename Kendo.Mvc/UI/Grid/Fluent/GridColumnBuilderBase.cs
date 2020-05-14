@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using System.Collections.Generic;
-	using Extensions;
+    using Extensions;
+    using System.Collections.Generic;
 
-	/// <summary>
-	/// Defines the fluent interface for configuring columns.
-	/// </summary>
-	/// <typeparam name="TColumn"></typeparam>
-	/// <typeparam name="TColumnBuilder">The type of the column builder.</typeparam>
-	public abstract class GridColumnBuilderBase<TColumn, TColumnBuilder> : IHideObjectMembers
+    /// <summary>
+    /// Defines the fluent interface for configuring columns.
+    /// </summary>
+    /// <typeparam name="TColumn"></typeparam>
+    /// <typeparam name="TColumnBuilder">The type of the column builder.</typeparam>
+    public abstract class GridColumnBuilderBase<TColumn, TColumnBuilder> : IHideObjectMembers
         where TColumnBuilder : GridColumnBuilderBase<TColumn, TColumnBuilder>
         where TColumn : IGridColumn
     {
@@ -366,18 +366,18 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this as TColumnBuilder;
         }
-		
-		/// <summary>
-		/// Sets the header template for the column. If sorting is enabled, the template content wrapper must have a k-link CSS class.
-		/// </summary>
-		/// <param name="template">The action defining the template.</param>
-		public TColumnBuilder ClientHeaderTemplate(string template)
-		{
-			Column.ClientHeaderTemplate = template;
-			return this as TColumnBuilder;
-		}		
 
-		public TColumnBuilder ClientFooterTemplate(string template)
+        /// <summary>
+        /// Sets the header template for the column. If sorting is enabled, the template content wrapper must have a k-link CSS class.
+        /// </summary>
+        /// <param name="template">The action defining the template.</param>
+        public TColumnBuilder ClientHeaderTemplate(string template)
+        {
+            Column.ClientHeaderTemplate = template;
+            return this as TColumnBuilder;
+        }
+
+        public TColumnBuilder ClientFooterTemplate(string template)
         {
             Column.ClientFooterTemplate = template;
 

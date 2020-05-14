@@ -5,7 +5,7 @@
 
     public abstract class SchedulerTimelineViewBase : SchedulerViewBase
     {
-        protected SchedulerTimelineViewBase(SchedulerViewType type, IScheduler scheduler) 
+        protected SchedulerTimelineViewBase(SchedulerViewType type, IScheduler scheduler)
             : base(type, scheduler)
         {
             WorkDayCommand = true;

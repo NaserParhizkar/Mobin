@@ -1,7 +1,7 @@
 namespace Kendo.Mvc.Infrastructure
 {
-    using System.Collections.Generic;
     using Implementation;
+    using System.Collections.Generic;
 
     public static class FilterDescriptorFactory
     {
@@ -23,7 +23,7 @@ namespace Kendo.Mvc.Infrastructure
             filterNode.Accept(visitor);
 
             result.Add(visitor.Result);
-            
+
             return result;
         }
     }

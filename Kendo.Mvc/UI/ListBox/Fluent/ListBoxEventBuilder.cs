@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI ListBox for ASP.NET MVC events.
     /// </summary>
-    public class ListBoxEventBuilder: EventBuilder
+    public class ListBoxEventBuilder : EventBuilder
     {
         public ListBoxEventBuilder(IDictionary<string, object> events)
             : base(events)

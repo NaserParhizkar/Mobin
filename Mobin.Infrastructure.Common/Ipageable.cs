@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mobin.Common
+﻿namespace Mobin.Common
 {
     public class IPageable
     {

@@ -1,12 +1,12 @@
 namespace Kendo.Mvc.UI
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Net;
-	using Kendo.Mvc.Extensions;
-	using Microsoft.AspNetCore.Routing;
+    using Kendo.Mvc.Extensions;
+    using Microsoft.AspNetCore.Routing;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
 
-	public class GridColumnSettings<T> : GridColumnSettings
+    public class GridColumnSettings<T> : GridColumnSettings
         where T : class
     {
         public Action<T> Template
@@ -15,7 +15,7 @@ namespace Kendo.Mvc.UI
             set;
         }
     }
-    
+
     public class GridColumnSettings
     {
         private string member;
@@ -30,16 +30,16 @@ namespace Kendo.Mvc.UI
             Visible = true;
             IncludeInMenu = true;
             Lockable = true;
-            HeaderHtmlAttributes = new RouteValueDictionary();            
-            HtmlAttributes = new RouteValueDictionary();            
+            HeaderHtmlAttributes = new RouteValueDictionary();
+            HtmlAttributes = new RouteValueDictionary();
             FooterHtmlAttributes = new RouteValueDictionary();
-        }        
-        
+        }
+
         public string ClientHeaderTemplate
         {
             get;
             set;
-        }   
+        }
 
         public string ClientTemplate
         {
@@ -107,13 +107,13 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        
+
         public IDictionary<string, object> HeaderHtmlAttributes
         {
             get;
             private set;
         }
-        
+
         public IDictionary<string, object> FooterHtmlAttributes
         {
             get;
@@ -124,20 +124,20 @@ namespace Kendo.Mvc.UI
         {
             get;
             set;
-        }        
-       
+        }
+
         public bool IncludeInMenu
         {
             get;
             set;
-        }       
-        
+        }
+
         public IDictionary<string, object> HtmlAttributes
         {
             get;
             private set;
         }
-        
+
         public string Member
         {
             get
@@ -202,10 +202,10 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        public GridFilterUIRole FilterUIRole 
-        { 
-            get; 
-            set; 
+        public GridFilterUIRole FilterUIRole
+        {
+            get;
+            set;
         }
     }
 }

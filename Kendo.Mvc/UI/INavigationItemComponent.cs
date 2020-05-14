@@ -1,8 +1,7 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
-    using Infrastructure;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
     public interface INavigationItemComponent<TItem> : INavigationItemContainer<TItem>
         where TItem : NavigationItem<TItem>

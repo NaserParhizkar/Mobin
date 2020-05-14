@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TreeMap
     /// </summary>
-    public partial class TreeMapBuilder: WidgetBuilderBase<TreeMap, TreeMapBuilder>
-        
+    public partial class TreeMapBuilder : WidgetBuilderBase<TreeMap, TreeMapBuilder>
+
     {
         public TreeMapBuilder(TreeMap component) : base(component)
         {

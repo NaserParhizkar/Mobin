@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI StockChart for ASP.NET MVC events.
     /// </summary>
-    public class StockChartEventBuilder: EventBuilder
+    public class StockChartEventBuilder : EventBuilder
     {
         public StockChartEventBuilder(IDictionary<string, object> events)
             : base(events)

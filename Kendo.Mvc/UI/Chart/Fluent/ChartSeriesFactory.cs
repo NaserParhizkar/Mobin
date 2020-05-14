@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<ChartSeries<T>>
     /// </summary>
     public partial class ChartSeriesFactory<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesFactory(List<ChartSeries<T>> container)
         {

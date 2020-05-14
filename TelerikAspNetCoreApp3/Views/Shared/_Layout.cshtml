@@ -5,14 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Northwind.WebUI</title>
 
-    <link href="https://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-material.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://kendo.cdn.telerik.com/2018.2.516/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://kendo.cdn.telerik.com/2018.2.516/styles/kendo.material.min.css" rel="stylesheet" type="text/css" />
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*-----------------Style Sheet liberaries include kendo libs-----------------*@
+    <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
 
-    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/jszip.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
+
+
+    @*-------------------------Source Without Change----------------------------*@
+    @*------------------------Javascript liberaries include kendo, mobin and jquery libs------------------------*@
+    <script src="~/kendo-2017.2.504_UnChanged/js/jquery.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.core.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/cultures/kendo.culture.fa-IR.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.calendar.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.popup.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.datepicker.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.data.xml.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.data.odata.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.data.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.userevents.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.draganddrop.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.fx.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.scroller.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.list.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.combobox.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.columnsorter.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.numerictextbox.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.validator.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.binder.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.editable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.window.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.scroller.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.dropdownlist.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.filtermenu.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.filtercell.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.menu.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.columnmenu.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.groupable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.pager.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.selectable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.sortable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.reorderable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.resizable.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.pane.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.shim.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.popover.js"></script>
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.mobile.actionsheet.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.ooxml.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.excel.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.progressbar.js"></script>
+
+    @*//this lib needs "util/text-metrics"*@
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.pdf.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.grid.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.multiselect.js"></script>
+
+    <script src="~/kendo-2017.2.504_UnChanged/js/kendo.aspnetmvc.js"></script>
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            kendo.culture('fa-IR');
+        });
+    </script>
+
+
+
+    @*<script src="~/kendo-2018.2.516/js/jszip.min.js"></script>
+
+        <script src="~/kendo-2017.2.504/js/kendo.all.js"></script>
+        <script src="~/kendo-2018.2.516/js/kendo.aspnetmvc.min.js"></script>*@
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -35,29 +129,38 @@
         </div>
     </div>
     <div class="container menu-content">
-            <div id="responsive-panel">
-                @(Html.Kendo().Menu()
-                    .Name("Menu")
-                    .Items(items =>
-                    {
-                        items.Add()
-                            .Text("Customer")
-                            .Action("Index", "Customer");
-                        items.Add()
-                            .Text("Home")
-                            .Action("Index", "Home");
-                        items.Add()
-                            .Text("About")
-                            .Action("About", "Home");
-                        items.Add()
-                            .Text("Contact")
-                            .Action("Contact", "Home");
-                        items.Add().Text("Disabled item").Enabled(false);
-                    })
-                )
-            </div>
-            <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+        <div id="responsive-panel">
+
+            @(Html.Kendo().Menu()
+                                    .Name("Menu")
+                                    .Items(items =>
+                                    {
+                                        items.Add()
+                                      .Text("Home")
+                                      .Action<Northwind.WebUI.Controllers.HomeController>(t => t.Index());
+                                        //items.Add()
+                                        //    .Text("Order_Index").Action("Index","Order",new { area="Northwind" });
+                                        items.Add()
+                                            .Text("Order_Index")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderController>(t => t.Index());
+
+                                        items.Add()
+                                            .Text("SearchInputs")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderController>(t => t.SearchInputs());
+                                        items.Add()
+                                            .Text("TestExpression")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.OrderDetailController>(t => t.TestExpression());
+                                        items.Add()
+                                            .Text("BothDates")
+                                            .Action<Northwind.WebUI.Controllers.PersianDateController>(t => t.Index());
+                                            items.Add()
+                                            .Text("Customer")
+                                            .Action<Northwind.WebUI.Areas.Northwind.Controllers.CustomerController>(t => t.Index());
+                                    })
+            )
         </div>
+        <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <footer class="footer">
@@ -69,14 +172,14 @@
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
-            $("#responsive-panel").kendoResponsivePanel({
-                breakpoint: 768,
-                autoClose: false,
-                orientation: "top"
-            });
+            //$("#responsive-panel").kendoResponsivePanel({
+            //    breakpoint: 768,
+            //    autoClose: false,
+            //    orientation: "top"
+            //});
         });
         function onclick(e) {
-            $("#responsive-panel").getKendoResponsivePanel().toggle();
+            //$("#responsive-panel").getKendoResponsivePanel().toggle();
         }
     </script>
 </body>

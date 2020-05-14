@@ -1,9 +1,9 @@
 ﻿namespace Kendo.Mvc.Extensions
 {
+    using Kendo.Mvc.Resources;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System.Collections.Generic;
     using System.Linq;
-    using Kendo.Mvc.Resources;    
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public static class ModelStateExtensions
     {

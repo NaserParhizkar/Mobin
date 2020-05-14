@@ -1,16 +1,15 @@
 ﻿namespace Kendo.Mvc.UI
 {
     using Extensions;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
-    using System.Reflection;
 
     public class SchedulerModelDescriptor : ModelDescriptor
     {
         public SchedulerModelDescriptor(Type modelType, IModelMetadataProvider modelMetadataProvider)
             : base(modelType, modelMetadataProvider)
-        { 
+        {
         }
 
         public string RecurrenceId { get; set; }
@@ -29,7 +28,7 @@
             {
                 var field = new Dictionary<string, object>();
 
-                var schedulerEventInterface = typeof (ISchedulerEvent);
+                var schedulerEventInterface = typeof(ISchedulerEvent);
 
                 var currentMember = prop.Member;
 

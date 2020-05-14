@@ -1,0 +1,16 @@
+﻿[*.cs]
+
+# CS0693: Type parameter has the same name as the type parameter from outer type
+dotnet_diagnostic.CS0693.severity = none
+
+# ASP0000: Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+dotnet_diagnostic.ASP0000.severity = none
+
+# ASP0001: Authorization middleware is incorrectly configured.
+dotnet_diagnostic.ASP0001.severity = none
+
+# MVC1005: Cannot use UseMvc with Endpoint Routing.
+dotnet_diagnostic.MVC1005.severity = none
+
+# CS1998: Async method lacks 'await' operators and will run synchronously
+dotnet_diagnostic.CS1998.severity = none

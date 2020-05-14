@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
+﻿using Kendo.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 
 namespace Kendo.Mvc.UI

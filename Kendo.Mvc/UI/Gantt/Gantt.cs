@@ -1,6 +1,5 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Gantt component
     /// </summary>
     public partial class Gantt<TTaskModel, TDependenciesModel> : WidgetBase
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
 
         public DataSource DataSource

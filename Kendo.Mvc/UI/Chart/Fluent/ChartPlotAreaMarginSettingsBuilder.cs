@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartPlotAreaMarginSettings
     /// </summary>
     public partial class ChartPlotAreaMarginSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartPlotAreaMarginSettingsBuilder(ChartPlotAreaMarginSettings<T> container)
         {

@@ -6,8 +6,8 @@ namespace Kendo.Mvc.TagHelpers
     /// <summary>
     /// Kendo UI messages TagHelper
     /// </summary>
-    [HtmlTargetElement("kendo-date-input-messages-settings", ParentTag="kendo-dateinput", TagStructure=TagStructure.WithoutEndTag )]
-    
+    [HtmlTargetElement("kendo-date-input-messages-settings", ParentTag = "kendo-dateinput", TagStructure = TagStructure.WithoutEndTag)]
+
     [SuppressTagRendering]
     public partial class DateInputMessagesSettingsTagHelper : TagHelperChildBase
     {

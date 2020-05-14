@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.Resources;
+using System;
+using System.Linq.Expressions;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -63,7 +61,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Sets the selection range.
         /// </summary>

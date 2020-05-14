@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Kendo.Mvc.Resources;
+﻿using Kendo.Mvc.Resources;
+using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
 {
@@ -8,7 +8,7 @@ namespace Kendo.Mvc.UI
         public GridColumnMenuMessages()
         {
             Filter = Messages.Filter_Filter;
-            Columns = Messages.Grid_Columns; 
+            Columns = Messages.Grid_Columns;
             SortAscending = Messages.Grid_SortAscending;
             SortDescending = Messages.Grid_SortDescending;
             Done = Messages.Grid_Done;
@@ -18,7 +18,7 @@ namespace Kendo.Mvc.UI
         }
 
         public string SortAscending { get; set; }
-        public string SortDescending { get; set; }        
+        public string SortDescending { get; set; }
         public string Filter { get; set; }
         public string Columns { get; set; }
         public string Done { get; set; }
@@ -37,7 +37,7 @@ namespace Kendo.Mvc.UI
 
         public IDictionary<string, object> Serialize()
         {
-			var json = new Dictionary<string, object>();
+            var json = new Dictionary<string, object>();
 
             if (Filter != DefaultFilter)
             {
@@ -48,7 +48,7 @@ namespace Kendo.Mvc.UI
             {
                 json["columns"] = Columns;
             }
-            
+
             if (SortAscending != DefaultSortAscending)
             {
                 json["sortAscending"] = SortAscending;
@@ -79,7 +79,7 @@ namespace Kendo.Mvc.UI
                 json["unlock"] = Unlock;
             }
 
-			return json;
+            return json;
         }
     }
 }

@@ -1,7 +1,6 @@
-using System.IO;
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.IO;
 
 namespace Kendo.Mvc.UI
 {
@@ -9,7 +8,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Splitter component
     /// </summary>
     public partial class Splitter : WidgetBase
-        
+
     {
         public Splitter(ViewContext viewContext) : base(viewContext)
         {
@@ -22,7 +21,7 @@ namespace Kendo.Mvc.UI
             tag.TagRenderMode = TagRenderMode.StartTag;
             tag.WriteTo(writer, HtmlEncoder);
 
-            tag.AddCssClass("k-widget k-splitter");          
+            tag.AddCssClass("k-widget k-splitter");
             tag.AddCssClass(Orientation == SplitterOrientation.Horizontal ? "k-splitter-horizontal" : "k-splitter-vertical");
 
             Panes.Each(p => p.WriteHtml(writer, Generator, HtmlEncoder));

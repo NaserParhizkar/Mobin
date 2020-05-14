@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Chart
     /// </summary>
-    public partial class ChartBuilder<T>: WidgetBuilderBase<Chart<T>, ChartBuilder<T>>
-        where T : class 
+    public partial class ChartBuilder<T> : WidgetBuilderBase<Chart<T>, ChartBuilder<T>>
+        where T : class
     {
         public ChartBuilder(Chart<T> component) : base(component)
         {
@@ -28,7 +28,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Configures the category axis
         /// </summary>

@@ -19,10 +19,10 @@
 
         public ClientHandlerDescriptor FunctionDiscover { get; set; }
 
-        public PivotTransportConnection Connection 
-        { 
-            get; 
-            private set; 
+        public PivotTransportConnection Connection
+        {
+            get;
+            private set;
         }
 
         protected override void Serialize(System.Collections.Generic.IDictionary<string, object> json)

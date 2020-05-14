@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using Kendo.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.TagHelpers

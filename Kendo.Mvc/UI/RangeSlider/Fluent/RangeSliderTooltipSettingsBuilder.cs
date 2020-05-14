@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring RangeSliderTooltipSettings
     /// </summary>
     public partial class RangeSliderTooltipSettingsBuilder<T>
-        where T : struct, IComparable 
+        where T : struct, IComparable
     {
         public RangeSliderTooltipSettingsBuilder(RangeSliderTooltipSettings<T> container)
         {

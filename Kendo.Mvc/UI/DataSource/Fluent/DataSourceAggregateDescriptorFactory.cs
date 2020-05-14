@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using Extensions;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="AggregateDescriptor"/>.
@@ -22,7 +22,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// Specifies member on which aggregates to be calculated.
         /// </summary>
         public DataSourceAggregatesFactory Add<TValue>(Expression<Func<TModel, TValue>> expression)
-        {            
+        {
             return AddDescriptor(expression.MemberWithoutInstance(), typeof(TValue));
         }
 
@@ -37,7 +37,7 @@ namespace Kendo.Mvc.UI.Fluent
         private DataSourceAggregatesFactory AddDescriptor(string memberName, Type memberType)
         {
             var descriptor = new AggregateDescriptor();
-            descriptor.Member = memberName;                        
+            descriptor.Member = memberName;
 
             descriptors.Add(descriptor);
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<ChartXAxisPlotBand<T>>
     /// </summary>
     public partial class ChartXAxisPlotBandFactory<T>
-        where T : class 
+        where T : class
     {
         public ChartXAxisPlotBandFactory(List<ChartXAxisPlotBand<T>> container)
         {
@@ -21,7 +20,7 @@ namespace Kendo.Mvc.UI.Fluent
         }
 
         // Place custom settings here
-                
+
         /// <summary>
         /// Adds an item to the collection
         /// </summary>
@@ -34,7 +33,7 @@ namespace Kendo.Mvc.UI.Fluent
                 To = to,
                 Color = color
             };
-            Container.Add(item);            
+            Container.Add(item);
 
             return new ChartXAxisPlotBandBuilder<T>(item);
         }

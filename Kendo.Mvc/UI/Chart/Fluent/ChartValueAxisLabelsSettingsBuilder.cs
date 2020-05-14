@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
@@ -54,6 +51,6 @@ namespace Kendo.Mvc.UI.Fluent
         {
             Container.Rotation.Angle = value;
             return this;
-        }        
+        }
     }
 }

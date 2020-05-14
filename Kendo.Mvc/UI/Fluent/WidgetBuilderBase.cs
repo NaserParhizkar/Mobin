@@ -1,11 +1,11 @@
 ﻿using Kendo.Mvc.Resources;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System.Text.Encodings.Web;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace Kendo.Mvc.UI.Fluent

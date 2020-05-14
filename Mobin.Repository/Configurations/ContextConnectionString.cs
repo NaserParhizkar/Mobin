@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-
-namespace Repository.Configurations
+﻿namespace Repository.Configurations
 {
     //public static class ContextConnectionString
     //{

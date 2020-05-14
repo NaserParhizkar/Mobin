@@ -1,19 +1,18 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    
-    using Extensions;
-    
+
     internal class EnumerableSelectorAggregateFunctionExpressionBuilder : AggregateFunctionExpressionBuilderBase
     {
         protected new EnumerableSelectorAggregateFunction Function
         {
             get
             {
-                return (EnumerableSelectorAggregateFunction) base.Function;
+                return (EnumerableSelectorAggregateFunction)base.Function;
             }
         }
 
@@ -37,9 +36,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             var memberAccessBuilder = ExpressionBuilderFactory.MemberAccess(this.ItemType, null, this.Function.SourceField);
             memberAccessBuilder.Options.CopyFrom(this.Options);
 
-            var memberExpression = memberAccessBuilder.CreateMemberAccessExpression();           
+            var memberExpression = memberAccessBuilder.CreateMemberAccessExpression();
 
-            memberExpression = ConvertMemberAccessExpression(memberExpression);            
+            memberExpression = ConvertMemberAccessExpression(memberExpression);
 
             return Expression.Lambda(memberExpression, memberAccessBuilder.ParameterExpression);
         }
@@ -80,7 +79,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
                 memberExpression = ConvertMemberExpressionToInteger(memberExpression);
             }
             return memberExpression;
-        }       
+        }
 
         private static Expression ConvertMemberExpressionToInteger(Expression expression)
         {

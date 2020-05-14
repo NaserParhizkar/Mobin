@@ -1,9 +1,9 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
-{    
-    using System;
-    using System.Collections.Generic;    
+{
     using Kendo.Mvc.UI;
     using Microsoft.AspNetCore.Routing;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="Calendar.SelectionSettings"/>.

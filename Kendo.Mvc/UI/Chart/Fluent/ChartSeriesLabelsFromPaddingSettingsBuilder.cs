@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartSeriesLabelsFromPaddingSettings
     /// </summary>
     public partial class ChartSeriesLabelsFromPaddingSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesLabelsFromPaddingSettingsBuilder(ChartSeriesLabelsFromPaddingSettings<T> container)
         {

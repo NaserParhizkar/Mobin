@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Northwind.WebUI.Controllers
 {
+    [Display(Name = "صفحات اصلی")]
     public class HomeController : Controller
     {
+        [Display(Name = "خانه")]
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult OrderIndex()
-        {
-            return View();
-        }
-
+        [Display(Name = "درباره ی ما")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -25,6 +20,7 @@ namespace Northwind.WebUI.Controllers
             return View();
         }
 
+        [Display(Name = "تماس با ما")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
@@ -32,6 +28,7 @@ namespace Northwind.WebUI.Controllers
             return View();
         }
 
+        [Display(Name = "خطا")]
         public IActionResult Error()
         {
             return View();
