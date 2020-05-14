@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Kendo.Mvc.Extensions;
     using System;
     using System.Globalization;
     using System.Reflection;
-    using Kendo.Mvc.Extensions;
 
     internal static class UnboxT<T>
     {
@@ -19,7 +19,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             {
                 MethodInfo nullableFieldMethod = typeof(UnboxT<T>).GetMethod("NullableField", BindingFlags.NonPublic | BindingFlags.Static);
                 MethodInfo genericMethod = nullableFieldMethod.MakeGenericMethod(new[] { type.GetGenericArguments()[0] });
-                
+
                 return (Func<object, T>)genericMethod.CreateDelegate(typeof(Func<object, T>));
             }
             return ValueField;
@@ -38,7 +38,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         {
             if (DBNull.Value != value)
             {
-                return (T) value;
+                return (T)value;
             }
             return default(T);
         }
@@ -51,7 +51,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
                 throw new InvalidCastException(
                     string.Format(CultureInfo.CurrentCulture, "Type: {0} cannot be casted to Nullable type", typeof(T)));
             }
-            return (T) value;
+            return (T)value;
         }
     }
 }

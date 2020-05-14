@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -7,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<TreeListToolbar<T>>
     /// </summary>
     public partial class TreeListToolbarFactory<T>
-        
+
     {
         public TreeListToolbarFactory(List<TreeListToolbar<T>> container)
         {

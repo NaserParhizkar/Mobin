@@ -1,17 +1,15 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI RadialGauge component
     /// </summary>
-    public partial class RadialGauge : WidgetBase 
+    public partial class RadialGauge : WidgetBase
     {
         public RadialGauge(ViewContext viewContext) : base(viewContext)
         {

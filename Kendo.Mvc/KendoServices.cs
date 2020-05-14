@@ -1,9 +1,11 @@
-﻿using Kendo.Mvc.Rendering;
+﻿using Kendo.Mvc.Mobin.Controllers;
+using Kendo.Mvc.Mobin.DataAnnotations.Internal;
+using Kendo.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using global::Kendo.Mvc.Mobin;
-using Mobin.Service;
 using Mobin.Repository;
+using Mobin.Service;
+using System.Collections.Generic;
 
 namespace Kendo.Mvc
 {
@@ -18,12 +20,13 @@ namespace Kendo.Mvc
 
     public class MobinServices
     {
-        public static IEnumerable<ServiceDescriptor> GetServices() 
+        public static IEnumerable<ServiceDescriptor> GetServices()
         {
-
-            yield return ServiceDescriptor.Transient(typeof(ICrudRepository<>),typeof(CrudRepository<>));
+            yield return ServiceDescriptor.Transient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
             yield return ServiceDescriptor.Transient(typeof(ICrudService<>), typeof(CrudService<>));
             yield return ServiceDescriptor.Transient(typeof(CrudController<>), typeof(CrudService<>));
+
+            yield return ServiceDescriptor.Singleton<IValidationAttributeAdapterProvider, MobinValidatiomAttributeAdapterProvider>();
         }
     }
 }

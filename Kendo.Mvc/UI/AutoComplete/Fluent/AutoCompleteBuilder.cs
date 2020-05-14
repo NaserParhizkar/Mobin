@@ -6,8 +6,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI AutoComplete
     /// </summary>
-    public partial class AutoCompleteBuilder: WidgetBuilderBase<AutoComplete, AutoCompleteBuilder>
-        
+    public partial class AutoCompleteBuilder : WidgetBuilderBase<AutoComplete, AutoCompleteBuilder>
+
     {
         public AutoCompleteBuilder(AutoComplete component) : base(component)
         {
@@ -44,9 +44,9 @@ namespace Kendo.Mvc.UI.Fluent
             return this;
         }
 
-                /// <summary>
+        /// <summary>
         /// The filtering method used to determine the suggestions for the current value. The default filter is "startswith" -
-		/// all data items which begin with the current widget value are displayed in the suggestion popup. The supported filter values are startswith, endswith and contains.
+        /// all data items which begin with the current widget value are displayed in the suggestion popup. The supported filter values are startswith, endswith and contains.
         /// </summary>
         /// <param name="value">The value for Filter</param>
         public AutoCompleteBuilder Filter(FilterType filterType)

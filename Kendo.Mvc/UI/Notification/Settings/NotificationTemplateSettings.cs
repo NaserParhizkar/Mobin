@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
 {
-	public class NotificationTemplateSettings
+    public class NotificationTemplateSettings
     {
         public string Type { get; set; }
         public string ClientTemplateID { get; set; }
@@ -16,12 +16,12 @@ namespace Kendo.Mvc.UI
                 throw new InvalidOperationException("Template Type cannot be null or an empty string.");
             }
 
-			return new Dictionary<string, object>
-			{
-				["type"] = Type,
-				["templateId"] = ClientTemplateID ?? "",
-				["template"] = ClientTemplate ?? ""
-			};			
+            return new Dictionary<string, object>
+            {
+                ["type"] = Type,
+                ["templateId"] = ClientTemplateID ?? "",
+                ["template"] = ClientTemplate ?? ""
+            };
         }
     }
 }

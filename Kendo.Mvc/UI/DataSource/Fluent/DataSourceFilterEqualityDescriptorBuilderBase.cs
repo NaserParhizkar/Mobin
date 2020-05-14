@@ -38,7 +38,7 @@ namespace Kendo.Mvc.UI.Fluent
 
         protected TCompositeBuilder CreateBuilder()
         {
-            return (TCompositeBuilder) Activator.CreateInstance(typeof(TCompositeBuilder), new object[] { Descriptor });
+            return (TCompositeBuilder)Activator.CreateInstance(typeof(TCompositeBuilder), new object[] { Descriptor });
         }
     }
 }

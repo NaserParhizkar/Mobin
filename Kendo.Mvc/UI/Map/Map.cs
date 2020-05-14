@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Map component
     /// </summary>
     public partial class Map : WidgetBase
-        
+
     {
         public Map(ViewContext viewContext) : base(viewContext)
         {

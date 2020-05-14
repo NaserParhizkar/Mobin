@@ -1,0 +1,126 @@
+﻿@page "/"
+@inject IPathService PathService
+@inject IJSRuntime JSRuntime
+
+@using KendoBus.Repository
+@using Northwind.Service
+
+
+<div class="col-12">
+    <h3><b>Enter Author Information</b></h3>
+</div>
+
+<hr />
+
+<ServerValidations IsVisible="IsVisible" Results="Results">
+    <span>Path is : </span>@path.Name
+</ServerValidations>
+
+<EditForm Model="@path" OnValidSubmit="@SavePath">
+
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">path id :</label>
+        <input class="form-control col-3" @ref="pathIdNumber" @bind="@path.PathId" placeholder="path id" />
+        &nbsp;<ValidationMessage For="@(() => path.PathId)"></ValidationMessage>
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">city :</label>
+        <InputSelect class="form-control col-3" @bind-Value="@path.Rent">
+            @if (Cities != null)
+            {
+                @foreach (var city in Cities)
+                {
+                    <option value="@city">@city</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">path name :</label>
+        <MobinNumberInput class="form-control col-3" @bind-Value="@path.Name" placeholder="path name"></MobinNumberInput>
+        &nbsp;<ValidationMessage For="@(() => path.Name)"></ValidationMessage>
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">city :</label>
+        <InputNumber class="form-control col-3" @bind-Value="@path.Distance" placeholder="city"></InputNumber>
+        &nbsp;<ValidationMessage For="@(() => path.Distance)"></ValidationMessage>
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">email address :</label>
+        <InputNumber class="form-control col-3" @bind-Value="@path.Rent" placeholder="email address"></InputNumber>
+        &nbsp;<ValidationMessage For="@(() => path.Rent)"></ValidationMessage>
+    </div>
+
+
+
+    <div class="col-12 row">
+        <span class="col-2"></span>
+        <input type="submit" class="form-control col-1 btn btn-primary" value="Save" />
+        <span>&nbsp;</span>
+        <input type="submit" class="form-control col-1 btn btn-primary" value="Clear" />
+    </div>
+
+</EditForm>
+
+<br />
+<div class="col-10">
+    <h3><b>Pathes</b></h3>
+    <table>
+        <thead>
+            <tr>
+                <th>PathId</th>
+                <th>Path Name</th>
+                <th>Distance</th>
+                <th>Rent</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var path in pathList)
+            {
+                <tr>
+                    <td>
+                        <NavLink href="@string.Format("/paths/pathdetail/{0}",path.ID)">@path.PathId</NavLink>
+                    </td>
+                    <td>@path.Name</td>
+                    <td>@path.Distance</td>
+                    <td>@path.Rent</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    public Path path { get; set; }
+    public IEnumerable<Path> pathList { get; set; }
+    public string[] Cities { get; set; }
+    public bool IsVisible { get; set; }
+    public string RecordName { get; set; }
+    public bool Results { get; set; }
+
+    ElementReference pathIdNumber;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Cities == null)
+        {
+            Cities = await JSRuntime.InvokeAsync<string[]>("getCities");
+            StateHasChanged();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        path = new Path();
+        pathList = PathService.GetAllAsEnumerable();
+    }
+
+    private async Task SavePath()
+    {
+        Results = false;
+        IsVisible = true;
+
+        //await JSRuntime.InvokeVoidAsync("saveMessage", pathname);
+        await JSRuntime.InvokeVoidAsync("setFocusOnElement", path.Name);
+    }
+}

@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI AutoComplete for ASP.NET MVC events.
     /// </summary>
-    public class AutoCompleteEventBuilder: EventBuilder
+    public class AutoCompleteEventBuilder : EventBuilder
     {
         public AutoCompleteEventBuilder(IDictionary<string, object> events)
             : base(events)

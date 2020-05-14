@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Sortable
     /// </summary>
-    public partial class SortableBuilder: WidgetBuilderBase<Sortable, SortableBuilder>
-        
+    public partial class SortableBuilder : WidgetBuilderBase<Sortable, SortableBuilder>
+
     {
         public SortableBuilder(Sortable component) : base(component)
         {

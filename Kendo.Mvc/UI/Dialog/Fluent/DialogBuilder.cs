@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Dialog
     /// </summary>
-    public partial class DialogBuilder: WidgetBuilderBase<Dialog, DialogBuilder>
-        
+    public partial class DialogBuilder : WidgetBuilderBase<Dialog, DialogBuilder>
+
     {
         public DialogBuilder(Dialog component) : base(component)
         {

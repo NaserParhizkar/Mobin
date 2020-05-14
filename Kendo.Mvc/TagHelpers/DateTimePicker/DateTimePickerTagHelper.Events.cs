@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Kendo.Mvc.Extensions;
+using System.Collections.Generic;
 
 namespace Kendo.Mvc.TagHelpers
 {

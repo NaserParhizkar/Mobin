@@ -1,8 +1,8 @@
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.IO;
-using Kendo.Mvc.Resources;
 
 namespace Kendo.Mvc.UI
 {
@@ -10,7 +10,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Barcode component
     /// </summary>
     public partial class Barcode : WidgetBase
-        
+
     {
         public Barcode(ViewContext viewContext) : base(viewContext)
         {

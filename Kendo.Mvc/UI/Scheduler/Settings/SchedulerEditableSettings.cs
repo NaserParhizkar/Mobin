@@ -4,21 +4,20 @@
     using Kendo.Mvc.Resources;
     using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
-    using System.Text.Encodings.Web;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+    using System.Text.Encodings.Web;
     using System.Text.RegularExpressions;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     public class SchedulerEditableSettings<T> : SchedulerEditableSettingsBase
         where T : class
     {
         private const string DefaultConfirmation = "Are you sure you want to delete this event?";
 
         public SchedulerEditableSettings()
-            :base()
+            : base()
         {
             DisplayDeleteConfirmation = true;
 
@@ -80,11 +79,11 @@
 
             var title = PopUp.Title ?? Messages.Scheduler_Editor_EditorTitle;
 
-            if ((string)PopUp.Title !=  Messages.Scheduler_Editor_EditorTitle)
+            if ((string)PopUp.Title != Messages.Scheduler_Editor_EditorTitle)
             {
                 result["title"] = PopUp.Title;
             }
-            
+
             //if (!PopUp.Modal)
             //{
             //     result["modal"] = PopUp.Modal;
@@ -94,22 +93,22 @@
             //{
             //     result["draggable"] = PopUp.Draggable;
             //}
-            
+
             if (PopUp.ResizingSettings.Enabled)
             {
                 result["resizable"] = PopUp.ResizingSettings.Enabled;
             }
-            
+
             if (PopUp.Width > 0)
             {
                 result["width"] = PopUp.Width;
             }
-            
+
             if (PopUp.Height > 0)
             {
                 result["height"] = PopUp.Height;
             }
-            
+
             //if (PopUp.PositionSettings.Left != int.MinValue || PopUp.PositionSettings.Top != int.MinValue)
             //{
             //    var topLeft = new Dictionary<string, int>();
@@ -224,7 +223,7 @@
         }
 
         private T CreateDefaultItem()
-        {          
+        {
             return Activator.CreateInstance<T>();
         }
 

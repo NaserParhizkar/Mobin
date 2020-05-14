@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI NumericTextBox for ASP.NET MVC events.
     /// </summary>
-    public class NumericTextBoxEventBuilder: EventBuilder
+    public class NumericTextBoxEventBuilder : EventBuilder
     {
         public NumericTextBoxEventBuilder(IDictionary<string, object> events)
             : base(events)

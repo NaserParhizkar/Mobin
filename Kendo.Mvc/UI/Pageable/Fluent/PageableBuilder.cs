@@ -37,7 +37,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             if (enabled)
             {
-                pager.PageSizes = new [] { 5, 10, 20 };
+                pager.PageSizes = new[] { 5, 10, 20 };
             }
             else
             {

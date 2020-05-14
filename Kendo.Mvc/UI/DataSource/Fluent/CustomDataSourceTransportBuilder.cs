@@ -1,9 +1,9 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.Collections.Generic;
     using Kendo.Mvc.Extensions;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Collections.Generic;
 
 
     /// <summary>
@@ -13,7 +13,7 @@
     {
         public CustomDataSourceTransportBuilder(Transport transport, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(transport, viewContext, urlGenerator)
-        { 
+        {
         }
 
         /// <summary>

@@ -1,9 +1,8 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
-    using System;
+    using Kendo.Mvc.Extensions;
     using System.Collections.Generic;
     using System.Linq;
-    using Kendo.Mvc.Extensions;
 
     public static class FilterDescriptorExtensions
     {
@@ -43,11 +42,11 @@ namespace Kendo.Mvc.Infrastructure.Implementation
 
         public static IEnumerable<IFilterDescriptor> SetMemberTypeFrom(this IEnumerable<IFilterDescriptor> descriptors, object item)
         {
-            if (item  != null)
+            if (item != null)
             {
                 descriptors.SelectMemberDescriptors()
                            .Each(f => f.SetMemberTypeFrom(item));
-            }            
+            }
 
             return descriptors;
         }

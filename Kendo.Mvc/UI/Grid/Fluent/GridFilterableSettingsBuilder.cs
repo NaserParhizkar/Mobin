@@ -9,7 +9,7 @@ namespace Kendo.Mvc.UI.Fluent
     {
         public GridFilterableSettingsBuilder(GridFilterableSettings settings) : base(settings)
         {
-        } 
+        }
     }
 
     public abstract class GridFilterableSettingsBuilderBase<TDataSourceBuilder> : IHideObjectMembers
@@ -92,6 +92,6 @@ namespace Kendo.Mvc.UI.Fluent
             settings.Enabled = true;
 
             return (TDataSourceBuilder)this;
-        }    
-    }    
+        }
+    }
 }

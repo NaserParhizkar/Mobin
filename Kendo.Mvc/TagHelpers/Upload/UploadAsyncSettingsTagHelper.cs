@@ -6,7 +6,7 @@ namespace Kendo.Mvc.TagHelpers
     /// <summary>
     /// Kendo UI async TagHelper
     /// </summary>
-    [HtmlTargetElement("kendo-upload-async-settings", ParentTag="kendo-upload", TagStructure=TagStructure.WithoutEndTag )]
+    [HtmlTargetElement("kendo-upload-async-settings", ParentTag = "kendo-upload", TagStructure = TagStructure.WithoutEndTag)]
     [SuppressTagRendering]
     public partial class UploadAsyncSettingsTagHelper : TagHelperChildBase
     {

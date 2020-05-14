@@ -1,5 +1,5 @@
 namespace Kendo.Mvc
-{    
+{
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Routing;
 

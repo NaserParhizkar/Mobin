@@ -1,6 +1,6 @@
 namespace Kendo.Mvc.UI
-{    
-    using System.Collections.Generic;    
+{
+    using System.Collections.Generic;
 
     public interface IGridColumn
     {
@@ -14,7 +14,7 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-        
+
         string ClientFooterTemplate
         {
             get;
@@ -25,7 +25,7 @@ namespace Kendo.Mvc.UI
         {
             get;
             set;
-        }     
+        }
 
         bool Encoded
         {
@@ -33,32 +33,32 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-		string ClientHeaderTemplate
-		{
-			get;
-			set;
-		}
+        string ClientHeaderTemplate
+        {
+            get;
+            set;
+        }
 
-		IDictionary<string, object> HeaderHtmlAttributes 
-        { 
-            get; 
+        IDictionary<string, object> HeaderHtmlAttributes
+        {
+            get;
         }
 
         IDictionary<string, object> FooterHtmlAttributes
         {
             get;
-        }         
-        
-        bool Hidden 
-        { 
-            get; 
-            set; 
         }
 
-        bool Locked 
-        { 
-            get; 
-            set; 
+        bool Hidden
+        {
+            get;
+            set;
+        }
+
+        bool Locked
+        {
+            get;
+            set;
         }
 
         bool Lockable
@@ -72,22 +72,22 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-        
-        IDictionary<string, object> HtmlAttributes 
-        { 
-            get; 
+
+        IDictionary<string, object> HtmlAttributes
+        {
+            get;
         }
-        
-        string Title 
-        { 
-            get; 
-            set; 
+
+        string Title
+        {
+            get;
+            set;
         }
-        
-        bool Visible 
-        { 
-            get; 
-            set; 
+
+        bool Visible
+        {
+            get;
+            set;
         }
 
         int MinScreenWidth
@@ -102,10 +102,10 @@ namespace Kendo.Mvc.UI
             set;
         }
 
-        string Width 
-        { 
-            get; 
-            set; 
-        }      
+        string Width
+        {
+            get;
+            set;
+        }
     }
 }

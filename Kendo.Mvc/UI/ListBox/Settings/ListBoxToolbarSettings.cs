@@ -1,6 +1,3 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +14,7 @@ namespace Kendo.Mvc.UI
         }
 
         public List<string> Tools { get; private set; }
-        
+
         public Dictionary<string, object> Serialize()
         {
             var settings = SerializeSettings();

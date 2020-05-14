@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI MaskedTextBox for ASP.NET MVC events.
     /// </summary>
-    public class MaskedTextBoxEventBuilder: EventBuilder
+    public class MaskedTextBoxEventBuilder : EventBuilder
     {
         public MaskedTextBoxEventBuilder(IDictionary<string, object> events)
             : base(events)

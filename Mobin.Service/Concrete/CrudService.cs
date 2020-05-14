@@ -3,18 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Mobin.ExpressionJsonSerializer;
-using Mobin.Common;
 
 namespace Mobin.Service
 {
     public class CrudService<TEntity> : ICrudService<TEntity> where TEntity : class, new()
     {
-        private readonly IMobinUnitOfWork mobinUnitOfWork;
+        protected readonly IMobinUnitOfWork mobinUnitOfWork;
 
-        public CrudService(IMobinUnitOfWork unitofwork)
+        //public CrudService(IMobinUnitOfWork unitofwork):this(delegate(Type type) { return unitofwork; })
+        //{
+        //    mobinUnitOfWork = unitofwork;
+        //}
+
+        public CrudService(Func<Type, IMobinUnitOfWork> unitofwork)
         {
-            mobinUnitOfWork = unitofwork;
+            mobinUnitOfWork = unitofwork(typeof(TEntity));
         }
 
         public virtual TEntity GetEntityByKey<TKey>(TKey key)
@@ -32,14 +35,18 @@ namespace Mobin.Service
             return mobinUnitOfWork.Repository<TEntity>().GetAll().AsEnumerable();
         }
 
-        public virtual void Insert(TEntity entity)
+        public virtual TEntity Insert(TEntity entity)
         {
-            mobinUnitOfWork.Repository<TEntity>().Insert(entity);
+            var returnEntity = mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
+            mobinUnitOfWork.Save();
+            return returnEntity;
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual TEntity Update(TEntity entity)
         {
-            mobinUnitOfWork.Repository<TEntity>().Update(entity);
+            var returnEntity = mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
+            mobinUnitOfWork.Save();
+            return returnEntity;
         }
 
         public virtual void Delete(TEntity entity)

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Routing;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Routing;
 
 namespace Kendo.Mvc.UI
 {

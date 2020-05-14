@@ -1,10 +1,7 @@
-using System;
-using Microsoft.AspNetCore.Routing;
-
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
     //public class VirtualPathProviderWrapper : IVirtualPathProvider
-            public class VirtualPathProviderWrapper
+    public class VirtualPathProviderWrapper
     {
         //internal static Func<VirtualPathData> getCurrentProvider = () => HostingEnvironment.;
 

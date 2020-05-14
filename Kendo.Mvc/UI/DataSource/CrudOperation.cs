@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Routing;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Kendo.Mvc.UI
 {
@@ -12,14 +12,14 @@ namespace Kendo.Mvc.UI
         private string actionName;
 
         public CrudOperation()
-        {            
+        {
             RouteValues = new RouteValueDictionary();
             Data = new ClientHandlerDescriptor();
             Cache = true;
         }
 
         private string Encode(string value)
-        {            
+        {
             value = Regex.Replace(value, "(%20)*%23%3D(%20)*", "#=", RegexOptions.IgnoreCase);
             value = Regex.Replace(value, "(%20)*%23(%20)*", "#", RegexOptions.IgnoreCase);
             value = Regex.Replace(value, "(%20)*%24%7B(%20)*", "${", RegexOptions.IgnoreCase);
@@ -62,7 +62,7 @@ namespace Kendo.Mvc.UI
             }
         }
 
-        public string DataType { get; set; }               
+        public string DataType { get; set; }
 
         public string ActionName
         {

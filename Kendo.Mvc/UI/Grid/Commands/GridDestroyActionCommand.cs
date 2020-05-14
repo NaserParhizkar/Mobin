@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.UI
 {
-	using Kendo.Mvc.Resources;
+    using Kendo.Mvc.Resources;
 
-	public class GridDestroyActionCommand : GridActionCommandBase
+    public class GridDestroyActionCommand : GridActionCommandBase
     {
         public GridDestroyActionCommand()
         {
@@ -12,6 +12,6 @@ namespace Kendo.Mvc.UI
         public override string Name
         {
             get { return "destroy"; }
-        }		
+        }
     }
 }

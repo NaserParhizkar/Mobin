@@ -1,7 +1,7 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-	public partial class WidgetFactory<TModel>
-	{
+    public partial class WidgetFactory<TModel>
+    {
         /// <summary>
         /// Creates a new <see cref="AutoComplete"/>.
         /// </summary>

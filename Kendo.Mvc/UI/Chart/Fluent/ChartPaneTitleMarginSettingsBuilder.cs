@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartPaneTitleMarginSettings
     /// </summary>
     public partial class ChartPaneTitleMarginSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartPaneTitleMarginSettingsBuilder(ChartPaneTitleMarginSettings<T> container)
         {

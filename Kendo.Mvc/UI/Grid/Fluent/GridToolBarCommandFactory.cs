@@ -1,22 +1,19 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using Kendo.Mvc.Infrastructure;
-
     /// <summary>
     /// Defines the fluent interface for configuring toolbar commands.
     /// </summary>
     /// <typeparam name="T">The type of the model</typeparam>    
     public class GridToolBarCommandFactory<T> : IHideObjectMembers
-		where T : class
+        where T : class
     {
         private readonly GridToolBarSettings settings;
-		private readonly Grid<T> grid;
+        private readonly Grid<T> grid;
 
-		public GridToolBarCommandFactory(GridToolBarSettings settings, Grid<T> grid)
+        public GridToolBarCommandFactory(GridToolBarSettings settings, Grid<T> grid)
         {
             this.settings = settings;
-			this.grid = grid;
+            this.grid = grid;
         }
 
         /// <summary>
@@ -29,9 +26,9 @@ namespace Kendo.Mvc.UI.Fluent
 
             settings.Commands.Add(command);
 
-			grid.Editable.Enabled = true;
+            grid.Editable.Enabled = true;
 
-			return new GridToolBarCommandBuilder(command);
+            return new GridToolBarCommandBuilder(command);
         }
 
         /// <summary>
@@ -69,12 +66,12 @@ namespace Kendo.Mvc.UI.Fluent
 
             settings.Commands.Add(save);
 
-			var cancel = new GridToolBarCancelCommand(save);
-			settings.Commands.Add(cancel);			
+            var cancel = new GridToolBarCancelCommand(save);
+            settings.Commands.Add(cancel);
 
-			grid.Editable.Enabled = true;
+            grid.Editable.Enabled = true;
 
-			return new GridToolBarSaveCommandBuilder(save);
+            return new GridToolBarSaveCommandBuilder(save);
         }
 
         /// <summary>
@@ -88,15 +85,15 @@ namespace Kendo.Mvc.UI.Fluent
 
             return new GridToolBarCustomCommandBuilder(command);
         }
-	
-		/// <summary>
-		/// Sets toolbar template.
-		/// </summary>
-		/// <param name="template">The action defining the template.</param>
-		public void ClientTemplate(string template)
-		{
-			settings.ClientTemplate = template;
-		}
+
+        /// <summary>
+        /// Sets toolbar template.
+        /// </summary>
+        /// <param name="template">The action defining the template.</param>
+        public void ClientTemplate(string template)
+        {
+            settings.ClientTemplate = template;
+        }
 
         /// <summary>
 		/// Sets the id of the script element which contains the client-side toolbar template of the grid.

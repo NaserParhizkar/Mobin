@@ -9,7 +9,7 @@ namespace Kendo.Mvc.UI.Fluent
     public class ReadOnlyWebApiDataSourceBuilder<TModel> : WebApiDataSourceBuilderBase<TModel, ReadOnlyWebApiDataSourceBuilder<TModel>>
         where TModel : class
     {
-        public ReadOnlyWebApiDataSourceBuilder(DataSource dataSource, ViewContext viewContext, IUrlGenerator urlGenerator) 
+        public ReadOnlyWebApiDataSourceBuilder(DataSource dataSource, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(dataSource, viewContext, urlGenerator)
         {
         }

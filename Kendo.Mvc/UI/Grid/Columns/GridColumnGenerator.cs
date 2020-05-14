@@ -1,14 +1,14 @@
 namespace Kendo.Mvc.UI
 {
+    using Extensions;
+    using Kendo.Mvc.Infrastructure;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Extensions;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
     public class GridColumnGenerator<T> where T : class
     {
         private readonly Grid<T> grid;
@@ -25,13 +25,14 @@ namespace Kendo.Mvc.UI
                                 .Where(property => property.PropertyType.IsEnumType() || (property.PropertyType != typeof(object) && property.PropertyType.IsPredefinedType())
                                     || (property.PropertyType.IsNullableType() && property.PropertyType.GetNonNullableType().IsPredefinedType()));
 
-			var modelMetadataProvider = grid.ModelMetadataProvider;
+            var modelMetadataProvider = grid.ModelMetadataProvider;
             var viewDataDictionary = new ViewDataDictionary<T>(modelMetadataProvider, new ModelStateDictionary());
 
-			properties = properties.Select(property => new {
-                                       Order = ExpressionMetadataProvider.FromStringExpression(property.Name, viewDataDictionary, modelMetadataProvider).Metadata.Order,
-                                       Property = property
-                                    })
+            properties = properties.Select(property => new
+            {
+                Order = ExpressionMetadataProvider.FromStringExpression(property.Name, viewDataDictionary, modelMetadataProvider).Metadata.Order,
+                Property = property
+            })
                                     .OrderBy(property => property.Order)
                                     .Select(property => property.Property);
 
@@ -74,38 +75,38 @@ namespace Kendo.Mvc.UI
             ParameterExpression parameterExpression = Expression.Parameter(typeof(T), "x");
 
             Expression propertyExpression = Expression.Property(parameterExpression, property);
-            
+
             Expression expression = Expression.Lambda(funcType, propertyExpression, parameterExpression);
 
             return (GridColumnBase<T>)columnType.GetConstructor(new[] { grid.GetType(), expressionType }).Invoke(new object[] { grid, expression });
         }
-        
+
         public GridColumnBase<T> CreateColumn(GridColumnSettings settings)
-        {			
-			var commandSettings = settings as GridCommandColumnSettings;
-			if (commandSettings != null)
-			{
-				var column = new GridActionColumn<T>(grid);
+        {
+            var commandSettings = settings as GridCommandColumnSettings;
+            if (commandSettings != null)
+            {
+                var column = new GridActionColumn<T>(grid);
 
-				column.Settings = settings;
+                column.Settings = settings;
 
-				foreach (var command in commandSettings.Commands)
-				{	
-					grid.Editable.Enabled = true;					
-					column.Commands.Add(command);
-				}
+                foreach (var command in commandSettings.Commands)
+                {
+                    grid.Editable.Enabled = true;
+                    column.Commands.Add(command);
+                }
 
-				if (settings.ClientHeaderTemplate.HasValue())
-				{					
-					column.ClientHeaderTemplate = settings.ClientHeaderTemplate;
-				}
+                if (settings.ClientHeaderTemplate.HasValue())
+                {
+                    column.ClientHeaderTemplate = settings.ClientHeaderTemplate;
+                }
 
-				return column;
+                return column;
 
-			}
-			return CreateBoundColumn(settings);
+            }
+            return CreateBoundColumn(settings);
         }
-        
+
         private GridColumnBase<T> CreateBoundColumn(GridColumnSettings settings)
         {
             var memberType = settings.MemberType;

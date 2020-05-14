@@ -1,12 +1,11 @@
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
 
 namespace Kendo.Mvc.UI
 {
@@ -21,9 +20,9 @@ namespace Kendo.Mvc.UI
             Value = null;
         }
 
-		public PopupAnimation Animation { get; } = new PopupAnimation();
+        public PopupAnimation Animation { get; } = new PopupAnimation();
 
-		public CultureInfo CultureInfo
+        public CultureInfo CultureInfo
         {
             get
             {
@@ -50,19 +49,19 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-		public bool EnableFooter
-		{
-			get;
-			set;
-		} = true;
+        public bool EnableFooter
+        {
+            get;
+            set;
+        } = true;
 
-		public string FooterId
-		{
-			get;
-			set;
-		}
+        public string FooterId
+        {
+            get;
+            set;
+        }
 
-		protected override void WriteHtml(TextWriter writer)
+        protected override void WriteHtml(TextWriter writer)
         {
             var explorer = ExpressionMetadataProvider.FromStringExpression(Name, HtmlHelper.ViewData, HtmlHelper.MetadataProvider);
             var tag = Generator.GenerateDateTimeInput(ViewContext, explorer, Id, Name, Value, Format, HtmlAttributes);
@@ -82,17 +81,17 @@ namespace Kendo.Mvc.UI
         {
             var settings = SerializeSettings();
 
-			var idPrefix = "#";
-			if (IsInClientTemplate)
-			{
-				idPrefix = "\\" + idPrefix;
-			}
+            var idPrefix = "#";
+            if (IsInClientTemplate)
+            {
+                idPrefix = "\\" + idPrefix;
+            }
 
-			var animation = Animation.ToJson();
-			if (animation.Any())
-			{
-				settings["animation"] = animation["animation"];
-			}
+            var animation = Animation.ToJson();
+            if (animation.Any())
+            {
+                settings["animation"] = animation["animation"];
+            }
 
             if (DisableDatesHandler?.HasValue() == true)
             {
@@ -104,29 +103,29 @@ namespace Kendo.Mvc.UI
                 settings["disableDates"] = DisableDates;
             }
 
-			if (EnableFooter)
-			{
-				if (FooterId.HasValue())
-				{
-					settings["footer"] = new ClientHandlerDescriptor { HandlerName = string.Format("jQuery('{0}{1}').html()", idPrefix, FooterId) };
-				}
-				else if (Footer.HasValue())
-				{
-					settings["footer"] = Footer;
-				}
-			}
-			else
-			{
-				settings["footer"] = EnableFooter;
-			}
-			
-			var month = MonthTemplate.Serialize();
-			if (month.Any())
-			{
-				settings["month"] = month;
-			}
+            if (EnableFooter)
+            {
+                if (FooterId.HasValue())
+                {
+                    settings["footer"] = new ClientHandlerDescriptor { HandlerName = string.Format("jQuery('{0}{1}').html()", idPrefix, FooterId) };
+                }
+                else if (Footer.HasValue())
+                {
+                    settings["footer"] = Footer;
+                }
+            }
+            else
+            {
+                settings["footer"] = EnableFooter;
+            }
 
-			writer.Write(Initializer.Initialize(Selector, "DateTimePicker", settings));
+            var month = MonthTemplate.Serialize();
+            if (month.Any())
+            {
+                settings["month"] = month;
+            }
+
+            writer.Write(Initializer.Initialize(Selector, "DateTimePicker", settings));
         }
     }
 }

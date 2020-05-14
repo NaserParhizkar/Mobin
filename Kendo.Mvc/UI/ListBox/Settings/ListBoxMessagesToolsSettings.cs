@@ -1,12 +1,12 @@
-using System.Collections.Generic;
 using Kendo.Mvc.Resources;
+using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI ListBoxMessagesToolsSettings class
     /// </summary>
-    public partial class ListBoxMessagesToolsSettings 
+    public partial class ListBoxMessagesToolsSettings
     {
         public ListBoxMessagesToolsSettings()
         {

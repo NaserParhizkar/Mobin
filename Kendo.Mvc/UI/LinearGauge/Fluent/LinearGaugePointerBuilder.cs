@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Kendo.Mvc.Extensions;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -8,7 +7,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring LinearGaugePointer
     /// </summary>
     public partial class LinearGaugePointerBuilder
-        
+
     {
         public LinearGaugePointerBuilder(LinearGaugePointer container)
         {

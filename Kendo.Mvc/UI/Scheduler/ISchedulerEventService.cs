@@ -1,9 +1,7 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
-    using System.Linq;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using System.Linq;
 
     public interface ISchedulerEventService<T>
         where T : class, ISchedulerEvent

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartLegendLabelsSettings
     /// </summary>
     public partial class ChartLegendLabelsSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartLegendLabelsSettingsBuilder(ChartLegendLabelsSettings<T> container)
         {

@@ -11,7 +11,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         public FilterDescriptorCollectionExpressionBuilder(ParameterExpression parameterExpression, IEnumerable<IFilterDescriptor> filterDescriptors)
             : this(parameterExpression, filterDescriptors, FilterCompositionLogicalOperator.And)
         {
-            
+
         }
 
         public FilterDescriptorCollectionExpressionBuilder(
@@ -54,15 +54,15 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             switch (logicalOperator)
             {
                 case FilterCompositionLogicalOperator.Or:
-                {
-                    return Expression.OrElse(left, right);
-                }
+                    {
+                        return Expression.OrElse(left, right);
+                    }
 
                 case FilterCompositionLogicalOperator.And:
                 default:
-                {
-                    return Expression.AndAlso(left, right);
-                }
+                    {
+                        return Expression.AndAlso(left, right);
+                    }
             }
         }
 

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -134,7 +133,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Specifies the preferred rendering style.
         /// </summary>

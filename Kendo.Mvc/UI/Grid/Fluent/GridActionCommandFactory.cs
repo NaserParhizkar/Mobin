@@ -1,5 +1,3 @@
-using Kendo.Mvc.Infrastructure;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
@@ -16,7 +14,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             Column = column;
         }
-        
+
         private GridActionColumn<T> Column
         {
             get;
@@ -30,10 +28,10 @@ namespace Kendo.Mvc.UI.Fluent
         public GridEditActionCommandBuilder Edit()
         {
             GridEditActionCommand command = new GridEditActionCommand();
-            
+
             Column.Commands.Add(command);
-			
-			Column.Grid.Editable.Enabled = true;
+
+            Column.Grid.Editable.Enabled = true;
 
             return new GridEditActionCommandBuilder(command);
         }
@@ -46,12 +44,12 @@ namespace Kendo.Mvc.UI.Fluent
         {
             GridDestroyActionCommand command = new GridDestroyActionCommand();
 
-            Column.Commands.Add(command);			
-			Column.Grid.Editable.Enabled = true;
+            Column.Commands.Add(command);
+            Column.Grid.Editable.Enabled = true;
 
             return new GridDestroyActionCommandBuilder(command);
-        }        
-                
+        }
+
         /// <summary>
         /// Defines a custom command.
         /// </summary>

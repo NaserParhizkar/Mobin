@@ -8,7 +8,7 @@
         protected readonly PivotTransportConnection connection;
 
         public PivotDataSourceTransportConnectionBuilder(PivotTransportConnection connection)
-        { 
+        {
             this.connection = connection;
         }
 

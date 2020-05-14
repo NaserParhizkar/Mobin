@@ -13,7 +13,7 @@ namespace Kendo.Mvc.UI
 
         public IList<IWindowButton> Container
         {
-            get 
+            get
             {
                 return this.container;
             }

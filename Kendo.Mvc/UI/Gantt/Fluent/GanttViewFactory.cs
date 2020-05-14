@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<GanttView<TTaskModel, TDependenciesModel>>
     /// </summary>
     public partial class GanttViewFactory<TTaskModel, TDependenciesModel>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttViewFactory(List<GanttView<TTaskModel, TDependenciesModel>> container)
         {

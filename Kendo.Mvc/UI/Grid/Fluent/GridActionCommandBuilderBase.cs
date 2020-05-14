@@ -1,17 +1,16 @@
 namespace Kendo.Mvc.UI.Fluent
 {
 
-    using System.Collections.Generic;
     using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.Infrastructure;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the fluent interface for configuring command.
     /// </summary>    
     /// <typeparam name="TCommand">The type of the command.</typeparam>
     /// <typeparam name="TBuilder">The type of the builder.</typeparam>
-    public abstract class GridActionCommandBuilderBase<TCommand, TBuilder>  : IHideObjectMembers
+    public abstract class GridActionCommandBuilderBase<TCommand, TBuilder> : IHideObjectMembers
         where TCommand : GridActionCommandBase
         where TBuilder : GridActionCommandBuilderBase<TCommand, TBuilder>
     {

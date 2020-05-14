@@ -1,16 +1,16 @@
 ﻿namespace Kendo.Mvc.UI
 {
+    using Extensions;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;    
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class ModelDescriptor : JsonObject
     {
         public ModelDescriptor(Type modelType, IModelMetadataProvider modelMetadataProvider)
-        {            
-            var metadata = modelMetadataProvider.GetMetadataForType(modelType);                
+        {
+            var metadata = modelMetadataProvider.GetMetadataForType(modelType);
             Fields = Translate(metadata);
         }
 
@@ -123,8 +123,8 @@
                     Member = p.PropertyName,
                     MemberType = p.ModelType,
                     IsEditable = !p.IsReadOnly
-                }).ToList();            
-        }        
+                }).ToList();
+        }
 
         private object CreateDataItem(Type modelType)
         {

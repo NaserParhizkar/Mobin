@@ -1,18 +1,151 @@
-﻿using System;
+﻿using Mobin.Common.Dynamics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using Mobin.Common;
-using Mobin.Common.Dynamics;
 
 namespace Mobin.Common.Expressions
 {
+    public static class ExpressionHelper
+    {
+        public static string GetExpressionText(string expression)
+        {
+            return
+                String.Equals(expression, "model", StringComparison.OrdinalIgnoreCase)
+                    ? String.Empty // If it's exactly "model", then give them an empty string, to replicate the lambda behavior
+                    : expression;
+        }
+
+        public static string GetExpressionText(LambdaExpression expression)
+        {
+            // Split apart the expression string for property/field accessors to create its name
+            Stack<string> nameParts = new Stack<string>();
+            Expression part = expression.Body;
+
+            while (part != null)
+            {
+                if (part.NodeType == ExpressionType.Call)
+                {
+                    MethodCallExpression methodExpression = (MethodCallExpression)part;
+
+                    if (!IsSingleArgumentIndexer(methodExpression))
+                    {
+                        break;
+                    }
+
+                    nameParts.Push(
+                        GetIndexerInvocation(
+                            methodExpression.Arguments.Single(),
+                            expression.Parameters.ToArray()));
+
+                    part = methodExpression.Object;
+                }
+                else if (part.NodeType == ExpressionType.ArrayIndex)
+                {
+                    BinaryExpression binaryExpression = (BinaryExpression)part;
+
+                    nameParts.Push(
+                        GetIndexerInvocation(
+                            binaryExpression.Right,
+                            expression.Parameters.ToArray()));
+
+                    part = binaryExpression.Left;
+                }
+                else if (part.NodeType == ExpressionType.MemberAccess)
+                {
+                    MemberExpression memberExpressionPart = (MemberExpression)part;
+                    nameParts.Push("." + memberExpressionPart.Member.Name);
+                    part = memberExpressionPart.Expression;
+                }
+                else if (part.NodeType == ExpressionType.Parameter)
+                {
+                    // Dev10 Bug #907611
+                    // When the expression is parameter based (m => m.Something...), we'll push an empty
+                    // string onto the stack and stop evaluating. The extra empty string makes sure that
+                    // we don't accidentally cut off too much of m => m.Model.
+                    nameParts.Push(String.Empty);
+                    part = null;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            // If it starts with "model", then strip that away
+            if (nameParts.Count > 0 && String.Equals(nameParts.Peek(), ".model", StringComparison.OrdinalIgnoreCase))
+            {
+                nameParts.Pop();
+            }
+
+            if (nameParts.Count > 0)
+            {
+                return nameParts.Aggregate((left, right) => left + right).TrimStart('.');
+            }
+
+            return String.Empty;
+        }
+
+        private static string GetIndexerInvocation(Expression expression, ParameterExpression[] parameters)
+        {
+            Expression converted = Expression.Convert(expression, typeof(object));
+            ParameterExpression fakeParameter = Expression.Parameter(typeof(object), null);
+            Expression<Func<object, object>> lambda = Expression.Lambda<Func<object, object>>(converted, fakeParameter);
+            Func<object, object> func;
+
+            try
+            {
+                func = lambda.Compile();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException(
+                    String.Format(
+                        CultureInfo.CurrentCulture,
+                        "asd",
+                        expression,
+                        parameters[0].Name),
+                    ex);
+            }
+
+            return "[" + Convert.ToString(func(null), CultureInfo.InvariantCulture) + "]";
+        }
+
+        public static bool IsSingleArgumentIndexer(Expression expression)
+        {
+            MethodCallExpression methodCallExpression = expression as MethodCallExpression;
+            if (methodCallExpression == null || methodCallExpression.Arguments.Count != 1)
+            {
+                return false;
+            }
+            Type declaringType = methodCallExpression.Method.DeclaringType;
+            DefaultMemberAttribute customAttribute = declaringType.GetTypeInfo().GetCustomAttribute<DefaultMemberAttribute>(inherit: true);
+            if (customAttribute == null)
+            {
+                return false;
+            }
+            foreach (PropertyInfo runtimeProperty in declaringType.GetRuntimeProperties())
+            {
+                if (string.Equals(customAttribute.MemberName, runtimeProperty.Name, StringComparison.Ordinal) && runtimeProperty.GetMethod == methodCallExpression.Method)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+
+
     public static class ExpressionExtender
     {
+        static int traverse = 0;
+        static readonly object threadSafeTravers = new object();
+
         public static MemberExpression GetMemberExpression(this ParameterExpression parameterExpression, MemberExpression memberExpression)
         {
             var isParameterExpression = memberExpression.Expression is ParameterExpression;
@@ -63,7 +196,6 @@ namespace Mobin.Common.Expressions
                 return Expression.Bind(propertyInfo, makeBindingExpr);
             }
         }
-
         public static MemberInitExpression MakeInitExpression(this Type dynamicClassType, List<Expression> expressions)
         {
             var dynamicProps = dynamicClassType.GetProperties();
@@ -71,7 +203,7 @@ namespace Mobin.Common.Expressions
 
             for (int i = 0; i < expressions.Count; i++)
             {
-                foreach (var prop in dynamicProps)
+                for (var j = 0; j < dynamicProps.Length; j++)
                 {
                     var value = (Expression)expressions[i].GetPropertyValue("Body", false);
 
@@ -80,23 +212,34 @@ namespace Mobin.Common.Expressions
                         var memberExp = (MemberExpression)(expressions[i].GetPropertyValue("Body"));
                         var memberName = memberExp.Member.Name;
 
-                        if (memberName == prop.Name)
+                        var expLen = memberExp.ToString().Split('.').Length;
+                        var diff = expLen - traverse;
+                        //x.Order.Employee.ReportsToNavigation.FirstName contain three nested json object
+                        //new {order = new { Employee = new { ReportsToNavigation = new { FirstName = ??}}}}
+                        //then diff variable must be 2 always      diff == 2   is true
+                        if (memberName == dynamicProps[j].Name && diff == 2)
                         {
-                            members_AssignmentExpression.Add(prop.BindNestedExpression(memberExp));
-                            expressions.RemoveAt(i);
-                            if (i != 0)
-                                break;
+                            if (members_AssignmentExpression.All(t => t.Member.Name != dynamicProps[j].Name))
+                            {
+                                members_AssignmentExpression.Add(dynamicProps[j].BindNestedExpression(memberExp));
+                                expressions.RemoveAt(i);
+                                if (i != 0 && j == dynamicProps.Length - 1)
+                                    break;
+                                if (expressions.Count == i)
+                                    break;
+                            }
                         }
                         else
                         {
-                            if (!prop.PropertyType.IsSealed && prop.PropertyType.GetProperties().Any())
+                            if (!dynamicProps[j].PropertyType.IsSealed && dynamicProps[j].PropertyType.GetProperties().Any())
                             {
-                                if (!members_AssignmentExpression.Any(t => t.Expression.Type == prop.PropertyType))
+                                if (!members_AssignmentExpression.Any(t => t.Expression.Type == dynamicProps[j].PropertyType))
                                 {
-                                    var newExp = MakeInitExpression(prop.PropertyType, expressions);
-                                    var bindToProperty = Expression.Bind(prop, newExp);
-
+                                    traverse++;
+                                    var newExp = MakeInitExpression(dynamicProps[j].PropertyType, expressions);
+                                    var bindToProperty = Expression.Bind(dynamicProps[j], newExp);
                                     members_AssignmentExpression.Add(bindToProperty);
+                                    traverse--;
                                 }
                             }
                         }
@@ -111,7 +254,7 @@ namespace Mobin.Common.Expressions
         {
             ParameterExpression sourceItem = Expression.Parameter(typeof(T), "x");
             var memberExprList = new List<MemberAssignment>();
-
+            traverse = 0;
             Type dynamicType = AppDomain.CurrentDomain.GetAssemblies()
                 .FirstOrDefault(ass => ass.GetName().Name == "DynamicLinqTypes")?.GetType("Anonymous");
             if (dynamicType == null)
@@ -145,6 +288,12 @@ namespace Mobin.Common.Expressions
             }
 
             return GetDynamicClass(properties);
+        }
+
+        public static Expression MakeItAsSimpleExpession(this Expression expression)
+        {
+            var body = (Expression)expression.GetPropertyValue(nameof(LambdaExpression.Body));//arguments
+            return body;
         }
 
         internal static Type GetDynamicClass(IDictionary<string, object> properties)

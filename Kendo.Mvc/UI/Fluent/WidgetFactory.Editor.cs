@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-
-namespace Kendo.Mvc.UI.Fluent
+﻿namespace Kendo.Mvc.UI.Fluent
 {
     public partial class WidgetFactory<TModel>
     {

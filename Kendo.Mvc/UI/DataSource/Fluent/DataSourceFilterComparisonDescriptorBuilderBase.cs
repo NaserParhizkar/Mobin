@@ -8,7 +8,7 @@ namespace Kendo.Mvc.UI.Fluent
         protected DataSourceFilterComparisonDescriptorBuilderBase(CompositeFilterDescriptor descriptor) : base(descriptor)
         {
         }
-        
+
         /// <summary>
         /// Includes only values which are less then the given value.
         /// </summary>                

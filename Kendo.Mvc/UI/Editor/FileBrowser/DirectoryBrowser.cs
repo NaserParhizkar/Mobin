@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.AspNetCore.Hosting;
 
 namespace Kendo.Mvc.UI
 {
     public class DirectoryBrowser : IDirectoryBrowser
-    {       
-        public virtual IHostingEnvironment HostingEnvironment { get; set; }
+    {
+        public virtual IWebHostEnvironment HostingEnvironment { get; set; }
 
         public IEnumerable<FileBrowserEntry> GetFiles(string path, string filter)
         {
@@ -31,7 +31,7 @@ namespace Kendo.Mvc.UI
 
             return directory.GetDirectories()
                 .Select(subDirectory => new FileBrowserEntry
-                { 
+                {
                     Name = subDirectory.Name,
                     EntryType = FileBrowserEntryType.Directory
                 });

@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI TreeMap for ASP.NET MVC events.
     /// </summary>
-    public class TreeMapEventBuilder: EventBuilder
+    public class TreeMapEventBuilder : EventBuilder
     {
         public TreeMapEventBuilder(IDictionary<string, object> events)
             : base(events)

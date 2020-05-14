@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Window for ASP.NET MVC events.
     /// </summary>
-    public class WindowEventBuilder: EventBuilder
+    public class WindowEventBuilder : EventBuilder
     {
         public WindowEventBuilder(IDictionary<string, object> events)
             : base(events)

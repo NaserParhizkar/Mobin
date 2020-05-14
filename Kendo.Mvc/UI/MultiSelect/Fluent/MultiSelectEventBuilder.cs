@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI MultiSelect for ASP.NET MVC events.
     /// </summary>
-    public class MultiSelectEventBuilder: EventBuilder
+    public class MultiSelectEventBuilder : EventBuilder
     {
         public MultiSelectEventBuilder(IDictionary<string, object> events)
             : base(events)

@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mobin.ExpressionJsonSerializer
 {
     partial class Deserializer
     {
+        private readonly static object _threadSafeObj = new object();
+
         private static readonly Dictionary<Assembly, Dictionary<string, Dictionary<string, Type>>>
             TypeCache = new Dictionary<Assembly, Dictionary<string, Dictionary<string, Type>>>();
 
@@ -19,6 +19,7 @@ namespace Mobin.ExpressionJsonSerializer
 
         private Type Type(JToken token)
         {
+            System.Threading.Monitor.Enter(_threadSafeObj);
             if (token == null || token.Type != JTokenType.Object)
             {
                 return null;
@@ -47,7 +48,7 @@ namespace Mobin.ExpressionJsonSerializer
             if (!types.TryGetValue(typeName, out type))
             {
                 var dynamicLinqAssembly = AppDomain.CurrentDomain.GetAssemblies().SingleOrDefault(assembly =>
-                    assembly.GetName().Name == "DynamicClasses");
+                    assembly.GetName().Name.Contains("DynamicClasses"));
                 if (dynamicLinqAssembly != null)
                     type = dynamicLinqAssembly.GetType(typeName);
 
@@ -59,13 +60,13 @@ namespace Mobin.ExpressionJsonSerializer
                     var assembly = Assembly.Load(new AssemblyName(assemblyName));
                     type = assembly.GetType(typeName);
                 }
-                if (type == null)
-                {
-                    throw new Exception(
-                        "Type could not be found: "
-                        + assemblyName + "." + typeName
-                    );
-                }
+                //if (type == null)
+                //{
+                //    throw new Exception(
+                //        "Type could not be found: "
+                //        + assemblyName + "." + typeName
+                //    );
+                //}
                 types[typeName] = type;
             }
 
@@ -74,11 +75,15 @@ namespace Mobin.ExpressionJsonSerializer
                 type = type.MakeGenericType(generic.ToArray());
             }
 
+            System.Threading.Monitor.Exit(_threadSafeObj);
+
             return type;
         }
 
         private ConstructorInfo Constructor(JToken token)
         {
+            System.Threading.Monitor.Enter(_threadSafeObj);
+
             if (token == null || token.Type != JTokenType.Object)
             {
                 return null;
@@ -126,6 +131,8 @@ namespace Mobin.ExpressionJsonSerializer
                 constructor = this.ConstructorInternal(type, name, signature);
                 cache2[signature] = constructor;
             }
+
+            System.Threading.Monitor.Exit(_threadSafeObj);
 
             return constructor;
         }

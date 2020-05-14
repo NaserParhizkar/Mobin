@@ -1,7 +1,5 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-    using Infrastructure;
-
     /// <summary>
     /// Defines the fluent interface for configuring <see cref="Grid{T}.Scrollable"/>
     /// </summary>
@@ -95,6 +93,6 @@ namespace Kendo.Mvc.UI.Fluent
             settings.Virtual = value;
 
             return this;
-        } 
+        }
     }
 }

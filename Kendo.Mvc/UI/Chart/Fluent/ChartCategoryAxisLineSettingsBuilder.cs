@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartCategoryAxisLineSettings
     /// </summary>
     public partial class ChartCategoryAxisLineSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartCategoryAxisLineSettingsBuilder(ChartCategoryAxisLineSettings<T> container)
         {

@@ -1,7 +1,7 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the fluent interface for configuring aggregates for a given field.

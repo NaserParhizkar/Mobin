@@ -1,9 +1,8 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using Kendo.Mvc.Infrastructure;
+    using Kendo.Mvc.Extensions;
     using System.Collections.Generic;
     using System.Linq;
-    using Kendo.Mvc.Extensions;
 
     public class PivotDataSourceSchema : JsonObject
     {

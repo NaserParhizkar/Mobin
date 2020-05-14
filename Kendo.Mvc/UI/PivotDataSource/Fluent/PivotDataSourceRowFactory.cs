@@ -6,13 +6,13 @@ namespace Kendo.Mvc.UI.Fluent
     /// </summary>
     public class PivotDataSourceRowFactory : IHideObjectMembers
     {
-         private readonly IList<PivotDataSourceRow> container;
+        private readonly IList<PivotDataSourceRow> container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PivotDataSourceRowFactory"/> class.
         /// </summary>
         /// <param name="container">The container</param>
-         public PivotDataSourceRowFactory(IList<PivotDataSourceRow> container)
+        public PivotDataSourceRowFactory(IList<PivotDataSourceRow> container)
         {
             this.container = container;
         }

@@ -1,19 +1,19 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading;
-    using System.Reflection;
-    using System.Linq;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.CodeAnalysis.CSharp.Syntax;
     using Microsoft.CodeAnalysis.Emit;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyModel;
+    using System;
     using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
     using System.Reflection.PortableExecutable;
+    using System.Threading;
 
     /// <summary>
     /// Internal helper class used to generate dynamic classes
@@ -28,7 +28,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
 
         private int classCount;
         private readonly ReaderWriterLockSlim rwLock;
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly ConcurrentDictionary<string, AssemblyMetadata> _metadataFileCache;
         private static string TO_STRING_METHOD_TEMPLATE =
            "public override string ToString() " +
@@ -51,12 +51,12 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             "return sb.ToString(); " +
         "}";
 
-        public static void Create(IHostingEnvironment env)
+        public static void Create(IWebHostEnvironment env)
         {
             Instance = new ClassFactory(env);
         }
 
-        private ClassFactory(IHostingEnvironment env)
+        private ClassFactory(IWebHostEnvironment env)
         {
 #if !NET461
             _assemblyLoadContext = new FactoryLoadContext();
@@ -65,7 +65,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             rwLock = new ReaderWriterLockSlim();
             _environment = env;
             _metadataFileCache = new ConcurrentDictionary<string, AssemblyMetadata>(StringComparer.OrdinalIgnoreCase);
-    }
+        }
 
         public Type GetDynamicClass(IEnumerable<DynamicProperty> properties)
         {
@@ -214,7 +214,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
             var propertyType = nonNullableType == null ?
                 SyntaxFactory.ParseTypeName(property.Type.FullName) :
                 SyntaxFactory.NullableType(SyntaxFactory.ParseTypeName(nonNullableType.FullName));
-           
+
             return SyntaxFactory.PropertyDeclaration(propertyType, property.Name)
                 .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
                 .WithAccessorList(

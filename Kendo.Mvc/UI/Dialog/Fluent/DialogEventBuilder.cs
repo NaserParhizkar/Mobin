@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Dialog for ASP.NET MVC events.
     /// </summary>
-    public class DialogEventBuilder: EventBuilder
+    public class DialogEventBuilder : EventBuilder
     {
         public DialogEventBuilder(IDictionary<string, object> events)
             : base(events)

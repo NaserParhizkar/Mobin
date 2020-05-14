@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using Extensions;
 
     public class DataSourceSortDescriptorFactory<TModel> : DataSourceSortDescriptorFactoryBase<DataSourceSortDescriptorFactory<TModel>>, IHideObjectMembers
         where TModel : class

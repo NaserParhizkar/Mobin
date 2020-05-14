@@ -6,8 +6,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI RangeSlider
     /// </summary>
-    public partial class RangeSliderBuilder<T>: WidgetBuilderBase<RangeSlider<T>, RangeSliderBuilder<T>>
-        where T : struct, IComparable 
+    public partial class RangeSliderBuilder<T> : WidgetBuilderBase<RangeSlider<T>, RangeSliderBuilder<T>>
+        where T : struct, IComparable
     {
         public RangeSliderBuilder(RangeSlider<T> component) : base(component)
         {

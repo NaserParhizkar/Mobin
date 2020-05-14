@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
     using Kendo.Mvc.Extensions;
     using Microsoft.AspNetCore.Mvc.Razor;
+    using System;
     using System.Text.Encodings.Web;
     public class HtmlTemplate : HtmlTemplate<object>
     {

@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring GridPdfSettings
     /// </summary>
     public partial class GridPdfSettingsBuilder<T> : PdfSettingsBuilder<GridPdfSettingsBuilder<T>>
-        
+
     {
-        public GridPdfSettingsBuilder(GridPdfSettings<T> container) : base (container)
+        public GridPdfSettingsBuilder(GridPdfSettings<T> container) : base(container)
         {
             Container = container;
         }

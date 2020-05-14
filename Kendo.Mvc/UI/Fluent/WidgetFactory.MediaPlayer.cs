@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Kendo.Mvc.UI.Fluent
+﻿namespace Kendo.Mvc.UI.Fluent
 {
     public partial class WidgetFactory<TModel>
     {
@@ -16,7 +14,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// )
         /// </code>
         /// </example>      
-        public virtual MediaPlayerBuilder MediaPlayer() 
+        public virtual MediaPlayerBuilder MediaPlayer()
         {
             return new MediaPlayerBuilder(new MediaPlayer(HtmlHelper.ViewContext));
         }

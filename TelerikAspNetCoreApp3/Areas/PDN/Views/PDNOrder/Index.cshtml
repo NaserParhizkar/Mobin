@@ -1,0 +1,67 @@
+﻿@using Northwind.WebUI.Controllers
+@using Northwind.Repository;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout-old.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+
+        @(Html.Kendo().Grid<Order>().Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.Customer.CustomerId).Filterable(t => t.Enabled(false));
+        columns.Bound(x => x.Customer.CompanyName).Filterable(t => t.Enabled(false));
+        columns.Bound(x => x.OrderDate).ClientTemplate("#=persianDate(OrderDate)#").Filterable(t => t.Cell(y => y.SuggestionOperator(FilterType.Contains)));
+    })
+                                                        .DataSource(dataSource =>
+                                                        {
+                                                            dataSource
+                                                            .Ajax().Filter(t => t.Add(y => y.Customer.Country).Contains("usa"))
+                                                            .PageSize(5)
+                                                            .Read(read => read.Action<CustomerApiController>(t => t.GetCustomersOrderInfo(null)));
+
+                                                        }).AutoBind(true)
+                                                        .Pageable()
+                                                        .Sortable()
+                                                         .Filterable(t => t.Mode(GridFilterMode.Menu).Enabled(true))
+        )
+    </div>
+</div>
+
+<script>
+    function persianDate(date) {
+        return (new pDate(+date)).persianFormat();
+    }
+</script>
+
+<div class="row">
+    <div class="col-xs-18 col-md-12">
+        @*@(Html.Kendo().Grid<Northwind.Repository;.OrderViewModel>()
+                    .Name("grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(p => p.OrderID).Filterable(false);
+                        columns.Bound(p => p.Freight);
+                        columns.Bound(p => p.OrderDate).Format("{0:MM/dd/yyyy}");
+                        columns.Bound(p => p.ShipName);
+                        columns.Bound(p => p.ShipCity);
+                    })
+                    .Pageable()
+                    .Sortable()
+                    .Scrollable()
+                    .Filterable()
+                    .HtmlAttributes(new { style = "height:550px;" })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(20)
+                        .Read(read => read.Action("Orders_Read", "Grid"))
+                    )
+            )*@
+
+        @*@Html.Kendo().DropDownList().Name("Drp").DataSource(ds => ds.Ajax().Read(read => read.Action("Orders_Read", "Grid"))).DataValueField("OrderID").DataTextField("OrderID")*@
+    </div>
+</div>

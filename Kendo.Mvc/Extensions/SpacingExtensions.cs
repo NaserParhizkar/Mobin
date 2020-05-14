@@ -1,9 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace Kendo.Mvc.Extensions
+﻿namespace Kendo.Mvc.Extensions
 {
     public static class SpacingExtensions
     {

@@ -30,7 +30,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         public EditorToolBuilder Palette(ColorPickerPalette palette)
         {
             Container.PaletteColors = null;

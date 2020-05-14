@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartXAxisTitleBorderSettings
     /// </summary>
     public partial class ChartXAxisTitleBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartXAxisTitleBorderSettingsBuilder(ChartXAxisTitleBorderSettings<T> container)
         {

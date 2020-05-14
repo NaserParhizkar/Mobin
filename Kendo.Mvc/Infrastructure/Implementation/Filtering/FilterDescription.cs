@@ -1,7 +1,7 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
-    using System.Linq.Expressions;
     using Kendo.Mvc.Infrastructure.Implementation.Expressions;
+    using System.Linq.Expressions;
 
     public abstract class FilterDescription : FilterDescriptorBase
     {

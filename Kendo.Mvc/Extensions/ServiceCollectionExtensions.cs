@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddMobin(this IServiceCollection services) 
+        public static IServiceCollection AddMobin(this IServiceCollection services)
         {
             foreach (var service in MobinServices.GetServices())
             {

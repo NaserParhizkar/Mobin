@@ -1,7 +1,6 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
     using System.Collections.Generic;
-    using Infrastructure;
 
     /// <summary>
     /// Creates items for the <see cref="PivotDataSourceMeasureDescriptor" />.

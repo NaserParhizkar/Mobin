@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxisCrosshairSettings
     /// </summary>
     public partial class ChartYAxisCrosshairSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisCrosshairSettingsBuilder(ChartYAxisCrosshairSettings<T> container)
         {

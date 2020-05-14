@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Sortable for ASP.NET MVC events.
     /// </summary>
-    public class SortableEventBuilder: EventBuilder
+    public class SortableEventBuilder : EventBuilder
     {
         public SortableEventBuilder(IDictionary<string, object> events)
             : base(events)

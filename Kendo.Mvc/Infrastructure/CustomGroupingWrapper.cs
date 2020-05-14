@@ -24,7 +24,7 @@ namespace Kendo.Mvc.UI
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new InvalidOperationException(Resources.Exceptions.YouCannotCallBindToWithoutCustomBinding);            
+            throw new InvalidOperationException(Resources.Exceptions.YouCannotCallBindToWithoutCustomBinding);
         }
 
         #endregion

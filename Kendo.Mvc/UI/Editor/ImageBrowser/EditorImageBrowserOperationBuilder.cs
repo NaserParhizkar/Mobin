@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -53,7 +53,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="controllerName">Controller name</param>        
         public EditorImageBrowserOperationBuilder Action(string actionName, string controllerName)
         {
-            return Action(actionName, controllerName, (object) null);
+            return Action(actionName, controllerName, (object)null);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// <param name="routeName"></param>        
         public EditorImageBrowserOperationBuilder Route(string routeName)
         {
-            operation.Route(routeName, (object) null);
+            operation.Route(routeName, (object)null);
 
             SetUrl();
 

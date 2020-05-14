@@ -5,7 +5,7 @@
 
     public abstract class SchedulerMultiDayView : SchedulerViewBase
     {
-        protected SchedulerMultiDayView(SchedulerViewType type, IScheduler scheduler) 
+        protected SchedulerMultiDayView(SchedulerViewType type, IScheduler scheduler)
             : base(type, scheduler)
         {
             AllDaySlot = true;
@@ -147,7 +147,7 @@
             set;
         }
 
-        public bool WorkDayCommand 
+        public bool WorkDayCommand
         {
             get;
             set;
@@ -251,7 +251,7 @@
             {
                 json["slotTemplate"] = new ClientHandlerDescriptor { HandlerName = String.Format("kendo.template(jQuery('{0}{1}').html())", idPrefix, SlotTemplateId) };
             }
- 
+
             if (!string.IsNullOrEmpty(AllDaySlotTemplate))
             {
                 json["allDaySlotTemplate"] = AllDaySlotTemplate;
@@ -260,7 +260,7 @@
             if (!string.IsNullOrEmpty(AllDaySlotTemplateId))
             {
                 json["allDaySlotTemplate"] = new ClientHandlerDescriptor { HandlerName = String.Format("kendo.template(jQuery('{0}{1}').html())", idPrefix, AllDaySlotTemplateId) };
-            }           
+            }
             if (StartTime != null)
             {
                 json["startTime"] = StartTime;
@@ -275,12 +275,12 @@
             {
                 json["workDayStart"] = WorkDayStart;
             }
-  
+
             if (WorkDayEnd != null)
             {
                 json["workDayEnd"] = WorkDayEnd;
             }
- 
+
             if (!Footer)
             {
                 json["footer"] = Footer;

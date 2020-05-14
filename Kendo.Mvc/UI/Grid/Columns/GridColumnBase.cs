@@ -1,11 +1,10 @@
 namespace Kendo.Mvc.UI
 {
+    using Kendo.Mvc.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using Infrastructure;
-    using Kendo.Mvc.Extensions;
     using System.Text.Encodings.Web;
 
 
@@ -26,7 +25,7 @@ namespace Kendo.Mvc.UI
                 Settings.Format = value;
             }
         }
-        
+
         public string EditorHtml
         {
             get;
@@ -36,15 +35,15 @@ namespace Kendo.Mvc.UI
         protected GridColumnBase(Grid<T> grid)
         {
             Grid = grid;
-            Settings = new GridColumnSettings();            
-            Visible = true;						
+            Settings = new GridColumnSettings();
+            Visible = true;
         }
 
-		/// <summary>
-		/// Gets or sets the grid.
-		/// </summary>
-		/// <value>The grid.</value>
-		public Grid<T> Grid { get; }
+        /// <summary>
+        /// Gets or sets the grid.
+        /// </summary>
+        /// <value>The grid.</value>
+        public Grid<T> Grid { get; }
 
         /// <summary>
         /// Gets the member of the column.
@@ -56,7 +55,7 @@ namespace Kendo.Mvc.UI
             {
                 return Settings.Member;
             }
-            
+
             set
             {
                 Settings.Member = value;
@@ -76,11 +75,11 @@ namespace Kendo.Mvc.UI
             }
 
             if (HeaderHtmlAttributes.Any())
-			{
-				json["headerAttributes"] = EncodeAttributes(HeaderHtmlAttributes);
-			}
+            {
+                json["headerAttributes"] = EncodeAttributes(HeaderHtmlAttributes);
+            }
 
-			if (FooterHtmlAttributes.Any())
+            if (FooterHtmlAttributes.Any())
             {
                 json["footerAttributes"] = EncodeAttributes(FooterHtmlAttributes);
             }
@@ -110,22 +109,22 @@ namespace Kendo.Mvc.UI
                 json["minResizableWidth"] = MinResizableWidth;
             }
 
-            if (ClientTemplate.HasValue())                  
+            if (ClientTemplate.HasValue())
             {
                 json["template"] = WebUtility.UrlDecode(ClientTemplate);
             }
-            
+
             if (ClientFooterTemplate.HasValue())
             {
                 json["footerTemplate"] = WebUtility.UrlDecode(ClientFooterTemplate);
             }
 
-			if (ClientHeaderTemplate.HasValue())
-			{
-				json["headerTemplate"] = WebUtility.UrlDecode(ClientHeaderTemplate);
-			}
+            if (ClientHeaderTemplate.HasValue())
+            {
+                json["headerTemplate"] = WebUtility.UrlDecode(ClientHeaderTemplate);
+            }
 
-			if (ClientGroupFooterTemplate.HasValue())
+            if (ClientGroupFooterTemplate.HasValue())
             {
                 json["groupFooterTemplate"] = ClientGroupFooterTemplate;
             }
@@ -148,7 +147,7 @@ namespace Kendo.Mvc.UI
 
         private IDictionary<string, object> EncodeAttributes(IDictionary<string, object> htmlAttributes)
         {
-            var attributes = new Dictionary<string, object>();            
+            var attributes = new Dictionary<string, object>();
 
             var encoder = HtmlEncoder.Default;
             //var hasAntiXss = HttpEncoder.Current != null && HttpEncoder.Current.GetType().ToString().Contains("AntiXssEncoder");
@@ -163,7 +162,7 @@ namespace Kendo.Mvc.UI
                 attributes[encoder.Encode(attr.Key)] = value;
             });
 
-            return attributes;            
+            return attributes;
         }
 
 
@@ -224,18 +223,18 @@ namespace Kendo.Mvc.UI
         }
 
         public string ClientHeaderTemplate
-		{
-			get
-			{
-				return Settings.ClientHeaderTemplate;
-			}
-			set
-			{
-				Settings.ClientHeaderTemplate = value;
-			}
-		}
+        {
+            get
+            {
+                return Settings.ClientHeaderTemplate;
+            }
+            set
+            {
+                Settings.ClientHeaderTemplate = value;
+            }
+        }
 
-		public string ClientTemplate
+        public string ClientTemplate
         {
             get
             {
@@ -270,7 +269,7 @@ namespace Kendo.Mvc.UI
                 Settings.ClientGroupFooterTemplate = value;
             }
         }
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether this column is hidden.
         /// </summary>
@@ -285,11 +284,11 @@ namespace Kendo.Mvc.UI
                 return Settings.Hidden || Grid.Columns.ColumnParents(this).Any(c => c.Hidden);
             }
             set
-            {                
+            {
                 Settings.Hidden = value;
             }
-        }        
-  
+        }
+
         public virtual bool IncludeInMenu
         {
             get
@@ -301,14 +300,14 @@ namespace Kendo.Mvc.UI
                 Settings.IncludeInMenu = value;
             }
         }
-   
+
         public virtual bool Locked
         {
             get
             {
                 return Settings.Locked;
             }
-            
+
             set
             {
                 Settings.Locked = value;
@@ -334,7 +333,7 @@ namespace Kendo.Mvc.UI
             {
                 return Settings.Encoded;
             }
-            
+
             set
             {
                 Settings.Encoded = value;
@@ -351,7 +350,7 @@ namespace Kendo.Mvc.UI
             {
                 return Settings.HeaderHtmlAttributes;
             }
-        }        
+        }
         /// <summary>
         /// Gets the footer HTML attributes.
         /// </summary>
@@ -363,7 +362,7 @@ namespace Kendo.Mvc.UI
                 return Settings.FooterHtmlAttributes;
             }
         }
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether this column is visible.
         /// </summary>
@@ -381,8 +380,8 @@ namespace Kendo.Mvc.UI
             {
                 Settings.Visible = value;
             }
-        }        
-        
+        }
+
         /// <summary>
         /// Gets the HTML attributes of the cell rendered for the column
         /// </summary>
@@ -398,7 +397,7 @@ namespace Kendo.Mvc.UI
         public bool IsLast
         {
             get
-            {                
+            {
                 return Grid.VisibleColumns.Where(c => !c.Hidden).LastOrDefault() == this;
             }
         }

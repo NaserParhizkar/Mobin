@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
@@ -32,7 +29,7 @@ namespace Kendo.Mvc.UI.Fluent
             Container.Margin.Right = value;
             Container.Margin.Bottom = value;
             Container.Margin.Left = value;
-            
+
             return this;
         }
     }

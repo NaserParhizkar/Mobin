@@ -1,6 +1,4 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// <summary>
     /// Kendo UI LinearGaugePointer class
     /// </summary>
-    public partial class LinearGaugePointer 
+    public partial class LinearGaugePointer
     {
         public LinearGaugePointerBorderSettings Border { get; } = new LinearGaugePointerBorderSettings();
 
@@ -47,7 +45,7 @@ namespace Kendo.Mvc.UI
             var margin = Margin.Serialize();
             if (margin.Any())
             {
-                 settings["margin"] = margin;
+                settings["margin"] = margin;
             }
 
             if (Opacity.HasValue)

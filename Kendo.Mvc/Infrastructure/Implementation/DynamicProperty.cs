@@ -1,7 +1,7 @@
 namespace Kendo.Mvc.Infrastructure.Implementation
 {
     using System;
-    
+
     public class DynamicProperty
     {
         string name;

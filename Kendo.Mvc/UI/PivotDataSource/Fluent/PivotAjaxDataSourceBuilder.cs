@@ -1,7 +1,7 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
 
 
     /// <summary>
@@ -33,7 +33,7 @@
 
             return this;
         }
-   
+
         /// <summary>
         /// Configures the transport of the Ajax DataSource
         /// </summary>

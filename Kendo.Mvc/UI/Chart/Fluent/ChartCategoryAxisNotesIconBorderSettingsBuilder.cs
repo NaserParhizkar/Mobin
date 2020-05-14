@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartCategoryAxisNotesIconBorderSettings
     /// </summary>
     public partial class ChartCategoryAxisNotesIconBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartCategoryAxisNotesIconBorderSettingsBuilder(ChartCategoryAxisNotesIconBorderSettings<T> container)
         {

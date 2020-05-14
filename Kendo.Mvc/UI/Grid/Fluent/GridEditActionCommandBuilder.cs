@@ -37,6 +37,6 @@ namespace Kendo.Mvc.UI.Fluent
             Command.CancelText = text;
 
             return this;
-        }        
+        }
     }
 }

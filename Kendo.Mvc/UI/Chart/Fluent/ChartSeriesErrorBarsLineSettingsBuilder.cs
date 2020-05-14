@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartSeriesErrorBarsLineSettings
     /// </summary>
     public partial class ChartSeriesErrorBarsLineSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesErrorBarsLineSettingsBuilder(ChartSeriesErrorBarsLineSettings<T> container)
         {

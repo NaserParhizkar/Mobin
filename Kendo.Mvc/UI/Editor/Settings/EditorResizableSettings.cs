@@ -1,15 +1,11 @@
-using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI EditorResizableSettings class
     /// </summary>
-    public partial class EditorResizableSettings 
+    public partial class EditorResizableSettings
     {
         public Dictionary<string, object> Serialize()
         {

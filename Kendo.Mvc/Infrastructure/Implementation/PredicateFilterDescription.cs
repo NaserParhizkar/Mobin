@@ -13,7 +13,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation
 
         public override bool SatisfiesFilter(object dataItem)
         {
-            return (bool) this.predicate.DynamicInvoke(dataItem);
+            return (bool)this.predicate.DynamicInvoke(dataItem);
         }
     }
 }

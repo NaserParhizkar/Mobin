@@ -1,12 +1,11 @@
 namespace Kendo.Mvc.Infrastructure
 {
+    using Kendo.Mvc.Extensions;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
     using System.Runtime.Serialization;
-    using Kendo.Mvc.Extensions;
-    using Newtonsoft.Json;
 
     [KnownType(typeof(AggregateFunctionsGroup))]
     public class AggregateFunctionsGroup : Group

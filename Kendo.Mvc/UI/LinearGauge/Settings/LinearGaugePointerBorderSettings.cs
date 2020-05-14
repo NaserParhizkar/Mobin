@@ -1,15 +1,12 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
     /// <summary>
     /// Kendo UI LinearGaugePointerBorderSettings class
     /// </summary>
-    public partial class LinearGaugePointerBorderSettings 
+    public partial class LinearGaugePointerBorderSettings
     {
         public string Color { get; set; }
 

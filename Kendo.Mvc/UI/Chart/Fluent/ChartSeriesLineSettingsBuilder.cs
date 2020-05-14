@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Kendo.Mvc.UI.Fluent
@@ -8,7 +7,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring ChartSeriesLineSettings
     /// </summary>
     public partial class ChartSeriesLineSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesLineSettingsBuilder(ChartSeriesLineSettings<T> container)
         {

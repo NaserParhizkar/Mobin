@@ -33,7 +33,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Sets the Sparkline data.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Kendo.Mvc.UI.Fluent
             Component.Type = type;
             return this;
         }
-                
+
         /// <summary>
         /// Configures the category axis
         /// </summary>
@@ -213,7 +213,7 @@ namespace Kendo.Mvc.UI.Fluent
 
             return this;
         }
-        
+
         /// <summary>
         /// Configures the export settings for the saveAsPDF method.
         /// </summary>
@@ -343,7 +343,7 @@ namespace Kendo.Mvc.UI.Fluent
             Container.Transitions = value;
             return this;
         }
-        
+
         /// <summary>
         /// Specifies the preferred widget rendering mode.
         /// </summary>

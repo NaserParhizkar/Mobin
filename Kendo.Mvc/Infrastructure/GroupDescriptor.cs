@@ -1,15 +1,15 @@
 namespace Kendo.Mvc
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using Infrastructure.Implementation;
-	using Kendo.Mvc.Extensions;
+    using Infrastructure.Implementation;
+    using Kendo.Mvc.Extensions;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
-	/// <summary>
-	/// Represents grouping criteria.
-	/// </summary>
-	public class GroupDescriptor : SortDescriptor
+    /// <summary>
+    /// Represents grouping criteria.
+    /// </summary>
+    public class GroupDescriptor : SortDescriptor
     {
         private object displayContent;
         private AggregateFunctionCollection aggregateFunctions;
@@ -74,15 +74,15 @@ namespace Kendo.Mvc
             }
         }
 
-		protected override void Serialize(IDictionary<string, object> json)
-		{
-			base.Serialize(json);
+        protected override void Serialize(IDictionary<string, object> json)
+        {
+            base.Serialize(json);
 
-			if (AggregateFunctions.Any())
-			{
-				json["aggregates"] = AggregateFunctions.ToJson();
-			}
-		}
+            if (AggregateFunctions.Any())
+            {
+                json["aggregates"] = AggregateFunctions.ToJson();
+            }
+        }
 
-	}
+    }
 }

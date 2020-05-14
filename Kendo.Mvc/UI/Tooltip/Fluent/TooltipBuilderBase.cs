@@ -1,18 +1,18 @@
-using System;
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Tooltip
     /// </summary>
-    public partial class TooltipBuilderBase<TBuilder>: WidgetBuilderBase<Tooltip, TooltipBuilderBase<TBuilder>>
-        where TBuilder: TooltipBuilderBase<TBuilder>        
+    public partial class TooltipBuilderBase<TBuilder> : WidgetBuilderBase<Tooltip, TooltipBuilderBase<TBuilder>>
+        where TBuilder : TooltipBuilderBase<TBuilder>
     {
         public TooltipBuilderBase(Tooltip component) : base(component)
         {

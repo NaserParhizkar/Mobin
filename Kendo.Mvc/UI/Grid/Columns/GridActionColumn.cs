@@ -1,10 +1,10 @@
 namespace Kendo.Mvc.UI
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.Extensions;
+    using System.Collections.Generic;
+    using System.Linq;
 
-	public class GridActionColumn<T> : GridColumnBase<T>, IGridActionColumn where T : class
+    public class GridActionColumn<T> : GridColumnBase<T>, IGridActionColumn where T : class
     {
         public GridActionColumn(Grid<T> grid)
             : base(grid)
@@ -22,13 +22,13 @@ namespace Kendo.Mvc.UI
         {
             base.Serialize(json);
 
-            var commands = new List<IDictionary<string,object>>();
-            
+            var commands = new List<IDictionary<string, object>>();
+
             Commands.Each(command =>
             {
                 commands.Add(command.Serialize());
             });
-        
+
             if (commands.Any())
             {
                 json["command"] = commands;

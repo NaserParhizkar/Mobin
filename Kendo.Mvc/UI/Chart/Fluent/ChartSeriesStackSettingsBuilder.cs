@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartSeriesStackSettings
     /// </summary>
     public partial class ChartSeriesStackSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesStackSettingsBuilder(ChartSeriesStackSettings<T> container)
         {

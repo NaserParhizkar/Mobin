@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -11,7 +10,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring List<GanttColumn<TTaskModel, TDependenciesModel>>
     /// </summary>
     public partial class GanttColumnFactory<TTaskModel, TDependenciesModel>
-        where TTaskModel : class, IGanttTask  where TDependenciesModel : class, IGanttDependency 
+        where TTaskModel : class, IGanttTask where TDependenciesModel : class, IGanttDependency
     {
         public GanttColumnFactory(List<GanttColumn<TTaskModel, TDependenciesModel>> container)
         {

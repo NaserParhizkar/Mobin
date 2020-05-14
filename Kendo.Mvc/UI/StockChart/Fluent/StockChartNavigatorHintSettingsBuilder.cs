@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring StockChartNavigatorHintSettings
     /// </summary>
     public partial class StockChartNavigatorHintSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public StockChartNavigatorHintSettingsBuilder(StockChartNavigatorHintSettings<T> container)
         {

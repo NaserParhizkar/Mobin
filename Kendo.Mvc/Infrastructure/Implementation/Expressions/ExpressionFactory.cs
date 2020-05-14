@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Kendo.Mvc.Extensions;
     using System;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Kendo.Mvc.Extensions;
 
     internal static class ExpressionFactory
     {
@@ -113,9 +113,9 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
         private static Expression ExtractMemberAccessExpressionFromLiftedExpression(Expression liftedToNullExpression)
         {
-            while(liftedToNullExpression.NodeType == ExpressionType.Conditional)
+            while (liftedToNullExpression.NodeType == ExpressionType.Conditional)
             {
-                var conditional = (ConditionalExpression) liftedToNullExpression;
+                var conditional = (ConditionalExpression)liftedToNullExpression;
 
                 if (conditional.Test.NodeType == ExpressionType.NotEqual)
                 {
@@ -138,7 +138,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
                 throw new ArgumentException("Provided expression should have string type", "stringExpression");
             }
 
-            if(IsNotNullConstantExpression(stringExpression))
+            if (IsNotNullConstantExpression(stringExpression))
             {
                 return stringExpression;
             }
@@ -150,7 +150,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
         {
             if (expression.NodeType == ExpressionType.Constant)
             {
-                var constantExpression = (ConstantExpression) expression;
+                var constantExpression = (ConstantExpression)expression;
                 return constantExpression.Value != null;
             }
 

@@ -1,8 +1,8 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-    using System;
-    using System.ComponentModel;    
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.ComponentModel;
 
     public class FilterableCustomDataSourceBuilder<TModel> : CustomDataSourceBuilder<TModel>
         where TModel : class

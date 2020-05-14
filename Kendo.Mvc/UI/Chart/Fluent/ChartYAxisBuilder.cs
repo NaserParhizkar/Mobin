@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartYAxis
     /// </summary>
     public partial class ChartYAxisBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartYAxisBuilder(ChartYAxis<T> container)
         {

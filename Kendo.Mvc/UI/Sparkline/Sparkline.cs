@@ -1,9 +1,7 @@
-using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Collections;
 
 namespace Kendo.Mvc.UI
 {
@@ -38,7 +36,7 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-        
+
         protected override TagBuilder GenerateTag(TextWriter writer)
         {
             var tag = Generator.GenerateTag("span", ViewContext, Id, Name, HtmlAttributes);

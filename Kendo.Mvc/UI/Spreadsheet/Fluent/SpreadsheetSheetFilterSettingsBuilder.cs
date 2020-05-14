@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring SpreadsheetSheetFilterSettings
     /// </summary>
     public partial class SpreadsheetSheetFilterSettingsBuilder
-        
+
     {
         public SpreadsheetSheetFilterSettingsBuilder(SpreadsheetSheetFilterSettings container)
         {

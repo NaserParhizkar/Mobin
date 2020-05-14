@@ -1,16 +1,15 @@
 ﻿namespace Kendo.Mvc.UI
 {
     using Extensions;
+    using Fluent;
     using Kendo.Mvc.UI;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.AspNetCore.Mvc.Routing;
-    using System.Globalization;
-    using System.Net;
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
-    using Fluent;
+    using System.Net;
 
     public static class NavigationItemContainerExtensions
     {

@@ -7,8 +7,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI PanelBar
     /// </summary>
-    public partial class PanelBarBuilder: WidgetBuilderBase<PanelBar, PanelBarBuilder>
-        
+    public partial class PanelBarBuilder : WidgetBuilderBase<PanelBar, PanelBarBuilder>
+
     {
         public PanelBarBuilder(PanelBar component) : base(component)
         {

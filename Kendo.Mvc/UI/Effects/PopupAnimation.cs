@@ -14,15 +14,15 @@
         }
 
         public bool Enabled
-        { 
-            get; 
-            set; 
+        {
+            get;
+            set;
         }
 
         public Effects Open
-        { 
-            get; 
-            set; 
+        {
+            get;
+            set;
         }
 
         public Effects Close
@@ -40,7 +40,7 @@
             else
             {
                 var options = Open.ToJson();
-                
+
                 options.Merge(Close.ToJson());
 
                 if (options.Keys.Any())

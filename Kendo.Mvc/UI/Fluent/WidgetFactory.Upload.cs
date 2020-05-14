@@ -2,9 +2,9 @@
 {
     public partial class WidgetFactory<TModel>
     {
-		public virtual UploadBuilder Upload()
-		{
-			return new UploadBuilder(new Upload(HtmlHelper.ViewContext));
-		}
+        public virtual UploadBuilder Upload()
+        {
+            return new UploadBuilder(new Upload(HtmlHelper.ViewContext));
+        }
     }
 }

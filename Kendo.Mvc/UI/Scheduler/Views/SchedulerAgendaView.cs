@@ -5,14 +5,14 @@
 
     public class SchedulerAgendaView : SchedulerViewBase
     {
-        public SchedulerAgendaView(IScheduler scheduler) : base (SchedulerViewType.Agenda, scheduler)
-        {            
+        public SchedulerAgendaView(IScheduler scheduler) : base(SchedulerViewType.Agenda, scheduler)
+        {
         }
 
-        public string EventDateTemplate 
-        { 
+        public string EventDateTemplate
+        {
             get;
-            set; 
+            set;
         }
 
         public string EventDateTemplateId
@@ -21,10 +21,10 @@
             set;
         }
 
-        public string EventTimeTemplate 
-        { 
-            get; 
-            set; 
+        public string EventTimeTemplate
+        {
+            get;
+            set;
         }
 
         public string EventTimeTemplateId

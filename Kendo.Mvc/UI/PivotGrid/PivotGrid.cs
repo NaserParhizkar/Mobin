@@ -1,6 +1,6 @@
-using System.IO;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Kendo.Mvc.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.IO;
 
 namespace Kendo.Mvc.UI
 {
@@ -8,7 +8,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI PivotGrid component
     /// </summary>
     public partial class PivotGrid<T> : WidgetBase
-        where T : class 
+        where T : class
     {
         public PivotGrid(ViewContext viewContext) : base(viewContext)
         {
@@ -18,7 +18,7 @@ namespace Kendo.Mvc.UI
 
         public PivotGridMessages Messages
         {
-            get;            
+            get;
         } = new PivotGridMessages();
 
         public string Configurator

@@ -4,14 +4,14 @@ namespace Kendo.Mvc.UI
 
     public static class DataSourceRequestUrlParameters
     {
-        public static string Aggregates{ get; set; }        
+        public static string Aggregates { get; set; }
         public static string Filter { get; set; }
         public static string Page { get; set; }
         public static string PageSize { get; set; }
         public static string Sort { get; set; }
         public static string Group { get; set; }
         public static string Mode { get; set; }
-        
+
         static DataSourceRequestUrlParameters()
         {
             Sort = "sort";

@@ -1,12 +1,12 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
     using System.ComponentModel;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class FilterableAjaxDataSourceBuilder<TModel, TDataSourceBuilder> : AjaxDataSourceBuilderBase<TModel, TDataSourceBuilder>, IHideObjectMembers
          where TModel : class
-         where TDataSourceBuilder: FilterableAjaxDataSourceBuilder<TModel, TDataSourceBuilder>
+         where TDataSourceBuilder : FilterableAjaxDataSourceBuilder<TModel, TDataSourceBuilder>
     {
         public FilterableAjaxDataSourceBuilder(DataSource dataSource, ViewContext viewContext, IUrlGenerator urlGenerator)
             : base(dataSource, viewContext, urlGenerator)

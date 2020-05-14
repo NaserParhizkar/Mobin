@@ -6,7 +6,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI PanelBar for ASP.NET MVC events.
     /// </summary>
-    public class PanelBarEventBuilder: EventBuilder
+    public class PanelBarEventBuilder : EventBuilder
     {
         public PanelBarEventBuilder(IDictionary<string, object> events)
             : base(events)

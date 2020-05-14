@@ -1,9 +1,8 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System;
-    using Kendo.Mvc.UI;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    
+    using System;
+
     public abstract class NavigationHtmlBuilderBase<TComponent, TItem> : INavigationHtmlBuilder<TComponent, TItem>
         where TComponent : WidgetBase, INavigationItemComponent<TItem>
         where TItem : NavigationItem<TItem>

@@ -1,11 +1,11 @@
 namespace Kendo.Mvc.UI
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using Kendo.Mvc.Extensions;
-	using Microsoft.AspNetCore.Routing;
+    using Kendo.Mvc.Extensions;
+    using Microsoft.AspNetCore.Routing;
+    using System.Collections.Generic;
+    using System.Linq;
 
-	public abstract class GridActionCommandBase : IGridActionCommand
+    public abstract class GridActionCommandBase : IGridActionCommand
     {
         public virtual string Name
         {
@@ -18,7 +18,7 @@ namespace Kendo.Mvc.UI
             get;
             set;
         }
-        
+
         public IDictionary<string, object> HtmlAttributes
         {
             get;
@@ -32,7 +32,7 @@ namespace Kendo.Mvc.UI
         }
 
         public GridActionCommandBase()
-        {            
+        {
             HtmlAttributes = new RouteValueDictionary();
             Visible = new ClientHandlerDescriptor();
         }
@@ -41,11 +41,11 @@ namespace Kendo.Mvc.UI
         {
             var command = new Dictionary<string, object>();
 
-            command            
-                .Add("attr", HtmlAttributes.ToAttributeString(), HtmlAttributes.Any)				
-				.Add("text", Text, (System.Func<bool>)Text.HasValue)
-                .Add("visible", Visible, (System.Func<bool>) Visible.HasValue)
-				.Add("name", Name);                
+            command
+                .Add("attr", HtmlAttributes.ToAttributeString(), HtmlAttributes.Any)
+                .Add("text", Text, (System.Func<bool>)Text.HasValue)
+                .Add("visible", Visible, (System.Func<bool>)Visible.HasValue)
+                .Add("name", Name);
 
             return command;
         }

@@ -5,8 +5,8 @@ namespace Kendo.Mvc.UI.Fluent
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI LinearGauge
     /// </summary>
-    public partial class LinearGaugeBuilder: WidgetBuilderBase<LinearGauge, LinearGaugeBuilder>
-        
+    public partial class LinearGaugeBuilder : WidgetBuilderBase<LinearGauge, LinearGaugeBuilder>
+
     {
         public LinearGaugeBuilder(LinearGauge component) : base(component)
         {

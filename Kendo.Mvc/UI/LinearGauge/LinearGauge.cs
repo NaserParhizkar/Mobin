@@ -1,9 +1,7 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 
 namespace Kendo.Mvc.UI
@@ -12,7 +10,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI LinearGauge component
     /// </summary>
     public partial class LinearGauge : WidgetBase
-        
+
     {
         public LinearGauge(ViewContext viewContext) : base(viewContext)
         {
@@ -62,7 +60,7 @@ namespace Kendo.Mvc.UI
             {
                 settings["transitions"] = Transitions;
             }
-            
+
             writer.Write(Initializer.Initialize(Selector, "LinearGauge", settings));
         }
     }

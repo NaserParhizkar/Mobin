@@ -1,8 +1,8 @@
 namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 {
+    using Kendo.Mvc.Extensions;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Kendo.Mvc.Extensions;
 
     internal class IndexerToken : IMemberAccessToken
     {
@@ -13,7 +13,7 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
             this.arguments = arguments.ToReadOnlyCollection();
         }
 
-        public IndexerToken(params object[] arguments) : this((IEnumerable<object>) arguments)
+        public IndexerToken(params object[] arguments) : this((IEnumerable<object>)arguments)
         {
         }
 

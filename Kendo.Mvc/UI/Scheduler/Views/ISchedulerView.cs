@@ -7,7 +7,7 @@
             get;
             set;
         }
-            
+
         SchedulerViewType Type
         {
             get;
@@ -26,10 +26,10 @@
             set;
         }
 
-        string EventTemplateId 
-        { 
-            get; 
-            set; 
+        string EventTemplateId
+        {
+            get;
+            set;
         }
 
         string SelectedDateFormat

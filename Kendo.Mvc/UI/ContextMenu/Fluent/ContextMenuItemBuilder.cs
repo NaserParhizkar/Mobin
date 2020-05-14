@@ -9,7 +9,7 @@ namespace Kendo.Mvc.UI.Fluent
     /// Defines the fluent API for configuring ContextMenuItem
     /// </summary>
     public partial class ContextMenuItemBuilder : NavigationItemBuilder<ContextMenuItem, ContextMenuItemBuilder>, IHideObjectMembers
-        
+
     {
         private readonly ContextMenuItem item;
         private readonly ViewContext viewContext;

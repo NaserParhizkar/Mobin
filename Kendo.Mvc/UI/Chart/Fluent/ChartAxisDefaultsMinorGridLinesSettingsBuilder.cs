@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartAxisDefaultsMinorGridLinesSettings
     /// </summary>
     public partial class ChartAxisDefaultsMinorGridLinesSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartAxisDefaultsMinorGridLinesSettingsBuilder(ChartAxisDefaultsMinorGridLinesSettings<T> container)
         {

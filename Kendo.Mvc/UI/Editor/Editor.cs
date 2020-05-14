@@ -18,7 +18,7 @@ namespace Kendo.Mvc.UI
         }
 
         public List<string> StyleSheets { get; set; } = new List<string>();
-        
+
         public Func<object, object> ValueHandler { get; set; }
 
         public Action ValueAction { get; set; }
@@ -80,7 +80,7 @@ namespace Kendo.Mvc.UI
             }
 
             tag.TagRenderMode = TagRenderMode.EndTag;
-            
+
             return tag;
         }
 

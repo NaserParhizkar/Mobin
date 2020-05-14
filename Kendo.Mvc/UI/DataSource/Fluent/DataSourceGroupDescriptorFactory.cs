@@ -1,9 +1,9 @@
 namespace Kendo.Mvc.UI.Fluent
 {
+    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using Extensions;
 
     /// <summary>
     /// Defines the fluent interface for configuring group.
@@ -99,7 +99,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             return AddDescriptor(memberName, memberType, ListSortDirection.Descending);
         }
-        
+
         private DataSourceGroupDescriptorBuilder<TModel> AddDescriptor<TValue>(string memberName, ListSortDirection sortDirection)
         {
             return AddDescriptor(memberName, typeof(TValue), sortDirection);

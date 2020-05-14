@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring SchedulerMessagesRecurrenceEditorYearlySettings
     /// </summary>
     public partial class SchedulerMessagesRecurrenceEditorYearlySettingsBuilder<T>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
         public SchedulerMessagesRecurrenceEditorYearlySettingsBuilder(SchedulerMessagesRecurrenceEditorYearlySettings<T> container)
         {

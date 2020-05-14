@@ -1,8 +1,8 @@
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.Resources;
 
 namespace Kendo.Mvc.UI.Fluent
 {

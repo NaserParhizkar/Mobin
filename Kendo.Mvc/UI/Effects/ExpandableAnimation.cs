@@ -1,9 +1,9 @@
 ﻿namespace Kendo.Mvc.UI
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Kendo.Mvc;
     using Kendo.Mvc.Extensions;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ExpandableAnimation : JsonObject
     {
@@ -14,16 +14,16 @@
             Collapse = new Effects("collapse");
         }
 
-        public bool Enabled 
-        { 
-            get; 
-            set; 
+        public bool Enabled
+        {
+            get;
+            set;
         }
 
-        public Effects Expand 
-        { 
-            get; 
-            set; 
+        public Effects Expand
+        {
+            get;
+            set;
         }
 
         public Effects Collapse

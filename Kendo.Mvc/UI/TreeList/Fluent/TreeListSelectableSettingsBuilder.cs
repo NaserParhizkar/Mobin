@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TreeListSelectableSettings
     /// </summary>
     public partial class TreeListSelectableSettingsBuilder<T>
-        
+
     {
         public TreeListSelectableSettingsBuilder(TreeListSelectableSettings<T> container)
         {

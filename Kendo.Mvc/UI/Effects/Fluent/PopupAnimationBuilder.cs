@@ -12,10 +12,10 @@
             Animation = animation;
         }
 
-        protected PopupAnimation Animation 
-        { 
-            get; 
-            private set; 
+        protected PopupAnimation Animation
+        {
+            get;
+            private set;
         }
 
         public void Enable(bool enable)

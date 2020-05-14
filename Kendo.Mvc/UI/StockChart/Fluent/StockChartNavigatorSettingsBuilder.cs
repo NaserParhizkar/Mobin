@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -13,7 +12,7 @@ namespace Kendo.Mvc.UI.Fluent
         {
             Container = container;
         }
-        
+
         protected StockChartNavigatorSettings<T> Container
         {
             get;
@@ -21,7 +20,7 @@ namespace Kendo.Mvc.UI.Fluent
         }
 
         // Place custom settings here
-        
+
         /// <summary>
         /// Data Source configuration for the Navigator.
         /// When configured, the Navigator will filter the main StockChart data source to the selected range.

@@ -1,8 +1,5 @@
 using Kendo.Mvc.Extensions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kendo.Mvc.UI
 {
@@ -11,13 +8,13 @@ namespace Kendo.Mvc.UI
     /// </summary>
     public partial class TreeListPdfSettings<T> : PdfSettings
     {
-		public override Dictionary<string, object> Serialize()
-		{
-			var settings = SerializeSettings();
+        public override Dictionary<string, object> Serialize()
+        {
+            var settings = SerializeSettings();
 
-			settings.Merge(base.Serialize());
+            settings.Merge(base.Serialize());
 
-			return settings;
-		}
-	}
+            return settings;
+        }
+    }
 }

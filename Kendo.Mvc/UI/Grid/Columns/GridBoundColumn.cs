@@ -1,27 +1,27 @@
 namespace Kendo.Mvc.UI
 {
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.Infrastructure;
+    using Kendo.Mvc.Resources;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.IO;
     using System.Linq;
     using System.Linq.Expressions;
+    using System.Text;
+    using System.Text.Encodings.Web;
     using System.Text.RegularExpressions;
     using System.Threading;
-    using Kendo.Mvc.Extensions;
-    using Kendo.Mvc.Resources;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using System.Text.Encodings.Web;
-    using System.Text;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
-    using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
     public class GridBoundColumn<TModel, TValue> : GridColumnBase<TModel>, IGridBoundColumn/*, IGridTemplateColumn<TModel>*/ where TModel : class
     {
         private static readonly IDictionary<string, Func<TModel, TValue>> expressionCache = new Dictionary<string, Func<TModel, TValue>>();
         private static readonly ReaderWriterLockSlim syncLock = new ReaderWriterLockSlim();
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GridBoundColumn{TModel, TValue}"/> class.
         /// </summary>
@@ -56,12 +56,12 @@ namespace Kendo.Mvc.UI
                 }
             }
 
-            Value = value;        
+            Value = value;
 
             if (typeof(TModel).IsPlainType())
             {
-				var viewDataDictionary = new ViewDataDictionary<TModel>(Grid.ModelMetadataProvider, new ModelStateDictionary());
-				Metadata = ExpressionMetadataProvider.FromLambdaExpression(expression, viewDataDictionary, Grid.ModelMetadataProvider).Metadata;
+                var viewDataDictionary = new ViewDataDictionary<TModel>(Grid.ModelMetadataProvider, new ModelStateDictionary());
+                Metadata = ExpressionMetadataProvider.FromLambdaExpression(expression, viewDataDictionary, Grid.ModelMetadataProvider).Metadata;
 
                 MemberType = Metadata.ModelType;
                 Title = Metadata.DisplayName;
@@ -111,7 +111,7 @@ namespace Kendo.Mvc.UI
 
         public ModelMetadata Metadata
         {
-            get;            
+            get;
         }
 
         public string EditorTemplateName
@@ -143,12 +143,12 @@ namespace Kendo.Mvc.UI
         /// </summary>
         public Func<TModel, TValue> Value
         {
-            get;            
+            get;
         }
 
         public Expression<Func<TModel, TValue>> Expression
         {
-            get;            
+            get;
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Kendo.Mvc.UI
         {
             get;
             set;
-        }        
+        }
 
         protected override void Serialize(IDictionary<string, object> json)
         {
@@ -224,7 +224,7 @@ namespace Kendo.Mvc.UI
             else
             {
                 json["filterable"] = FilterableSettings.ToJson();
-            }            
+            }
 
             if (Encoded)
             {
@@ -239,22 +239,22 @@ namespace Kendo.Mvc.UI
             string editorHtml = EditorHtml;
 
             if (Grid.IsInClientTemplate && editorHtml != null)
-            {                
+            {
                 editorHtml = Regex.Replace(editorHtml.Trim(), "(&amp;)#([0-9]+;)", "$1\\#$2")
                                 .Replace("\r\n", string.Empty)
-                                .Replace("</script>", "<\\/script>")                                
+                                .Replace("</script>", "<\\/script>")
                                 .Replace("jQuery(\"#", "jQuery(\"\\#");
             }
-			
-			if (!Grid.DataSource.IsReadOnly(Member) && Grid.Editable.Enabled)
-			{
-				json["editor"] = editorHtml;
-			}
 
-			if (ClientGroupHeaderTemplate.HasValue())
-			{
-				json["groupHeaderTemplate"] = ClientGroupHeaderTemplate;
-			}
+            if (!Grid.DataSource.IsReadOnly(Member) && Grid.Editable.Enabled)
+            {
+                json["editor"] = editorHtml;
+            }
+
+            if (ClientGroupHeaderTemplate.HasValue())
+            {
+                json["groupHeaderTemplate"] = ClientGroupHeaderTemplate;
+            }
 
             if (Editable.HasValue())
             {
@@ -307,11 +307,11 @@ namespace Kendo.Mvc.UI
         /// <param name="viewData"></param>
         /// <param name="dataItem"></param>
         protected virtual void AppendAdditionalViewData(IDictionary<string, object> viewData, object dataItem)
-        {                                    
+        {
         }
 
         public string GetEditor(IHtmlHelper helper, HtmlEncoder encoder)
-		{
+        {
             var viewContext = Grid.ViewContext.ViewContextForType<TModel>(Grid.ModelMetadataProvider);
             ((IViewContextAware)helper).Contextualize(viewContext);
 
@@ -319,12 +319,13 @@ namespace Kendo.Mvc.UI
 
             var sb = new StringBuilder();
 
-            using (var writer = new StringWriter(sb)) {                
+            using (var writer = new StringWriter(sb))
+            {
                 helper.Editor(Member, EditorTemplateName, AdditionalViewData).WriteTo(writer, encoder);
-                helper.ValidationMessage(Member).WriteTo(writer, encoder);                
+                helper.ValidationMessage(Member).WriteTo(writer, encoder);
             }
 
-            return sb.ToString();                
-		}
-	}
+            return sb.ToString();
+        }
+    }
 }

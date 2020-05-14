@@ -1,15 +1,15 @@
 ﻿namespace Kendo.Mvc.UI
 {
     using Extensions;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class TreeListModelDescriptor : ModelDescriptor
     {
         public TreeListModelDescriptor(Type modelType, IModelMetadataProvider modelMetadataProvider)
             : base(modelType, modelMetadataProvider)
-        { 
+        {
         }
 
         public string ParentId { get; set; }

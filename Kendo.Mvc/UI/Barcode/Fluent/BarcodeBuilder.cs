@@ -1,12 +1,10 @@
-using System;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring the Kendo UI Barcode
     /// </summary>
-    public partial class BarcodeBuilder: WidgetBuilderBase<Barcode, BarcodeBuilder>
-        
+    public partial class BarcodeBuilder : WidgetBuilderBase<Barcode, BarcodeBuilder>
+
     {
         public BarcodeBuilder(Barcode component) : base(component)
         {

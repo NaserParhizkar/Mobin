@@ -7,7 +7,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI PivotConfigurator component
     /// </summary>
     public partial class PivotConfigurator : WidgetBase
-        
+
     {
         public PivotConfigurator(ViewContext viewContext) : base(viewContext)
         {
@@ -15,7 +15,7 @@ namespace Kendo.Mvc.UI
 
         public PivotConfiguratorMessages Messages
         {
-            get;            
+            get;
         } = new PivotConfiguratorMessages();
 
         protected override void WriteHtml(TextWriter writer)

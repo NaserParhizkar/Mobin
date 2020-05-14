@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring TreeListMessagesCommandsSettings
     /// </summary>
     public partial class TreeListMessagesCommandsSettingsBuilder<T>
-        
+
     {
         public TreeListMessagesCommandsSettingsBuilder(TreeListMessagesCommandsSettings<T> container)
         {

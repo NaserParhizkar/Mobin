@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Kendo.Mvc.UI.Fluent
 {
@@ -53,6 +52,6 @@ namespace Kendo.Mvc.UI.Fluent
             configurator(new EnumOperatorsBuilder(operators.Enums));
 
             return this;
-        }   
+        }
     }
 }

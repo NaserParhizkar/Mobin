@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Collections.Generic;
-using Kendo.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace Kendo.Mvc.TagHelpers
@@ -8,7 +7,7 @@ namespace Kendo.Mvc.TagHelpers
     /// <summary>
     /// Kendo UI UploadFile TagHelper
     /// </summary>
-    [HtmlTargetElement("kendo-upload-files", ParentTag="kendo-upload")]
+    [HtmlTargetElement("kendo-upload-files", ParentTag = "kendo-upload")]
     [RestrictChildren("kendo-upload-file")]
     [SuppressTagRendering]
     public partial class UploadFilesTagHelper : TagHelperCollectionBase<UploadFileTagHelper>

@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring EditorSerializationSettings
     /// </summary>
     public partial class EditorSerializationSettingsBuilder
-        
+
     {
         public EditorSerializationSettingsBuilder(EditorSerializationSettings container)
         {

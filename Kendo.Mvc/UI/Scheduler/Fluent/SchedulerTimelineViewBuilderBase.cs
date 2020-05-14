@@ -25,7 +25,7 @@
 
             return (TTimelineViewBuilder)this;
         }
-        
+
         /// <summary>
         /// The width of the scheduler timeline view column.
         /// </summary>

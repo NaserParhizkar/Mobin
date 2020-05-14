@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using System.Threading;
 
 namespace Mobin.Common.Dynamics
@@ -11,7 +10,7 @@ namespace Mobin.Common.Dynamics
     public class ClassFactory
     {
         public static readonly ClassFactory Instance = new ClassFactory();
-
+        public static readonly object _objThreadSafeDynamicClass = new object();
         static ClassFactory() { }  // Trigger lazy initialization of static fields
 
         ModuleBuilder module;
@@ -34,7 +33,7 @@ namespace Mobin.Common.Dynamics
             rwLock = new ReaderWriterLock();
         }
 
-        public Type GetDynamicClass(IDictionary<string,Type> propertyNameTypeDic)
+        public Type GetDynamicClass(IDictionary<string, Type> propertyNameTypeDic)
         {
             var lstDynamicProp = new List<DynamicProperty>();
 
@@ -48,6 +47,7 @@ namespace Mobin.Common.Dynamics
 
         private Type GetDynamicClass(IEnumerable<DynamicProperty> dynamicProperties)
         {
+            Monitor.Enter(_objThreadSafeDynamicClass);
             rwLock.AcquireReaderLock(Timeout.Infinite);
             try
             {
@@ -63,6 +63,7 @@ namespace Mobin.Common.Dynamics
             finally
             {
                 rwLock.ReleaseReaderLock();
+                Monitor.Exit(_objThreadSafeDynamicClass);
             }
         }
 

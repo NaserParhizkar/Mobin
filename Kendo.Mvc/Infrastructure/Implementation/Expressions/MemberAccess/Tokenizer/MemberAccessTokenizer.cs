@@ -48,11 +48,11 @@ namespace Kendo.Mvc.Infrastructure.Implementation.Expressions
 
         private static IEnumerable<string> ExtractIndexerArguments(string member)
         {
-             var args = member.TrimEnd(']');
-             foreach (var arg in args.Split(','))
-             {
-                 yield return arg;
-             }
+            var args = member.TrimEnd(']');
+            foreach (var arg in args.Split(','))
+            {
+                yield return arg;
+            }
         }
 
         private static object ConvertIndexerArgument(string argument)

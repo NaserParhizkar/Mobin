@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring EditorFileBrowserTransportDestroySettings
     /// </summary>
     public partial class EditorFileBrowserTransportDestroySettingsBuilder
-        
+
     {
         public EditorFileBrowserTransportDestroySettingsBuilder(EditorFileBrowserTransportDestroySettings container)
         {

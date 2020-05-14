@@ -1,6 +1,5 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -64,7 +63,7 @@ namespace Kendo.Mvc.UI
         public override void WriteInitializationScript(TextWriter writer)
         {
             var settings = SerializeSettings();
-            
+
             // TODO: Manually serialized settings go here
 
             SerializeCustomSettings(settings);

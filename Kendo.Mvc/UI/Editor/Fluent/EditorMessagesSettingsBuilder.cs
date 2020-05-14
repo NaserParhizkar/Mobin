@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring EditorMessagesSettings
     /// </summary>
     public partial class EditorMessagesSettingsBuilder
-        
+
     {
         public EditorMessagesSettingsBuilder(EditorMessagesSettings container)
         {

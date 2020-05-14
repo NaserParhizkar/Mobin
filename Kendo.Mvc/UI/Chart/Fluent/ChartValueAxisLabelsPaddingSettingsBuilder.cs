@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartValueAxisLabelsPaddingSettings
     /// </summary>
     public partial class ChartValueAxisLabelsPaddingSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartValueAxisLabelsPaddingSettingsBuilder(ChartValueAxisLabelsPaddingSettings<T> container)
         {

@@ -1,8 +1,7 @@
 using Kendo.Mvc.Extensions;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.IO;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+using System.IO;
 
 namespace Kendo.Mvc.UI
 {
@@ -42,7 +41,8 @@ namespace Kendo.Mvc.UI
             {
                 writer.Write(this.Name + " = new kendo.data." + ClassName + "(" + Initializer.Serialize(PivotDataSource.ToJson()) + ");");
             }
-            else {
+            else
+            {
                 writer.Write(this.Name + " = new kendo.data." + ClassName + "(" + Initializer.Serialize(DataSource.ToJson()) + ");");
             }
         }

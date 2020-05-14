@@ -1,13 +1,12 @@
 ﻿namespace Kendo.Mvc.UI.Fluent
 {
-	using System;
-	using System.Collections.Generic;	
-
-	using Extensions;
+    using Extensions;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using System;
+    using System.Collections.Generic;
 
-    public class GridColumnGroupBuilder<T> 
-        where T : class 
+    public class GridColumnGroupBuilder<T>
+        where T : class
     {
         private IUrlGenerator urlGenerator;
         private ViewContext viewContext;
@@ -210,40 +209,40 @@
         }
 
 
-		//TODO: add group header template
-		///// <summary>
-		///// Sets the header template for the column. If sorting is enabled, the template content wrapper must have a k-link CSS class.
-		///// </summary>
-		///// <param name="template">The action defining the template.</param>
-		//public GridColumnGroupBuilder<T> HeaderTemplate(Action template)
-		//{
-		//    Column.HeaderTemplate.Content = template;
-		//    return this as GridColumnGroupBuilder<T>;
-		//}
+        //TODO: add group header template
+        ///// <summary>
+        ///// Sets the header template for the column. If sorting is enabled, the template content wrapper must have a k-link CSS class.
+        ///// </summary>
+        ///// <param name="template">The action defining the template.</param>
+        //public GridColumnGroupBuilder<T> HeaderTemplate(Action template)
+        //{
+        //    Column.HeaderTemplate.Content = template;
+        //    return this as GridColumnGroupBuilder<T>;
+        //}
 
-		///// <summary>
-		///// Sets the header template for the column.  If sorting is enabled, the template content wrapper must have a k-link CSS class.
-		///// </summary>
-		///// <param name="template">The string defining the template.</param>
-		//public GridColumnGroupBuilder<T> HeaderTemplate(string template)
-		//{
-		//    Column.HeaderTemplate.Html = template;
-		//    return this as GridColumnGroupBuilder<T>;
-		//}
+        ///// <summary>
+        ///// Sets the header template for the column.  If sorting is enabled, the template content wrapper must have a k-link CSS class.
+        ///// </summary>
+        ///// <param name="template">The string defining the template.</param>
+        //public GridColumnGroupBuilder<T> HeaderTemplate(string template)
+        //{
+        //    Column.HeaderTemplate.Html = template;
+        //    return this as GridColumnGroupBuilder<T>;
+        //}
 
-		///// <summary>
-		///// Sets the header template for the column.  If sorting is enabled, the template content wrapper must have a k-link CSS class.
-		///// </summary>
-		///// <param name="template">The action defining the template.</param>
-		//public GridColumnGroupBuilder<T> HeaderTemplate(Func<object, object> template)
-		//{
-		//    Column.HeaderTemplate.InlineTemplate = template;
-		//    return this as GridColumnGroupBuilder<T>;
-		//}
+        ///// <summary>
+        ///// Sets the header template for the column.  If sorting is enabled, the template content wrapper must have a k-link CSS class.
+        ///// </summary>
+        ///// <param name="template">The action defining the template.</param>
+        //public GridColumnGroupBuilder<T> HeaderTemplate(Func<object, object> template)
+        //{
+        //    Column.HeaderTemplate.InlineTemplate = template;
+        //    return this as GridColumnGroupBuilder<T>;
+        //}
 
-		private static void MergeAttributes(IDictionary<string, object> target, IDictionary<string, object> attributes)
-		{
-			target.Merge(attributes);
-		}
+        private static void MergeAttributes(IDictionary<string, object> target, IDictionary<string, object> attributes)
+        {
+            target.Merge(attributes);
+        }
     }
 }

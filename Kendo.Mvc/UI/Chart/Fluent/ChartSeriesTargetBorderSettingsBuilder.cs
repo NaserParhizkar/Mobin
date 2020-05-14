@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent API for configuring ChartSeriesTargetBorderSettings
     /// </summary>
     public partial class ChartSeriesTargetBorderSettingsBuilder<T>
-        where T : class 
+        where T : class
     {
         public ChartSeriesTargetBorderSettingsBuilder(ChartSeriesTargetBorderSettings<T> container)
         {

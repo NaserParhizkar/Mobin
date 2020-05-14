@@ -8,7 +8,7 @@
     {
         public SchedulerAgendaViewBuilder(TView view)
             : base(view)
-        { 
+        {
         }
 
         /// <summary>
@@ -53,6 +53,6 @@
             view.EventTimeTemplateId = eventTimeTemplateId;
 
             return this;
-        }        
+        }
     }
 }

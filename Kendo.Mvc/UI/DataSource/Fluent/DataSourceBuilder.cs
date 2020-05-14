@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace Kendo.Mvc.UI.Fluent
 {
     /// <summary>
     /// Defines the fluent interface for configuring the <see cref="DataSource"/> component.
     /// </summary>
-    public partial class DataSourceBuilder<TModel> : IHideObjectMembers
+    public class DataSourceBuilder<TModel> : IHideObjectMembers
         where TModel : class
     {
         protected readonly DataSource dataSource;
@@ -18,13 +17,6 @@ namespace Kendo.Mvc.UI.Fluent
             this.viewContext = viewContext;
             this.urlGenerator = urlGenerator;
             this.dataSource = dataSource;
-        }
-
-        public DataSourceBuilder<TModel> AutoReadData(bool autoRead = true)
-        {
-            dataSource.AutoReadData = true;
-
-            return this;
         }
 
         /// <summary>
@@ -65,6 +57,6 @@ namespace Kendo.Mvc.UI.Fluent
             dataSource.Type = DataSourceType.Custom;
 
             return new SignalRDataSourceBuilder<TModel>(dataSource);
-        }     
+        }
     }
 }

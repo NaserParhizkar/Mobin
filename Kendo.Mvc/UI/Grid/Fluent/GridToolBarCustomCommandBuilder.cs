@@ -1,17 +1,17 @@
 namespace Kendo.Mvc.UI.Fluent
 {
-	using Extensions;
+    using Extensions;
 
-	/// <summary>
-	/// Defines the fluent interface for configuring toolbar custom command.
-	/// </summary>
-	/// <typeparam name="T">The type of the model</typeparam>
-	public class GridToolBarCustomCommandBuilder : GridToolBarCommandBuilderBase<GridToolBarCustomCommand, GridToolBarCustomCommandBuilder>
+    /// <summary>
+    /// Defines the fluent interface for configuring toolbar custom command.
+    /// </summary>
+    /// <typeparam name="T">The type of the model</typeparam>
+    public class GridToolBarCustomCommandBuilder : GridToolBarCommandBuilderBase<GridToolBarCustomCommand, GridToolBarCustomCommandBuilder>
     {
         public GridToolBarCustomCommandBuilder(GridToolBarCustomCommand command) : base(command)
         {
-        }        
-   
+        }
+
         /// <summary>
         /// Sets the command name.
         /// </summary>

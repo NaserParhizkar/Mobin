@@ -1,10 +1,10 @@
 using Kendo.Mvc.Extensions;
+using Kendo.Mvc.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
-using Kendo.Mvc.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Kendo.Mvc.UI
 {
@@ -12,7 +12,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Sortable component
     /// </summary>
     public partial class Sortable : WidgetBase
-        
+
     {
         public Sortable(ViewContext viewContext) : base(viewContext)
         {
@@ -38,7 +38,7 @@ namespace Kendo.Mvc.UI
             {
                 settings["hint"] = HintHandler;
             }
-            else if(Hint?.HasValue() == true)
+            else if (Hint?.HasValue() == true)
             {
                 settings["hint"] = Hint;
             }

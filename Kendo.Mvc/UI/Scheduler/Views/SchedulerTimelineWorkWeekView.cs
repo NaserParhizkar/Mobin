@@ -4,7 +4,7 @@
     {
         public SchedulerTimelineWorkWeekView(IScheduler scheduler)
             : base(SchedulerViewType.TimelineWorkWeek, scheduler)
-        {            
+        {
         }
     }
 }

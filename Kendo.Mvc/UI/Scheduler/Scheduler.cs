@@ -9,7 +9,7 @@ namespace Kendo.Mvc.UI
     /// Kendo UI Scheduler component
     /// </summary>
     public partial class Scheduler<T> : WidgetBase, IScheduler<T>
-        where T : class, ISchedulerEvent 
+        where T : class, ISchedulerEvent
     {
         public Scheduler(ViewContext viewContext) : base(viewContext)
         {

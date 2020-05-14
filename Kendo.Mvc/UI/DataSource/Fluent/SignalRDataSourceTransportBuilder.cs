@@ -10,7 +10,7 @@
     {
         public SignalRDataSourceTransportBuilder(Transport transport)
             : base(transport)
-        { 
+        {
         }
 
         /// <summary>
