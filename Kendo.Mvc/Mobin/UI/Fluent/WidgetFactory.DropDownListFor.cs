@@ -18,7 +18,7 @@ namespace Kendo.Mvc.UI.Fluent
         /// </code>
         /// </example>
         public virtual DropDownListBuilder MobinDropDownListFor<TEntityModel, TValue>(Expression<Func<TModel, TValue>> expression,
-            Expression<Func<TEntityModel, dynamic>> valueFieldExp, Expression<Func<TEntityModel, dynamic>> textFieldExp)
+            Expression<Func<TEntityModel, int>> valueFieldExp, Expression<Func<TEntityModel, dynamic>> textFieldExp)
         {
             var expressionName = ExpressionHelper.GetExpressionText(expression);
             var widget = DropDownList()

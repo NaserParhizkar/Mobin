@@ -9,17 +9,25 @@
 
   <ItemGroup>
     <Compile Remove="Areas\PDN\**" />
+    <Compile Remove="scripts\typescript\**" />
     <Compile Remove="wwwroot\expressions\**" />
     <Compile Remove="wwwroot\Scripts\**" />
+    <Compile Remove="wwwroot\Scripts\typescript\**" />
     <Content Remove="Areas\PDN\**" />
+    <Content Remove="scripts\typescript\**" />
     <Content Remove="wwwroot\expressions\**" />
     <Content Remove="wwwroot\Scripts\**" />
+    <Content Remove="wwwroot\Scripts\typescript\**" />
     <EmbeddedResource Remove="Areas\PDN\**" />
+    <EmbeddedResource Remove="scripts\typescript\**" />
     <EmbeddedResource Remove="wwwroot\expressions\**" />
     <EmbeddedResource Remove="wwwroot\Scripts\**" />
+    <EmbeddedResource Remove="wwwroot\Scripts\typescript\**" />
     <None Remove="Areas\PDN\**" />
+    <None Remove="scripts\typescript\**" />
     <None Remove="wwwroot\expressions\**" />
     <None Remove="wwwroot\Scripts\**" />
+    <None Remove="wwwroot\Scripts\typescript\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,12 +36,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
-  </ItemGroup>
-
-
-
-  <ItemGroup>
-    <Content Remove="wwwroot\kendo-2017.2.504\typescript\src\mobin.common.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,7 +56,8 @@
     <Folder Include="Areas\Northwind\Data\" />
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
-    <Folder Include="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\" />
+    <Folder Include="scripts\" />
+    <Folder Include="wwwroot\kendo-2017.2.504\typescript\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -591,13 +594,6 @@
     <ProjectReference Include="..\Mobin.Service\Mobin.Service.csproj" />
     <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />
     <ProjectReference Include="..\Repository\Northwind.Repository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\Docking.ts" />
-    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\ModuleFile.ts" />
-    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\Shipping.ts" />
-    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Railways\Ticketing.ts" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

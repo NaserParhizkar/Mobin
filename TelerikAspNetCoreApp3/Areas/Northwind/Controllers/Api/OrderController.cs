@@ -48,4 +48,11 @@ namespace Northwind.WebUI.Controllers
         }
     }
 
+    public class ProductApiController : CrudController<Product>
+    {
+        public ProductApiController(ICrudService<Product> _crudService) : base(_crudService)
+        {
+        }
+    }
+
 }

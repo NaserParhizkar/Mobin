@@ -9,10 +9,10 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "outDir": "wwwroot/kendo-2017.2.504/js/mobin-kendo-dist/",
-    "baseUrl": "./",
+    "outDir": "./wwwroot/kendo-2017.2.504/typescript/mobin-kendo-dist/",
+    "baseUrl": ".",
     "paths": {
-      "*": [ "wwwroot/kendo-2017.2.504/typescript/src/*" ]
+      "*": [ "./scripts/src/*" ]
     }
   },
   "exclude": [

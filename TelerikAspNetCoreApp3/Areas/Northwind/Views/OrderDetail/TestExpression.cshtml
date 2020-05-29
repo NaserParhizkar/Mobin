@@ -23,9 +23,10 @@
                 <div>
                     @*@(Html.Kendo().GridSearchDropDownListFor(t => t.Product.Category.CategoryId, "grid")
                         .DataSource(t => t.WebApi().Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
-                    @*@(Html.Kendo().DropDownListFor(t => t.Product.Category.CategoryId)
-                        .AutoFetchValueTextFields<Category>(fetchFlds => fetchFlds.DataValueField(x => x.CategoryId).DataTextField(x => x.CategoryName))
-                        .DataSource(ds => ds.WebApi().AutoMakeQueryExpression(true).Read(read => read.Action<CategoryApiController>(y => y.Read(null)))))*@
+                    @(Html.Kendo().DropDownListFor(t => t.Product.Category.CategoryId)
+                        .AutoFetchValueTextFields<Product>(fetchFlds => fetchFlds.DataValueField(x => x.ProductId).DataTextField(x => x.ProductName))
+                        .DataSource(ds => ds.Ajax().AutoMakeQueryExpression(true)
+                        .Read(read => read.Type(HttpVerbs.Get).Action<ProductApiController>(y => y.Read(null)))))
 
                 </div>
             </div>
