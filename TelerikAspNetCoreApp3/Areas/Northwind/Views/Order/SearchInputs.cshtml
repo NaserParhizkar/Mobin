@@ -85,18 +85,9 @@
                     {
                         source.Ajax().AutoMakeQueryExpression(true).Read(read =>
                         {
-                            read.Type(HttpVerbs.Get).Action<Northwind.WebUI.Controllers.ProductApiController>(t => t.Read(null)).Data("filterProducts");
+                            read.Type(HttpVerbs.Get).Action<Northwind.WebUI.Controllers.ProductApiController>(t => t.Read(null));
                         });
                     })
-                .Enable(false)
-                .AutoBind(false)
                 .CascadeFrom("categories")
         )
-
-    <script>
-        function filterProducts() {
-            return { categories: $("#categories").val() };
-        }
-    </script>
-
 </div>

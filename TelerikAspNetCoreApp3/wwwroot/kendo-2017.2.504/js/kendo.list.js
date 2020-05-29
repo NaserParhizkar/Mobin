@@ -225,6 +225,8 @@
                     this.listView.setDSFilter(newExpression);
                 }
                 var dataSourceState = extend({}, {
+                    widgetId: dataSource.widgetId(),
+                    autoMakeQueryExpression: dataSource.autoMakeQueryExpression(),
                     page: resetPageSettings ? 1 : dataSource.page(),
                     pageSize: resetPageSettings ? dataSource.options.pageSize : dataSource.pageSize(),
                     sort: dataSource.sort(),
