@@ -1,6 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "noImplicitAny": false,
     "noEmitOnError": true,
@@ -8,7 +9,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ES2015",
     "outDir": "./wwwroot/kendo-2017.2.504/typescript/mobin-kendo-dist/",
     "baseUrl": ".",
     "paths": {

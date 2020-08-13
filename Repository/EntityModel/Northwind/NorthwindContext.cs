@@ -168,6 +168,11 @@ namespace Northwind
                 entity.HasIndex(e => e.ProductId)
                     .HasName("ProductsOrder_Details");
 
+                entity.HasIndex(e => new { e.ProductId ,e.OrderId})
+                .IsUnique()
+                 .HasName("IX_Order Details");
+
+
                 entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.Order)

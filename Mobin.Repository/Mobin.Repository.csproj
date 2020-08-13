@@ -12,9 +12,10 @@
   <ItemGroup>
     <Folder Include="Microsoft\EntityFrameworkCore\Infrastructure\" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>

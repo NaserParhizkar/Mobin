@@ -13,11 +13,13 @@ namespace Mobin.TestConsoleApplication.Model
 
         [Column("CategoryID")]
         public int CategoryId { get; set; }
-        [Required]
-        [StringLength(15)]
+
+        [Required,StringLength(15)]
         public string CategoryName { get; set; }
+
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
+
         [Column(TypeName = "image")]
         public byte[] Picture { get; set; }
 

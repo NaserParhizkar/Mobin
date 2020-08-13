@@ -1,11 +1,8 @@
 $(function () {
-    var Path = (function () {
-        function Path() {
-        }
-        return Path;
-    }());
-    var cols = [];
-    var col = {};
+    class Path {
+    }
+    let cols = [];
+    let col = {};
     cols.push({
         title: 'کد',
         field: 'PathId',
@@ -15,9 +12,9 @@ $(function () {
         field: 'Name',
         encoded: true
     });
-    var myGrid = document.createElement('div');
+    let myGrid = document.createElement('div');
     myGrid.id = 'myGrid';
-    var ds = new kendo.data.DataSource({
+    let ds = new kendo.data.DataSource({
         transport: {
             read: { url: "Path/Read" }
         },
@@ -39,7 +36,7 @@ $(function () {
             },
         }
     });
-    var pathGridOptions = {
+    let pathGridOptions = {
         columns: cols,
         selectable: "Single, Row",
         dataSource: ds
@@ -50,10 +47,10 @@ $(function () {
         { "FirstName": "علی", "LastName": "پرهیزکار" },
         { "FirstName": "امیر", "LastName": "پرهیزکار" }
     ];
-    var columns = [];
+    let columns = [];
     columns.push({ field: "FirstName", title: "نام" });
     columns.push({ field: "LastName", title: "نام خانوادگی" });
-    var gridOption = {
+    let gridOption = {
         columns: columns,
         dataSource: data
     };
@@ -61,6 +58,6 @@ $(function () {
     input.style.position = 'relative';
     input.id = "technologies";
     var technologies = document.getElementById('test').appendChild(input);
-    var grid = $(technologies).kendoGrid(pathGridOptions).data("kendoGrid");
+    let grid = $(technologies).kendoGrid(pathGridOptions).data("kendoGrid");
 });
 //# sourceMappingURL=config-kendo.js.map

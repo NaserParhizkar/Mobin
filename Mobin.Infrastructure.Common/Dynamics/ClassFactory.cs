@@ -45,7 +45,7 @@ namespace Mobin.Common.Dynamics
             return GetDynamicClass(lstDynamicProp);
         }
 
-        private Type GetDynamicClass(IEnumerable<DynamicProperty> dynamicProperties)
+        Type GetDynamicClass(IEnumerable<DynamicProperty> dynamicProperties)
         {
             Monitor.Enter(_objThreadSafeDynamicClass);
             rwLock.AcquireReaderLock(Timeout.Infinite);

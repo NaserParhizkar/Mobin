@@ -11,18 +11,18 @@ namespace Mobin.TestConsoleApplication.Model
             EmployeeTerritories = new HashSet<EmployeeTerritory>();
         }
 
-        [Column("TerritoryID")]
-        [StringLength(20)]
+        [Column("TerritoryID"),StringLength(20)]
         public string TerritoryId { get; set; }
-        [Required]
-        [StringLength(50)]
+
+        [Required,StringLength(50)]
         public string TerritoryDescription { get; set; }
+
         [Column("RegionID")]
         public int RegionId { get; set; }
 
-        [ForeignKey("RegionId")]
-        [InverseProperty("Territories")]
+        [ForeignKey("RegionId"),InverseProperty("Territories")]
         public Region Region { get; set; }
+
         [InverseProperty("Territory")]
         public ICollection<EmployeeTerritory> EmployeeTerritories { get; set; }
     }

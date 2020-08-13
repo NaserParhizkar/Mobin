@@ -6,6 +6,11 @@ namespace Northwind.Repository
     [Table("Order Details")]
     public partial class OrderDetail
     {
+        [Column("OrderDetailID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int OrderDetailId { get; set; }
+
+
         [Column("OrderID")]
         public int OrderId { get; set; }
 

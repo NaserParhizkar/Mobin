@@ -13,28 +13,36 @@ namespace Mobin.TestConsoleApplication.Model
 
         [Column("ProductID")]
         public int ProductId { get; set; }
-        [Required]
-        [StringLength(40)]
+
+        [Required,StringLength(40)]
         public string ProductName { get; set; }
+
         [Column("SupplierID")]
         public int? SupplierId { get; set; }
+
         [Column("CategoryID")]
         public int? CategoryId { get; set; }
+
         [StringLength(20)]
         public string QuantityPerUnit { get; set; }
+
         [Column(TypeName = "decimal(5, 2)")]
         public decimal? UnitPrice { get; set; }
+
         public short? UnitsInStock { get; set; }
+
         public short? UnitsOnOrder { get; set; }
+
         public short? ReorderLevel { get; set; }
+
         public bool Discontinued { get; set; }
 
-        [ForeignKey("CategoryId")]
-        [InverseProperty("Products")]
+        [ForeignKey("CategoryId"),InverseProperty("Products")]
         public Category Category { get; set; }
-        [ForeignKey("SupplierId")]
-        [InverseProperty("Products")]
+
+        [ForeignKey("SupplierId"),InverseProperty("Products")]
         public Supplier Supplier { get; set; }
+
         [InverseProperty("Product")]
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Kendo.Mvc.Mobin.DataAnnotations.Internal
 {
-    public class MobinValidatiomAttributeAdapterProvider : IValidationAttributeAdapterProvider
+    public class MobinValidationAttributeAdapterProvider : IValidationAttributeAdapterProvider
     {
         IValidationAttributeAdapterProvider baseProvider = new ValidationAttributeAdapterProvider();
 

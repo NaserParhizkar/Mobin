@@ -5,14 +5,54 @@
 
 
 @*@{
-    var a = Mobin.Common.Utility.ModelMetadata<Path>.GetAttribute<System.ComponentModel.DescriptionAttribute>(t => t);
+        var a = Mobin.Common.Utility.ModelMetadata<Path>.GetAttribute<System.ComponentModel.DescriptionAttribute>(t => t);
 
-    var value = a.Description;
+        var value = a.Description;
 
-}
-
-
-@value*@
+    }
 
 
-    <cust>@(await Html.RenderComponentAsync<Northwind.WebUI.Pages.PathForm>(RenderMode.ServerPrerendered))</cust>
+    @value*@
+
+
+<script>
+
+    function mobinDatePicker(element) {
+        jQuery(element).kendoDatePicker({
+            value: new pDate(),
+            culture: "fa-IR",
+            format: "yyyy/MM/dd",
+            min: new pDate(),
+            max: new pDate(1450, 11, 29, 0, 0, 0, 0),
+            disableDates: ["fr"]
+        });
+    }
+
+    function setInputNumberEmpty(inputElement) {
+        jQuery(inputElement).val("");
+    }
+
+    function getGregorianDate(pDateElement) {
+        jQuery(pDateElement).kendoDatePicker({
+            value: new pDate(),
+            culture: "fa-IR",
+            format: "yyyy/MM/dd",
+            min: new pDate(),
+            max: new pDate(1450, 11, 29, 0, 0, 0, 0),
+            disableDates: ["fr"]
+        });
+
+        const persianDate = jQuery(pDateElement).data('kendoDatePicker').value();
+        console.log(persianDate);
+        const gregorianDate = new Date(persianDate);
+        console.log(new Date(persianDate));
+        return gregorianDate;
+    }
+
+</script>
+
+
+
+@*<cust>@(await Html.RenderComponentAsync<>(RenderMode.ServerPrerendered))</cust>*@
+
+<script src="~/kendo-2017.2.504/typescript/mobin-kendo-dist/Transport/Railways/Ticketing.js"></script>

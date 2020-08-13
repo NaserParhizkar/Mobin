@@ -2,6 +2,9 @@
     Layout = "~/Views/Shared/_Layout-old.cshtml";
     ViewData["Title"] = "Contact";
 }
+
+@using Mobin.Common;
+
 <script>
 kendo.syncReady(function() {
   jQuery("#AddressGrid").kendoGrid( {
@@ -159,7 +162,7 @@ kendo.syncReady(function() {
 
 
 
-
+@Html.Kendo().DatePicker().Name("date").DisableDates(new[] { "fr" }).Value(DateTime.Now.GetPersianDate()).Culture("fa-IR")
 
 <input type="text" id="datePickerFA" style="direction:ltr" name="datePickerFA" />
 

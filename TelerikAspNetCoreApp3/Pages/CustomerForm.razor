@@ -1,0 +1,32 @@
+﻿@page "/Employee"
+@inject ICrudService<KendoBus.Repository.Employee> EmployeeService
+@inject IJSRuntime JS
+
+@using Mobin.Service
+
+
+
+@code {
+    public Employee emp { get; set; }
+    public IEnumerable<Employee> empList { get; set; }
+
+
+    ElementReference pathIdNumber;
+
+
+
+    protected override void OnInitialized()
+    {
+        emp = new Employee();
+        empList = EmployeeService.GetAllAsEnumerable();
+    }
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            JS.InvokeVoidAsync("setInputNumberEmpty", pathIdNumber);
+
+        base.OnAfterRender(firstRender);
+    }
+}

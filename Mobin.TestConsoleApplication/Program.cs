@@ -1,14 +1,20 @@
-﻿using Mobin.Common;
+﻿using FluentValidation;
+using Microsoft.Extensions.Options;
+using Mobin.Common;
 using Mobin.Common.Expressions;
 using Mobin.TestConsoleApplication.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Common;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,8 +28,16 @@ namespace Mobin.TestConsoleApplication
         static int counter = 0;
         static void Main(string[] args)
         {
+            Test();
+
+            Execute();
+
+
+
             var display = Utility.ModelMetadata<Customer>.GetAttribute<DisplayAttribute>(t => t.City);
             var name = display.Name;
+
+            CheckValidation();
 
             try
             {
@@ -92,6 +106,64 @@ namespace Mobin.TestConsoleApplication
             {
 
             }
+        }
+
+        static void Test()
+        {
+            PersianCalendar p = new PersianCalendar();
+
+            int[] leapDays = { 1, 5, 9, 13, 17, 22, 26, 30 };
+
+            int counter = 0;
+            for (int y = 1000;y <= 9000; y++)
+            {
+                bool n = leapDays.Any(t => y % 33 == t);
+                bool c = p.IsLeapYear(y);
+
+                if (n != c)
+                {
+                    Console.WriteLine($"Computer =' {y} = is {c}'        but Naser = '{y} is {n}'");
+                    counter++;
+                }
+            }
+
+        }
+
+        static void CheckValidation()
+        {
+            Customer customer = new Customer
+            {
+
+            };
+
+            CustomerValidator validator = new CustomerValidator();
+
+            FluentValidation.Results.ValidationResult results = validator.Validate(customer);
+
+            if (!results.IsValid)
+            {
+                foreach (var failure in results.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                }
+            }
+
+
+            System.ComponentModel.DataAnnotations.ValidationContext validationContext =
+                new System.ComponentModel.DataAnnotations.ValidationContext(customer);
+
+
+
+            //var comapnyValidations = (IEnumerable<ValidationAttribute>)typeof(Customer).GetProperty(nameof(customer.CompanyName)).GetCustomAttributes()
+            //    .OfType<ValidationAttribute>();
+
+
+            //IEnumerable<ValidationAttribute> validationAttributes = new List<ValidationAttribute>(comapnyValidations);
+
+
+            var validationResults = new Collection<ValidationResult>();
+
+            var a = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(customer, validationContext, validationResults, true);
         }
 
         static void ThreadPerformanceChecker(object content)
@@ -243,7 +315,7 @@ namespace Mobin.TestConsoleApplication
 
                 Guid? key = Guid.NewGuid();
                 ExpressionJsonSerializer.ExpressionSaver.SerialExpressionAsJson<OrderDetail>
-                    ((Expression)lambdaExpression, @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\Customer\Index/grid.json",
+                    ((Expression)lambdaExpression, @"C:\Users\Asus\Desktop\Mobin\TelerikAspNetCoreApp3\wwwroot\expressions\Northwind\OrderDetail\Index\grid",
                     ref key,
                     typeof(OrderDetail).Assembly);
 
@@ -275,7 +347,7 @@ namespace Mobin.TestConsoleApplication
 
                 var queryRes = db.Set<OrderDetail>().AsQueryable().Provider.CreateQuery<object>(selectCallExpression);
 
-                var orderDetails = queryRes.ToList();
+                var orderDetails = queryRes.Take(100).ToList();
 
                 lstResult = orderDetails;
             }
@@ -283,5 +355,90 @@ namespace Mobin.TestConsoleApplication
             return lstResult;
         }
 
+    }
+
+
+    public class CustomerValidator : AbstractValidator<Customer>
+    {
+        public CustomerValidator()
+        {
+            RuleFor(customer => customer.CustomerId).NotNull();
+        }
+    }
+
+    /// <remark>
+    /// This class Generates prime numbers up to a user specified
+    /// maximum. The algorithm used is the Sieve of Eratosthenes.
+    ///
+    /// Eratosthenes of Cyrene, b. c. 276 BC, Cyrene, Libya --
+    /// d. c. 194, Alexandria. The first man to calculate the
+    /// circumference of the Earth. Also known for working on
+    /// calendars with leap years and ran the library at
+    /// Alexandria.
+    ///
+    /// The algorithm is quite simple. Given an array of integers
+    /// starting at 2. Cross out all multiples of 2. Find the
+    /// next uncrossed integer, and cross out all of its multiples.
+    /// Repeat until you have passed the square root of the
+    /// maximum value.
+    ///
+    /// Written by Robert C. Martin on 9 Dec 1999 in Java
+    /// Translated to C# by Micah Martin on 12 Jan 2005.
+    ///</remark>
+    /// <summary>
+    /// author: Robert C. Martin
+    /// </summary>
+    public class GeneratePrimes
+    {
+        ///<summary>
+        /// Generates an array of prime numbers.
+        ///</summary>
+        ///
+        /// <param name="maxValue">The generation limit.</param>
+        public static int[] GeneratePrimeNumbers(int maxValue)
+        {
+            if (maxValue >= 2) // the only valid case
+            {
+                // declarations
+                int s = maxValue + 1; // size of array
+
+                bool[] f = new bool[s];
+
+                int i;
+                // initialize array to true.
+                for (i = 0; i < s; i++)
+                    f[i] = true;
+                // get rid of known non-primes
+                f[0] = f[1] = false;
+                // sieve
+                int j;
+                for (i = 2; i < Math.Sqrt(s) + 1; i++)
+                {
+                    if (f[i]) // if i is uncrossed, cross its multiples.
+                    {
+                        for (j = 2 * i; j < s; j += i)
+
+                            f[j] = false; // multiple is not prime
+                    }
+                }
+                // how many primes are there?
+                int count = 0;
+                for (i = 0; i < s; i++)
+                {
+                    if (f[i])
+                        count++; // bump count.
+                }
+                int[] primes = new int[count];
+                // move the primes into the result
+                for (i = 0, j = 0; i < s; i++)
+                {
+                    if (f[i])             // if prime
+                        primes[j++] = i;
+                }
+                return primes;  // return the primes
+            }
+            else // maxValue < 2
+                return new int[0]; // return null array if bad input.
+        }
     }
 }

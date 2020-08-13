@@ -5,10 +5,27 @@
     <RazorLangVersion>3.0</RazorLangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="UI\DatePicker\**" />
+    <Content Remove="UI\DatePicker\**" />
+    <EmbeddedResource Remove="UI\DatePicker\**" />
+    <None Remove="UI\DatePicker\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="UI\DropDownList\" />
   </ItemGroup>
 
 </Project>

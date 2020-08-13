@@ -4,6 +4,7 @@ using Kendo.Mvc.UI;
 using Mobin.Service;
 using Northwind.Repository;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Northwind.WebUI.Controllers
 {
@@ -20,6 +21,11 @@ namespace Northwind.WebUI.Controllers
         {
         }
 
+
+        public override Task<object> Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return base.Read(request);
+        }
 
         public DataSourceResult GetCategories([DataSourceRequest]DataSourceRequest request)
         {
