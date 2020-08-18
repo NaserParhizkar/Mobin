@@ -26,7 +26,7 @@ namespace Kendo.Mvc
             yield return ServiceDescriptor.Transient(typeof(ICrudService<>), typeof(CrudService<>));
             yield return ServiceDescriptor.Transient(typeof(CrudController<>), typeof(CrudService<>));
 
-            yield return ServiceDescriptor.Singleton<IValidationAttributeAdapterProvider, MobinValidationAttributeAdapterProvider>();
+            yield return ServiceDescriptor.Singleton<IValidationAttributeAdapterProvider, MobinValidatiomAttributeAdapterProvider>();
         }
     }
 }

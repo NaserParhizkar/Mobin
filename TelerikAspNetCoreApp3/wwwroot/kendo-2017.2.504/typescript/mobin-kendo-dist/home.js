@@ -177,7 +177,7 @@ var Home;
             get: function () {
                 return this.customerIdValue;
             },
-            enumerable: false,
+            enumerable: true,
             configurable: true
         });
         return CustomerId;

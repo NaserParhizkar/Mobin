@@ -7,14 +7,15 @@ namespace Mobin.TestConsoleApplication.Model
     {
         [Column("EmployeeID")]
         public int EmployeeId { get; set; }
-
-        [Column("TerritoryID"),StringLength(20)]
+        [Column("TerritoryID")]
+        [StringLength(20)]
         public string TerritoryId { get; set; }
 
-        [ForeignKey("EmployeeId"),InverseProperty("EmployeeTerritories")]
+        [ForeignKey("EmployeeId")]
+        [InverseProperty("EmployeeTerritories")]
         public Employee Employee { get; set; }
-
-        [ForeignKey("TerritoryId"),InverseProperty("EmployeeTerritories")]
+        [ForeignKey("TerritoryId")]
+        [InverseProperty("EmployeeTerritories")]
         public Territory Territory { get; set; }
     }
 }

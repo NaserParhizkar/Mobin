@@ -2,7 +2,6 @@
 @inject IPathService PathService
 @inject IJSRuntime JSRuntime
 
-@using Microsoft.JSInterop
 @using KendoBus.Repository
 @using Northwind.Service
 
@@ -91,8 +90,6 @@
     </table>
 </div>
 
-
-
 @code {
     public Path path { get; set; }
     public IEnumerable<Path> pathList { get; set; }
@@ -102,14 +99,13 @@
     public bool Results { get; set; }
 
     ElementReference pathIdNumber;
-    ElementReference myNumber;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender && Cities == null)
         {
-            //Cities = await JSRuntime.InvokeAsync<string[]>("getCities");
-            //StateHasChanged();
+            Cities = await JSRuntime.InvokeAsync<string[]>("getCities");
+            StateHasChanged();
         }
     }
 
@@ -125,14 +121,6 @@
         IsVisible = true;
 
         //await JSRuntime.InvokeVoidAsync("saveMessage", pathname);
-        //await JSRuntime.InvokeVoidAsync("setFocusOnElement", path.Name);
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-            JSRuntime.InvokeVoidAsync("setInputNumberEmpty", pathIdNumber);
-
-        base.OnAfterRender(firstRender);
+        await JSRuntime.InvokeVoidAsync("setFocusOnElement", path.Name);
     }
 }

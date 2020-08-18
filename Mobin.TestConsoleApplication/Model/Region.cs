@@ -14,8 +14,8 @@ namespace Mobin.TestConsoleApplication.Model
 
         [Column("RegionID")]
         public int RegionId { get; set; }
-
-        [Required,StringLength(50)]
+        [Required]
+        [StringLength(50)]
         public string RegionDescription { get; set; }
 
         [InverseProperty("Region")]

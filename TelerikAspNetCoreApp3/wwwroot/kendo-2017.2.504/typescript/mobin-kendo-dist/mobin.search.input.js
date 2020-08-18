@@ -46,7 +46,7 @@ var GridSearchInput = (function (_super) {
             else
                 this.options.value = value;
         },
-        enumerable: false,
+        enumerable: true,
         configurable: true
     });
     return GridSearchInput;

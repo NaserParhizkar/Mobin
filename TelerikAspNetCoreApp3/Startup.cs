@@ -233,7 +233,7 @@ namespace Northwind.WebUI
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             //app.UseMvc(routes =>
             //{
@@ -276,6 +276,8 @@ namespace Northwind.WebUI
                    defaults: new { Controller = "Messages", action = "My" });
 
                 endpoints.MapBlazorHub();
+
+                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
