@@ -56,6 +56,7 @@
     <Folder Include="Areas\Northwind\Data\" />
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
+    <Folder Include="Services\" />
     <Folder Include="scripts\" />
     <Folder Include="wwwroot\kendo-2017.2.504\typescript\" />
   </ItemGroup>

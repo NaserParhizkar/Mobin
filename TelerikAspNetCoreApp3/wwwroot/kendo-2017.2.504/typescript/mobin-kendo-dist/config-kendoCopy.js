@@ -1,6 +1,9 @@
-class Path {
-}
-let ds = new kendo.data.DataSource({
+var Path = (function () {
+    function Path() {
+    }
+    return Path;
+}());
+var ds = new kendo.data.DataSource({
     transport: {
         read: { url: "Path/Read" }
     },
@@ -22,30 +25,32 @@ let ds = new kendo.data.DataSource({
         },
     }
 });
-class Ajax {
-    constructor() {
+var Ajax = (function () {
+    function Ajax() {
         this.READY_STATUS_CODE = 4;
     }
-    isCompleted(request) {
+    Ajax.prototype.isCompleted = function (request) {
         return request.readyState === this.READY_STATUS_CODE;
-    }
-    httpGet(url) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.onreadystatechange = () => {
-                if (this.isCompleted(request)) {
+    };
+    Ajax.prototype.httpGet = function (url) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (_this.isCompleted(request)) {
                     resolve(request);
                 }
             };
             request.open('GET', url, true);
             request.send();
         });
-    }
-    httpPost(url, data) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.onreadystatechange = () => {
-                if (this.isCompleted(request)) {
+    };
+    Ajax.prototype.httpPost = function (url, data) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (_this.isCompleted(request)) {
                     resolve(request);
                 }
             };
@@ -53,8 +58,9 @@ class Ajax {
             request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             request.send(data);
         });
-    }
-}
+    };
+    return Ajax;
+}());
 function submitPartialEntryForm(ev) {
     var validator = $('#a').kendoValidator({
         validate: function () {
@@ -62,10 +68,10 @@ function submitPartialEntryForm(ev) {
         }
     }).data("kendoValidator");
     if (validator.validate()) {
-        const aj = new Ajax();
-        const frm = $(ev).closest('form');
+        var aj = new Ajax();
+        var frm = $(ev).closest('form');
         if (frm) {
-            const submitData = frm.serializeArray();
+            var submitData = frm.serializeArray();
             aj.httpPost('PathApi/Insert', submitData.toString());
         }
     }

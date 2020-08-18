@@ -1,83 +1,125 @@
-class MasterControlPanel {
-    constructor() {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var MasterControlPanel = (function () {
+    function MasterControlPanel() {
         this.sensors = [];
         this.sensors.push(new HeatSensor(this));
     }
-    start() {
-        for (let sensor of this.sensors) {
+    MasterControlPanel.prototype.start = function () {
+        var _this = this;
+        for (var _i = 0, _a = this.sensors; _i < _a.length; _i++) {
+            var sensor = _a[_i];
             sensor.check();
         }
-        window.setTimeout(() => this.start(), 1000);
-    }
-    startAlarm(message) {
+        window.setTimeout(function () { return _this.start(); }, 1000);
+    };
+    MasterControlPanel.prototype.startAlarm = function (message) {
         console.log('Alarm! ' + message);
-    }
-}
-class HeatSensor {
-    constructor(controlPanel) {
+    };
+    return MasterControlPanel;
+}());
+var HeatSensor = (function () {
+    function HeatSensor(controlPanel) {
         this.controlPanel = controlPanel;
         this.upperLimit = 38;
         this.sensor = {
             read: function () { return Math.floor(Math.random() * 100); }
         };
     }
-    check() {
+    HeatSensor.prototype.check = function () {
         if (this.sensor.read() > this.upperLimit) {
             this.controlPanel.startAlarm('Overheating!');
         }
-    }
-}
-const controlPanel = new MasterControlPanel();
+    };
+    return HeatSensor;
+}());
+var controlPanel = new MasterControlPanel();
 controlPanel.start();
-class Car {
-    moveTo(x, y) {
+var Car = (function () {
+    function Car() {
+    }
+    Car.prototype.moveTo = function (x, y) {
         console.log('Driving to ' + x + ' ' + y);
+    };
+    return Car;
+}());
+var SportCar = (function (_super) {
+    __extends(SportCar, _super);
+    function SportCar() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-}
-class SportCar extends Car {
-}
-class Airplane {
-    moveTo(x, y) {
+    return SportCar;
+}(Car));
+var Airplane = (function () {
+    function Airplane() {
+    }
+    Airplane.prototype.moveTo = function (x, y) {
         console.log('Flying to ' + x + ' ' + y);
+    };
+    return Airplane;
+}());
+var Satellite = (function () {
+    function Satellite() {
     }
-}
-class Satellite {
-    moveTo(x) {
+    Satellite.prototype.moveTo = function (x) {
         console.log('Targeting ' + x);
-    }
-}
+    };
+    return Satellite;
+}());
 function navigate(vehicle) {
     vehicle.moveTo(59.9436499, 10.7167959);
 }
-const car = new SportCar();
+var car = new SportCar();
 navigate(car);
-const airplane = new Airplane();
+var airplane = new Airplane();
 navigate(airplane);
-const satellite = new Satellite();
+var satellite = new Satellite();
 navigate(satellite);
-class RewardPointsCalculator {
-    getPoints(transactionValue) {
+var RewardPointsCalculator = (function () {
+    function RewardPointsCalculator() {
+    }
+    RewardPointsCalculator.prototype.getPoints = function (transactionValue) {
         return Math.floor(transactionValue) * 4;
+    };
+    return RewardPointsCalculator;
+}());
+var DoublePointsCalculator = (function (_super) {
+    __extends(DoublePointsCalculator, _super);
+    function DoublePointsCalculator() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-}
-class DoublePointsCalculator extends RewardPointsCalculator {
-    getPoints(transactionValue) {
-        const standardPoints = super.getPoints(transactionValue);
+    DoublePointsCalculator.prototype.getPoints = function (transactionValue) {
+        var standardPoints = _super.prototype.getPoints.call(this, transactionValue);
         return standardPoints * 2;
+    };
+    return DoublePointsCalculator;
+}(RewardPointsCalculator));
+var Light = (function () {
+    function Light() {
     }
-}
-class Light {
-    SwitchOn() {
-    }
-    SwitchOff() {
-    }
-}
-class LightSwitch {
-    constructor(light) {
+    Light.prototype.SwitchOn = function () {
+    };
+    Light.prototype.SwitchOff = function () {
+    };
+    return Light;
+}());
+var LightSwitch = (function () {
+    function LightSwitch(light) {
         this.light = light;
         this.isOn = false;
     }
-    onPress() {
+    LightSwitch.prototype.onPress = function () {
         if (this.isOn) {
             this.light.SwitchOff();
             this.isOn = false;
@@ -86,19 +128,28 @@ class LightSwitch {
             this.light.SwitchOn();
             this.isOn = true;
         }
+    };
+    return LightSwitch;
+}());
+var BasicWheelCleaning = (function () {
+    function BasicWheelCleaning() {
     }
-}
-class BasicWheelCleaning {
-    CleanWheels() {
+    BasicWheelCleaning.prototype.CleanWheels = function () {
         console.log('Soaping Wheel');
         console.log('Brushing Wheel');
+    };
+    return BasicWheelCleaning;
+}());
+var ExecutiveWheelCleaning = (function (_super) {
+    __extends(ExecutiveWheelCleaning, _super);
+    function ExecutiveWheelCleaning() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-}
-class ExecutiveWheelCleaning extends BasicWheelCleaning {
-    CleanWheels() {
-        super.CleanWheels();
+    ExecutiveWheelCleaning.prototype.CleanWheels = function () {
+        _super.prototype.CleanWheels.call(this);
         console.log('Waxing Wheel');
         console.log('Rinsing Wheel');
-    }
-}
+    };
+    return ExecutiveWheelCleaning;
+}(BasicWheelCleaning));
 //# sourceMappingURL=Docking.js.map

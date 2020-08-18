@@ -1,46 +1,63 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var KendoWidgets;
 (function (KendoWidgets) {
-    class GridSearchFromDatePicker extends kendo.ui.DatePicker {
-        constructor(element, options) {
-            super(element, options);
+    var GridSearchFromDatePicker = (function (_super) {
+        __extends(GridSearchFromDatePicker, _super);
+        function GridSearchFromDatePicker(element, options) {
+            return _super.call(this, element, options) || this;
         }
-        checkGridState(gridname) {
+        GridSearchFromDatePicker.prototype.checkGridState = function (gridname) {
             if (gridname === undefined || gridname === '')
                 throw new Error('You must specify grid name which this search is for it');
             return true;
-        }
-    }
+        };
+        return GridSearchFromDatePicker;
+    }(kendo.ui.DatePicker));
     KendoWidgets.GridSearchFromDatePicker = GridSearchFromDatePicker;
-    class GridSearchToDatePicker extends kendo.ui.DatePicker {
-        constructor(element, options) {
-            super(element, options);
+    var GridSearchToDatePicker = (function (_super) {
+        __extends(GridSearchToDatePicker, _super);
+        function GridSearchToDatePicker(element, options) {
+            return _super.call(this, element, options) || this;
         }
-        checkGridState(gridname) {
+        GridSearchToDatePicker.prototype.checkGridState = function (gridname) {
             if (gridname === undefined || gridname === '')
                 throw new Error('You must specify grid name which this search is for it');
             return true;
-        }
-    }
+        };
+        return GridSearchToDatePicker;
+    }(kendo.ui.DatePicker));
     KendoWidgets.GridSearchToDatePicker = GridSearchToDatePicker;
     GridSearchFromDatePicker.fn = GridSearchFromDatePicker.prototype;
     GridSearchToDatePicker.fn = GridSearchToDatePicker.prototype;
     GridSearchFromDatePicker.fn.options = $.extend(true, {
-        change(e) {
-            const sender = e.sender;
-            const options = sender.options;
-            const gridname = options.gridname;
-            const grid = $("#" + gridname).data('kendoGrid');
-            const value = sender.value();
-            const filter = grid.dataSource.filter();
-            const bindedpropertyname = options.bindedpropertyname;
+        change: function (e) {
+            var sender = e.sender;
+            var options = sender.options;
+            var gridname = options.gridname;
+            var grid = $("#" + gridname).data('kendoGrid');
+            var value = sender.value();
+            var filter = grid.dataSource.filter();
+            var bindedpropertyname = options.bindedpropertyname;
             if (filter && filter.filters) {
-                let preFilters = {
+                var preFilters = {
                     filters: [],
                     logic: 'and'
                 };
                 preFilters.filters = filter.filters;
-                let uniqueFilters = [];
-                uniqueFilters = $.grep(preFilters.filters, (item) => {
+                var uniqueFilters = [];
+                uniqueFilters = $.grep(preFilters.filters, function (item) {
                     return item.field != bindedpropertyname || (item.field == bindedpropertyname && item.operator != 'gte');
                 });
                 preFilters.filters = uniqueFilters;
@@ -55,22 +72,22 @@ var KendoWidgets;
         }
     }, kendo.ui.DatePicker.fn.options);
     GridSearchToDatePicker.fn.options = $.extend(true, {
-        change(e) {
-            const sender = e.sender;
-            const options = sender.options;
-            const gridname = options.gridname;
-            const grid = $("#" + gridname).data('kendoGrid');
-            const value = sender.value();
-            const filter = grid.dataSource.filter();
-            const bindedpropertyname = options.bindedpropertyname;
+        change: function (e) {
+            var sender = e.sender;
+            var options = sender.options;
+            var gridname = options.gridname;
+            var grid = $("#" + gridname).data('kendoGrid');
+            var value = sender.value();
+            var filter = grid.dataSource.filter();
+            var bindedpropertyname = options.bindedpropertyname;
             if (filter && filter.filters) {
-                let preFilters = {
+                var preFilters = {
                     filters: [],
                     logic: 'and'
                 };
                 preFilters.filters = filter.filters;
-                let uniqueFilters = [];
-                uniqueFilters = $.grep(preFilters.filters, (item) => {
+                var uniqueFilters = [];
+                uniqueFilters = $.grep(preFilters.filters, function (item) {
                     return item.field != bindedpropertyname || (item.field == bindedpropertyname && item.operator != 'lte');
                 });
                 preFilters.filters = uniqueFilters;
