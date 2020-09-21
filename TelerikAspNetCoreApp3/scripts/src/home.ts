@@ -25,9 +25,20 @@ namespace Home {
 
     }
 
-    class HiFi {
-
+    class Person {
+        Firstname: string;
+        Lastname: string;
     }
+
+    class HiFi {
+        aa: (a: Person) => string;
+    }
+
+
+    var aaa = new HiFi();
+
+
+
 
     var display = new Display();
     display.name = '';

@@ -30,6 +30,7 @@ namespace Northwind
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -65,7 +66,7 @@ namespace Northwind
             modelBuilder.Entity<CustomerCustomerDemo>(entity =>
             {
                 entity.HasKey(e => new { e.CustomerId, e.CustomerTypeId })
-                    .ForSqlServerIsClustered(false);
+                    .IsClustered(false);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerCustomerDemos)
@@ -83,7 +84,7 @@ namespace Northwind
             modelBuilder.Entity<CustomerDemographic>(entity =>
             {
                 entity.HasKey(e => e.CustomerTypeId)
-                    .ForSqlServerIsClustered(false);
+                    .IsClustered(false);
 
                 entity.Property(e => e.CustomerTypeId).ValueGeneratedNever();
             });
@@ -105,7 +106,7 @@ namespace Northwind
             modelBuilder.Entity<EmployeeTerritory>(entity =>
             {
                 entity.HasKey(e => new { e.EmployeeId, e.TerritoryId })
-                    .ForSqlServerIsClustered(false);
+                    .IsClustered(false);
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.EmployeeTerritories)
@@ -216,7 +217,7 @@ namespace Northwind
             modelBuilder.Entity<Region>(entity =>
             {
                 entity.HasKey(e => e.RegionId)
-                    .ForSqlServerIsClustered(false);
+                    .IsClustered(false);
 
                 entity.Property(e => e.RegionId).ValueGeneratedNever();
             });
@@ -233,7 +234,7 @@ namespace Northwind
             modelBuilder.Entity<Territory>(entity =>
             {
                 entity.HasKey(e => e.TerritoryId)
-                    .ForSqlServerIsClustered(false);
+                    .IsClustered(false);
 
                 entity.Property(e => e.TerritoryId).ValueGeneratedNever();
 

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mobin.Blazor\Mobin.Blazor.csproj" />
+    <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
+    <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />
+    <ProjectReference Include="..\Repository\Northwind.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

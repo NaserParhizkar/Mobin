@@ -1,0 +1,163 @@
+﻿@page "/"
+@namespace Northwind.WebServerBlazor.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Northwind.WebServerBlazor</title>
+        <base href="~/" />
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+        <link href="css/site.css" rel="stylesheet" />
+    </head>
+    <body>
+        <app>
+            <component type="typeof(App)" render-mode="ServerPrerendered" />
+        </app>
+
+        <div id="blazor-error-ui">
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+    </body>
+    </html>*@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TestGrid</title>
+        <base href="~/" />
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+        <link href="css/site.css" rel="stylesheet" />
+
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@ViewData["Title"] - Northwind.WebUI</title>
+
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*-----------------Style Sheet liberaries include kendo libs-----------------*@
+
+    <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
+    <link href="~/Content/mobin.kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
+
+    <style>
+        .sunny, .cloudy, .rainy {
+            display: block;
+            margin: 30px auto 10px;
+            width: 128px;
+            height: 128px;
+            background: url('../content/web/tabstrip/weather.png') transparent no-repeat 0 0;
+        }
+
+        .cloudy {
+            background-position: -128px 0;
+        }
+
+        .rainy {
+            background-position: -256px 0;
+        }
+
+        .weather {
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        #tabstrip h2 {
+            font-weight: lighter;
+            font-size: 5em;
+            line-height: 1;
+            padding: 0 0 0 30px;
+            margin: 0;
+        }
+
+            #tabstrip h2 span {
+                background: none;
+                padding-left: 5px;
+                font-size: .3em;
+                vertical-align: top;
+            }
+
+        #tabstrip p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+
+    <style type="text/css">
+        .k-widget.k-tooltip-validation {
+            width: 80%;
+        }
+
+        .control-label {
+            float: right;
+            padding-bottom: 5px;
+        }
+    </style>
+
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link type="text/javascript" href="~/js/config-kendo.min.js" />*@
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body style="font-family:Tahoma;font-size:14px;">
+    <div id="errorTree" style="word-wrap:break-word;overflow-wrap:break-word;overflow-x:auto;width:500px;"></div>
+    <div class="k-rtl">
+
+
+        <app>
+            <component type="typeof(App)" render-mode="ServerPrerendered" />
+        </app>
+
+        <div id="blazor-error-ui">
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+    </div>
+
+</body>
+</html>

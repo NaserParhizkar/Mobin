@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+    <TabControl>
+        <TabTextTemplate Context="TheTab">
+            @TheTab.Text
+        </TabTextTemplate>
+        <ChildContent>
+            <TabPage Text="Paris">
+                <div class="k-content k-state-active">
+                    <p>Rainy weather in Paris.</p>
+                </div>
+            </TabPage>
+        </ChildContent>
+    </TabControl>
