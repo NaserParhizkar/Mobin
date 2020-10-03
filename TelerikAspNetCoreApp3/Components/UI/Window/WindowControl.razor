@@ -1,0 +1,42 @@
+﻿@inject IJSRuntime JSRuntime
+
+
+<div @ref="kendoWindow">
+    @Content
+</div>
+
+
+@code {
+    ElementReference kendoWindow;
+
+    [Parameter] public string Title { get; set; }
+    [Parameter] public int? Width { get; set; } = 400;
+    [Parameter] public int? Height { get; set; } = 400;
+
+    [Parameter] public bool? Modal { get; set; } = true;
+
+    [Parameter] public bool? Scrollable { get; set; }
+    [Parameter] public bool? Draggable { get; set; }
+    [Parameter] public bool? Resizable { get; set; }
+    [Parameter] public bool? Visible { get; set; }
+    [Parameter] public List<Action> Actions { get; set; }
+
+    [Parameter] public RenderFragment Content { get; set; }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("Blazor.kendoWindow",kendoWindow.Id,);
+        }
+    }
+
+
+    public enum Action
+    {
+        Maximize,
+        Close
+    }
+}
+

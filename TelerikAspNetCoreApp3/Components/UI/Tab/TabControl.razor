@@ -1,0 +1,55 @@
+﻿<div class="k-tabstrip-wrapper" style="">
+    <div id="tabstrip" class="k-widget k-tabstrip">
+        <CascadingValue Value="this">
+            <ul class="k-tabstrip-items k-reset">
+                @foreach (TabPage tabPage in Pages)
+                {
+                    <li class="k-item k-state-default @(tabPage == ActivePage ? "k-state-active" : "")" @onclick=@( () => ActivatePage(tabPage) )>
+                        <span class="k-loading k-complete"></span>
+                        <span class="k-link">
+                            @tabPage.Text
+                        </span>
+                        <span class="dismiss" style="float:left" @onclick=@(() => RemovePage(tabPage)) @onclick:stopPropagation="true"><a>🗙</a></span>
+                    </li>
+                }
+            </ul>
+            @ChildContent
+        </CascadingValue>
+    </div>
+</div>
+@code {
+    // Next line is needed so we are able to add <TabPage> components inside
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    public TabPage ActivePage { get; set; }
+    List<TabPage> Pages = new List<TabPage>();
+
+    internal void AddPage(TabPage tabPage)
+    {
+        Pages.Add(tabPage);
+        if (Pages.Count == 1)
+            ActivePage = tabPage;
+        StateHasChanged();
+    }
+
+    internal void RemovePage(TabPage page)
+    {
+        if (page == ActivePage)
+        {
+            var activePageIndex = Pages.IndexOf(page);
+            if (activePageIndex >= Pages.Count - 1)
+            {
+                var activePage = Pages[activePageIndex - 1];
+                ActivatePage(activePage);
+            }
+            else
+            {
+                var activePage = Pages[activePageIndex + 1];
+                ActivatePage(activePage);
+            }
+        }
+        Pages.Remove(page);
+        StateHasChanged();
+    }
+
+    void ActivatePage(TabPage page) { ActivePage = page; }
+}

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Mobin.Blazor\Mobin.Blazor.csproj" />
     <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
     <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />

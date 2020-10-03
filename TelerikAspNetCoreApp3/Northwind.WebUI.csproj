@@ -30,6 +30,16 @@
     <None Remove="wwwroot\Scripts\typescript\**" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Content Remove="Components\UI\Window\WindowControl.razor" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Remove="scripts\src\tosan-blazor.ts" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
   </ItemGroup>
@@ -47,6 +57,10 @@
     <Content Include="Controllers\HomeController.cs" />
     <Content Include="Areas\Northwind\Controllers\KendoGridHelperController.cs" />
     <Content Include="Controllers\PersianDateController.cs" />
+    <Content Include="scripts\src\tosan\tosan-blazor.ts">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -57,11 +71,12 @@
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
     <Folder Include="Services\" />
-    <Folder Include="scripts\" />
-    <Folder Include="wwwroot\kendo-2017.2.504\typescript\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Components\UI\Tab\TabControl.razor" />
+    <None Include="Components\UI\Tab\TabPage.razor" />
+    <None Include="Components\UI\Window\WindowControl.razor" />
     <None Include="wwwroot\Content\951114.css" />
     <None Include="wwwroot\Content\BNAZANB.TTF" />
     <None Include="wwwroot\Content\BNAZANIN.TTF" />
