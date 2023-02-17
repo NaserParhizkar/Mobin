@@ -15,10 +15,10 @@ namespace Northwind.Service
     public class CustomerService : CrudService<Customer>, ICustomerService
     {
         //public CustomerService(IMobinUnitOfWork unitofwork) : base(unitofwork) { }
+        private readonly NorthwindUnitOfWork northwindUnitOfWork;
 
-        public CustomerService(Func<Type, IMobinUnitOfWork> unitofwork) : base(unitofwork)
-        {
-        }
+        public CustomerService(INorthwindUnitOfWork unitofwork) : base(unitofwork)
+              => northwindUnitOfWork = (NorthwindUnitOfWork)unitofwork;
 
         public override IQueryable<Customer> GetAllAsQueryable()
         {

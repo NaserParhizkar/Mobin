@@ -3,7 +3,9 @@ using Mobin.Repository;
 
 namespace KendoBus
 {
-    public class BusUnitOfWork : MobinUnitOfWork<DbContext>
+    public interface IBusUnitOfWork : IMobinUnitOfWork<KendoBusContext>, IMobinUnitOfWork { }
+
+    public class BusUnitOfWork : MobinUnitOfWork<KendoBusContext>, IBusUnitOfWork
     {
         public BusUnitOfWork(KendoBusContext dbContext) : base(dbContext)
         {

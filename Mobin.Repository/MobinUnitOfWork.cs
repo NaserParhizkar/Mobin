@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mobin.Common.Entities;
 using System;
 
 namespace Mobin.Repository
 {
     public interface IMobinUnitOfWork : IDisposable
     {
-        CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new();
+        CrudRepository<TEntity> Repository<TEntity>() where TEntity : MobinBaseEntity;
 
         int Commit();
     }
@@ -16,25 +17,17 @@ namespace Mobin.Repository
         //TDbContext Context { get; }
     }
 
-    public class MobinUnitOfWork<TDbContext> : IMobinUnitOfWork where TDbContext : DbContext
+    public abstract class MobinUnitOfWork<TDbContext> : IMobinUnitOfWork<TDbContext>, IMobinUnitOfWork where TDbContext : DbContext
     {
         private bool disposed = false;
         private DbContext context { get; }
 
-        public MobinUnitOfWork(TDbContext dbContext)
-        {
-            context = dbContext;
-        }
+        protected MobinUnitOfWork(TDbContext dbContext) => context = dbContext;
 
-        public CrudRepository<TEntity> Repository<TEntity>() where TEntity : class, new()
-        {
-            return new CrudRepository<TEntity>(context);
-        }
+        public virtual int Commit() => context.SaveChanges();
 
-        public virtual int Commit()
-        {
-            return context.SaveChanges();
-        }
+        public CrudRepository<TEntity> Repository<TEntity>() 
+            where TEntity : MobinBaseEntity => new CrudRepository<TEntity>(context);
 
         protected virtual void Dispose(bool disposing)
         {

@@ -15,8 +15,8 @@
                              col.Bound(t => t.PathId).Filterable(w => w.Mode(GridFilterMode.Row)).Width(300);
                              col.Bound(t => t.Name).Width(300);
                              col.Bound(t => t.Distance).Width(300);
-
-                             col.Command(t => t.Edit().UpdateText("ویرایش").Text("asd").CancelText("dfgfg"));
+                             col.Command(t => t.Destroy().Text("حذف"));
+                             col.Command(t => t.Edit().UpdateText("ویرایش").Text("ویرایش").CancelText("لغو"));
                          })
                                    .DataSource(source => source.WebApi().PageSize(20).AutoMakeQueryExpression()
                                            .Model(model =>

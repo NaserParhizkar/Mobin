@@ -4,9 +4,6 @@ namespace Northwind.WebUI.Areas.Northwind.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
     }
 }

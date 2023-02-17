@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Northwind.Repository.EntityModel.Northwind.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Repository
 {
     [Table("Order Details")]
-    public partial class OrderDetail
+    public partial class OrderDetail : NorthwindBaseEntity
     {
         [Column("OrderID")]
         public int OrderId { get; set; }

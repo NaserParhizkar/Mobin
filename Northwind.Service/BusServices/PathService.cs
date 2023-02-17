@@ -1,4 +1,5 @@
 ﻿
+using KendoBus;
 using KendoBus.Repository;
 using Mobin.Repository;
 using Mobin.Service;
@@ -7,15 +8,14 @@ using System.Linq;
 
 namespace Northwind.Service
 {
-    public interface IPathService : ICrudService<Path>
-    {
-    }
+    public interface IPathService : ICrudService<Path> {}
 
     public class PathService : CrudService<Path>, IPathService
     {
-        public PathService(Func<Type, IMobinUnitOfWork> unitofwork) : base(unitofwork)
-        {
-        }
+        private readonly BusUnitOfWork busUnitOfWork;
+
+        public PathService(IBusUnitOfWork unitofwork) : base(unitofwork)
+          => busUnitOfWork = (BusUnitOfWork)unitofwork;
 
         public override IQueryable<Path> GetAllAsQueryable()
         {

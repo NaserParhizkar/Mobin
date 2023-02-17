@@ -2,8 +2,9 @@
 
 
 <div @ref="kendoWindow">
-    @Content
+        @WindowContent
 </div>
+
 
 
 @code {
@@ -21,22 +22,17 @@
     [Parameter] public bool? Visible { get; set; }
     [Parameter] public List<Action> Actions { get; set; }
 
-    [Parameter] public RenderFragment Content { get; set; }
+    [Parameter] public RenderFragment WindowContent { get; set; }
 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("Blazor.kendoWindow",kendoWindow.Id);
+            //Kendo.Mvc.TagHelpers.WindowTagHelper
+
+            await JSRuntime.InvokeVoidAsync("blazor.mobinWindow", kendoWindow);
         }
-    }
-
-
-    public enum Action
-    {
-        Maximize,
-        Close
     }
 }
 

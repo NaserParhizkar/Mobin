@@ -3,7 +3,9 @@ using Mobin.Repository;
 
 namespace Northwind
 {
-    public class NorthwindUnitOfWork : MobinUnitOfWork<NorthwindContext>, IMobinUnitOfWork
+    public interface INorthwindUnitOfWork : IMobinUnitOfWork<NorthwindContext>, IMobinUnitOfWork { }
+
+    public class NorthwindUnitOfWork : MobinUnitOfWork<NorthwindContext>, INorthwindUnitOfWork
     {
         public NorthwindUnitOfWork(NorthwindContext dbContext) : base(dbContext)
         {

@@ -1,14 +1,23 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.tosanWindow = void 0;
-var tosanWindow = (function () {
-    function tosanWindow() {
-    }
-    tosanWindow.prototype.blazorKendoWindow = function (componentId, options) {
+var _global = (window || globalThis);
+_global.blazor = {
+    mobinWindow: function (componentId, options) {
         var win = new kendo.ui.Window(componentId, options);
-        return win;
-    };
-    return tosanWindow;
-}());
-exports.tosanWindow = tosanWindow;
+        win.open();
+    },
+    editForm: {
+        validate: function (componentId) {
+            var validator = new kendo.ui.Validator(componentId, {
+                validate: function (ev) {
+                    alert(ev);
+                }
+            });
+            if (validator.validate()) {
+                alert("validated");
+            }
+            else {
+                alert("invalid");
+            }
+        }
+    }
+};
 //# sourceMappingURL=tosan-blazor.js.map

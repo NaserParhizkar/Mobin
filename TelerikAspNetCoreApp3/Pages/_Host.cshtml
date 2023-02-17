@@ -5,34 +5,283 @@
     Layout = null;
 }
 
+
+@*@page "/"
+    @namespace Northwind.WebUI.Pages
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Northwind.WebUI</title>
+        <base href="~/" />
+        <link rel="stylesheet" href="~/css/bootstrap/bootstrap.min.css" />
+        <link href="~/css/blazorsite.css" rel="stylesheet" />
+    </head>
+    <body>
+        <app>
+            <component type="typeof(App)" render-mode="ServerPrerendered" />
+        </app>
+
+        <div id="blazor-error-ui">
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+
+        <script src="~/js/site.js"></script>
+        <script src="~/js/mobin-blazor.js"></script>
+    </body>
+    </html>*@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Northwind.WebUI</title>
+    <title>TestGrid</title>
     <base href="~/" />
-    <link rel="stylesheet" href="~/css/bootstrap/bootstrap.min.css" />
-    <link href="~/css/blazorsite.css" rel="stylesheet" />
-</head>
-<body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
 
-    <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@ViewData["Title"] - Northwind.WebUI</title>
+
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*-----------------Style Sheet liberaries include kendo libs-----------------*@
+
+    <link href="~/kendo-2017.2.504/styles/web/kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/mobile/kendo.mobile.all.css" rel="stylesheet" />
+    <link href="~/Content/mobin.kendo.common.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.default.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/dataviz/kendo.dataviz.bootstrap.css" rel="stylesheet" />
+    <link href="~/kendo-2017.2.504/styles/web/kendo.rtl.css" rel="stylesheet" />
+
+
+    <style>
+        .sunny, .cloudy, .rainy {
+            display: block;
+            margin: 30px auto 10px;
+            width: 128px;
+            height: 128px;
+            background: url('../content/web/tabstrip/weather.png') transparent no-repeat 0 0;
+        }
+
+        .cloudy {
+            background-position: -128px 0;
+        }
+
+        .rainy {
+            background-position: -256px 0;
+        }
+
+        .weather {
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        #tabstrip h2 {
+            font-weight: lighter;
+            font-size: 5em;
+            line-height: 1;
+            padding: 0 0 0 30px;
+            margin: 0;
+        }
+
+            #tabstrip h2 span {
+                background: none;
+                padding-left: 5px;
+                font-size: .3em;
+                vertical-align: top;
+            }
+
+        #tabstrip p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+
+
+    <style type="text/css">
+        .k-widget.k-tooltip-validation {
+            width: 80%;
+        }
+
+        .control-label {
+            float: right;
+            padding-bottom: 5px;
+        }
+    </style>
+
+    <style>
+        #example {
+            min-height: 500px;
+        }
+
+        #undo {
+            text-align: center;
+            position: absolute;
+            white-space: nowrap;
+            padding: 1em;
+            cursor: pointer;
+        }
+
+        .armchair {
+            float: left;
+            margin: 20px 30px;
+            text-align: center;
+        }
+
+            .armchair img {
+                display: block;
+                margin-bottom: 10px;
+            }
+    </style>
+
+
+    @*---------------------------------------------------------------------------------------------------------------------------------------*@
+    @*------------------------Javascript liberaries include kendo, mobin and jquery libs------------------------*@
+
+    <script src="~/kendo-2017.2.504/js/jquery.js"></script>
+    <script src="~/kendo-2017.2.504/js/mobin.common.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.core.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.calendar.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.popup.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.datepicker.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.data.xml.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.data.odata.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.data.js"></script>
+
+
+    <script src="~/kendo-2017.2.504/js/kendo.userevents.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.draganddrop.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.fx.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.list.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.combobox.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.columnsorter.js"></script>
+
+    <script src="~/lib/mobin.search.input.js"></script>
+    @*<script src="~/lib/mobin.search.date.js"></script>*@
+    <script src="~/kendo-2017.2.504/js/mobin-kendo-dist/mobin.search.date.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.binder.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.window.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.editable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.tabstrip.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.scroller.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.dropdownlist.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtermenu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.filtercell.js"></script>
+
+    <script src="~/lib/mobin.search.dropdownlist.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.upload.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.menu.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.columnmenu.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.groupable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.pager.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.selectable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.sortable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.reorderable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.resizable.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.pane.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.shim.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.popover.js"></script>
+    <script src="~/kendo-2017.2.504/js/kendo.mobile.actionsheet.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.ooxml.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.excel.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.progressbar.js"></script>
+
+    @*//this lib needs "util/text-metrics"*@
+    <script src="~/kendo-2017.2.504/js/kendo.pdf.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.grid.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.multiselect.js"></script>
+
+    <script src="~/kendo-2017.2.504/js/kendo.aspnetmvc.js"></script>
+    <script src="~/kendo-2017.2.504/js/cultures/kendo.culture.fa-IR.js"></script>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link type="text/javascript" href="~/js/config-kendo.min.js" />*@
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body style="font-family:Tahoma;font-size:14px;">
+    <div id="errorTree" style="word-wrap:break-word;overflow-wrap:break-word;overflow-x:auto;width:500px;"></div>
+    <div class="k-rtl">
+
+
+        <app>
+            <component type="typeof(App)" render-mode="ServerPrerendered" />
+        </app>
+
+        <div id="blazor-error-ui">
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+        <script src="~/js/mobin-blazor.js"></script>
+
     </div>
 
-    <script src="_framework/blazor.server.js"></script>
-
-    <script src="~/js/site.js"></script>
 </body>
 </html>

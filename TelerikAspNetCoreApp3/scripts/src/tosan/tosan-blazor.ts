@@ -1,17 +1,25 @@
-﻿export declare module global {
-    interface window {
-        blazorKendoWindow(componentId: Element, options: kendo.ui.WindowOptions): kendo.ui.Window;
-    }
-}
-
-export class tosanWindow implements global.window {
-    blazorKendoWindow(componentId: Element, options: kendo.ui.WindowOptions) {
+﻿let _global = (window || globalThis) as any;
+_global.blazor = {
+    mobinWindow: (componentId: Element, options: kendo.ui.WindowOptions) => {
         let win: kendo.ui.Window = new kendo.ui.Window(componentId, options);
-        return win;
+        win.open();
+    },
+    editForm : {
+        validate: (componentId: Element) => {
+            let validator: kendo.ui.Validator = new kendo.ui.Validator(componentId,
+                {
+                    validate: (ev) => {
+                        alert(ev);
+                    }
+                }
+            );
+
+            if (validator.validate()) {
+                alert("validated");
+            }
+            else {
+                alert("invalid");
+            }
+        }
     }
 }
-
-//let tosanWin: tosanWindow = new tosanWindow();
-//let element: Element = new Element();
-//element.id = 
-//tosanWin.blazorKendoWindow()

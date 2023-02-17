@@ -1,11 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>7efded39-fdc1-4968-9882-5c1943fa7af0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
+    <Compile Remove="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\Transport\**" />
+    <Content Remove="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\Transport\**" />
+    <EmbeddedResource Remove="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\Transport\**" />
+    <None Remove="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\Transport\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,6 +20,10 @@
     <ProjectReference Include="..\Mobin.Infrastructure.Common\Mobin.Common.csproj" />
     <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />
     <ProjectReference Include="..\Repository\Northwind.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\" />
   </ItemGroup>
 
 </Project>

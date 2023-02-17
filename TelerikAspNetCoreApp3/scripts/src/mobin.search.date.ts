@@ -1,7 +1,4 @@
-﻿/// <reference path="jquery.d.ts" />
-/// <reference path="kendo.all.d.ts" />
-
-
+﻿
 module KendoWidgets {
     // (Optional) Extend the default widget options.
     export interface IGridDatePickerOptions extends kendo.ui.DatePickerOptions {
@@ -49,7 +46,8 @@ module KendoWidgets {
             const sender = <GridSearchFromDatePicker>e.sender;
             const options = <IGridDatePickerOptions>sender.options;
             const gridname = options.gridname;
-            const grid = <kendo.ui.Grid>$("#" + gridname).data('kendoGrid');
+            const gridElement = document.getElementById(gridname);
+            const grid = <kendo.ui.Grid>$(gridElement).data('kendoGrid');
             const value = sender.value();
             const filter = grid.dataSource.filter();
             const bindedpropertyname = options.bindedpropertyname;
@@ -81,7 +79,8 @@ module KendoWidgets {
             const sender = <GridSearchFromDatePicker>e.sender;
             const options = <IGridDatePickerOptions>sender.options;
             const gridname = options.gridname;
-            const grid = <kendo.ui.Grid>$("#" + gridname).data('kendoGrid');
+            const gridElement = document.getElementById(gridname);
+            const grid = <kendo.ui.Grid>$(gridElement).data('kendoGrid');
             const value = sender.value();
             const filter = grid.dataSource.filter();
             const bindedpropertyname = options.bindedpropertyname;

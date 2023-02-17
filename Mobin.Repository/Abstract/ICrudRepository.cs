@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Mobin.Common.Entities;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Mobin.Repository
 {
-    public interface ICrudRepository<TEntity> where TEntity :class
+    public interface ICrudRepository<TEntity> 
+        where TEntity : MobinBaseEntity
     {
         TEntity GetEntityByKey<TKey>(TKey key);
         IQueryable<TEntity> GetAll();

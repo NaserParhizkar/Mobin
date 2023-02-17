@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Northwind.Repository.EntityModel.Northwind.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Repository
 {
-    public partial class Employee
+    public partial class Employee : NorthwindBaseEntity
     {
         public Employee()
         {

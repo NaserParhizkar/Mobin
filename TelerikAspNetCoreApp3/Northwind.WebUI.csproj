@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Northwind.WebUI</AssemblyName>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <UserSecretsId>fd69b38f-1f0a-4427-b052-2053b24d1c5b</UserSecretsId>
   </PropertyGroup>
 
 
@@ -32,25 +33,21 @@
 
 
   <ItemGroup>
-    <Content Remove="Components\UI\Window\WindowControl.razor" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <None Remove="scripts\src\tosan-blazor.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Areas\Northwind\Controllers\Api\CustomerController.cs" />
-    <Content Include="Areas\Northwind\Controllers\Api\OrderController.cs" />
+    <Content Include="Areas\Northwind\Controllers\Api\CustomerApiController.cs" />
+    <Content Include="Areas\Northwind\Controllers\Api\OrderApiController.cs" />
     <Content Include="Areas\Northwind\Controllers\CategoryController.cs" />
     <Content Include="Areas\Northwind\Controllers\CustomerController.cs" />
     <Content Include="Areas\Northwind\Controllers\GridController.cs" />
@@ -71,6 +68,9 @@
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
     <Folder Include="Services\" />
+    <Folder Include="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\" />
+    <Folder Include="wwwroot\kendo-2017.2.504\typescript\" />
+    <Folder Include="wwwroot\kendo-2017.2.504\typescript\mobin-kendo-dist\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -498,69 +498,6 @@
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.slider.min.css" />
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\.gitignore" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\demo\basic\index.html" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\demo\README.md" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\jstree.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\jstree.min.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\32px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\40px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\style.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\style.min.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\throbber.gif" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\32px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\40px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\style.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\style.min.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\throbber.gif" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\gruntfile.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\LICENSE-MIT" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\README.md" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\intro.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jquery-3.3.1.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.changed.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.checkbox.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.conditionalselect.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.contextmenu.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.dnd.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.massload.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.search.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.sort.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.state.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.types.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.unique.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.wholerow.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\misc.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\outro.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\sample.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\base.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\32px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\40px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\style.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\style.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\throbber.gif" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\32px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\40px.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\style.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\style.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\throbber.gif" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\main.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\mixins.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\responsive.less" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\vakata-jstree.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\index.html" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\libs\qunit.css" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\libs\qunit.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\test.js" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\desktop\index.html" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\mobile\index.html" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\desktop.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\home.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\home.png" />
-    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\mobile.png" />
     <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
     <None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
     <None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />

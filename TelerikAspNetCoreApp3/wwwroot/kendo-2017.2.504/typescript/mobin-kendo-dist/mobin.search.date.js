@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -46,7 +48,8 @@ var KendoWidgets;
             var sender = e.sender;
             var options = sender.options;
             var gridname = options.gridname;
-            var grid = $("#" + gridname).data('kendoGrid');
+            var gridElement = document.getElementById(gridname);
+            var grid = $(gridElement).data('kendoGrid');
             var value = sender.value();
             var filter = grid.dataSource.filter();
             var bindedpropertyname = options.bindedpropertyname;
@@ -76,7 +79,8 @@ var KendoWidgets;
             var sender = e.sender;
             var options = sender.options;
             var gridname = options.gridname;
-            var grid = $("#" + gridname).data('kendoGrid');
+            var gridElement = document.getElementById(gridname);
+            var grid = $(gridElement).data('kendoGrid');
             var value = sender.value();
             var filter = grid.dataSource.filter();
             var bindedpropertyname = options.bindedpropertyname;

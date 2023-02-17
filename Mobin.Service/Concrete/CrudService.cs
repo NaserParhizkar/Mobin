@@ -1,4 +1,5 @@
-﻿using Mobin.Repository;
+﻿using Mobin.Common.Entities;
+using Mobin.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,58 +7,58 @@ using System.Linq.Expressions;
 
 namespace Mobin.Service
 {
-    public class CrudService<TEntity> : ICrudService<TEntity> where TEntity : class, new()
+    public abstract class CrudService : ICrudService 
     {
         protected readonly IMobinUnitOfWork mobinUnitOfWork;
+        public CrudService(IMobinUnitOfWork unitofwork) => mobinUnitOfWork = unitofwork;
+    }
 
+    public abstract class CrudService<TEntity> : CrudService,ICrudService<TEntity>
+        where TEntity : MobinBaseEntity
+    {
         //public CrudService(IMobinUnitOfWork unitofwork):this(delegate(Type type) { return unitofwork; })
         //{
         //    mobinUnitOfWork = unitofwork;
         //}
 
-        public CrudService(Func<Type, IMobinUnitOfWork> unitofwork)
-        {
-            mobinUnitOfWork = unitofwork(typeof(TEntity));
-        }
+        public CrudService(IMobinUnitOfWork unitofwork):base(unitofwork) { }
 
         public virtual TEntity GetEntityByKey<TKey>(TKey key)
-        {
-            return mobinUnitOfWork.Repository<TEntity>().GetEntityByKey(key);
-        }
+            => mobinUnitOfWork.Repository<TEntity>().GetEntityByKey(key);
 
         public virtual IQueryable<TEntity> GetAllAsQueryable()
-        {
-            return mobinUnitOfWork.Repository<TEntity>().GetAll();
-        }
+            => mobinUnitOfWork.Repository<TEntity>().GetAll();
 
         public virtual IEnumerable<TEntity> GetAllAsEnumerable()
-        {
-            return mobinUnitOfWork.Repository<TEntity>().GetAll().AsEnumerable();
-        }
+            => mobinUnitOfWork.Repository<TEntity>().GetAll().AsEnumerable();
 
         public virtual TEntity Insert(TEntity entity)
         {
-            return mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
+            var insertedEntity = mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
+            mobinUnitOfWork.Commit();
+            return insertedEntity;
         }
 
         public virtual TEntity Update(TEntity entity)
         {
-            return mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
+            var editedEntity = mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
+            mobinUnitOfWork.Commit();
+            return editedEntity;
         }
 
         public virtual void Delete(TEntity entity)
         {
             mobinUnitOfWork.Repository<TEntity>().Delete(entity);
+            mobinUnitOfWork.Commit();
         }
 
         public virtual void Delete<TKey>(TKey key)
         {
             mobinUnitOfWork.Repository<TEntity>().Delete(key);
+            mobinUnitOfWork.Commit();
         }
 
         public virtual bool ExistsPropertyValue(Expression<Func<TEntity, bool>> exp)
-        {
-            return mobinUnitOfWork.Repository<TEntity>().ExistsPropertyValue(exp);
-        }
+            => mobinUnitOfWork.Repository<TEntity>().ExistsPropertyValue(exp);
     }
 }

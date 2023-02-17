@@ -7,15 +7,10 @@ namespace Northwind.WebUI.Areas.Northwind.Controllers
     public class CustomerController : MyController
     {
         [Menu(MenuName = "مشتریان")]
-        public ActionResult Index()
-        {
-            return View();
-        }
+        public ActionResult Index() => View();
 
-        public ActionResult Test()
-        {
-            return View();
-        }
+        public ActionResult Test() => View();
+        
     }
 
     public class MyController : Controller
