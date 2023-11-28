@@ -185,33 +185,33 @@
                         .Name("Menu")
                         .Items(items =>
                         {
-                            items.Add()
+                           @*  items.Add()
                           .Text("Home")
-                          .Action("Index", "Home", new { area = "" });
+                          .Action("Index", "Home", new { area = "" }); *@
 
                             items.Add()
-                                .Text("Order_Index")
+                                .Text("Order with exceptions")
                                .Action("Index", "Order", new { area = "northwind" });
 
                             items.Add()
                                 .Text("SearchInputs")
                                .Action("SearchInputs", "Order", new { area = "northwind" });
 
-                            items.Add()
+                      @*       items.Add()
                                 .Text("TestExpression")
                                 .Action("TestExpression", "OrderDetail", new { area = "northwind" });
-
+ *@
                             items.Add()
-                                .Text("BothDates")
+                                .Text("BothDates with validation")
                                 .Action("Index", "PersianDate", new { area = "" });
 
-                            items.Add()
+            @*                 items.Add()
                                 .Text("Path_PathView")
-                               .Action("PathView", "Path", new { area = "bus" });
-
+                               .Action("PathView", "Path", new { area = "bus" }); *@
+@* 
                             items.Add()
                                 .Text("ValidateForm")
-                               .Action("ValidateForm", "Path", new { area = "bus" });
+                               .Action("ValidateForm", "Path", new { area = "bus" }); *@
 
                             items.Add()
                                 .Text("Customer")

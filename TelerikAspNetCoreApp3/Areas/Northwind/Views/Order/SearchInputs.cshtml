@@ -20,24 +20,24 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                @Html.LabelFor(t => t.Customer.City, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
-                </div>
+        @*<div class="form-group row">
+            @Html.LabelFor(t => t.Customer.City, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @(Html.Kendo().GridSearchInputFor(t => t.Customer.City, "grid"))
             </div>
-            <div class="form-group row">
-                @Html.LabelFor(t => t.OrderDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @(Html.Kendo().GridSearchFromDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
+        </div>*@
+        <div class="form-group row">
+            @Html.Label("OrderDate","تاریخ سفارش از", new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @(Html.Kendo().GridSearchFromDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
                                                                                   .Format("yyyy/MM/dd")
                                                                                   .HtmlAttributes(new { style = "direction:ltr" }))
-                </div>
             </div>
-            <div class="form-group row">
-                @Html.LabelFor(t => t.OrderDate, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-                <div class="col-xs-12 col-sm-8 col-md-8">
-                    @(Html.Kendo().GridSearchToDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
+        </div>
+        <div class="form-group row">
+            @Html.Label("OrderDate","تاریخ سفارش تا", new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @(Html.Kendo().GridSearchToDatePickerFor(t => t.OrderDate, "grid").Culture("fa-IR")
                                                                                   .Format("yyyy/MM/dd")
                                                                                   .HtmlAttributes(new { style = "direction:ltr" }))
                 </div>
