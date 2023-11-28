@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29326.143
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33920.267
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobin.Common", "Mobin.Infrastructure.Common\Mobin.Common.csproj", "{E6D33893-2F40-4C2D-93F1-1BB999C97EFC}"
 EndProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobin.TestConsoleApplicatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobin_Infrastructure", "Mobin_Infrastructure", "{3EA525DD-C3EA-452D-B982-3F32461B4103}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobin_Test", "Mobin_Test", "{26EFFFF6-388E-466B-AEDF-2CDEA2D18584}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobin_App", "Mobin_App", "{26EFFFF6-388E-466B-AEDF-2CDEA2D18584}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Repository", "Repository\Northwind.Repository.csproj", "{087EFF0D-2598-4CA4-8495-296018746F9F}"
 EndProject
