@@ -1,63 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Northwind.WebUI</AssemblyName>
-    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
-    <UserSecretsId>fd69b38f-1f0a-4427-b052-2053b24d1c5b</UserSecretsId>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
 
 
   <ItemGroup>
     <Compile Remove="Areas\PDN\**" />
-    <Compile Remove="scripts\typescript\**" />
     <Compile Remove="wwwroot\expressions\**" />
     <Compile Remove="wwwroot\Scripts\**" />
-    <Compile Remove="wwwroot\Scripts\typescript\**" />
     <Content Remove="Areas\PDN\**" />
-    <Content Remove="scripts\typescript\**" />
     <Content Remove="wwwroot\expressions\**" />
     <Content Remove="wwwroot\Scripts\**" />
-    <Content Remove="wwwroot\Scripts\typescript\**" />
     <EmbeddedResource Remove="Areas\PDN\**" />
-    <EmbeddedResource Remove="scripts\typescript\**" />
     <EmbeddedResource Remove="wwwroot\expressions\**" />
     <EmbeddedResource Remove="wwwroot\Scripts\**" />
-    <EmbeddedResource Remove="wwwroot\Scripts\typescript\**" />
     <None Remove="Areas\PDN\**" />
-    <None Remove="scripts\typescript\**" />
     <None Remove="wwwroot\expressions\**" />
     <None Remove="wwwroot\Scripts\**" />
-    <None Remove="wwwroot\Scripts\typescript\**" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Remove="scripts\src\tosan-blazor.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Content Remove="wwwroot\kendo-2017.2.504\typescript\src\mobin.common.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Areas\Northwind\Controllers\Api\CustomerApiController.cs" />
-    <Content Include="Areas\Northwind\Controllers\Api\OrderApiController.cs" />
+    <Content Include="Areas\Northwind\Controllers\Api\CustomerController.cs" />
+    <Content Include="Areas\Northwind\Controllers\Api\OrderController.cs" />
     <Content Include="Areas\Northwind\Controllers\CategoryController.cs" />
     <Content Include="Areas\Northwind\Controllers\CustomerController.cs" />
     <Content Include="Areas\Northwind\Controllers\GridController.cs" />
     <Content Include="Controllers\HomeController.cs" />
     <Content Include="Areas\Northwind\Controllers\KendoGridHelperController.cs" />
     <Content Include="Controllers\PersianDateController.cs" />
-    <Content Include="scripts\src\tosan\tosan-blazor.ts">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,16 +54,10 @@
     <Folder Include="Areas\Northwind\Data\" />
     <Folder Include="Areas\Northwind\Models\" />
     <Folder Include="Areas\Northwind\Views\KendoGridHelper\" />
-    <Folder Include="Services\" />
     <Folder Include="wwwroot\kendo-2017.2.504\js\mobin-kendo-dist\" />
-    <Folder Include="wwwroot\kendo-2017.2.504\typescript\" />
-    <Folder Include="wwwroot\kendo-2017.2.504\typescript\mobin-kendo-dist\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Components\UI\Tab\TabControl.razor" />
-    <None Include="Components\UI\Tab\TabPage.razor" />
-    <None Include="Components\UI\Window\WindowControl.razor" />
     <None Include="wwwroot\Content\951114.css" />
     <None Include="wwwroot\Content\BNAZANB.TTF" />
     <None Include="wwwroot\Content\BNAZANIN.TTF" />
@@ -498,6 +479,69 @@
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.slider.min.css" />
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <None Include="wwwroot\Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\.gitignore" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\demo\basic\index.html" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\demo\README.md" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\jstree.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\jstree.min.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\32px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\40px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\style.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\style.min.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default-dark\throbber.gif" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\32px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\40px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\style.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\style.min.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\dist\themes\default\throbber.gif" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\gruntfile.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\LICENSE-MIT" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\README.md" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\intro.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jquery-3.3.1.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.changed.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.checkbox.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.conditionalselect.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.contextmenu.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.dnd.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.massload.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.search.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.sort.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.state.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.types.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.unique.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\jstree.wholerow.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\misc.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\outro.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\sample.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\base.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\32px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\40px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\style.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\style.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default-dark\throbber.gif" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\32px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\40px.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\style.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\style.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\default\throbber.gif" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\main.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\mixins.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\themes\responsive.less" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\src\vakata-jstree.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\index.html" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\libs\qunit.css" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\libs\qunit.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\unit\test.js" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\desktop\index.html" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\mobile\index.html" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\desktop.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\desktop\home.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\home.png" />
+    <None Include="wwwroot\Content\vakata-jstree-3.3.5-0-g0097fab\vakata-jstree-0097fab\test\visual\screenshots\mobile\mobile.png" />
     <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
     <None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
     <None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
@@ -547,6 +591,13 @@
     <ProjectReference Include="..\Mobin.Service\Mobin.Service.csproj" />
     <ProjectReference Include="..\Northwind.Service\Northwind.Service.csproj" />
     <ProjectReference Include="..\Repository\Northwind.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\Docking.ts" />
+    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\ModuleFile.ts" />
+    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Maritime\Shipping.ts" />
+    <TypeScriptCompile Include="wwwroot\kendo-2017.2.504\typescript\src\Transport\Railways\Ticketing.ts" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

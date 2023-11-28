@@ -1,13 +1,13 @@
-﻿using Mobin.Repository.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace KendoBus.Repository
 {
     [Description("مسیر")]
-    public class Path : MobinBaseEntity<int>
+    public class Path : BaseEntity<int>
     {
+
         [UIHint("Integer")]
         [Display(Name = "کد")]
         [Required(ErrorMessage = "لطفاً شماره ی شناسه ی مسیر را وارد نمایید")]

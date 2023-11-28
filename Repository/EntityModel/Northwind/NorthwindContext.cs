@@ -30,7 +30,6 @@ namespace Northwind
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -43,22 +42,22 @@ namespace Northwind
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.HasIndex(e => e.CategoryName)
-                    .HasDatabaseName("CategoryName");
+                    .HasName("CategoryName");
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasIndex(e => e.City)
-                    .HasDatabaseName("City");
+                    .HasName("City");
 
                 entity.HasIndex(e => e.CompanyName)
-                    .HasDatabaseName("CompanyName");
+                    .HasName("CompanyName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasDatabaseName("PostalCode");
+                    .HasName("PostalCode");
 
                 entity.HasIndex(e => e.Region)
-                    .HasDatabaseName("Region");
+                    .HasName("Region");
 
                 entity.Property(e => e.CustomerId).ValueGeneratedNever();
             });
@@ -66,7 +65,7 @@ namespace Northwind
             modelBuilder.Entity<CustomerCustomerDemo>(entity =>
             {
                 entity.HasKey(e => new { e.CustomerId, e.CustomerTypeId })
-                    .IsClustered(false);
+                    .ForSqlServerIsClustered(false);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerCustomerDemos)
@@ -84,7 +83,7 @@ namespace Northwind
             modelBuilder.Entity<CustomerDemographic>(entity =>
             {
                 entity.HasKey(e => e.CustomerTypeId)
-                    .IsClustered(false);
+                    .ForSqlServerIsClustered(false);
 
                 entity.Property(e => e.CustomerTypeId).ValueGeneratedNever();
             });
@@ -92,10 +91,10 @@ namespace Northwind
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasIndex(e => e.LastName)
-                    .HasDatabaseName("LastName");
+                    .HasName("LastName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasDatabaseName("PostalCode");
+                    .HasName("PostalCode");
 
                 entity.HasOne(d => d.ReportsToNavigation)
                     .WithMany(p => p.InverseReportsToNavigation)
@@ -106,7 +105,7 @@ namespace Northwind
             modelBuilder.Entity<EmployeeTerritory>(entity =>
             {
                 entity.HasKey(e => new { e.EmployeeId, e.TerritoryId })
-                    .IsClustered(false);
+                    .ForSqlServerIsClustered(false);
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.EmployeeTerritories)
@@ -124,22 +123,22 @@ namespace Northwind
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasIndex(e => e.CustomerId)
-                    .HasDatabaseName("CustomersOrders");
+                    .HasName("CustomersOrders");
 
                 entity.HasIndex(e => e.EmployeeId)
-                    .HasDatabaseName("EmployeesOrders");
+                    .HasName("EmployeesOrders");
 
                 entity.HasIndex(e => e.OrderDate)
-                    .HasDatabaseName("OrderDate");
+                    .HasName("OrderDate");
 
                 entity.HasIndex(e => e.ShipPostalCode)
-                    .HasDatabaseName("ShipPostalCode");
+                    .HasName("ShipPostalCode");
 
                 entity.HasIndex(e => e.ShipVia)
-                    .HasDatabaseName("ShippersOrders");
+                    .HasName("ShippersOrders");
 
                 entity.HasIndex(e => e.ShippedDate)
-                    .HasDatabaseName("ShippedDate");
+                    .HasName("ShippedDate");
 
                 entity.Property(e => e.Freight).HasDefaultValueSql("((0))");
 
@@ -164,10 +163,10 @@ namespace Northwind
                 entity.HasKey(e => new { e.OrderId, e.ProductId });
 
                 entity.HasIndex(e => e.OrderId)
-                    .HasDatabaseName("OrdersOrder_Details");
+                    .HasName("OrdersOrder_Details");
 
                 entity.HasIndex(e => e.ProductId)
-                    .HasDatabaseName("ProductsOrder_Details");
+                    .HasName("ProductsOrder_Details");
 
                 entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
 
@@ -187,13 +186,13 @@ namespace Northwind
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasIndex(e => e.CategoryId)
-                    .HasDatabaseName("CategoryID");
+                    .HasName("CategoryID");
 
                 entity.HasIndex(e => e.ProductName)
-                    .HasDatabaseName("ProductName");
+                    .HasName("ProductName");
 
                 entity.HasIndex(e => e.SupplierId)
-                    .HasDatabaseName("SuppliersProducts");
+                    .HasName("SuppliersProducts");
 
                 entity.Property(e => e.ReorderLevel).HasDefaultValueSql("((0))");
 
@@ -217,7 +216,7 @@ namespace Northwind
             modelBuilder.Entity<Region>(entity =>
             {
                 entity.HasKey(e => e.RegionId)
-                    .IsClustered(false);
+                    .ForSqlServerIsClustered(false);
 
                 entity.Property(e => e.RegionId).ValueGeneratedNever();
             });
@@ -225,16 +224,16 @@ namespace Northwind
             modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.HasIndex(e => e.CompanyName)
-                    .HasDatabaseName("CompanyName");
+                    .HasName("CompanyName");
 
                 entity.HasIndex(e => e.PostalCode)
-                    .HasDatabaseName("PostalCode");
+                    .HasName("PostalCode");
             });
 
             modelBuilder.Entity<Territory>(entity =>
             {
                 entity.HasKey(e => e.TerritoryId)
-                    .IsClustered(false);
+                    .ForSqlServerIsClustered(false);
 
                 entity.Property(e => e.TerritoryId).ValueGeneratedNever();
 

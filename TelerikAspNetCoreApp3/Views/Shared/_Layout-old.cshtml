@@ -46,19 +46,7 @@
 
     <script src="~/lib/mobin.search.input.js"></script>
     @*<script src="~/lib/mobin.search.date.js"></script>*@
-    @*<script src="~/kendo-2017.2.504/js/mobin-kendo-dist/mobin.search.date.js"></script>*@
-
-
-    @*<script src="~/kendo-2017.2.504/typescript/mobin-kendo-dist/mobin.search.input.js"></script>*@
-
-
-    <script src="~/kendo-2017.2.504/typescript/mobin-kendo-dist/mobin.search.date.js"></script>
-
-
-
-
-
-
+    <script src="~/kendo-2017.2.504/js/mobin-kendo-dist/mobin.search.date.js"></script>
 
     <script src="~/kendo-2017.2.504/js/kendo.numerictextbox.js"></script>
     <script src="~/kendo-2017.2.504/js/kendo.validator.js"></script>
@@ -127,13 +115,6 @@
         $(function () {
             kendo.culture('fa-IR');
         });
-
-
-        window.setElementText = (element, text) => {
-            element.innerText = text;
-            return text;
-        };
-
     </script>
 
     @*---------------------------------------------------------------------------------------------------------------------------------------*@
@@ -152,7 +133,6 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 
-    <base href="/" />
 </head>
 <body style="font-family:Tahoma;font-size:14px;">
     <div id="errorTree" style="word-wrap:break-word;overflow-wrap:break-word;overflow-x:auto;width:500px;"></div>
@@ -175,31 +155,31 @@
         <div class="container menu-content">
             <div id="responsive-panel">
                 @*@(Html.Kendo().Menu()
-                                .Name("Menu")
-                                .Items(items =>
-                                {
-                                    items.Add()
-                                  .Text("اصلی")
-                                  .Action("Index", "Home", new { area = "" });
+                                    .Name("Menu")
+                                    .Items(items =>
+                                    {
+                                        items.Add()
+                                      .Text("اصلی")
+                                      .Action("Index", "Home", new { area = "" });
 
-                                    items.Add()
-                                        .Text("مشتری")
-                                       .Action("Index", "PDNCustomer", new { area = "pdn" });
+                                        items.Add()
+                                            .Text("مشتری")
+                                           .Action("Index", "PDNCustomer", new { area = "pdn" });
 
-                                    items.Add()
-                                        .Text("سفارش")
-                                       .Action("Index", "PDNOrderItem", new { area = "pdn" });
+                                        items.Add()
+                                            .Text("سفارش")
+                                           .Action("Index", "PDNOrderItem", new { area = "pdn" });
 
-                                    items.Add()
-                                        .Text("محصول")
-                                        .Action("Index", "PDNProduct", new { area = "pdn" });
-                                      items.Add()
-                            .Text("Path_PathView")
-                           .Action("PathView", "Path", new { area = "bus" });
+                                        items.Add()
+                                            .Text("محصول")
+                                            .Action("Index", "PDNProduct", new { area = "pdn" });
+                                          items.Add()
+                                .Text("Path_PathView")
+                               .Action("PathView", "Path", new { area = "bus" });
 
 
-                                })
-                )*@
+                                    })
+                    )*@
 
                 @(Html.Kendo().Menu()
                         .Name("Menu")
@@ -256,9 +236,6 @@
         </div>
 
         @RenderSection("scripts", required: false)
-        <script src="_framework/blazor.server.js"></script>
-
-        <script src="~/kendo-2017.2.504/typescript/mobin-kendo-dist/tosan/tosan-blazor.js"></script>
     </div>
 
 </body>

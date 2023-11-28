@@ -12,11 +12,11 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddProjectRepository(this IServiceCollection services)
         {
             services.AddScoped<NorthwindContext>();
-            services.AddTransient<INorthwindUnitOfWork,NorthwindUnitOfWork>();
+            services.AddTransient<NorthwindUnitOfWork>();
 
             services.AddScoped<KendoBusContext>();
-            services.AddTransient<IBusUnitOfWork, BusUnitOfWork>();
-            
+            services.AddTransient<BusUnitOfWork>();
+
             services.AddScoped<PDNContext>();
             services.AddTransient<PDNUnitOfWork>();
 

@@ -22,9 +22,9 @@ namespace Kendo.Mvc
     {
         public static IEnumerable<ServiceDescriptor> GetServices()
         {
-            //yield return ServiceDescriptor.Transient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
-            //yield return ServiceDescriptor.Transient(typeof(ICrudService<>), typeof(CrudService<>));
-            //yield return ServiceDescriptor.Transient(typeof(CrudController<>), typeof(CrudService<>));
+            yield return ServiceDescriptor.Transient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+            yield return ServiceDescriptor.Transient(typeof(ICrudService<>), typeof(CrudService<>));
+            yield return ServiceDescriptor.Transient(typeof(CrudController<>), typeof(CrudService<>));
 
             yield return ServiceDescriptor.Singleton<IValidationAttributeAdapterProvider, MobinValidatiomAttributeAdapterProvider>();
         }

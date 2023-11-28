@@ -13,10 +13,10 @@ namespace Northwind.Service
     public class CategoryService : CrudService<Category>, ICategoryService
     {
         //public CustomerService(IMobinUnitOfWork unitofwork) : base(unitofwork) { }
-        private readonly NorthwindUnitOfWork northwindUnitOfWork;
 
-        public CategoryService(INorthwindUnitOfWork unitofwork) : base(unitofwork)
-            => northwindUnitOfWork = (NorthwindUnitOfWork)unitofwork;
+        public CategoryService(Func<Type, IMobinUnitOfWork> unitofwork) : base(unitofwork)
+        {
+        }
 
         public override IQueryable<Category> GetAllAsQueryable()
         {

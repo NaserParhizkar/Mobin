@@ -6,9 +6,6 @@ namespace Northwind.WebUI.Controllers
     {
         public ActionResult Index()
         {
-
-
-
             return View();
         }
 

@@ -4,6 +4,9 @@ namespace Northwind.WebUI.Areas.Northwind.Controllers
 {
     public class InvoiceController : Controller
     {
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

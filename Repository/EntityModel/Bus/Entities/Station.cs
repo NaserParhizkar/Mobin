@@ -1,12 +1,11 @@
-﻿using Mobin.Repository.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace KendoBus.Repository
 {
     [Description("ایستگاه")]
-    public class Station : MobinBaseEntity<int>
+    public class Station : BaseEntity<int>
     {
 
         [Required(ErrorMessage = "شماره ایستگاه نمی تواند خالی باشد")]

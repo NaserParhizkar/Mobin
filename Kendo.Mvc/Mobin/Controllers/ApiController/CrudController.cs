@@ -71,7 +71,7 @@ namespace Kendo.Mvc.Mobin.Controllers
         {
             crudService.Update(entity);
           
-            //throw new MobinException("asdasdasd");
+            throw new MobinException("asdasdasd");
         }
 
 

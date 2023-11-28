@@ -1,30 +1,33 @@
 ﻿@model Path
 
+<div class="k-edit-form-container">
+    <div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
+        <div class="form-group">
+            @Html.LabelFor(t => t.PathId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @Html.Kendo().IntegerTextBoxFor(t => t.PathId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(t => t.Name, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @Html.Kendo().TextBoxFor(t => t.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(t => t.Distance, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @Html.Kendo().IntegerTextBoxFor(t => t.Distance).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(t => t.Rent, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                @Html.Kendo().CurrencyTextBoxFor(t => t.Rent).Culture("fa-IR").Decimals(0).HtmlAttributes(new { style = "direction:ltr" })
+            </div>
+        </div>
 
-<div class="form-horizontal form-widgets col-xs-11 col-sm-12 col-md-12">
-    <div class="form-group">
-        @Html.LabelFor(t => t.PathId, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-        <div class="col-xs-12 col-sm-8 col-md-8">
-            @Html.Kendo().IntegerTextBoxFor(t => t.PathId).Culture("fa-IR").Format("n").HtmlAttributes(new { style = "direction:ltr" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(t => t.Name, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-        <div class="col-xs-12 col-sm-8 col-md-8">
-            @Html.Kendo().TextBoxFor(t => t.Name)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(t => t.Distance, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-        <div class="col-xs-12 col-sm-8 col-md-8">
-            @Html.Kendo().IntegerTextBoxFor(t => t.Distance).Culture("fa-IR").Format("n0").HtmlAttributes(new { style = "direction:ltr" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(t => t.Rent, new { @class = "control-label col-xs-11 col-sm-1 col-md-1" })
-        <div class="col-xs-12 col-sm-8 col-md-8">
-            @Html.Kendo().CurrencyTextBoxFor(t => t.Rent).Culture("fa-IR").Decimals(0).HtmlAttributes(new { style = "direction:ltr" })
-        </div>
+
     </div>
 </div>
 

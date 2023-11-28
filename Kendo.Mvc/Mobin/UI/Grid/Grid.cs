@@ -31,7 +31,7 @@ namespace Kendo.Mvc.UI
             var keyExpression = (Expression)ids?.GetPropertyValue(nameof(Expression));
 
             if (keyExpression == null && Editable.Enabled)
-                throw new MobinException($"Editable enabled gird has to have a key which specify edited or deleted row");
+                throw new MobinException($"Editable enabled gird must have a key which specify edit or delet row or record");
 
             if (keyExpression != null)
                 fetchFields.Add(keyExpression);

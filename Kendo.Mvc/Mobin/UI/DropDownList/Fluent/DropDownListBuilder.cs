@@ -12,7 +12,7 @@ namespace Kendo.Mvc.UI.Fluent
     public partial class DropDownListBuilder
     {
         /// <summary>
-        /// Use for auto fetch data and value fields which is shown in dropdownlist from database
+        /// This function used for auto fetch data and value fields which is shown in dropdownlist from database
         /// </summary>
         /// <param name="function">functions for fetch data and value text field</param>
         public DropDownListBuilder AutoFetchValueTextFields<TModel>(Func<ValueTextFieldBuilder<TModel>, ValueTextFieldBuilder<TModel>> function)

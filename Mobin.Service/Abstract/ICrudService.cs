@@ -6,17 +6,17 @@ using System.Linq.Expressions;
 
 namespace Mobin.Service
 {
-    public interface ICrudService { }
-    public interface ICrudService<TEntity> : ICrudService
+    public interface ICrudService<TEntity>
     {
         IQueryable<TEntity> GetAllAsQueryable();
         IEnumerable<TEntity> GetAllAsEnumerable();
-        TEntity GetEntityByKey<TKey>(TKey key);
 
         TEntity Insert(TEntity entity);
         TEntity Update(TEntity entity);
         void Delete(TEntity entity);
         void Delete<TKey>(TKey key);
+
+        TEntity GetEntityByKey<TKey>(TKey key);
 
         bool ExistsPropertyValue(Expression<Func<TEntity, bool>> exp);
     }

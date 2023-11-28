@@ -1,12 +1,11 @@
-﻿using Northwind.Repository.EntityModel.Northwind.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Repository
 {
     [Table("Region")]
-    public partial class Region : NorthwindBaseEntity
+    public partial class Region
     {
         public Region()
         {

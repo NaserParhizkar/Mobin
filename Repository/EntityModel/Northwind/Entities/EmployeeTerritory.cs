@@ -1,10 +1,9 @@
-﻿using Northwind.Repository.EntityModel.Northwind.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Repository
 {
-    public partial class EmployeeTerritory : NorthwindBaseEntity
+    public partial class EmployeeTerritory
     {
         [Column("EmployeeID")]
         public int EmployeeId { get; set; }

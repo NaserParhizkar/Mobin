@@ -133,16 +133,9 @@
                         grid.dataSource._filter = {};
 
                         var uniqueFilters = [];
-                        //uniqueFilters = $.grep(preFilters.filters, function (item) {
-                        //    return item.field != field;
-                        //});
-
-                        uniqueFilters = $.grep(preFilters.filters, (item) => {
-                            return item.field != field || (item.field == field && item.operator != 'contains');
+                        uniqueFilters = $.grep(preFilters.filters, function (item) {
+                            return item.field != field;
                         });
-
-
-
                         preFilters.filters = uniqueFilters;
                         preFilters.filters.push({ field: field, operator: "contains", value: value });
                         grid.dataSource.filter(preFilters);
@@ -172,13 +165,9 @@
                             grid.dataSource._filter = {};
 
                             var uniqueFilters = [];
-                            //uniqueFilters = $.grep(preFilters.filters, function (item) {
-                            //    return item.field != field;
-                            //});
-                            uniqueFilters = $.grep(preFilters.filters, (item) => {
-                                return item.field != field || (item.field == field && item.operator != 'contains');
+                            uniqueFilters = $.grep(preFilters.filters, function (item) {
+                                return item.field != field;
                             });
-
                             preFilters.filters = uniqueFilters;
                             preFilters.filters.push({ field: field, operator: "contains", value: value });
                             grid.dataSource.filter(preFilters);
@@ -187,25 +176,7 @@
                             grid.dataSource.read();
                         }
                     } else {
-
-                        var preFilters = {
-                            filters: [],
-                            logic: 'and'
-                        };
-                        preFilters.filters = filter.filters;
-                        grid.dataSource._filter = {};
-
-                        var uniqueFilters = [];
-                        //uniqueFilters = $.grep(preFilters.filters, function (item) {
-                        //    return item.field != field;
-                        //});
-                        uniqueFilters = $.grep(preFilters.filters, (item) => {
-                            return item.field != field || (item.field == field && item.operator != 'contains');
-                        });
-
-                        preFilters.filters = uniqueFilters;
-                      
-                        grid.dataSource.filter(preFilters);
+                        grid.dataSource.filter({});
                     }
                 }
                 //this._removeInvalidState();

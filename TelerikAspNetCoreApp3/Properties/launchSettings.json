@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:65061/",
-      "sslPort": 44370
+      "applicationUrl": "http://localhost:65065/",
+      "sslPort": 44330
     }
   },
   "profiles": {
@@ -23,16 +23,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:65065/"
-    },
-    "Watch": {
-      "executablePath": "dotnet.exe",
-      "commandLineArgs": "watch run",
-      "workingDirectory": "C:\\Users\\Asus\\Desktop\\Mobin\\TelerikAspNetCoreApp3",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
   }
 }

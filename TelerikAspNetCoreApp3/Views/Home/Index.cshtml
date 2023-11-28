@@ -3,6 +3,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div>
-    @(await Html.RenderComponentAsync<Northwind.WebUI.Pages.PathForm>(RenderMode.ServerPrerendered))
-</div>
+
+@*@{
+    var a = Mobin.Common.Utility.ModelMetadata<Path>.GetAttribute<System.ComponentModel.DescriptionAttribute>(t => t);
+
+    var value = a.Description;
+
+}
+
+
+@value*@
+
+
+    <cust>@(await Html.RenderComponentAsync<Northwind.WebUI.Pages.PathForm>(RenderMode.ServerPrerendered))</cust>

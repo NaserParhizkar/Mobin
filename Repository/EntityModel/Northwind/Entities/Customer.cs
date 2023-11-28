@@ -1,12 +1,11 @@
-﻿using Northwind.Repository.EntityModel.Northwind.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Repository
 {
     [Display(Name = "مشتری")]
-    public partial class Customer : NorthwindBaseEntity
+    public partial class Customer
     {
         public Customer()
         {

@@ -15,8 +15,8 @@
                              col.Bound(t => t.PathId).Filterable(w => w.Mode(GridFilterMode.Row)).Width(300);
                              col.Bound(t => t.Name).Width(300);
                              col.Bound(t => t.Distance).Width(300);
-                             col.Command(t => t.Destroy().Text("حذف"));
-                             col.Command(t => t.Edit().UpdateText("ویرایش").Text("ویرایش").CancelText("لغو"));
+
+                             col.Command(t => t.Edit().UpdateText("ویرایش").Text("asd").CancelText("dfgfg"));
                          })
                                    .DataSource(source => source.WebApi().PageSize(20).AutoMakeQueryExpression()
                                            .Model(model =>
@@ -29,8 +29,7 @@
                                                    .Destroy(destroy => destroy.Action<PathApiController>
     (action => action.Delete(null))))
     .ToolBar(toolbar => toolbar.Create().Text("افزودن"))
-    .Editable(t => t.TemplateName("EntryForm").Mode(GridEditMode.PopUp).Window(y => y.Name("wind")
-    .Pinned(false).Modal(true).Title("مسیffر").Resizable()))
+    .Editable(t => t.TemplateName("EntryForm").Mode(GridEditMode.PopUp).Window(y => y.Name("wind").Pinned(false).Modal(true).Title("مسیffر")))
         //.Editable(edit => edit.Mode(GridEditMode.PopUp)
         // .Window(win => win.Name("wind").Modal().LoadContentFrom<PathController>
         //(t => t.EntryForm())
