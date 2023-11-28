@@ -37,12 +37,16 @@ namespace Mobin.Service
 
         public virtual TEntity Insert(TEntity entity)
         {
-            return mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
+            var returnEntity = mobinUnitOfWork.Repository<TEntity>().Insert(entity).Entity;
+            mobinUnitOfWork.Save();
+            return returnEntity;
         }
 
         public virtual TEntity Update(TEntity entity)
         {
-            return mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
+            var returnEntity = mobinUnitOfWork.Repository<TEntity>().Update(entity).Entity;
+            mobinUnitOfWork.Save();
+            return returnEntity;
         }
 
         public virtual void Delete(TEntity entity)

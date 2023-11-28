@@ -25,6 +25,7 @@ namespace Mobin.Repository
         public virtual EntityEntry<TEntity> Insert(TEntity entity)
         {
             var entityEntry = dbset.Add(entity);
+            context.Entry(entity).State = EntityState.Added;
             return entityEntry;
         }
 
